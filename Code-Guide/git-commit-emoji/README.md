@@ -32,6 +32,7 @@ emoji                        | emoji代码                      | 说明
 :sparkles:                   | `:sparkles:`                   | 引用新功能
 :memo:                       | `:memo:`                       | 编写文档
 :rocket:                     | `:rocket:`                     | 部署新功能
+:recycle:                    | `:recycle:`                    | 代码重构
 :lipstick:                   | `:lipstick:`                   | 更新UI和样式文件
 :white_check_mark:           | `:white_check_mark:`           | 添加测试
 :apple:                      | `:apple:`                      | 修复MacOS上的问题
@@ -48,15 +49,14 @@ emoji                        | emoji代码                      | 说明
 :pushpin:                    | `:pushpin:`                    | 将依赖关系固定到特定的版本
 :construction_worker:        | `:construction_worker:`        | 添加CI构建系统
 :chart_with_upwards_trend:   | `:chart_with_upwards_trend:`   | 工作正在进行中
-:recycle:                    | `:recycle:`                    | 工作正在进行中
 :heavy_minus_sign:           | `:heavy_minus_sign:`           | 删除依赖项
 :whale:                      | `:whale:`                      | 关于Docker的工作
 :heavy_plus_sign:            | `:heavy_plus_sign:`            | 添加一个依赖项
 :wrench:                     | `:wrench:`                     | 更改配置文件
-:globe_with_meridians:       | `:globe_with_meridians:`       | 国际化和本地化
 :pencil2:                    | `:pencil2:`                    | 修正错别字
 :hankey:                     | `:hankey:`                     | 编写需要改进的不好的代码
 :rewind:                     | `:rewind:`                     | 恢复更改
+:globe_with_meridians:       | `:globe_with_meridians:`       | 国际化和本地化
 :twisted_rightwards_arrows:  | `:twisted_rightwards_arrows:`  | 工作正在进行中
 :package:                    | `:package:`                    | 更新编译的文件或包
 :alien:                      | `:alien:`                      | 由于外部API更改而更新代码

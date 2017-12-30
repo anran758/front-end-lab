@@ -11,9 +11,9 @@
 > 作为一名合格的程序员, 应该养成一个好的的编程习惯. 在实际开发中, 你不可能总是单打独斗, 当遇到团队协作时, 代码规范就重要性就凸显出来了.
 
 - [HTML/CSS代码规范](http://codeguide.bootcss.com) - 出自Github设计总监的代码规范  
-- [ECMA-5](https://github.com/anran758/Front-End-Lab/Code-Guide/ECMA-5) - JavaScript ES5代码风格指南  
-- [ECMA-6/ECMA2015](https://github.com/anran758/Front-End-Lab/Code-Guide/ECMA-6) - JavaScript ES6/ECMA2015 代码风格指南
-- [Git-Commit-Emoji](https://github.com/anran758/Front-End-Lab/Code-Guide/git-commit-emoji) - 在git项目中合理的使用emoji来凸显主要工作 
+- [ECMA-5](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/ECMA-5) - JavaScript ES5代码风格指南  
+- [ECMA-6/ECMA2015](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/ECMA-6) - JavaScript ES6/ECMA2015 代码风格指南
+- [Git-Commit-Emoji](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/git-commit-emoji) - 在git项目中合理的使用emoji来凸显主要工作 
 
 ----
 

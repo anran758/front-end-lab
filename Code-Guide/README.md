@@ -10,9 +10,9 @@
 #### JavaScript
 > Airbnb JavaScript Style Guide -- 原文出自国外, 里面对JavaScript的很多细节进行描述. 可以根据自己的风格进行适当的调整. 写出一份让自己舒服的代码吧~
 
-- [ECMA-5](https://github.com/anran758/Front-End-Lab/Code-Guide/ECMA-5) - JavaScript ES5代码风格指南  
-- [ECMA-6/ECMA2015](https://github.com/anran758/Front-End-Lab/Code-Guide/ECMA-6) - JavaScript ES6/ECMA2015 代码风格指南
+- [ECMA-5](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/ECMA-5) - JavaScript ES5代码风格指南  
+- [ECMA-6/ECMA2015](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/ECMA-6) - JavaScript ES6/ECMA2015 代码风格指南
 
 #### Git项目中使用emoji
 > 在git commit时使用emoji凸显提交的主要工作
-- [git-commit-emoji](https://github.com/anran758/Front-End-Lab/Code-Guide/git-commit-emoji) - 如何规范的运用emoji 
+- [git-commit-emoji](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/git-commit-emoji) - 如何规范的运用emoji 

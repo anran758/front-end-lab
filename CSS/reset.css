@@ -1,0 +1,41 @@
+/* 简化reset, 对常用元素进行简化 */
+
+body,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form,
+ol,
+ul {
+  margin: 0;
+}
+
+ol,
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font: 12px Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: block;
+}
+
+.clearfix:after {
+  clear: both;
+}
