@@ -4,13 +4,20 @@ css 的学习曲线可以说是非常奇怪了.. 说简单, 的确来个人认�
 
 ---
 
-**目录**
-1. [隐藏元素](#dispaly)
-1. [reset 与 Normalize](#reset)
-1. [文字超出..省略(text-overflow)](#text-overflow)
-1. [响应式设计 - 针对不同分辨率设置(@media)](#responsive)
+### 目录
 
-#### reset 与 Normalize
+* CSS 及常见的应用
+  1. [reset 与 Normalize](#reset)
+  1. [隐藏元素](#dispaly)
+  1. [常见的居中](#center)
+  1. [文字超出显示省略号(text-overflow)](#text-overflow)
+  1. [响应式设计 - 针对不同分辨率设置(@media)](#responsive)
+* CSS3
+  - [留坑]
+
+---
+
+### reset 与 Normalize
 
 <a name="reset"></a>
 
@@ -48,7 +55,10 @@ css 的学习曲线可以说是非常奇怪了.. 说简单, 的确来个人认�
 }
 ```
 
+---
+
 #### 文字超出..省略(text-overflow)
+
 <a name="text-overflow"></a>
 
 text-overflow 只是用来说明文字溢出时用什么方式显示，要实现溢出时产生省略号的效果，还须配合其他属性.
@@ -63,9 +73,11 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 ```
 
 #### 响应式设计 - 针对不同分辨率设置(@media)
+
 <a name="responsive"></a>
 
 如今比较通用的媒体查询. 其中`max-width`是媒体查询的一个特性，其意思是指媒体类型小于或等于指定的宽度时, `min-width`相反
+
 ```css
 /* 1024px显屏 */
 @media screen and (max-width: 1024px) {
@@ -93,10 +105,19 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 }
 ```
 
-现在有关于这方面的运用也是相当的成熟，twitter的Bootstrap第二版本中就加上了这方面的运用。大家可以对比一下： 
-``` css
-@media (max-width: 480px) { ... }
-@media (max-width: 768px) { ... }
-@media (min-width: 768px) and (max-width: 980px) { ... }
-@media (min-width: 1200px) { .. }
+现在有关于这方面的运用也是相当的成熟，twitter 的 Bootstrap 第二版本中就加上了这方面的运用。大家可以对比一下：
+
+```css
+@media (max-width: 480px) {
+  ...;
+}
+@media (max-width: 768px) {
+  ...;
+}
+@media (min-width: 768px) and (max-width: 980px) {
+  ...;
+}
+@media (min-width: 1200px) {
+  ..;
+}
 ```
