@@ -1,6 +1,6 @@
 # CSS / CSS3 的踩坑与应用
 
-css 的学习曲线可以说是非常奇怪了.. 说简单, 的确来个人认真的学习三五天, 也能跟着模仿, 撸出一个像样的页面. 但是说复杂, 的确又是挺复杂的...各个属性之间的耦合性让人防不胜防. 下面将自己的一些经验分享一下.
+css 的学习曲线可以说是非常奇怪了.. 说简单, 的确来个人认真的学习三五天, 也能跟着模仿, 撸出一个像样的页面. 但是说复杂, 的确又是挺复杂的, 各个属性之间的耦合性让人防不胜防. 下面将自己的一些经验分享下.
 
 ---
 
@@ -10,6 +10,7 @@ css 的学习曲线可以说是非常奇怪了.. 说简单, 的确来个人认�
   1. [reset 与 Normalize](#reset)
   1. [隐藏元素](#dispaly)
   1. [常见的居中](#center)
+  1. [图片居中处理](#imgage)
   1. [文字超出显示省略号(text-overflow)](#text-overflow)
   1. [响应式设计 - 针对不同分辨率设置(@media)](#responsive)
 * CSS3
@@ -57,7 +58,7 @@ css 的学习曲线可以说是非常奇怪了.. 说简单, 的确来个人认�
 
 ---
 
-#### 文字超出..省略(text-overflow)
+#### 文字超出显示省略号(text-overflow)
 
 <a name="text-overflow"></a>
 
@@ -71,6 +72,25 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
   text-overflow: ellipsis;
 }
 ```
+
+#### 图片居中裁剪
+<a name="imgage"></a>
+
+我们经常能遇到这种情景, 做一个用户头像. 拿到的图片是一个长方形的长图, 但是我们并不需要这么长的图, 因此我们需要"裁剪". 这时我们只需设置图片中心为原点, 设置相应的宽高再加上圆角即可, 代码如下:
+``` css
+.user-info-box .avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: 50%/cover;
+  background-color: #f1f1f1;
+  background-image: url(https://avatars.githubusercontent.com/u/23024075?v=3);
+}
+```
+[点击测试/codeopen](https://codepen.io/anran758/pen/WdOvRY)  
+其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.
+![avatar-1](./images/avatar-1.png)
+
 
 #### 响应式设计 - 针对不同分辨率设置(@media)
 

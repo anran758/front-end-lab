@@ -1,9 +1,9 @@
 # Front-End-Lab
-
-对Web前端的研究以及踩过坑的一些记录, 希望能给后来者留下帮助, 将不定期更新.
+> 路漫漫其修远兮，吾将上下而求索
+将Web领域的研究以及踩过坑的经验一点一滴分享出来, 只有能帮助到后来人就会长期维护, 主要内容包括但不限于相关代码规范、项目解决方案、web安全、提高效率的工具等.
 
 ### 近期更新的内容
-  巩固知识, 将自己的一些经验和一些对前端er必备规范整理一份明文出来.
+  将自己所学的知识和经验总结到文档中, css模块正在施工中..后续其他模块尽量抽出时间完善. 
 
 ----
 
@@ -13,7 +13,17 @@
 - [HTML/CSS代码规范](http://codeguide.bootcss.com) - 出自Github设计总监的代码规范  
 - [ECMA-5](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/ECMA-5) - JavaScript ES5代码风格指南  
 - [ECMA-6/ECMA2015](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/ECMA-6) - JavaScript ES6/ECMA2015 代码风格指南
+- [JSDoc 中文文档](http://www.css88.com/doc/jsdoc/) - javascript文档注释
 - [Git-Commit-Emoji](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/git-commit-emoji) - 在git项目中合理的使用emoji来凸显主要工作 
+
+----
+
+### CSS
+> css虽说入门简单, 由于CSS的强耦合性的问题很多坑还是需要自己踩下去才知道是怎么回事.
+
+这个模块主要分享常见CSS/CSS3的应用或技巧. 目前主要更新css方面, 中后期会更新根据项目需求所需的css特效吧.
+
+[CSS - 传送门](https://github.com/anran758/Front-End-Lab/tree/master/CSS)
 
 ----
 

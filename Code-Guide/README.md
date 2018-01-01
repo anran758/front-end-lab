@@ -12,6 +12,8 @@
 
 - [ECMA-5](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/ECMA-5) - JavaScript ES5代码风格指南  
 - [ECMA-6/ECMA2015](https://github.com/anran758/Front-End-Lab/tree/master/Code-Guide/ECMA-6) - JavaScript ES6/ECMA2015 代码风格指南
+- [JSDoc 中文文档](http://www.css88.com/doc/jsdoc/) - javascript文档注释
+
 
 #### Git项目中使用emoji
 > 在git commit时使用emoji凸显提交的主要工作
