@@ -139,9 +139,9 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 }
 ```
 
-[test / codepen](https://codepen.io/anran758/pen/WdOvRY)  
 其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.
-![avatar-1](./images/avatar-1.png)
+<p data-height="300" data-theme-id="32168" data-slug-hash="WdOvRY" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="images-center" class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/WdOvRY/">images-center</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ---
 
@@ -187,6 +187,8 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 [test / codepenn](https://codepen.io/anran758/pen/ppwwKN)
 
 ![background-more](./images/background-more.png)
+<p data-height="300" data-theme-id="32168" data-slug-hash="ppwwKN" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="ppwwKN" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/ppwwKN/">ppwwKN</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ---
 
@@ -196,9 +198,8 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 使用`after`对导航进行分割, 对`background`使用`linear-gradient`渐变.
 
-[test / codepenn](https://codepen.io/anran758/pen/ypXYba)
-
-![nav-anima](./images/nav-split.png)
+<p data-height="300" data-theme-id="32168" data-slug-hash="ypXYba" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="Nav Dividing line" class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/ypXYba/">Nav Dividing line</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ---
 
@@ -208,7 +209,8 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 利用`:before`和`transition`实现悬浮后, 下标从底部中间向两边展开.
 
-[test / codepen](https://codepen.io/anran758/pen/BJZdLL)
+<p data-height="300" data-theme-id="32168" data-slug-hash="BJZdLL" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="nav " class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/BJZdLL/">nav </a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ![nav-anima](./images/nav-anima.png)
 
@@ -239,6 +241,7 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 
 善用 css 属性绘制图形, 来完成一些设计所需.
 
-[test / codepen](https://codepen.io/anran758/pen/GyEdbW)
+<p data-height="300" data-theme-id="32168" data-slug-hash="NXgzGM" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="NXgzGM" class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/NXgzGM/">NXgzGM</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ![form](./images/form-1.png)
