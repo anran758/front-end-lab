@@ -14,6 +14,7 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 ### 目录
 
 * CSS 及常见的应用
+  1. [[common] 常见的coding规范](#common-coding)
   1. [[common] reset 与 Normalize](#common-reset)
   2. [[common] 响应式设计 - 针对不同分辨率设置(@media)](#common-responsive)
   3. [[display] 隐藏元素](#dispaly)
@@ -96,7 +97,7 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 #### [display] 隐藏元素
 
-优化无障碍的体验, `display: none`辅助屏幕设备实际上是读不了的。
+优化无障碍的体验, 避免使用`display: none`. 因为辅助屏幕设备实际上是读不了设置了这个属性里的内容, 搜索引擎的爬虫蜘蛛也会过滤掉设置了`display: none`里的内容.
 
 ```css
 .hidden {

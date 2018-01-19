@@ -21,27 +21,27 @@ emoji源于日语词汇“絵文字”, 想必大家对它都挺熟悉的吧, �
 #### 相关规范
 emoji 表情在提交代码的时候也不能乱用，否则容易造成误解. 因此开源项目[gitmoji](https://gitmoji.carloscuesta.me/)专门规定了在 github 提交代码时应当遵循的 emoji 规范：
 
-emoji                        | emoji代码                      | 说明
-:-----------                 | :-----------                   | :-----------
-:tada:(喝彩)                     | `:tada:`                       | 初始提交
-:art:(调色板)                 | `:art:`                        | 改进代码的结构/格式
-:zap:(闪电)                  | `:zap:`                        | 提高性能
-:fire:(火焰)                   | `:fire:`                       | 删除代码或文件
-:bug:(bug)                      | `:bug:`                        | 修复一个错误
-:ambulance:(紧急救护车)       | `:ambulance:`                  | 关键修补程序
-:sparkles:(闪亮)              | `:sparkles:`                   | 引用新功能
-:memo:(备忘录)                       | `:memo:`                       | 编写文档
+emoji                              | emoji代码                      | 说明
+:-----------                       | :-----------                   | :-----------
+:tada:(喝彩)                       | `:tada:`                       | 初始提交
+:art:(调色板)                      | `:art:`                        | 改进代码的结构/格式
+:zap:(闪电)                        | `:zap:`                        | 提高性能
+:fire:(火焰)                       | `:fire:`                       | 删除代码或文件
+:bug:(bug)                         | `:bug:`                        | 修复一个错误
+:ambulance:(紧急救护车)             | `:ambulance:`                  | 关键修补程序
+:sparkles:(闪亮)                   | `:sparkles:`                   | 引用新功能
+:memo:(备忘录)                     | `:memo:`                       | 编写文档
 :rocket:(火箭)                     | `:rocket:`                     | 部署新功能
-:recycle:(重构)              | `:recycle:`                    | 代码重构
-:lipstick:(口红)             | `:lipstick:`                   | 更新UI和样式文件
-:white_check_mark:(复选框)  | `:white_check_mark:`           | 添加测试
+:recycle:(重构)                    | `:recycle:`                    | 代码重构
+:lipstick:(口红)                   | `:lipstick:`                   | 更新UI和样式文件
+:white_check_mark:(复选框)         | `:white_check_mark:`           | 添加测试
 :apple:(苹果)                      | `:apple:`                      | 修复MacOS上的问题
 :penguin:(企鹅)                    | `:penguin:`                    | 修复Linux上的问题
 :checkered_flag:(旗子)             | `:checkered_flag:`             | 修复Windows上的问题
-:robot:(机器人)                      | `:robot:`                      | 解决Android上的问题
-:green_apple:(绿苹果)                | `:green_apple:`                | 解决iOS上的问题
+:robot:(机器人)                    | `:robot:`                      | 解决Android上的问题
+:green_apple:(绿苹果)              | `:green_apple:`                | 解决iOS上的问题
 :bookmark:(书签)                   | `:bookmark:`                   | 发布/版本标签
-:rotating_light:(警告灯)             | `:rotating_light:`             | 移除 linter 警告
+:rotating_light:(警告灯)           | `:rotating_light:`             | 移除 linter 警告
 :construction:(施工)               | `:construction:`               | 工作正在进行中
 :green_heart:(绿心)                | `:green_heart:`                | 修复CI构建
 :arrow_down:(下降)                 | `:arrow_down:`                 | 降级依赖关系
@@ -54,21 +54,21 @@ emoji                        | emoji代码                      | 说明
 :heavy_plus_sign:(加号)            | `:heavy_plus_sign:`            | 添加一个依赖项
 :wrench:(扳手)                     | `:wrench:`                     | 更改配置文件
 :pencil2:(铅笔)                    | `:pencil2:`                    | 修正错别字
-:hankey:(hankey)                     | `:hankey:`                     | 编写需要改进的不好的代码
+:hankey:(hankey)                   | `:hankey:`                     | 编写需要改进的不好的代码
 :rewind:(回退)                     | `:rewind:`                     | 恢复更改
-:globe_with_meridians:(国际化)       | `:globe_with_meridians:`       | 国际化和本地化
+:globe_with_meridians:(国际化)     | `:globe_with_meridians:`       | 国际化和本地化
 :twisted_rightwards_arrows:(合并)  | `:twisted_rightwards_arrows:`  | 合并分支
 :package:(打包)                    | `:package:`                    | 更新编译的文件或包
-:alien:(外星人)                      | `:alien:`                      | 由于外部API更改而更新代码
-:truck:(移动搬家)                      | `:truck:`                      | 移动或重命名文件
+:alien:(外星人)                    | `:alien:`                      | 由于外部API更改而更新代码
+:truck:(移动搬家)                  | `:truck:`                      | 移动或重命名文件
 :page_facing_up:(页面)             | `:page_facing_up:`             | 添加或更新许可证
-:boom:(爆炸性)                       | `:boom:`                       | 介绍突破性变化
+:boom:(爆炸性)                     | `:boom:`                       | 介绍突破性变化
 :bento:(便当)                      | `:bento:`                      | 添加或更新资产
-:ok_hand:(好的手势)                    | `:ok_hand:`                    | 由于代码审阅更改而更新代码
-:wheelchair:(无障碍)                 | `:wheelchair:`                 | 改善无障碍
+:ok_hand:(好的手势)                | `:ok_hand:`                    | 由于代码审阅更改而更新代码
+:wheelchair:(无障碍)               | `:wheelchair:`                 | 改善无障碍
 :bulb:(灯泡)                       | `:bulb:`                       | 记录源代码
-:speech_balloon:(文字框)             | `:speech_balloon:`             | 更新文字和文字
-:card_file_box:(存档箱)              | `:card_file_box:`              | 执行与数据库相关的更改
+:speech_balloon:(文字框)           | `:speech_balloon:`             | 更新文字和文字
+:card_file_box:(存档箱)            | `:card_file_box:`              | 执行与数据库相关的更改
 :loud_sound:(声响)                 | `:loud_sound:`                 | 添加日志
 :mute:(静音)                       | `:mute:`                       | 删除日志
 :children_crossing:(用户)          | `:children_crossing:`          | 改善用户体验/可用性
