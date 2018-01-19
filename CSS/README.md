@@ -1,20 +1,16 @@
 # CSS / CSS3 的踩坑与应用
 
-> CSS 的学习曲线可以说是非常奇怪了.. 说简单, 的确来个人认真的学习三五天, 也能跟着模仿, 撸出一个像样的页面. 但是说复杂, 的确又是挺复杂的, 各个属性之间的耦合性让人防不胜防. 动了一个属性可能会牵扯到另外属性.
+CSS 的学习曲线可以说是非常奇怪了.. 说简单, 的确来个人认真的学习三五天, 也能跟着模仿, 撸出一个像样的页面. 但是说复杂, 的确又是挺复杂的, 各个属性之间的耦合性让人防不胜防. 动了一个属性可能会牵扯到另外属性.
 
-CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao 们踩过的都知道, 如`inline-block`就自带有 3px 左右的间隙, 新手就会摸不透头脑, 因此将自己的一些经验整合分享下. 回头遇到相似的场景还可以翻回来看看相关的解决方案.
+CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao 们踩过的都知道, 如`inline-block`就自带有 3px 左右的间隙, 新手就会摸不透头脑, 因此将自己的一些经验整合分享下。
 
-如果有同学在 css 方面遇到困扰或者难题, 也不妨向我提问, 我了解的东西自然乐于分享, 我没遇到的坑也可以大家一起来讨论学习~
-
-**食用说明**  
-我会尽量将案例都配合图片来展示效果. `codepen`是一个在线分享代码的工具, 点击进去可以看到部署上去代码的实际效果.
+> 我会尽量将案例都配合图片来展示效果. `codepen`是一个在线分享代码的工具, 点击进去可以看到代码的实际效果.
 
 ---
 
 ### 目录
 
 * CSS 及常见的应用
-  1. [[common] 常见的coding规范](#common-coding)
   1. [[common] reset 与 Normalize](#common-reset)
   2. [[common] 响应式设计 - 针对不同分辨率设置(@media)](#common-responsive)
   3. [[display] 隐藏元素](#dispaly)
@@ -139,10 +135,10 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
   background-image: url(https://avatars.githubusercontent.com/u/23024075?v=3);
 }
 ```
+![avatar](./images/avatar-1.png)
 
-其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.
-<p data-height="300" data-theme-id="32168" data-slug-hash="WdOvRY" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="images-center" class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/WdOvRY/">images-center</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.  
+[codepen / 测试一下](https://codepen.io/anran758/pen/WdOvRY/)
 
 ---
 
@@ -185,11 +181,9 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 #### [layout] 查看更多 - 白色半透明遮罩
 
 写了个简易的 Demo, 使用`linear-gradient`颜色渐变, 再使用`pointer-events: none`清除默认事件.  
-[test / codepenn](https://codepen.io/anran758/pen/ppwwKN)
+[codepen / 测试一下](https://codepen.io/anran758/pen/ppwwKN)
 
 ![background-more](./images/background-more.png)
-<p data-height="300" data-theme-id="32168" data-slug-hash="ppwwKN" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="ppwwKN" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/ppwwKN/">ppwwKN</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ---
 
@@ -199,8 +193,9 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 使用`after`对导航进行分割, 对`background`使用`linear-gradient`渐变.
 
-<p data-height="300" data-theme-id="32168" data-slug-hash="ypXYba" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="Nav Dividing line" class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/ypXYba/">Nav Dividing line</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+[codepen / 测试一下](https://codepen.io/anran758/pen/ypXYba)
+
+![nav-split](./images/nav-split.png)
 
 ---
 
@@ -210,8 +205,7 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 利用`:before`和`transition`实现悬浮后, 下标从底部中间向两边展开.
 
-<p data-height="300" data-theme-id="32168" data-slug-hash="BJZdLL" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="nav " class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/BJZdLL/">nav </a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+[codepen / 测试一下](https://codepen.io/anran758/pen/BJZdLL)
 
 ![nav-anima](./images/nav-anima.png)
 
@@ -242,7 +236,6 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 
 善用 css 属性绘制图形, 来完成一些设计所需.
 
-<p data-height="300" data-theme-id="32168" data-slug-hash="NXgzGM" data-default-tab="css,result" data-user="anran758" data-embed-version="2" data-pen-title="NXgzGM" class="codepen">See the Pen <a href="https://codepen.io/anran758/pen/NXgzGM/">NXgzGM</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+[codepen / 测试一下](https://codepen.io/anran758/pen/NXgzGM)
 
 ![form](./images/form-1.png)
