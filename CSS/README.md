@@ -213,8 +213,9 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 <a name="text-overflow"></a>
 
-#### [text] 文字超出显示省略号(text-overflow)
+#### [text] 文本溢出点点点(text-overflow)
 
+**单行溢出**  
 text-overflow 只是用来说明文字溢出时用什么方式显示，要实现溢出时产生省略号的效果，还须配合其他属性.
 
 ```css
@@ -225,6 +226,20 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
   text-overflow: ellipsis;
 }
 ```
+
+**多行溢出**  
+``` css
+.intwoline {
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+```
+
+这种纯CSS的方法受兼容性限制, 非`webkit`内核的浏览器都没有实现. 除此之外的方法就只能使用js计算了..
 
 ---
 

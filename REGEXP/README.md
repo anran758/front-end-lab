@@ -40,6 +40,19 @@ var cPattern = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
 var urlReg= /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 ```
 
+匹配`json`字符串
+``` JavaScript
+var ret = response.data
+if (typeof ret === 'string') {
+  var reg = /^\w+\(({[^()]+})\)$/
+  var matches = ret.match(reg)
+  if (matches) {
+    ret = JSON.parse(matches[1])
+  }
+}
+res.json(ret)
+```
+
 ### 联系方式
 ``` JavaScript
 // 5-11位的腾讯qq号
