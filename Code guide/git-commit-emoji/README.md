@@ -7,7 +7,7 @@ emoji源于日语词汇“絵文字”, 想必大家对它都挺熟悉的吧, �
 ![项目中使用](./img-1.png)
 <!-- more -->
 
-#### 使用方式
+### 使用方式
 
 在`git commit`上加入emoji的二进制符号, 格式为
 
@@ -21,7 +21,7 @@ emoji源于日语词汇“絵文字”, 想必大家对它都挺熟悉的吧, �
   git commit -m ":tada: Initialize Repo"
 ```
 
-#### 相关规范
+### 相关规范
 
 emoji 表情在提交代码的时候也不能乱用，否则容易造成误解. 因此开源项目[gitmoji](https://gitmoji.carloscuesta.me/)专门规定了在 github 提交代码时应当遵循的 emoji 规范：
 
@@ -78,7 +78,7 @@ emoji 表情在提交代码的时候也不能乱用，否则容易造成误解. 
 | :children_crossing:(用户)            | `:children_crossing:`         | 改善用户体验/可用性        |
 | :building_construction:(建筑)        | `:building_construction:`     | 进行架构更改               |
 
-**参考资料**
+**参考资料:**
 
 Git emoji: https://gitmoji.carloscuesta.me  
 Github emoji列表: https://segmentfault.com/a/1190000009649780
