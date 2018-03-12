@@ -1,14 +1,16 @@
 # Front-End-Lab
 
+![banner](./Images/banner.png)
+
 > 路漫漫其修远兮，吾将上下而求索
 
-很多时候, 我们会被自己不熟悉或者没碰到过的bug打的措手不及, 等我们花费相当的时间去查询相关资料后, 明白了该如何去处理遇到这种的情况. 因此勤快的同学会发表博客分享经验. 当然像一些比较小的细节或者小bug的话, 很多人是不屑于去单独的去说的. 但后面却还是会有人因为这种"小东西"而弄的焦头烂额.
+很多时候, 我们会被自己不熟悉或者没碰到过的bug打的措手不及, 等我们花费相当的时间去查询相关资料后, 明白了该如何去处理遇到这种的情况后. 而仍有后来者因为这些"小bug"搞得焦头烂额.
 
-因此想将自己对Web领域的研究以及踩过坑的经验一点一滴分享出来, 同时也是在巩固自己的知识. 主要内容包括但不限于相关代码规范、项目解决方案、web安全、提高效率的工具等.
+因此想将自己对Web学习以及经验一点一滴的分享出来, 在巩固自己的知识的同时, 也能给其他小伙伴开发时有所借鉴. 主要内容包括但不限于相关代码规范、项目解决方案、web安全、提高效率的工具等.
 
 ## 关于更新 or 公告
 
-  努力填js的坑...
+  更新设计, 努力填js的坑...
 
 ----
 
@@ -57,16 +59,21 @@
 **书籍类:**
 
 - **CSS:** css揭晓、css世界
-- **JavaScript**
+- **JavaScript(难度从低到高):**
+  1. 高性能JavaScript
   1. JavaScript高级程序设计(高程三/红皮书)
   1. JavaScript权威指南 - 第六版(犀牛书/工具书)
-  1. 你不知道的js(进阶必备)
-  1. 高性能JavaScript
-- **性能相关**
-  1. 高性能网站指南(猎犬)
-  1. 高性能网站进阶指南(羚羊)
+  1. 你不知道的js全册(进阶必备)
+  1. ECMAScript 6 入门(阮一峰)
+- **性能相关:** 高性能网站指南(猎犬)、高性能网站进阶指南(羚羊)
 - **HTTP：** HTTP权威指南
-- 程序员扩展类： 软技能 代码之外的生存指南
+- **程序员扩展类**: 软技能.代码之外的生存指南
+
+**百科类:**
+
+- [caniuse](https://caniuse.com/): css最好的兼容性百科
+- [browserhacks](http://browserhacks.com/): 浏览器hacks
+- [MDN](https://developer.mozilla.org/zh-CN/): Mozilla维护的开发文档, 可能是最齐全的web文档
 
 **学习资源:**
 
@@ -78,10 +85,6 @@
 - 性能测试
   - [webpagetest](www.webpagetest.org): 网页性能测试
   - [前端优化：雅虎35条](http://blog.csdn.net/magneto7/article/details/53140269)
-- 兼容性
-  - [caniuse](https://caniuse.com/): css最好的兼容性百科
-  - [browserhacks](http://browserhacks.com/): 浏览器hacks
-  - [MDN](https://developer.mozilla.org/zh-CN/): Mozilla维护的开发文档, 可能是最齐全的web文档
 - tools
   - [在线工具](http://tool.oschina.net/encrypt?type=3): 在线加解密, 转base64等
   - [可视化正则表达式](https://regexper.com/) 将正则表达式转为可视化图表, 让你一眼能看懂这段正则是干啥的

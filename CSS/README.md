@@ -11,15 +11,15 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 ### 目录
 
 * CSS 及常见的应用
-  1. [[common] reset 与 Normalize](#common-reset)
-  2. [[common] 响应式设计 - 针对不同分辨率设置(@media)](#common-responsive)
-  3. [[display] 隐藏元素](#dispaly)
-  4. [[image] 图片居中处理](#imgage-center)
-  5. [[layout] 关于居中](#layout-center)
-  6. [[layout] 查看更多 - 白色半透明遮罩](#layout-background-more)
-  7. [[nav] 导航渐变色分割线 - after](#nav-split)
-  8. [[nav] 导航列表下标 - 悬浮动画显示](#nav-anima)
-  9. [[text] 文字超出显示省略号 - text-overflow](#text-overflow)
+  1. [[common] reset 与 Normalize](#common-base)
+  1. [[common] 响应式设计 - 针对不同分辨率设置(@media)](#common-responsive)
+  1. [[display] 隐藏元素](#display-content)
+  1. [[image] 图片居中处理](#imgage-center)
+  1. [[layout] 关于居中](#layout-center)
+  1. [[layout] 查看更多 - 白色半透明遮罩](#layout-background-more)
+  1. [[nav] 导航渐变色分割线 - after](#nav-split)
+  1. [[nav] 导航列表下标 - 悬浮动画显示](#nav-anima)
+  1. [[text] 文字超出显示省略号 - text-overflow](#text-overflow)
 * CSS / CSS3 绘制图形
   1. [基础图形](#form-1)
 
@@ -27,13 +27,38 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 ### CSS 及常见的应用
 
-<a name="common-reset"></a>
+<a name="common-base"></a>
 
-#### [common] reset 与 Normalize
+#### [common] CSS中常见的问题
 
-可能有同学会困惑, 这两者有什么区别, 该如何取舍. 我曾经写过一篇博客, . 有兴趣的同学可以过去看一下 - [浅谈 Normalize 与 reset](https://anran758.github.io/blog/2017/10/15/%E6%B5%85%E8%B0%88Normalize%E4%B8%8Ereset/)
+**reset 与 Normalize:**
 
-**优化后的`reset.css`**: https://github.com/anran758/Front-End-Lab/tree/master/CSS/reset.css
+关于这两者有什么区别, 该如何取舍. 我曾经写过一篇博客, 感兴趣的同学可以过去看一下 - [浅谈 Normalize 与 reset](https://anran758.github.io/blog/2017/10/15/%E6%B5%85%E8%B0%88Normalize%E4%B8%8Ereset/)
+
+优化后的`reset.css`: https://github.com/anran758/Front-End-Lab/tree/master/CSS/reset.css
+
+**继承性与通配符:**
+
+使用通配符(*), 意味着页面中的所有的标签都会加上通配符里的属性. 然而很多人在使用的时候, 尤其在不了解属性特性的情况下, 容易造成很大性能浪费.
+
+就比如说有些属性是具有**继承性**的, 在下例中`<em>`标签在没有制定`color`属性时, 就逐级向上找到`.container`的`color`继承.
+
+``` html
+<style>.container {color: green}</style>
+
+<div class="container">
+  这里是div容器内
+  <p>这是一个<em>演示</em>的例子</p>
+</div>
+```
+
+这意味着如果我们用通配符设置这些属性时, 会徒劳给页面的增加没必要的性能负担. 
+
+再来看一个典型的例子. iOS系统下, 点击一个链接或者通过Javascript定义的可点击元素的时候, 会出现一个半透明的灰色背景(就是所谓会闪一下), 这时`可以设置-webkit-tap-highlight-color`为透明来重置这个"BUG", 这里属性没用错, 但问题就出现在错误的使用了通配符. 如下图:
+
+![](./images/wildcard.png)
+
+还有一种就是使用`* {margin: 0; padding: 0}`则就过分了, `H1 ~ 6`标签本身就没有默认`padding`, 你特么非要给人家重置一下. `<li>`就更无辜了, 没有默认的`padding`和`margin`也要被批斗. 因此我们应该避免使用通配符.
 
 ---
 
@@ -89,7 +114,7 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 ---
 
-<a name="display"></a>
+<a name="display-content"></a>
 
 #### [display] 隐藏元素
 
@@ -240,7 +265,9 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 }
 ```
 
-不过这种纯CSS的方法受兼容性限制, 非`webkit`内核的浏览器都没有实现. 除此之外的方法就只能使用js计算了..
+不过这种纯CSS的方法受兼容性限制, ~~非`webkit`内核的浏览器都没有实现.~~ 不过这个方法在移动端可以适用. 在caniuse上我们可以得知, ios.Safari 5.1+, Android 2.3+ 均支持`-webkit-`的前缀.
+
+除此之外的方法就只能使用js计算了.
 
 ---
 
