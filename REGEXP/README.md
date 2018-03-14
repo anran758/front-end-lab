@@ -1,10 +1,35 @@
-# 工作中常用的正则
+# 正则速查表
 
 自己收集了一套针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。
 
 > Tips：在本文找想要的正则时，可以尝试使用浏览器的快速查询功能。`Ctrl + F`输入关键字能提高查询的效率哟~
 
----
+----
+
+## 常用的正則方法示例
+
+**replace:**
+
+``` javascript
+// 使用正则匹配中文字节, 将其替换为xx, 再获取字符串的长度就是完整的长度了.
+function getLen(str) {
+  return str.replace(/[^\x00-\xff]/g, 'xx').length;
+}
+```
+
+**test:**
+
+``` javascript
+// 匹配是否符合邮件规则
+var reg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+
+// test返回一个布尔值, 表示是否匹配到制定字符串
+var mail = reg.test('anran758@gmail.com')
+
+if (mail) {
+  // 如果邮件格式正确的话, 就可以做点啥了(雾
+}
+```
 
 ### 常见的表单验证
 
@@ -35,17 +60,20 @@ var IDCard_18 = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-
 //ipv4地址正则
 var IPReg = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 
-//Reg Hex颜色正则
-var cPattern = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
+// Reg Hex颜色正则
+var pattern = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
 
 // URL正则
 var urlReg= /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+
+// 匹配JSON格式
+var reg = /^\w+\(({[^()]+})\)$/
 ```
 
 匹配`json`字符串
 
 ``` JavaScript
-var ret = response.data
+var ret = response.data;
 if (typeof ret === 'string') {
   var reg = /^\w+\(({[^()]+})\)$/
   var matches = ret.match(reg);
@@ -131,5 +159,13 @@ var reg = /^\s*|\s*$/;
 var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 
 // 匹配双字节字符(包括汉字在内, 一个双字节字符长度计2，ASCII字符计1)
-var reg = /[^\x00-\xff]/`;
+var reg = /[^\x00-\xff]/g;
 ```
+
+---
+
+可视化正则表达式, 可以试试[regexper](https://regexper.com/), 让你看懂正则匹配的走向.
+
+![](./images/regexper.png)
+
+最后如果有哪些正则规则有问题的, 可以留言探讨一下呀~
