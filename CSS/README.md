@@ -20,8 +20,9 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
   1. [[nav] 导航渐变色分割线 - after](#nav-split)
   1. [[nav] 导航列表下标 - 悬浮动画显示](#nav-anima)
   1. [[text] 文字超出显示省略号 - text-overflow](#text-overflow)
-* CSS / CSS3 绘制图形
-  1. [基础图形](#form-1)
+* CSS3
+  1. [绘制图形](#form-1)
+  1. [[animation]loading](#animation-loading)
 
 ---
 
@@ -163,7 +164,7 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 ![avatar](./images/avatar-1.png)
 
 其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.  
-[codepen / 测试一下](https://codepen.io/anran758/pen/WdOvRY/)
+[codepen / test](https://codepen.io/anran758/pen/WdOvRY/)
 
 ---
 
@@ -206,7 +207,7 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 #### [layout] 查看更多 - 白色半透明遮罩
 
 写了个简易的 Demo, 使用`linear-gradient`颜色渐变, 再使用`pointer-events: none`清除默认事件.  
-[codepen / 测试一下](https://codepen.io/anran758/pen/ppwwKN)
+[codepen / test](https://codepen.io/anran758/pen/ppwwKN)
 
 ![background-more](./images/background-more.png)
 
@@ -218,7 +219,7 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 使用`after`对导航进行分割, 对`background`使用`linear-gradient`渐变.
 
-[codepen / 测试一下](https://codepen.io/anran758/pen/ypXYba)
+[codepen / test](https://codepen.io/anran758/pen/ypXYba)
 
 ![nav-split](./images/nav-split.png)
 
@@ -230,7 +231,7 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 
 利用`:before`和`transition`实现悬浮后, 下标从底部中间向两边展开.
 
-[codepen / 测试一下](https://codepen.io/anran758/pen/BJZdLL)
+[codepen / test](https://codepen.io/anran758/pen/BJZdLL)
 
 ![nav-anima](./images/nav-anima.png)
 
@@ -271,14 +272,26 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 
 ---
 
-### CSS / CSS3 绘制图形
+### CSS3
+
+css3已经在主流的浏览器上普及了, 只剩一些老式的浏览器没有实现. 以下的代码均不会加那些丑陋的浏览器前缀, 不过出于兼容性的考虑, 如果你有这方面兼容的需求, 你可以在[autoprefix](http://autoprefixer.github.io/)上复制相应的代码, 选择兼容的版本, 让工具自动帮你去添加前缀~
 
 <a name="form-1"></a>
 
-#### 基本图形
+#### 绘制图形
 
 善用 css 属性绘制图形, 来完成一些设计所需.
 
-[codepen / 测试一下](https://codepen.io/anran758/pen/NXgzGM)
+[codepen / test](https://codepen.io/anran758/pen/NXgzGM)
 
 ![form](./images/form-1.png)
+
+<a name="animation-loading"></a>
+
+#### [animation]loading
+
+我们可以利用css3属性来做动画loading, 相对于图片既能节省HTTP请求, 还能用为数不多的代码来实现功能.
+
+![](./images/anima-loading.gif)
+
+[codepen / test](https://codepen.io/anran758/pen/dmOPdO)

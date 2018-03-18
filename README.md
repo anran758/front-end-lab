@@ -90,3 +90,7 @@
   - [可视化正则表达式](https://regexper.com/) 将正则表达式转为可视化图表, 让你一眼能看懂这段正则是干啥的
   - [stylie](http://jeremyckahn.github.io/stylie/): css3贝塞尔曲线可视化工具
   - [jsbin](http://jsbin.com/?js,console,output): 在线编辑器, 可以将自己的代码保存发给别人
+
+**其他:**
+
+- [css动画库](http://elrumordelaluz.github.io/csshake/)
