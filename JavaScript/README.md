@@ -1,44 +1,72 @@
 # JavaScript
 
-将js一些有意思的方法或者小技巧记录下来.
+将js一些有意思的方法或者小技巧记录下来, 检查补漏.
 
-## tips
+## 操作符
 
-> 一些常用的技巧.
+> 一些你不太了解的用法
 
-* 用三目代替简单`if...else`逻辑.
+**三目操作符:**
 
-  ``` javascript
-    let age = 16
-    let hint = ''
+用三目操作符代替简单`if...else`逻辑.
 
-    // bad
-    if (age >= 18) {
-      hint = '欢迎打开新世界('
-    } else {
-      hint = '嘿, 未成年不得入内!'
-    }
+``` javascript
+const age = 16
+let hint = ''
 
-    // good
-    let hint = age >= 18 ? '欢迎打开新世界(' : '未成年不得入内!'
-  ```
+// bad
+if (age >= 18) {
+  hint = '欢迎打开新世界('
+} else {
+  hint = '嘿, 未成年不得入内!'
+}
 
-* 善用 && 和 || 操作符的特性
+// good
+let hint = age >= 18 ? '欢迎打开新世界(' : '未成年不得入内!'
+```
 
-  ``` javascript
-    // 在某些场景下, 使用 && 操作符代替 if 能使使你的代码变得更加的整洁
-    let isMoving = false
-    container.addEventListener('mousedown', () => (ismoving = true))
-    container.addEventListener('mouseup', () => (ismoving = false))
+**逻辑运算符:**
 
-    // if 语句
-    container.addEventListener('mousemove', () => {
-      if (isMoving) handleMove()
-    })
+善用 && 和 || 操作符的特性.
 
-    // && 操作符. 前者为 true 的话, 就调用函数
-    container.addEventListener('mousemove', () => isMoving && handleMove())
-  ```
+``` javascript
+  // 在某些场景下, 使用 && 操作符代替 if 能使使你的代码变得更加的整洁
+  let isMoving = false
+  container.addEventListener('mousedown', () => (ismoving = true))
+  container.addEventListener('mouseup', () => (ismoving = false))
+
+  // if 语句
+  container.addEventListener('mousemove', () => {
+    if (isMoving) handleMove()
+  })
+
+  // && 操作符. 前者为 true 的话, 就调用函数
+  container.addEventListener('mousemove', () => isMoving && handleMove())
+```
+
+**位操作符:**
+
+利用**按位或( | )**向下取整:
+
+``` javascript
+var num = 50.1234;
+var int = num | 0;
+
+console.log(int);   // 50
+```
+
+**按位非(按位取反)**对任一数值`x`进行按位非操作的结果为`-(x + 1)`.
+
+``` javascript
+console.log(~1);   // -2
+console.log(~0);   // -1
+console.log(~-1);  // 0
+
+// 当没有找到内容, 返回 -1 时, 进行按位非会加一取反, 则为 0
+// 相当于下面的代码同等的效果
+// names.some(name => linkName.indexOf(name) === -1)
+names.some(name => ~linkName.indexOf(name))
+```
 
 ----
 
@@ -72,7 +100,7 @@ map是数组的方法, 如果是一个Nodelist的话则用不了(虽然可以进
 
 ----
 
-## commit
+## Common(通用)
 
 **判断原始类型:**
 
@@ -134,13 +162,8 @@ function randomTime(min, max) {
 }
 ```
 
-**利用按位或( | )向下取整:**
-
-``` javascript
-var num = 50.1234;
-var int = num | 0;
-
-console.log(int);
-```
-
 ----
+
+## String
+
+Unicode编码`0 ~ 128`是单字节编码序列. 因此可以利用这个特点来确定字符串的长度.
