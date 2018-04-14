@@ -167,3 +167,19 @@ function randomTime(min, max) {
 ## String
 
 Unicode编码`0 ~ 128`是单字节编码序列. 因此可以利用这个特点来确定字符串的长度.
+
+## Other
+
+> 一些日常的方法
+
+``` javascript
+/**
+ * 根据生日的月份和日期，计算星座。
+ * @param {String} m - 月份
+ * @param {String} d - 日期
+ * @desc 返回星座名
+ */
+function getAstro(m,d){
+  return "魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯".substr(m*2-(d<"102223444433".charAt(m-1)- -19)*2,2);
+}
+```
