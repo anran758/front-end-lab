@@ -183,3 +183,74 @@ function getAstro(m,d){
   return "魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯".substr(m*2-(d<"102223444433".charAt(m-1)- -19)*2,2);
 }
 ```
+
+### 性能相关
+
+#### DOM
+
+**DOM 的修改与访问:**
+事实上，访问`DOM`是具有代价的，首先**DOM**和**ECMAScript**在底层实际上是两个相互独立的接口，不仅是你JS可以调用，其他语言也可以调用 DOM 的接口。因此访问 DOM 就像一座岛的居民想要去另一座岛一样，是有点费劲的（接口问题，天生就慢）。其次我们在调用DOM接口时，它还会导致浏览器重新计算页面的变化(回流与重绘)。
+
+因此，我们应该尽可能的避免操作和访问DOM.
+
+``` javascript
+// bad code
+for (var count = 0; count < 12000; count ++) {
+  document.querySelector('div.point').innerHTML += `Hi, Cycle times： ${count} <br/>`;
+}
+
+// good code
+let text = '';
+for (var count = 0; count < 12000; count ++) {
+  text += `Hi, Cycle times： ${count} <br/>`;
+}
+document.querySelector('div.point').innerHTML = text;
+```
+
+将需要访问两次以上的 DOM 保存到一个变量中（这样就不用再跑到另一个岛屿拿东西了）。
+
+**DOM 集合:**
+
+当我们调用`document.getElementsByTagName('a')`会返回一个集合，这个集合是一个类数组的列表，它没有数组的方法。但值得注意的是，这个类数组里的 HTML 是实时的，也就是说它们和文档实际上还是保持有联系，当你需要查询这个类数组的信息时，它还是会重新查询一遍，哪怕只是访问`length`属性也是如此。
+
+``` javascript
+// 假设`list`的 length 值 12000，那么就会查询12000次
+for (var count = 0; count < list.length; count++) {
+  // do something
+}
+
+// good code
+let length = list.length;
+for (var count = 0; count < length; count++) {
+  // do something
+}
+```
+
+#### 循环体
+
+首先JavaScript的循环体主要有四种：`for`、`while`、`do...while`、`for...in`循环。 我们在选择循环体时，应该是基于需求而不是性能。
+
+比如`for...in`每次迭代都需要更多的开销，相比其他三种速度会慢上七倍左右的，但却是最适合遍历对象的一种方式（这里姑且抛开ES6+的新方法）。
+
+采用倒序循环是变成语言中一种通用的性能优化方法，这是因为正序迭代时，对多一次比较（迭代数少于总数吗？是否为true），而倒序则只需要判断是否为0，非0就转为true。循环次数少还好，当循环的次数多了，性能上的差距就体现出来了。
+
+``` javascript
+// 正序自增有六步操作
+for (let i = 0, length = items.length; i < length; i++) {
+  // something
+}
+
+// 倒序循环则只有四步操作
+for (let i = items.length; i--; ) {
+  // something
+}
+```
+
+----
+
+ES4/5增加了新的数组迭代方式，比如`forEach`，它给每项成员都传一个函数调用，相比之下会比for循环之类的方法显得更便捷。
+但是这种东西有利也有弊，反过来看，每个数组调用外部方法其实会带来额外的开销，这也是慢的主要原因。如果注重运行速度的话，那么`forEach`不是一个最好的选择————因为在所有情况下，基于循环的迭代方式会比继续函数的迭代方式要快 8 倍。
+
+#### 条件语句
+
+小于三条判断用`if-else`，大于三条用`switch`。将最可能出现的条件放在前头，能减少循环的次数。
