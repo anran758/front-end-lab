@@ -6,9 +6,9 @@
 
 > 一些你不太了解的用法
 
-**三目操作符:**
+**三元操作符:**
 
-用三目操作符代替简单`if...else`逻辑.
+用三元操作符代替简单`if...else`逻辑，除了简洁之外三元操作符还有一个好处就是可以条件预加载。
 
 ``` javascript
 const age = 16
@@ -90,6 +90,14 @@ let newarr = Array.from(new Set(arr));
 
 // 原理同上, 只不过是通过扩展运算符扩展出来
 let newarr = [...new Set(arr)];
+```
+
+**中文排序:**
+
+可以使用[String.prototype.localeCompare](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)，它会返回一个数字，配合数组的`sort`方法进行排序。
+
+``` javascript
+['张三','李四','王五'].sort((a, b) => a.localeCompare(b, 'zh-Hans-CN', {sensitivity: 'accent'}))
 ```
 
 **map和forEach的异同:**
