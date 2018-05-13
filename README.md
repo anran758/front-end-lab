@@ -48,6 +48,20 @@
 
 ----
 
+### 兼容性相关
+
+- [Css hack](http://browserhacks.com/)
+- [HTML5shiv](https://github.com/aFarkas/html5shiv) - 兼容IE9以下不能使用HTML5的标签的问题.  
+  使用方式:
+
+  ``` html
+  <!--[if lt IE 9]>
+    <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+  <![endif]-->
+  ```
+
+- [Respond](https://github.com/scottjehl/Respond) - 让IE6 ~ 8支持媒体查询其中的 min/max-width 能让这些老旧的浏览器提供一些有限的支持.
+
 ### 扩展阅读
 
 **浏览器机制:**
