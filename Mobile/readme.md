@@ -12,6 +12,14 @@
 `<meta name="viewport" content="width=device-width, initial-scale=1">`
 // 视口宽度统一, 设置初始的缩放比例`
 
+Web APP的支持
+
+``` html
+<!-- 网页内容以应用程序风格显示，并使状态栏透明 -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+```
+
 ## 方案
 
 **REM适配:**

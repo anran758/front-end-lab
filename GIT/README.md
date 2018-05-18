@@ -16,6 +16,8 @@
 | git push -u origin master                | 相当于同时使用`git push origin master`和`git branch --set-upstream-to orgin/master`，`-u`就是`upstrean`                                 |
 | git push --set-upstream origin master    | 推送当前分支并建立与远程上游的跟踪                                                                                                      |
 
+`git pull --rebase`加上 --rebase 参数的作用是，提交线图有分叉的话，Git 会 rebase 策略来代替默认的 merge 策略。如果远程已经有其他人提交了的话，我们 pull 代码时加上这个参数就不会出现多余的mergel。
+
 ## git 撤销已经 push 到远端的 commit
 
 在使用 git 时， 有时候我们会无意间错推了我们不想推上去的文件或者希望能够回退以前版本的时候.
