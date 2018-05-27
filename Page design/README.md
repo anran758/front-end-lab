@@ -13,10 +13,10 @@
 圣杯布局让`container`上构建三个模块， 分别为`left`、`main`、`right`，其中`main`独占一行.
 实现的原理如下：
 
-- 三者都使用`float`进行浮动.
-- `container`使用`padding`为两侧栏腾出空位.
-- 将主要内容`main`排在前头, 让 **DOM树**先加载.
-- 两侧栏添加`relative`定位
+* 三者都使用`float`进行浮动.
+* `container`使用`padding`为两侧栏腾出空位.
+* 将主要内容`main`排在前头, 让 **DOM 树**先加载.
+* 两侧栏添加`relative`定位
   * 左列使用`margin-left: -100%`
   * 右例使用`margin-left: -右列宽度`
 
@@ -30,13 +30,13 @@
 
 双飞翼布局和圣杯布局类似，也是左，中，右三列，中列里面会再套一个容器。
 
-- 中列宽度设置为`100%`
-- 使用负边距`margin-left`把左右两列拉到和中列同一行
-- 在中列内的容器div设置`margin-left`和`margin-right`给左右两列留下对应的空间
+* 中列宽度设置为`100%`
+* 使用负边距`margin-left`把左右两列拉到和中列同一行
+* 在中列内的容器 div 设置`margin-left`和`margin-right`给左右两列留下对应的空间
 
 实现代码也很简单：
 
-``` html
+```html
 <!-- HTML -->
 <div class="container">
     <!-- 中间的 div 必须写在最前面 -->
@@ -81,22 +81,25 @@
 
 这样做主要是因为早年的网络和设备没有现在这么优秀，为了让主要的内容先向用户呈现，所以很多时候都使用这两种布局方式。甚至可以说，现在很多人都还在使用这两种布局方式。
 
-### Flexbox布局
-Flexbox是CSS的一个新特性，这个新特性解决我们以前在CSS中很多麻烦问题，比如说内容的伸缩与扩展、垂直居中、等分列、等高列等等。
+### Flexbox 布局
 
-Flexbox顾名思义就是弹性盒子, 它可以规定弹性元素如何分配空间或者布局的方式. 下面就是个例子. 利用`flex`的计算的特性, 配合js的`onclick`实现出来的效果.
+Flexbox 是 CSS 的一个新特性，这个新特性解决我们以前在 CSS 中很多麻烦问题，比如说内容的伸缩与扩展、垂直居中、等分列、等高列等等。
+
+Flexbox 顾名思义就是弹性盒子, 它可以规定弹性元素如何分配空间或者布局的方式. 下面就是个例子. 利用`flex`的计算的特性, 配合 js 的`onclick`实现出来的效果.
 ![flexbox-1](./images/flexbox-1.gif)
 
-当我们将Flex布局运用在移动端, 更能体现出它的价值——它能适配移动端各种复杂的屏幕. qq音乐的导航就是使用了`flex`的属性, 我们来随机测试一下机型. 能发现不管是什么尺寸屏幕下, `flex`都能合理的分配空间.
+当我们将 Flex 布局运用在移动端, 更能体现出它的价值——它能适配移动端各种复杂的屏幕. qq 音乐的导航就是使用了`flex`的属性, 我们来随机测试一下机型. 能发现不管是什么尺寸屏幕下, `flex`都能合理的分配空间.
 
 ![flexbox-2](./images/flexbox-2.gif)
 
-关于Flexbox的使用这里也不多说了, 下面是一些学习资料, 感兴趣的同学可以看一下:  
-- [Flexbox简介](https://segmentfault.com/a/1190000002910324#articleHeader6)
-- [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
-- [Flex入门](http://ife.baidu.com/note/detail/id/952)
+关于 Flexbox 的使用这里也不多说了, 下面是一些学习资料, 感兴趣的同学可以看一下:
+
+* [Flexbox 简介](https://segmentfault.com/a/1190000002910324#articleHeader6)
+* [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+* [Flex 入门](http://ife.baidu.com/note/detail/id/952)
 
 ### 响应式布局
+
 响应式布局实际上是一个设计理念, 它是多项技术的综合体. 能适应于各种的屏幕. 其核心围绕着媒体查询(@media).
 
 `max-width`是媒体查询的一个特性，其意思是指媒体类型小于或等于指定的宽度时, `min-width`则相反.
@@ -145,7 +148,7 @@ Flexbox顾名思义就是弹性盒子, 它可以规定弹性元素如何分配�
 }
 ```
 
-关于响应式布局设计的其他几个点可以看[这里](https://anran758.github.io/blog/2018/01/25/web-%E8%B5%B0%E8%BF%9Bweb%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80)  
+关于响应式布局设计的其他几个点可以看[这里](https://anran758.github.io/blog/2018/01/25/web-%E8%B5%B0%E8%BF%9Bweb%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80)
 
 ## Design
 

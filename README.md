@@ -1,14 +1,12 @@
 # Front-End-Lab
 
-![banner](./Images/banner.png)
-
 > 路漫漫其修远兮，吾将上下而求索
 
-将自己对Web学习以及经验一点一滴的分享出来, 在巩固自己的知识的同时, 也能给其他小伙伴开发时有所借鉴. 主要内容包括但不限于相关代码规范、项目解决方案、web安全、提高效率的工具等.
+将一些踩过的坑或者一些常用的解决方案记录下来~完善自己的知识库~
 
-## 关于更新 or 公告
+> Notice
 
-  基础的模块已经成型啦~ 最近在看HTTP权威指南, 加深了些网络方面的知识, 以前不太理解的东西似乎也得到了答案. 接下来将停更一段时间去闭关~
+  闭关中~
 
 ----
 
@@ -20,7 +18,7 @@
 - [ECMA-5](https://github.com/anran758/Front-End-Lab/tree/master/Code%20guide/ECMA-5) - JavaScript ES5代码风格指南
 - [ECMA-6/ECMA2015](https://github.com/anran758/Front-End-Lab/tree/master/Code%20guide/ECMA-6) - JavaScript ES6/ECMA2015 代码风格指南
 - [JSDoc 中文文档](http://www.css88.com/doc/jsdoc/) - javascript文档注释
-- [Git-Commit-Emoji](https://github.com/anran758/Front-End-Lab/tree/master/Code%20guide/git-commit-emoji) - 在git项目中合理的使用emoji来凸显主要工作
+- ~~[Git-Commit-Emoji](https://github.com/anran758/Front-End-Lab/tree/master/Code%20guide/git-commit-emoji) - 在git项目中合理的使用emoji来凸显主要工作~~这只是其中一种可选方案，commit规范可以根据团队来调整
 
 ----
 

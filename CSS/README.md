@@ -2,9 +2,11 @@
 
 ![](./images/css.jpg)
 
-CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao 们踩过的都知道, 如`inline-block`就自带有 3px 左右的间隙, 新手就会摸不透头脑, 因此将自己的一些经验整合分享下。
+> CSS世界中的各类属性相互间有着紧密联系，而非独立的个体。 --by 张鑫旭
 
-> 我会尽量将案例都配合图片来展示效果. `codepen`是一个在线分享代码的工具, 点击进去可以看到代码的实际效果.
+css看似简单，但我们在编写css时，时常能看到动了一个属性，然后牵扯出其他属性或者布局的变化。有些对css不够熟悉的同学就容易踩到坑。因此将一些常用的css方法抽出来，可以现拿现用~
+
+我会尽量将案例都配合图片来展示效果. `codepen`是一个在线分享代码的工具, 点击进去可以能看到代码的实际效果.
 
 ---
 
@@ -33,7 +35,8 @@ CSS 相关的资料在网上也很多, 但都比较零散, 也有很多坑 dalao
 tips:
 
 1. css 选择符是从右至左进行匹配的，因此需要尽可能的减少匹配的层级.
-2. 了解哪些属性是可以通过继承而来，避免重复指定规则
+1. 了解哪些属性是可以通过继承而来，避免重复指定规则
+1. 滚动容器不要使用`padding-bottom`进行留白，IOS低版本会直接忽略点。除此之外IE, firefox据说也有这种情况，然而在最新版的火狐浏览器上并没有测出来..
 
 #### [common] CSS中常见的问题
 
@@ -179,7 +182,7 @@ tips:
 
 > 常用的居中方法
 
-1. `absolute` + `margin`分配剩余空间, 这个方法需要设置宽高.
+* `absolute` + `margin`分配剩余空间, 这个方法需要设置宽高.
 
 ```css
 .element {
@@ -194,7 +197,7 @@ tips:
 }
 ```
 
-2. `absolute` + `transform`自身宽高的一半, 副作用是`transform`会占据原来的文档流位置. 部分场景不适用.
+* `absolute` + `transform`自身宽高的一半, 副作用是`transform`会占据原来的文档流位置. 部分场景不适用.
 
 ```css
 .element {
@@ -202,6 +205,44 @@ tips:
   top:  50%;
   left:  50%;
   transform:  translate(-50%, -50%);
+}
+```
+
+* 基于`vertical-align`的水平垂直居中 --by 张鑫旭
+
+``` html
+<div class="container">
+  <div class="dialog">
+    <div class="content">内容占位</div>
+  </div>
+</div>
+```
+
+``` css
+.container {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  /* for IE8 */
+  /* background: url(data:image/png;base64,iVB...g==); */
+  /* for IE9+ */
+  background: rgba(0,0,0,.5);
+  text-align: center;
+  white-space: nowrap;
+  z-index: 99;
+}
+.container:after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.dialog {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 6px;
+  background-color: #fff;
+  text-align: left;
+  white-space: normal;
 }
 ```
 
@@ -277,21 +318,22 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 
 ---
 
-### CSS3
-
-css3已经在主流的浏览器上普及了, 只剩一些老式的浏览器没有实现. 以下的代码均不会加那些丑陋的浏览器前缀, 不过出于兼容性的考虑, 如果你有这方面兼容的需求, 你可以在[autoprefix](http://autoprefixer.github.io/)上复制相应的代码, 选择兼容的版本, 让工具自动帮你去添加前缀~
+#### [base] 绘制图形
 
 <a name="form-1"></a>
 
-#### [base] 绘制图形
+可以利用`css`属性来绘制常见的图形, 来完成一些设计所需，同时还可以节省图片的HTTP请求.
 
-善用 css 属性绘制图形, 来完成一些设计所需.
-
-[codepen / test](https://codepen.io/anran758/pen/NXgzGM)
+[codepen / test](https://codepen.io/anran758/pen/jxjGyo)
 
 ![form](./images/form-1.png)
 
 ---
+
+### CSS3
+
+css3已经在主流的浏览器上普及了, 只剩一些老式的浏览器没有实现. 以下的代码均不会加那些丑陋的浏览器前缀, 不过出于兼容性的考虑, 如果你有这方面兼容的需求, 你可以在[autoprefix](http://autoprefixer.github.io/)上复制相应的代码, 选择兼容的版本, 让工具自动帮你去添加前缀~
+
 
 <a name="animation-loading"></a>
 
