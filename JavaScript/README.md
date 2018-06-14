@@ -125,7 +125,7 @@ map 是数组的方法, 如果是一个 Nodelist 的话则用不了(虽然可以
 
 > 你知道吗？
 
-1.  数组实际上是一个类列表对象，这意味着我们可以在数组上添加属性，虽然一般我们很少会这样做
+1. 数组实际上是一个类列表对象，这意味着我们可以在数组上添加属性，虽然一般我们很少会这样做
 
 ---
 
@@ -219,8 +219,11 @@ function randomTime(min, max) {
 
 ## String
 
+### 计算字符串长度
+
+`Unicode`编码`0 ~ 128`是单字节编码序列。因此可以利用这个特点来确定字符串的长度(单双字节实际占位)。
+
 ```javascript
-//计算字符串长度
 String.prototype.strLen = function() {
   var len = 0;
   for (var i = 0; i < this.length; i++) {
@@ -230,9 +233,18 @@ String.prototype.strLen = function() {
   return len;
 };
 
-//将字符串拆成字符，并存到数组中
+//判断某个字符是否是汉字
+String.prototype.isCHS = function(i) {
+  return (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0);
+};
+```
+
+### 截取字符串
+
+```javascript
+// 将字符串拆成字符，并存到数组中
 String.prototype.strToChars = function() {
-  var chars = new Array();
+  var chars = [];
   for (var i = 0; i < this.length; i++) {
     chars[i] = [this.substr(i, 1), this.isCHS(i)];
   }
@@ -240,13 +252,7 @@ String.prototype.strToChars = function() {
   return chars;
 };
 
-//判断某个字符是否是汉字
-String.prototype.isCHS = function(i) {
-  if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) return true;
-  else return false;
-};
-
-//截取字符串（从start字节到end字节）
+// 截取字符串（从start字节到end字节）
 String.prototype.subCHString = function(start, end) {
   var len = 0;
   var str = '';
@@ -260,15 +266,11 @@ String.prototype.subCHString = function(start, end) {
   return str;
 };
 
-//截取字符串（从start字节截取length个字节）
+// 截取字符串（从start字节截取length个字节）
 String.prototype.subCHStr = function(start, length) {
   return this.subCHString(start, start + length);
 };
 ```
-
-> 你知道吗？
-
-1. Unicode 编码`0 ~ 128`是单字节编码序列. 因此可以利用这个特点来确定字符串的长度（单双字节实际占位）.
 
 ## Other
 
@@ -291,8 +293,12 @@ function getAstro(m, d) {
 
 > 你知道吗？
 
-1.  尽量使用字面直接量(常量形式)来构建基础类型，通常这种方式的效率会更高一些。如果使用原生构造函数的话可能会有意想不到的”惊喜“。
-2.  很多编译器在压缩代码的时候，喜欢用`!0`和`!1`来代替布尔值`false`和`true`(因为可以有效减少文件体积
+1. 尽量使用字面直接量(常量形式)来构建基础类型，通常这种方式的效率会更高一些。如果使用原生构造函数的话可能会有意想不到的”惊喜“。
+2. 很多编译器在压缩代码的时候，喜欢用`!0`和`!1`来代替布尔值`false`和`true`(因为可以有效减少文件体积
+
+## Promise
+
+ 为了避免丢失被忽略和抛弃的 Promise 错误，最佳实践就是最后总以一个`catch()`结束
 
 ### 性能相关
 
@@ -373,8 +379,8 @@ ES4/5 增加了  新的数组迭代方式，比如`forEach`，它给每项成�
 
 > 一些常见疑难杂症
 
-1.  如果给子组件设置`v-if`的话，那么 vue 会在切换过程中将条件块内的事件监听器和子组件适当地被销毁和重建。也就是说就算里面用了`watch`也会失效。
-2.  如果组件不是通过`new Vue`这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
+1. 如果给子组件设置`v-if`的话，那么 vue 会在切换过程中将条件块内的事件监听器和子组件适当地被销毁和重建。也就是说就算里面用了`watch`也会失效。
+2. 如果组件不是通过`new Vue`这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
 
     ```javascript
     // 这种会报错
@@ -403,8 +409,7 @@ ES4/5 增加了  新的数组迭代方式，比如`forEach`，它给每项成�
       }
     }
     ```
-
-3.  实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。
+3. 实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。
     通常我们会通过`this.$emit('postHandle', data)`这种形式去激活，通知父级更改。
-4.  在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。
+4. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。
     但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
