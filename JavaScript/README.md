@@ -150,6 +150,13 @@ Object.prototype.toString.call(undefined) === '[object Undefined]'; // true
 
 ---
 
+## Data (数据类)
+
+使用`localStorage`的时候需要对数据进行一些处理：
+
+- 存入数据时对目标值转为合法的JSON值，`localStorage.setItem('name', JSON.stringify(name))`
+- 读取数据后对JSON值进行解析取得目标值，`JSON.parse(localStorage.getItem('name'))`
+
 ## Number(数字类处理)
 
 > 你知道吗？
