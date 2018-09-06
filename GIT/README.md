@@ -2,23 +2,35 @@
 
 ## 常用方法
 
-| 方法                                     |  说明                                                                                                                                   |
+| 方法                        |  说明                                            |
+| --------------------------- | ------------------------------------------------- |
+| git add `<change file>`     | git add `<change file>`将其添加到 status          |
+| git add [--all / .]         | 添加全部改动的文件                                |
+| git branch                  | 查看分支                                          |
+| git commit -m "`<message>`" | 为这所有已经进入 stage 的改变添加一个 commit 信息 |
+| git commit --amend          | 修改上一次 commit                                 |
+| git checkout -b "gh-pages"  | 创建一个名为`gh-pages`的新分支，并且切换过去      |
+
+---
+
+**分支:**
+
+| 命令                                     | 说明                                                                                                                                    |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| git add `<change file>`                  | git add `<change file>`将其添加到 status                                                                                                |
-| git add [--all / .]                      | 添加全部改动的文件                                                                                                                      |
-| git branch                               | 查看分支                                                                                                                                |
 | git branch --set-upstream-to orgin2/game | 让当前的分支和远程仓库（origin2）的 game 分支建立关联（前提是目标分支要存在），建立关联后就可以直接使用`git push`命令而无需添加其他参数 |
-| git commit -m "`<message>`"              | 为这所有已经进入 stage 的改变添加一个 commit 信息                                                                                       |
-| git commit --amend                       | 修改上一次 commit                                                                                                                       |
-| git checkout -b "gh-pages"               | 创建一个名为`gh-pages`的新分支，并且切换过去                                                                                           |
-| git remote add orgin `<remote>`          | 添加一个远程仓库                                                                                                                        |
-| git push origin master                   | 将本地分支推送到存在依赖关系的远端分支，如果远端没有`master`分支，那会新建一个                                                          |
-| git push -u origin master                | 相当于同时使用`git push origin master`和`git branch --set-upstream-to orgin/master`，`-u`就是`upstrean`                                 |
-| git push --set-upstream origin master    | 推送当前分支并建立与远程上游的跟踪                                                                                                      |
 
 `git pull --rebase`加上 --rebase 参数的作用是，提交线图有分叉的话，Git 会 rebase 策略来代替默认的 merge 策略。如果远程已经有其他人提交了的话，我们 pull 代码时加上这个参数就不会出现多余的mergel。
 
 ---
+
+**远程(remote)相关:**
+
+| 命令                                  | 说明                                                                                                    |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| git remote add orgin `<remote>`       | 添加一个远程仓库                                                                                        |
+| git push origin master                | 将本地分支推送到存在依赖关系的远端分支，如果远端没有`master`分支，那会新建一个                          |
+| git push -u origin master             | 相当于同时使用`git push origin master`和`git branch --set-upstream-to orgin/master`，`-u`就是`upstrean` |
+| git push --set-upstream origin master | 推送当前分支并建立与远程上游的跟踪                                                                      |
 
 ## git 撤销已经 push 到远端的 commit
 
@@ -40,6 +52,17 @@ git push origin <分支名> --force
 
 ---
 
+## 撤销修改
+
+| 命令                | 说明                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------------ |
+| git clean -df       | 只删除所有`untracked`的文件，如果文件已经被`tracked`, 修改过的文件不会被回退               |
+| 2. git reset --hard | 把`tracked`的文件revert到前一个版本，对于untracked的文件(比如编译的临时文件)都不会被删除。 |
+
+* `untracked`，未跟踪(git上不认识的新的文件)。与之相反的动作是`tracked`，代表`git`已经追踪文件的修改。
+
+---
+
 ## 其他
 
-1. 默认情况下，git会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(这名字只是社区约定俗称的一个名称，换作其他名称都可以)，一般都是通过命令行或者在一些编辑器下直接创建文件(windows不能直接创建`.`开头的文件，系统会认为文件名不合法)。
+1. 默认情况下，git会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(这名字只是社区约定俗称的一个名称，换作其他名称都可以).<br>一般都是通过命令行或者在一些编辑器下直接创建文件(windows不能直接创建`.`开头的文件，系统会认为文件名不合法)。

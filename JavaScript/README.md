@@ -16,9 +16,9 @@ let hint = '';
 
 // bad
 if (age >= 18) {
-  hint = '欢迎打开新世界(';
+    hint = '欢迎打开新世界(';
 } else {
-  hint = '嘿, 未成年不得入内!';
+    hint = '嘿, 未成年不得入内!';
 }
 
 // good
@@ -37,7 +37,7 @@ container.addEventListener('mouseup', () => (ismoving = false));
 
 // if 语句
 container.addEventListener('mousemove', () => {
-  if (isMoving) handleMove();
+    if (isMoving) handleMove();
 });
 
 // && 操作符. 前者为 true 的话, 就调用函数
@@ -111,7 +111,7 @@ let newarr = [...new Set(arr)];
 
 ```javascript
 ['张三', '李四', '王五'].sort((a, b) =>
-  a.localeCompare(b, 'zh-Hans-CN', { sensitivity: 'accent' })
+    a.localeCompare(b, 'zh-Hans-CN', { sensitivity: 'accent' })
 );
 ```
 
@@ -136,7 +136,7 @@ map 是数组的方法, 如果是一个 Nodelist 的话则用不了(虽然可以
 ```javascript
 // 目标是否是对象
 function isObject(obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
+    return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
 // 使用同样的方法进行测试, 结果如下:
@@ -154,8 +154,8 @@ Object.prototype.toString.call(undefined) === '[object Undefined]'; // true
 
 使用`localStorage`的时候需要对数据进行一些处理：
 
-- 存入数据时对目标值转为合法的JSON值，`localStorage.setItem('name', JSON.stringify(name))`
-- 读取数据后对JSON值进行解析取得目标值，`JSON.parse(localStorage.getItem('name'))`
+-   存入数据时对目标值转为合法的 JSON 值，`localStorage.setItem('name', JSON.stringify(name))`
+-   读取数据后对 JSON 值进行解析取得目标值，`JSON.parse(localStorage.getItem('name'))`
 
 ## Number(数字类处理)
 
@@ -181,15 +181,15 @@ parseInt('08', 10); // 8
  * @returns 返回格式化后的数字
  */
 function numberWithCommas(n) {
-  // 正则解释: 匹配到 \B(非单词边界)后, 后面要匹配到 (\d{3})+(?!\d)
-  // (\d{3})+ 至少匹配到一次或多次三个数字
-  // (?!\d) 同时后面不是数字的话, 就匹配.
-  // 注意, 后面的(?=)那一段代码只是判断的规则, 匹配到后只替换掉\B
-  // 而\B 元字符匹配的是非单词边界
+    // 正则解释: 匹配到 \B(非单词边界)后, 后面要匹配到 (\d{3})+(?!\d)
+    // (\d{3})+ 至少匹配到一次或多次三个数字
+    // (?!\d) 同时后面不是数字的话, 就匹配.
+    // 注意, 后面的(?=)那一段代码只是判断的规则, 匹配到后只替换掉\B
+    // 而\B 元字符匹配的是非单词边界
 
-  let num = n.toString().split('.');
-  num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  return num.join('.');
+    let num = n.toString().split('.');
+    num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return num.join('.');
 }
 
 console.log(numberWithCommas(12345678912.123)); // "12,345,678,912.1234"
@@ -211,7 +211,7 @@ console.log(numberWithCommas(12345678912.123)); // "12,345,678,912.1234"
  * @returns 返回指定范围内的随机数
  */
 function randomTime(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
+    return Math.round(Math.random() * (max - min) + min);
 }
 ```
 
@@ -232,17 +232,17 @@ function randomTime(min, max) {
 
 ```javascript
 String.prototype.strLen = function() {
-  var len = 0;
-  for (var i = 0; i < this.length; i++) {
-    if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2;
-    else len++;
-  }
-  return len;
+    var len = 0;
+    for (var i = 0; i < this.length; i++) {
+        if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2;
+        else len++;
+    }
+    return len;
 };
 
 //判断某个字符是否是汉字
 String.prototype.isCHS = function(i) {
-  return (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0);
+    return this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0;
 };
 ```
 
@@ -251,32 +251,46 @@ String.prototype.isCHS = function(i) {
 ```javascript
 // 将字符串拆成字符，并存到数组中
 String.prototype.strToChars = function() {
-  var chars = [];
-  for (var i = 0; i < this.length; i++) {
-    chars[i] = [this.substr(i, 1), this.isCHS(i)];
-  }
-  String.prototype.charsArray = chars;
-  return chars;
+    var chars = [];
+    for (var i = 0; i < this.length; i++) {
+        chars[i] = [this.substr(i, 1), this.isCHS(i)];
+    }
+    String.prototype.charsArray = chars;
+    return chars;
 };
 
 // 截取字符串（从start字节到end字节）
 String.prototype.subCHString = function(start, end) {
-  var len = 0;
-  var str = '';
-  this.strToChars();
-  for (var i = 0; i < this.length; i++) {
-    if (this.charsArray[i][1]) len += 2;
-    else len++;
-    if (end < len) return str;
-    else if (start < len) str += this.charsArray[i][0];
-  }
-  return str;
+    var len = 0;
+    var str = '';
+    this.strToChars();
+    for (var i = 0; i < this.length; i++) {
+        if (this.charsArray[i][1]) len += 2;
+        else len++;
+        if (end < len) return str;
+        else if (start < len) str += this.charsArray[i][0];
+    }
+    return str;
 };
 
 // 截取字符串（从start字节截取length个字节）
 String.prototype.subCHStr = function(start, length) {
-  return this.subCHString(start, start + length);
+    return this.subCHString(start, start + length);
 };
+```
+
+## Date
+
+-   设置某天的时间区间，区间在`00:00:00 - 23:59:59`。
+
+```javascript
+function setFullDate(day) {
+    let start = new Date().setHours(0, 0, 0, 0);
+    let end = new Date().setHours(23, 59, 59, 999);
+    let base = 24 * 60 * 60 * 1000;
+
+    return [start - day * base, end];
+}
 ```
 
 ## Other
@@ -291,10 +305,10 @@ String.prototype.subCHStr = function(start, length) {
  * @desc 返回星座名
  */
 function getAstro(m, d) {
-  return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
-    m * 2 - (d < '102223444433'.charAt(m - 1) - -19) * 2,
-    2
-  );
+    return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
+        m * 2 - (d < '102223444433'.charAt(m - 1) - -19) * 2,
+        2
+    );
 }
 ```
 
@@ -305,7 +319,7 @@ function getAstro(m, d) {
 
 ## Promise
 
- 为了避免丢失被忽略和抛弃的 Promise 错误，最佳实践就是最后总以一个`catch()`结束
+为了避免丢失被忽略和抛弃的 Promise 错误，最佳实践就是最后总以一个`catch()`结束
 
 ### 性能相关
 
@@ -319,15 +333,15 @@ function getAstro(m, d) {
 ```javascript
 // bad code
 for (var count = 0; count < 12000; count++) {
-  document.querySelector(
-    'div.point'
-  ).innerHTML += `Hi, Cycle times： ${count} <br/>`;
+    document.querySelector(
+        'div.point'
+    ).innerHTML += `Hi, Cycle times： ${count} <br/>`;
 }
 
 // good code
 let text = '';
 for (var count = 0; count < 12000; count++) {
-  text += `Hi, Cycle times： ${count} <br/>`;
+    text += `Hi, Cycle times： ${count} <br/>`;
 }
 document.querySelector('div.point').innerHTML = text;
 ```
@@ -341,13 +355,13 @@ document.querySelector('div.point').innerHTML = text;
 ```javascript
 // 假设`list`的 length 值 12000，那么就会查询12000次
 for (var count = 0; count < list.length; count++) {
-  // do something
+    // do something
 }
 
 // good code
 let length = list.length;
 for (var count = 0; count < length; count++) {
-  // do something
+    // do something
 }
 ```
 
@@ -362,12 +376,12 @@ for (var count = 0; count < length; count++) {
 ```javascript
 // 正序自增有六步操作
 for (let i = 0, length = items.length; i < length; i++) {
-  // something
+    // something
 }
 
 // 倒序循环则只有四步操作
 for (let i = items.length; i--; ) {
-  // something
+    // something
 }
 ```
 
@@ -416,7 +430,14 @@ ES4/5 增加了  新的数组迭代方式，比如`forEach`，它给每项成�
       }
     }
     ```
+
 3. 实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。
-    通常我们会通过`this.$emit('postHandle', data)`这种形式去激活，通知父级更改。
+   通常我们会通过`this.$emit('postHandle', data)`这种形式去激活，通知父级更改。
 4. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。
-    但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
+   但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
+
+## 小程序
+
+- 一般会在`onLoad`处理请求接口，因为它是最触发的生命周期钩子。
+- 在小程序中使用`import`语法时，要使用相对路径，不能使用绝对路径(如访问根目录 / )。
+- 在组件上，小程序的`this.triggerEvent`相当于`vue`的`this.$emit`，在很多语法上都和`React`、`Vue`有共同之处。

@@ -326,14 +326,13 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 
 [codepen / test](https://codepen.io/anran758/pen/jxjGyo)
 
-![form](./images/form-1.png)
+![form](./images/drawing_graphics.png)
 
 ---
 
 ### CSS3
 
 css3已经在主流的浏览器上普及了, 只剩一些老式的浏览器没有实现. 以下的代码均不会加那些丑陋的浏览器前缀, 不过出于兼容性的考虑, 如果你有这方面兼容的需求, 你可以在[autoprefix](http://autoprefixer.github.io/)上复制相应的代码, 选择兼容的版本, 让工具自动帮你去添加前缀~
-
 
 <a name="animation-loading"></a>
 
