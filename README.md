@@ -2,11 +2,11 @@
 
 > 路漫漫其修远兮，吾将上下而求索
 
-将一些踩过的坑或者一些常用的解决方案记录下来~完善自己的知识库~
+将一些踩过的坑或者一些常用的解决方案记录下来，完善自己的知识库~
 
-> 公告
+> Notes
 
-  厚积薄发，准备备考~
+  最近想整理一下关于小程序开发的经验，之后会开始抽空更新博客了吧(
 
 ----
 
@@ -15,7 +15,6 @@
 > 作为一名合格的程序员, 应该养成一个好的的编程习惯. 在实际开发中, 你不可能总是单打独斗, 当遇到团队协作时, 代码规范就重要性就凸显出来了.
 
 - [HTML/CSS代码规范](http://codeguide.bootcss.com) - Github设计总监的代码规范
-- [ECMA-5](https://github.com/anran758/Front-End-Lab/tree/master/Code%20guide/ECMA-5) - JavaScript ES5代码风格指南
 - [ECMA-6/ECMA2015](https://github.com/anran758/Front-End-Lab/tree/master/Code%20guide/ECMA-6) - JavaScript ES6/ECMA2015 代码风格指南
 - [JSDoc 中文文档](http://www.css88.com/doc/jsdoc/) - javascript文档注释
 
@@ -33,7 +32,7 @@
 
 ### Page design
 
-偶尔能在某些页面中看到别人设计的一些炫酷的交互, 令人惊艳. 这时候我会去想, 他是怎么去实现这种效果的? 因此我会收藏起来. 去尝试实现.
+偶尔能在某些页面中看到别人设计的一些炫酷的交互, 令人惊艳. 这时就不由得想到, 他是如何去实现这种效果的? 然后会把这些东西收藏起来. 自己去尝试实现.
 
 *[Page design](https://github.com/anran758/Front-End-Lab/tree/master/Page%20design)* 里却不单单只放着这些交互设计, 还有一些开发中常见的布局技巧. 就比如众所周知圣杯布局等.
 
@@ -65,7 +64,7 @@
 
 - [ASI机制](https://segmentfault.com/a/1190000004548664) - ASI机制
 
-**书籍类:**
+**推荐阅读:**
 
 - **CSS:** css揭晓、css世界
 - **JavaScript(难度从低到高):**
@@ -75,7 +74,7 @@
   4. 你不知道的js全册(进阶必备)
   5. ECMAScript 6 入门(阮一峰)
 - **性能相关:** 高性能网站指南(猎犬)、高性能网站进阶指南(羚羊)
-- **HTTP：** HTTP权威指南
+- **HTTP：** HTTP权威指南，图解HTTP
 - **程序员扩展类**: 软技能.代码之外的生存指南
 
 **百科类:**
