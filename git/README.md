@@ -77,6 +77,30 @@ git reset --hard <版本号>
 git push origin <branch> --force
 ```
 
+### git 文件夹大小写切换
+
+默认情况下，git是不区分文件名大小写的。如果你提交了一个文件夹名为`FOO`，然后你现在想在本地改为小写的`foo`时，你会发现直接改文件名`git`是不识别的。
+
+这时有两个解决方法：
+
+1. 让`git`区分大小写，但在不同平台下可能会引起别的问题。
+
+    ``` bash
+    # 配置仓库的大小写敏感
+    $ git config core.ignorecase false
+    ```
+
+2. 通过`git mv`方法来改名，这种方式的话会比较推荐，因为没有什么后遗症。值得注意的是，修改文件夹名字大小写的话，需要额外多做一步，否则将会报: `fatal: renaming 'Foo' failed: Invalid argument git mv`的错误。
+
+    ``` bash
+    # 先回避系统对大小写的判定，修改为其他的名字, git 会将修改自动添加到工作区上
+    $ git mv FOO FOO1
+    # 再将名字修改回小写的状态，修改后的操作会自动添加到工作区上, 这样就完成了名字的修改
+    $ git mv FOO1 foo
+    # 提交修改
+    $ git commit -m "Modify dir name"
+    ```
+
 ---
 
 ## 其他
