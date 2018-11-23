@@ -1,4 +1,4 @@
-# CSS / CSS3 的踩坑与应用
+# CSS / CSS3 应用
 
 ![](./images/css.jpg)
 
@@ -10,35 +10,35 @@ css看似简单，但我们在编写css时，时常能看到动了一个属性�
 
 ---
 
-### 目录
+**目录:**
 
-* CSS 及常见的应用
-  1. [[common] reset 与 Normalize](#common-base)
-  1. [[common] 响应式设计 - 针对不同分辨率设置(@media)](#common-responsive)
-  1. [[display] 隐藏元素](#display-content)
-  1. [[image] 图片居中处理](#imgage-center)
-  1. [[layout] 关于居中](#layout-center)
-  1. [[layout] 查看更多 - 白色半透明遮罩](#layout-background-more)
-  1. [[nav] 导航渐变色分割线 - after](#nav-split)
-  1. [[nav] 导航列表下标 - 悬浮动画显示](#nav-anima)
-  1. [[text] 文字超出显示省略号 - text-overflow](#text-overflow)
-* CSS3
-  1. [绘制图形](#form-1)
-  1. [[animation]loading](#animation-loading)
+- [CSS / CSS3 应用](#css--css3-%08%E5%BA%94%E7%94%A8)
+  - [CSS 及常见的应用](#css-%E5%8F%8A%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BA%94%E7%94%A8)
+    - [[common] CSS中常见的问题](#common-css%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98)
+    - [[common] 响应式设计 - 针对不同分辨率设置(@media)](#common-%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1---%E9%92%88%E5%AF%B9%E4%B8%8D%E5%90%8C%E5%88%86%E8%BE%A8%E7%8E%87%E8%AE%BE%E7%BD%AEmedia)
+    - [[display] 隐藏元素](#display-%E9%9A%90%E8%97%8F%E5%85%83%E7%B4%A0)
+    - [[image] 图片居中裁剪](#image-%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD%E8%A3%81%E5%89%AA)
+    - [[layout] 关于居中](#layout-%E5%85%B3%E4%BA%8E%E5%B1%85%E4%B8%AD)
+    - [[layout] 查看更多 - 白色半透明遮罩](#layout-%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A---%E7%99%BD%E8%89%B2%E5%8D%8A%E9%80%8F%E6%98%8E%E9%81%AE%E7%BD%A9)
+    - [[nav]导航渐变色分割线 - after](#nav%E5%AF%BC%E8%88%AA%E6%B8%90%E5%8F%98%E8%89%B2%E5%88%86%E5%89%B2%E7%BA%BF---after)
+    - [[nav]导航列表下标 - 悬浮动画显示](#nav%E5%AF%BC%E8%88%AA%E5%88%97%E8%A1%A8%E4%B8%8B%E6%A0%87---%E6%82%AC%E6%B5%AE%E5%8A%A8%E7%94%BB%E6%98%BE%E7%A4%BA)
+    - [[text] 文本溢出点点点(text-overflow)](#text-%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E7%82%B9%E7%82%B9%E7%82%B9text-overflow)
+    - [[base] 绘制图形](#base-%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2)
+  - [CSS3](#css3)
+    - [[animation] loading动画](#animation-loading%E5%8A%A8%E7%94%BB)
+    - [[image] 悬浮头像](#image-%E6%82%AC%E6%B5%AE%E5%A4%B4%E5%83%8F)
 
 ---
 
-### CSS 及常见的应用
+## CSS 及常见的应用
 
-<a name="common-base"></a>
-
-tips:
+**一些常见css规则**
 
 1. css 选择符是从右至左进行匹配的，因此需要尽可能的减少匹配的层级.
-1. 了解哪些属性是可以通过继承而来，避免重复指定规则
-1. 滚动容器不要使用`padding-bottom`进行留白，IOS低版本会直接忽略点。除此之外IE, firefox据说也有这种情况，然而在最新版的火狐浏览器上并没有测出来..
+2. 了解哪些属性是可以通过继承而来，避免重复指定规则
+3. 滚动容器不要使用`padding-bottom`进行留白，IOS低版本会直接忽略点。除此之外IE, firefox据说也有这种情况，然而在最新版的火狐浏览器上并没有测出来..
 
-#### [common] CSS中常见的问题
+### [common] CSS中常见的问题
 
 **reset 与 Normalize:**
 
@@ -71,9 +71,7 @@ tips:
 
 ---
 
-<a name="common-responsive"></a>
-
-#### [common] 响应式设计 - 针对不同分辨率设置(@media)
+### [common] 响应式设计 - 针对不同分辨率设置(@media)
 
 如今比较通用的媒体查询. 其中`max-width`是媒体查询的一个特性，其意思是指媒体类型小于或等于指定的宽度时, `min-width`相反
 
@@ -123,9 +121,7 @@ tips:
 
 ---
 
-<a name="display-content"></a>
-
-#### [display] 隐藏元素
+### [display] 隐藏元素
 
 优化无障碍的体验, 避免使用`display: none`. 因为辅助屏幕设备实际上是读不了设置了这个属性里的内容, 搜索引擎的爬虫蜘蛛也会过滤掉设置了`display: none`里的内容.
 
@@ -153,9 +149,7 @@ tips:
 
 ---
 
-<a name="imgage-center"></a>
-
-#### [image] 图片居中裁剪
+### [image] 图片居中裁剪
 
 我们经常能遇到这种情景, 做一个用户头像. 拿到的图片是一个长方形的长图, 但是我们并不需要这么长的图, 因此我们需要"裁剪". 这时我们只需设置图片中心为原点, 设置相应的宽高再加上圆角即可, 代码如下:
 
@@ -176,9 +170,7 @@ tips:
 
 ---
 
-<a name="layout-center"></a>
-
-#### [layout] 关于居中
+### [layout] 关于居中
 
 > 常用的居中方法
 
@@ -248,9 +240,7 @@ tips:
 
 ---
 
-<a name="layout-background-more"></a>
-
-#### [layout] 查看更多 - 白色半透明遮罩
+### [layout] 查看更多 - 白色半透明遮罩
 
 写了个简易的 Demo, 使用`linear-gradient`颜色渐变, 再使用`pointer-events: none`清除默认事件.  
 [codepen / test](https://codepen.io/anran758/pen/ppwwKN)
@@ -259,9 +249,7 @@ tips:
 
 ---
 
-<a name="nav-split"></a>
-
-#### [nav]导航渐变色分割线 - after
+### [nav]导航渐变色分割线 - after
 
 使用`after`对导航进行分割, 对`background`使用`linear-gradient`渐变.
 
@@ -271,9 +259,7 @@ tips:
 
 ---
 
-<a name="nav-anima"></a>
-
-#### [nav]导航列表下标 - 悬浮动画显示
+### [nav]导航列表下标 - 悬浮动画显示
 
 利用`:before`和`transition`实现悬浮后, 下标从底部中间向两边展开.
 
@@ -283,9 +269,7 @@ tips:
 
 ---
 
-<a name="text-overflow"></a>
-
-#### [text] 文本溢出点点点(text-overflow)
+### [text] 文本溢出点点点(text-overflow)
 
 **单行溢出:**
 text-overflow 只是用来说明文字溢出时用什么方式显示，要实现溢出时产生省略号的效果，还须配合其他属性.
@@ -318,9 +302,7 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 
 ---
 
-#### [base] 绘制图形
-
-<a name="form-1"></a>
+### [base] 绘制图形
 
 可以利用`css`属性来绘制常见的图形, 来完成一些设计所需，同时还可以节省图片的HTTP请求.
 
@@ -330,13 +312,11 @@ text-overflow 只是用来说明文字溢出时用什么方式显示，要实现
 
 ---
 
-### CSS3
+## CSS3
 
 css3已经在主流的浏览器上普及了, 只剩一些老式的浏览器没有实现. 以下的代码均不会加那些丑陋的浏览器前缀, 不过出于兼容性的考虑, 如果你有这方面兼容的需求, 你可以在[autoprefix](http://autoprefixer.github.io/)上复制相应的代码, 选择兼容的版本, 让工具自动帮你去添加前缀~
 
-<a name="animation-loading"></a>
-
-#### [animation] loading动画
+### [animation] loading动画
 
 我们可以利用css3属性来做一些动画loading, 相对于图片既能节省HTTP请求, 仅需几行代码即可实现我们想要的功能功能. github上也有很多这种动画库, 有兴趣的同学可以搜一搜.
 
@@ -346,9 +326,7 @@ css3已经在主流的浏览器上普及了, 只剩一些老式的浏览器没�
 
 [codepen / test](https://codepen.io/anran758/pen/dmOPdO)
 
-<a name="image-hover"></a>
-
-#### [image] 悬浮头像
+### [image] 悬浮头像
 
 我们利用 css3 属性的`transform`对悬浮后的`border`进行旋转, 通过`transition`进行过度, 从而实现悬浮后的炫酷效果.
 
