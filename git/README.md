@@ -1,8 +1,14 @@
 # 常见的 GIT 使用实例
 
-## common
+## 本地修改
 
-| 方法                        |  说明                                            |
+添加修改的
+
+``` bash
+$ git add <change file>
+```
+
+| 方法                        | 说明                                              |
 | --------------------------- | ------------------------------------------------- |
 | git add `<change file>`     | git add `<change file>`将其添加到 status          |
 | git add [--all / .]         | 添加全部改动的文件                                |
@@ -32,12 +38,18 @@
 
 ## 撤销修改
 
-| 命令                | 说明                                                                                       |
-| ------------------- | ------------------------------------------------------------------------------------------ |
-| git clean -df       | 只删除所有`untracked`的文件，如果文件已经被`tracked`, 修改过的文件不会被回退               |
+只删除所有`untracked`的文件，如果文件已经被`tracked`, 修改过的文件不会被回退
+
+``` bash
+git clean -df
+```
+
+| 命令                | 说明                                                                                                 |
+| ------------------- | ---------------------------------------------------------------------------------------------------- |
+| git clean -df       | 只删除所有`untracked`的文件，如果文件已经被`tracked`, 修改过的文件不会被回退                         |
 | 2. git reset --hard | 把`tracked`的文件 revert(回退) 到前一个版本，对于`untracked`的文件(比如编译的临时文件)都不会被删除。 |
 
-- `untracked`，未跟踪(`git`上不认识的新的文件)。与之相反的动作是`tracked`，代表`git`已经追踪文件的修改。
+- `untracked`，未跟踪(`git`上不认识的新的文件)。与之相反的动作是`tracked`，代表`git`已经追踪文件的修改。
 
 ### 撤销还没 push 到远程的 commit
 
@@ -65,16 +77,16 @@ git reset HEAD~1
 这时我们可以先在本地回退到相应的版本。
 
 ``` bash
-git reset --hard <版本号>
 # 注意使用 --hard 参数会抛弃当前工作区的修改
 # 使用 --soft 参数的话会回退到之前的版本，但是保留当前工作区的修改，可以重新提交
+$ git reset --hard <版本号>
 ```
 
 为了覆盖掉远端的版本信息，使远端的仓库也回退到相应的版本，需要加上参数`--force`
 
 ``` bash
 # branch: 分支
-git push origin <branch> --force
+$ git push origin <branch> --force
 ```
 
 ### git 文件夹大小写切换
@@ -93,15 +105,26 @@ git push origin <branch> --force
 2. 通过`git mv`方法来改名，这种方式的话会比较推荐，因为没有什么后遗症。值得注意的是，修改文件夹名字大小写的话，需要额外多做一步，否则将会报: `fatal: renaming 'Foo' failed: Invalid argument git mv`的错误。
 
     ``` bash
-    # 先回避系统对大小写的判定，修改为其他的名字, git 会将修改自动添加到工作区上
+    # 先回避系统对大小写的判定，修改为其他的名字, git 会将修改自动添加到工作区上
     $ git mv FOO FOO1
-    # 再将名字修改回小写的状态，修改后的操作会自动添加到工作区上, 这样就完成了名字的修改
+    # 再将名字修改回小写的状态，修改后的操作会自动添加到工作区上, 这样就完成了名字的修改
     $ git mv FOO1 foo
     # 提交修改
     $ git commit -m "Modify dir name"
     ```
 
 ---
+
+## 常见报错
+
+在执行`git pull origin master`命令时，发生报错无法`pull`的情况。
+
+``` bash
+$ git pull
+$ fatal: refusing to merge unrelated histories
+# 原因是说在 git 2.9版本后，需要加上这句 --allow-unrelated-histories。
+git pull origin master --allow-unrelated-histories
+```
 
 ## 其他
 

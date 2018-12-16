@@ -2,8 +2,6 @@
 
 :art: 将曾经踩过的坑或者常用的解决方案记录下来，完善自己的知识库~
 
-如果感觉写的还行的话，不妨点个 start 支持一下, 遇到什么问题也可以来交流一下鸭~
-
 [![GitHub stars](https://img.shields.io/github/stars/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/network)
 [![GitHub watchers](https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/watchers)
@@ -12,9 +10,7 @@
 
 > Notes
 
-最近想整理一下关于小程序开发的经验，之后会开始抽空更新博客了吧(
-
-----
+最近想整理总结一下关于小程序开发的经验，之后会开始抽空更新博客了吧(如果时间安排的过来的话qwq
 
 ## 导读
 
@@ -35,7 +31,7 @@
 
 ### 关于兼容性
 
-- [Browser hack](http://browserhacks.com/) - 顾名思义，兼容低版本浏览器的`hack`.
+- [Browser hack](http://browserhacks.com/) - 顾名思义，兼容低版本浏览器的`hack`.
 - [HTML5shiv](https://github.com/aFarkas/html5shiv) - 兼容IE9以下不能使用HTML5的标签的问题.  
   使用方式:
     ``` html
