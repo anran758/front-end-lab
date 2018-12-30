@@ -12,7 +12,7 @@ css看似简单，但我们在编写css时，时常能看到动了一个属性�
 
 **目录:**
 
-- [CSS / CSS3 应用](#css--css3-%08%E5%BA%94%E7%94%A8)
+- [CSS / CSS3 应用](#css--css3-%E5%BA%94%E7%94%A8)
   - [CSS 及常见的应用](#css-%E5%8F%8A%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BA%94%E7%94%A8)
     - [[common] CSS中常见的问题](#common-css%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98)
     - [[common] 响应式设计 - 针对不同分辨率设置(@media)](#common-%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1---%E9%92%88%E5%AF%B9%E4%B8%8D%E5%90%8C%E5%88%86%E8%BE%A8%E7%8E%87%E8%AE%BE%E7%BD%AEmedia)
@@ -27,16 +27,21 @@ css看似简单，但我们在编写css时，时常能看到动了一个属性�
   - [CSS3](#css3)
     - [[animation] loading动画](#animation-loading%E5%8A%A8%E7%94%BB)
     - [[image] 悬浮头像](#image-%E6%82%AC%E6%B5%AE%E5%A4%B4%E5%83%8F)
+    - [其他预览](#%E5%85%B6%E4%BB%96%E9%A2%84%E8%A7%88)
+
+**其他:**
+
+- [网页布局及设计](./design) - 页面设计、布局设计
 
 ---
 
 ## CSS 及常见的应用
 
-**一些常见css规则**
+> 常见的 css 规则
 
 1. css 选择符是从右至左进行匹配的，因此需要尽可能的减少匹配的层级.
 2. 了解哪些属性是可以通过继承而来，避免重复指定规则
-3. 滚动容器不要使用`padding-bottom`进行留白，IOS低版本会直接忽略点。除此之外IE, firefox据说也有这种情况，然而在最新版的火狐浏览器上并没有测出来..
+3. 滚动容器不要使用`padding-bottom`进行留白，IOS低版本会直接忽略掉。除此之外`IE`, 低版本的`firefox`据说也有这种情况.
 
 ### [common] CSS中常见的问题
 
@@ -44,11 +49,11 @@ css看似简单，但我们在编写css时，时常能看到动了一个属性�
 
 关于这两者有什么区别, 该如何取舍. 我曾经写过一篇博客, 感兴趣的同学可以过去看一下 - [浅谈 Normalize 与 reset](https://anran758.github.io/blog/2017/10/15/%E6%B5%85%E8%B0%88Normalize%E4%B8%8Ereset/)
 
-优化后的`reset.css`: https://github.com/anran758/Front-End-Lab/tree/master/CSS/reset.css
+优化后的[reset.css](./reset.css)
 
 **继承性与通配符:**
 
-使用通配符(*), 意味着页面中的所有的标签都会加上通配符里的属性. 然而很多人在使用的时候, 尤其在不了解属性特性的情况下, 容易造成很大性能浪费.
+使用通配符(`*`), 意味着页面中的所有的标签都会加上通配符里的属性. 然而很多人在使用的时候, 尤其在不了解属性特性的情况下, 容易造成很大性能浪费.
 
 就比如说有些属性是具有**继承性**的, 在下例中`<em>`标签在没有制定`color`属性时, 就逐级向上找到`.container`的`color`继承.
 
@@ -65,7 +70,7 @@ css看似简单，但我们在编写css时，时常能看到动了一个属性�
 
 再来看一个典型的例子. iOS系统下, 点击一个链接或者通过Javascript定义的可点击元素的时候, 会出现一个半透明的灰色背景(就是所谓会闪一下), 这时`可以设置-webkit-tap-highlight-color`为透明来重置这个"BUG", 这里属性没用错, 但问题就出现在错误的使用了通配符. 如下图:
 
-![](./images/wildcard.png)
+![wildcard](./images/wildcard.png)
 
 还有一种就是使用`* {margin: 0; padding: 0}`则就过分了, `H1 ~ 6`标签本身就没有默认`padding`, 你特么非要给人家重置一下. `<li>`就更无辜了, 没有默认的`padding`和`margin`也要被批斗. 因此我们应该避免使用通配符.
 
@@ -333,3 +338,7 @@ css3已经在主流的浏览器上普及了, 只剩一些老式的浏览器没�
 ![avatar hover](./images/image-hover.gif)
 
 [codepen / test](https://codepen.io/anran758/pen/YapWKd)
+
+### 其他预览
+
+[一个div做动画](https://a.singlediv.com/)

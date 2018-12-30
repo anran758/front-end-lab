@@ -20,7 +20,7 @@
   * 左列使用`margin-left: -100%`
   * 右例使用`margin-left: -右列宽度`
 
-[源码](https://github.com/anran758/Front-End-Lab/blob/master/Page%20design/Layout/Holy%20Grail.html)
+[源码](./layout/grail.html)
 
 ![image](./images/auto-width.gif)
 
