@@ -126,6 +126,37 @@ $ fatal: refusing to merge unrelated histories
 git pull origin master --allow-unrelated-histories
 ```
 
+---
+
+使用`git pull`遇到合并`commit`时，这时并不想因为合并代码多产生一条`commit`记录。这时将`commit`信息注释掉，`shift + :wq`退出。
+
+然后会因为自动合并失败后提示错误:
+
+``` bash
+Auto-merging pages/index/index.js
+error: Empty commit message.
+Not committing merge; use 'git commit' to complete the merge.
+```
+
+撤消合并并再次拉动，使用`rebase`解决冲突：
+
+``` bash
+$ git merge --abort
+$ git pull --rebase
+First, rewinding head to replay your work on top of it...
+Applying: fix: fixed something
+$ git push
+```
+
+---
+
+合并失败, 放弃合并重新操作
+
+``` bash
+fatal: You are in the middle of a merge -- cannot amend.
+$ git merge --abort
+```
+
 ## 其他
 
 1. 默认情况下，git会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(这名字只是社区约定俗称的一个名称，换作其他名称都可以).<br>

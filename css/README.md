@@ -27,11 +27,16 @@ css看似简单，但我们在编写css时，时常能看到动了一个属性�
   - [CSS3](#css3)
     - [[animation] loading动画](#animation-loading%E5%8A%A8%E7%94%BB)
     - [[image] 悬浮头像](#image-%E6%82%AC%E6%B5%AE%E5%A4%B4%E5%83%8F)
-    - [其他预览](#%E5%85%B6%E4%BB%96%E9%A2%84%E8%A7%88)
+  - [CSS 动画预览](#css-%E5%8A%A8%E7%94%BB%E9%A2%84%E8%A7%88)
 
-**其他:**
-
-- [网页布局及设计](./design) - 页面设计、布局设计
+- [Page design](./design/#page-design)
+  - [常见的布局方式](./design/#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F)
+    - [圣杯布局](./design/#%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80)
+    - [双飞翼布局](./design/#%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80)
+    - [Flexbox 布局](./design/#flexbox-%E5%B8%83%E5%B1%80)
+    - [响应式布局](./design/#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80)
+  - [Design](./design/#design)
+    - [botton](./design/#botton)
 
 ---
 
@@ -339,6 +344,8 @@ css3已经在主流的浏览器上普及了, 只剩一些老式的浏览器没�
 
 [codepen / test](https://codepen.io/anran758/pen/YapWKd)
 
-### 其他预览
+---
 
-[一个div做动画](https://a.singlediv.com/)
+## CSS 动画预览
+
+- [一个div做动画](https://a.singlediv.com/)

@@ -2,6 +2,17 @@
 
 通用的网页设计元素, 还有一些提供设计灵感的 button 特效等. 以及前端常用的各布局.
 
+- [Page design](#page-design)
+  - [常见的布局方式](#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F)
+    - [圣杯布局](#%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80)
+    - [双飞翼布局](#%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80)
+    - [Flexbox 布局](#flexbox-%E5%B8%83%E5%B1%80)
+    - [响应式布局](#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80)
+  - [Design](#design)
+    - [botton](#botton)
+
+---
+
 ## 常见的布局方式
 
 > 目前主流的布局方式.
@@ -13,12 +24,12 @@
 圣杯布局让`container`上构建三个模块， 分别为`left`、`main`、`right`，其中`main`独占一行.
 实现的原理如下：
 
-* 三者都使用`float`进行浮动.
-* `container`使用`padding`为两侧栏腾出空位.
-* 将主要内容`main`排在前头, 让 **DOM 树**先加载.
-* 两侧栏添加`relative`定位
-  * 左列使用`margin-left: -100%`
-  * 右例使用`margin-left: -右列宽度`
+- 三者都使用`float`进行浮动.
+- `container`使用`padding`为两侧栏腾出空位.
+- 将主要内容`main`排在前头, 让 **DOM 树**先加载.
+- 两侧栏添加`relative`定位
+  - 左列使用`margin-left: -100%`
+  - 右例使用`margin-left: -右列宽度`
 
 [源码](./layout/grail.html)
 
@@ -30,9 +41,9 @@
 
 双飞翼布局和圣杯布局类似，也是左，中，右三列，中列里面会再套一个容器。
 
-* 中列宽度设置为`100%`
-* 使用负边距`margin-left`把左右两列拉到和中列同一行
-* 在中列内的容器 div 设置`margin-left`和`margin-right`给左右两列留下对应的空间
+- 中列宽度设置为`100%`
+- 使用负边距`margin-left`把左右两列拉到和中列同一行
+- 在中列内的容器 div 设置`margin-left`和`margin-right`给左右两列留下对应的空间
 
 实现代码也很简单：
 
@@ -83,16 +94,16 @@
 
 ### Flexbox 布局
 
-Flexbox 是 CSS 的一个新特性，这个新特性解决我们以前在 CSS 中很多麻烦问题，比如说内容的伸缩与扩展、垂直居中、等分列、等高列等等。
+`Flexbox` 是 `CSS` 的一个新特性，这个新特性解决我们以前在 `CSS` 中很多麻烦问题，比如说内容的伸缩与扩展、垂直居中、等分列、等高列等等。
 
-Flexbox 顾名思义就是弹性盒子, 它可以规定弹性元素如何分配空间或者布局的方式. 下面就是个例子. 利用`flex`的计算的特性, 配合 js 的`onclick`实现出来的效果.
+`Flexbox` 顾名思义就是弹性盒子, 它可以规定弹性元素如何分配空间或者布局的方式. 下面就是个例子. 利用`flex`的计算的特性, 配合 js 的`onclick`实现出来的效果.
 ![flexbox-1](./images/flexbox-1.gif)
 
 当我们将 Flex 布局运用在移动端, 更能体现出它的价值——它能适配移动端各种复杂的屏幕. qq 音乐的导航就是使用了`flex`的属性, 我们来随机测试一下机型. 能发现不管是什么尺寸屏幕下, `flex`都能合理的分配空间.
 
 ![flexbox-2](./images/flexbox-2.gif)
 
-关于 Flexbox 的使用这里也不多说了, 下面是一些学习资料, 感兴趣的同学可以看一下:
+关于 `Flexbox` 的使用这里也不多说了, 下面是一些学习资料, 感兴趣的同学可以看一下:
 
 * [Flexbox 简介](https://segmentfault.com/a/1190000002910324#articleHeader6)
 * [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
@@ -149,6 +160,8 @@ Flexbox 顾名思义就是弹性盒子, 它可以规定弹性元素如何分配�
 ```
 
 关于响应式布局设计的其他几个点可以看[这里](https://anran758.github.io/blog/2018/01/25/web-%E8%B5%B0%E8%BF%9Bweb%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80)
+
+---
 
 ## Design
 
