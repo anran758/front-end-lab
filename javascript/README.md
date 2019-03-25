@@ -25,6 +25,8 @@
   - [String](#string)
     - [计算字符串长度](#%E8%AE%A1%E7%AE%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6)
     - [截取字符串](#%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2)
+  - [Store](#store)
+    - [cookie](#cookie)
   - [Date](#date)
   - [Other](#other)
   - [Vue](#vue)
@@ -350,6 +352,124 @@ String.prototype.subCHStr = function(start, length) {
     return this.subCHString(start, start + length);
 };
 ```
+
+---
+
+## Store
+
+### cookie
+
+> 浏览器`Cookie`是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上
+
+`cookie`用途：
+
+- 会话管理(用户状态信息等)
+- 个性化设置(根据`cookie`信息为用户提供更进一步的功能)
+- 浏览器行为跟踪(追踪用户行为、统计等)
+
+创建一个新的`Cookie`的语法格式是:
+
+``` javascript
+document.cookie = newCookie;
+```
+
+当对`document.cookie`进行赋值操作时，该属性会调用它底层所绑定的函数来设置`cookie`。其中`newCookie`是一个键值对的字符串，其格式如下:
+
+``` javascript
+// 语法格式
+document.cookie = key=value[
+    ;path=path |
+    ;domain=domain |
+    ;max-age=max-age-in-second |
+    ;expires=date-in-GMTString-format |
+    ;secure |
+    ;samesite
+]
+
+// 示例
+document.cookie = 'nickname=anran758;path=/;max-age=31536000'
+```
+
+`key/value`表示`cookie`的键与值，其后为`cookie`的属性，简要概括一下：
+
+| cookie 属性 | 作用                                                             | 兼容性    |
+| :---------- | :--------------------------------------------------------------- | :-------- |
+| path        | 指定哪些路径可以接受`cookie`, 不指定则为默认为当前文档的主机     |
+| domain      | 指定哪些主机可以接受`Cookie`, 不指定则为当前页面的根目录`/`      |
+| max-age     | 指定从现在开始`Cookie`可以存在的**秒数**, 超时该`cookie`就会过期 |
+| expires     | 显式指定`cookie`具体的到期时间                                   |
+| secure      | `Cookie`只能通过安全协议传输为`https`                            | Chrome52+ |
+| samesite    | 阻止浏览器发送此`cookie`以及跨站点请求                           | Chrome52+ |
+
+服务端可以通过`HTTP`头部`set-cookie`来给浏览器设置`cookie`, 格式如上所示。
+
+如果同时指定了`Expires`和`Max-Age`，那么`Max-Age`的值将优先生效。
+
+`Set-Cookie`没有指定`Expires`或`Max-Age`属性，则为会话信息(`Session Cookie`), 关闭浏览器后该`cookie`就会失效。
+
+---
+
+`Cookie`信息可以通过读取`document.cookie`来获取，但是读取出来的是由一个或多个`cookie`以`;`分隔的键值对字符串，如`key=value;key1=value1`。
+
+了解了`cookies`的规则之后，我们需要对它进一步的封装以便在实际应用中使用：
+
+``` javascript
+const tools = {
+    /**
+     * 读取 cookies
+     * @param name - cookie 名，不传拿全部
+     */
+    cookieGet(name) {
+        const cookies = document.cookie.split(';').map(item => {
+            const [key, value] = item.trim().split('=')
+            return { key, value };
+        });
+
+        if (!name) return cookies;
+
+        const cookie = cookies.find(item => item.key === name);
+        return cookie ? cookie.value :  null;
+    },
+
+    /**
+     * 设置cookie
+     * @param name - cookie 名
+     * @param value - cookie 值
+     * @param days - 几天后过期
+     * @param domain - 该 cookie 在哪些域名下可用
+     * @param path - 指定 cookie 路径
+     */
+    cookieSet(name, value, days, domain, path = '/') {
+        if (!name || !value) return false;
+
+        let cookie = `${name}=${value}`
+        if (days === 0 || days) {
+            const date = new Date();
+            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+            cookie += `; expires=${date.toGMTString()}`;
+        }
+
+        if (domain) cookie += `; domain=${domain}`
+        if (path) cookie += `; path=${path}`
+        document.cookie = cookie;
+
+        return true
+    },
+}
+
+// 查询 cookie
+tools.cookieGet('nickName')     // null
+
+// 设置 cookie
+tools.cookieSet('nickName', 'anran758')     // true
+tools.cookieGet('nickName')     // "anran758"
+
+// 清除 cookie
+tools.cookieSet('nickName', 'anran758', 0)  // true
+tools.cookieGet('nickName')     // null
+```
+
+具体更多有关`cookies`信息可以戳[MDN - Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
 
 ---
 

@@ -19,10 +19,10 @@
 - [Git 常用指南](./git)
 - [CSS](https://github.com/anran758/Front-End-Lab/tree/master/CSS) - 网页设计应用与技巧
 - [RegExp 正则速查表](https://github.com/anran758/Front-End-Lab/tree/master/REGEXP)
-- [JavaScript 常用工具类或技术细节](./javascript)
+- [JavaScrip](./javascript) - 常用工具类或技术细节
 - [扩展阅读](./further)
 
-:construction: 施工中 . . .
+:construction: 施工中
 
 - [HTML](https://github.com/anran758/Front-End-Lab/tree/master/HTML) - 在编写`HTML`中可能会遇到的问题
 - [移动端解决方案](./mobile)
