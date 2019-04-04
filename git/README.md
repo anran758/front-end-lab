@@ -1,6 +1,17 @@
 # 常见的 Git 使用示例
 
-## 本地修改
+- [常见的 Git 使用示例](#%E5%B8%B8%E8%A7%81%E7%9A%84-git-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B)
+  - [常用命令](#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4)
+  - [常见示例](#%E5%B8%B8%E8%A7%81%E7%A4%BA%E4%BE%8B)
+    - [撤销修改](#%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9)
+    - [在已有的项目上设置远程存储库并进行初始推送](#%E5%9C%A8%E5%B7%B2%E6%9C%89%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%8A%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E5%AD%98%E5%82%A8%E5%BA%93%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E6%8E%A8%E9%80%81)
+    - [撤销还没 push 到远程的 commit](#%E6%92%A4%E9%94%80%E8%BF%98%E6%B2%A1-push-%E5%88%B0%E8%BF%9C%E7%A8%8B%E7%9A%84-commit)
+    - [撤销已经 push 到远端的 commit](#%E6%92%A4%E9%94%80%E5%B7%B2%E7%BB%8F-push-%E5%88%B0%E8%BF%9C%E7%AB%AF%E7%9A%84-commit)
+    - [git 文件夹大小写切换](#git-%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%A7%E5%B0%8F%E5%86%99%E5%88%87%E6%8D%A2)
+  - [常见报错](#%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99)
+  - [其他](#%E5%85%B6%E4%BB%96)
+
+## 常用命令
 
 添加修改的
 
@@ -36,7 +47,9 @@ $ git add <change file>
 
 ---
 
-## 撤销修改
+## 常见示例
+
+### 撤销修改
 
 只删除所有`untracked`的文件，如果文件已经被`tracked`, 修改过的文件不会被回退
 
@@ -50,6 +63,23 @@ git clean -df
 | 2. git reset --hard | 把`tracked`的文件 revert(回退) 到前一个版本，对于`untracked`的文件(比如编译的临时文件)都不会被删除。 |
 
 - `untracked`，未跟踪(`git`上不认识的新的文件)。与之相反的动作是`tracked`，代表`git`已经追踪文件的修改。
+
+---
+
+### 在已有的项目上设置远程存储库并进行初始推送
+
+比如你已经在远程储存库上创建了新的库(`test`)，此时需要将本地项目的代码关联并推送到远程仓库上去:
+
+``` bash
+cd test
+git init
+git add .
+git commit -m "init message"
+git remote add origin git@github.com:anran758/test.git
+git push -u origin master
+```
+
+---
 
 ### 撤销还没 push 到远程的 commit
 
@@ -71,6 +101,8 @@ git reset commit_hash
 git reset HEAD~1
 ```
 
+---
+
 ### 撤销已经 push 到远端的 commit
 
 在使用`git`时，有时候我们会无意间错推了我们不想推上去的文件或者希望能够回退以前版本的时候.
@@ -88,6 +120,8 @@ $ git reset --hard <版本号>
 # branch: 分支
 $ git push origin <branch> --force
 ```
+
+---
 
 ### git 文件夹大小写切换
 
@@ -157,7 +191,9 @@ fatal: You are in the middle of a merge -- cannot amend.
 $ git merge --abort
 ```
 
+---
+
 ## 其他
 
-1. 默认情况下，git会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(这名字只是社区约定俗称的一个名称，换作其他名称都可以).<br>
+1. 在默认情况下，git会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(这名字只是社区约定俗称的一个名称，换作其他名称都可以).  
   一般都是通过命令行或者在一些编辑器下直接创建文件(windows不能直接创建`.`开头的文件，系统会认为文件名不合法)。

@@ -3,7 +3,8 @@
 细节和技巧的交汇，本篇笔记主要用于速查。
 
 - [JavaScript](#javascript)
-  - [操作符的实用技巧](#%E6%93%8D%E4%BD%9C%E7%AC%A6%E7%9A%84%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7)
+  - [代码简洁性](#%E4%BB%A3%E7%A0%81%E7%AE%80%E6%B4%81%E6%80%A7)
+    - [科学计数法 E](#%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95-e)
     - [三元操作符](#%E4%B8%89%E5%85%83%E6%93%8D%E4%BD%9C%E7%AC%A6)
     - [逻辑运算符](#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6)
     - [按位非(按位取反)](#%E6%8C%89%E4%BD%8D%E9%9D%9E%E6%8C%89%E4%BD%8D%E5%8F%96%E5%8F%8D)
@@ -14,10 +15,12 @@
     - [中文排序](#%E4%B8%AD%E6%96%87%E6%8E%92%E5%BA%8F)
     - [数组扁平化](#%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96)
     - [其他细节](#%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82)
-  - [Common(通用)](#common%E9%80%9A%E7%94%A8)
-  - [Data (数据类)](#data-%E6%95%B0%E6%8D%AE%E7%B1%BB)
-  - [Number(数字类处理)](#number%E6%95%B0%E5%AD%97%E7%B1%BB%E5%A4%84%E7%90%86)
-    - [科学计数法 E](#%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95-e)
+  - [Common](#common)
+    - [判断原始类型](#%E5%88%A4%E6%96%AD%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B)
+    - [计算星座](#%E8%AE%A1%E7%AE%97%E6%98%9F%E5%BA%A7)
+    - [判断闰年函数](#%E5%88%A4%E6%96%AD%E9%97%B0%E5%B9%B4%E5%87%BD%E6%95%B0)
+  - [Data](#data)
+  - [Number](#number)
     - [parseInt](#parseint)
     - [金额分隔](#%E9%87%91%E9%A2%9D%E5%88%86%E9%9A%94)
     - [生成随机数](#%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0)
@@ -28,12 +31,22 @@
   - [Store](#store)
     - [cookie](#cookie)
   - [Date](#date)
-  - [Other](#other)
   - [Vue](#vue)
-  - [小程序](#%E5%B0%8F%E7%A8%8B%E5%BA%8F)
-  - [性能相关](#%E6%80%A7%E8%83%BD%E7%9B%B8%E5%85%B3)
 
-## 操作符的实用技巧
+## 代码简洁性
+
+在实际工作中，可以在保证语义化的前提使用一些简写方法来提升代码的简洁性
+
+### 科学计数法 E
+
+似乎很多人都不爱用`js`的科学计数法，但实际上科学计数法用来表示大数字能使代码显得很简洁易读，如下：
+
+``` javascript
+console.log(1000000000 === 1e+9);  // true
+console.log(1e+9 * 4);             // 4000000000
+```
+
+两者对比就能看出差异，而且科学计数法也能做同等的运算。
 
 ### 三元操作符
 
@@ -41,9 +54,9 @@
 
 ```javascript
 const age = 16;
-let hint = '';
 
 // bad
+let hint = '';
 if (age >= 18) {
     hint = '欢迎打开新世界(';
 } else {
@@ -51,7 +64,7 @@ if (age >= 18) {
 }
 
 // good
-let hint = age >= 18 ? '欢迎打开新世界(' : '未成年不得入内!';
+const hint = age >= 18 ? '欢迎打开新世界(' : '未成年不得入内!';
 ```
 
 ### 逻辑运算符
@@ -188,9 +201,11 @@ console.log(newArr);  // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
 
 ---
 
-## Common(通用)
+## Common
 
-**判断原始类型:**
+通用方法
+
+### 判断原始类型
 
 ```javascript
 // 目标是否是对象
@@ -207,9 +222,48 @@ Object.prototype.toString.call(345) === '[object Number]'; // true
 Object.prototype.toString.call(undefined) === '[object Undefined]'; // true
 ```
 
+### 计算星座
+
+```javascript
+/**
+ * 根据生日的月份和日期，计算星座。
+ * @param {String} m - 月份
+ * @param {String} d - 日期
+ * @desc 返回星座名
+ */
+function getAstro(m, d) {
+    return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
+        m * 2 - (d < '102223444433'.charAt(m - 1) - -19) * 2,
+        2
+    );
+}
+```
+
+### 判断闰年函数
+
+判断闰年其实只要满足下面几个条件即可:
+
+- 普通年**能被4整除**且**不能被100整除**的为闰年。如2004年就是闰年,1900年不是闰年
+- **世纪年**能被**400整除**的是闰年。如2000年是闰年，1900年不是闰年
+
+``` javascript
+/**
+ * 判断闰年函数
+ * @param  {number} year 要判断的年份
+ * @return {bool} 返回布尔值
+ */
+function leapYear(year) {
+    return !(year % (year % 100 ? 4 : 400));
+}
+```
+
+> 你知道吗？
+
+- 很多编译器在压缩代码的时候，喜欢用`!0`和`!1`来代替布尔值`false`和`true`。因为可以有效减少文件体积, 但会破坏可读性。
+
 ---
 
-## Data (数据类)
+## Data
 
 使用`localStorage`的时候需要对数据进行一些处理：
 
@@ -218,11 +272,7 @@ Object.prototype.toString.call(undefined) === '[object Undefined]'; // true
 
 ---
 
-## Number(数字类处理)
-
-### 科学计数法 E
-
-可以使用`科学计数法(E)`来表示较大的数字，如`1e4`的效果等同于`10000`。
+## Number
 
 ### parseInt
 
@@ -489,35 +539,6 @@ function setFullDate(day) {
 
 ---
 
-## Other
-
-> 一些日常的方法
-
-```javascript
-/**
- * 根据生日的月份和日期，计算星座。
- * @param {String} m - 月份
- * @param {String} d - 日期
- * @desc 返回星座名
- */
-function getAstro(m, d) {
-    return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
-        m * 2 - (d < '102223444433'.charAt(m - 1) - -19) * 2,
-        2
-    );
-}
-```
-
-> 你知道吗？
-
-* 很多编译器在压缩代码的时候，喜欢用`!0`和`!1`来代替布尔值`false`和`true`。因为可以有效减少文件体积, 但会破坏可读性
-
-<!-- ## Promise
-
-为了避免丢失被忽略和抛弃的 Promise 错误，最佳实践就是最后总以一个`catch()`结束 -->
-
----
-
 ## Vue
 
 一些常见的问题
@@ -562,7 +583,7 @@ function getAstro(m, d) {
 
 ---
 
-## 小程序
+<!-- ## mini-programs
 
 微信小程序开发的提示：
 
@@ -589,12 +610,12 @@ function getAstro(m, d) {
              */
             methods: {/* ... */}
         })
-    ```
+    ``` -->
 
-## 性能相关
+<!-- ## 性能相关
 
 性能相关的内容以及有很多前辈有了丰富的经验，这里可以推荐几本关于性能的书，系统全面的了解一下会比单独拿片段出来讲会好很多。
 
 - 高性能javascript
 - 高性能网站建设进阶指南
-- 高性能网站建设指南
+- 高性能网站建设指南 -->
