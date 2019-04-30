@@ -1,4 +1,4 @@
-# CSS / CSS3 应用
+# CSS World
 
 ![](./images/css.jpg)
 
@@ -12,7 +12,7 @@ css看似简单，但我们在编写css时，时常能看到动了一个属性�
 
 **目录:**
 
-- [CSS / CSS3 应用](#css--css3-%E5%BA%94%E7%94%A8)
+- [CSS World](#css-world)
   - [CSS 及常见的应用](#css-%E5%8F%8A%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BA%94%E7%94%A8)
     - [[common] CSS中常见的问题](#common-css%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98)
     - [[common] 响应式设计 - 针对不同分辨率设置(@media)](#common-%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1---%E9%92%88%E5%AF%B9%E4%B8%8D%E5%90%8C%E5%88%86%E8%BE%A8%E7%8E%87%E8%AE%BE%E7%BD%AEmedia)

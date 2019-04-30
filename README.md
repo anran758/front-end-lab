@@ -5,7 +5,7 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/watchers)
 [![CRAN/METACRAN](https://img.shields.io/cran/l/devtools.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab)
 
-:art: 将曾经踩过的坑或者常用的解决方案记录下来，完善自己的知识库。偏向实际应用和基础wiki。
+:art: 将曾经踩过的坑或者常用的解决方案记录下来，完善自己的知识库。偏向实际应用和基础 wiki。
 
 > Notes
 
@@ -17,7 +17,7 @@
 
 - [Git 使用指南](./git)
 - [RegExp 正则速查表](./REGEXP)
-- [CSS](./css) - 网页设计应用与技巧
+- [CSS](./css) - 网页设计、应用与技巧
 - [JavaScrip](./javascript)
   - [代码简洁性](./javascript#%E4%BB%A3%E7%A0%81%E7%AE%80%E6%B4%81%E6%80%A7)
   - [Array](./javascript#array)
