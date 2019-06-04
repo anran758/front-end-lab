@@ -32,6 +32,9 @@
     - [cookie](#cookie)
   - [Date](#date)
   - [Vue](#vue)
+    - [vuex](#vuex)
+  - [React](#react)
+  - [第三方库](#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93)
 
 ## 代码简洁性
 
@@ -214,12 +217,25 @@ function isObject(obj) {
 }
 
 // 使用同样的方法进行测试, 结果如下:
-Object.prototype.toString.call([]) === '[object Array]'; // true
-Object.prototype.toString.call(null) === '[object Null]'; // true
-Object.prototype.toString.call('12') === '[object String]'; // true
-Object.prototype.toString.call(NaN) === '[object Number]'; // true. 注意, NaN 是属于数字类型
-Object.prototype.toString.call(345) === '[object Number]'; // true
-Object.prototype.toString.call(undefined) === '[object Undefined]'; // true
+Object.prototype.toString.call([]);              // [object Array]
+Object.prototype.toString.call(null);            // [object Null]
+Object.prototype.toString.call('12');            // [object String]
+Object.prototype.toString.call(NaN);             // [object Number]. 注意, NaN 是属于数字类型
+Object.prototype.toString.call(345);             // [object Number]
+Object.prototype.toString.call(undefined);       // [object Undefined]
+Object.prototype.toString.call(Symbol())         // [object Symbol]
+Object.prototype.toString.call(function() {})    // [object Function]
+
+// 根据上述规则，可以对字符串进行操作
+// 获取基础类型
+function getBaseType(target) {
+    const typeStr = Object.prototype.toString
+        .call(target)
+        .toLocaleLowerCase();
+
+    return typeStr.slice(8, -1);
+}
+
 ```
 
 ### 计算星座
@@ -580,6 +596,40 @@ function setFullDate(day) {
 5. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
 6. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。
    但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
+
+### vuex
+
+vuex 的 commit mutation是一个同步的方法，而 Action 通过`store.dispatch`方法触发的是一个异步的方法。
+<!-- 
+## React
+
+在项目架构时, React 相比 vue 会更灵活一些，在遇到非常复杂的业务时倾向于使用 React, 它的技术方案会更多一点选择, vue 则提供了更丰富的 API 实现功能会更简单，但相对来说缺少一定的灵活性，存在一定的限制。
+
+React 组件需要以大写字母开头的标签才能正常解析
+
+JSX 一个组件内需要包裹一个元素，可以使用`Fragment`占位符
+
+react 是响应式框架，只需要关心数据
+react 绑定事件名是驼峰式
+
+react 不允许直接修改 state 的数据，因为会对性能有影响
+
+在组件内使用 constructor 接受参数
+
+react 是单向数据流，是视图层框架，只解决视图和数据渲染方面
+便于自动化测试
+
+当组件的state或者props发生改变时，render函数就会重新执行。
+
+新的虚拟DOM减少了真实DOM的创建，较少了性能损耗 -->
+
+## 第三方库
+
+> 比较好使的第三方库
+
+| name        | 用途           | npm |
+| ----------- | -------------- | --- |
+| node-qrcode | 用以生成二维码 | Y   |
 
 ---
 

@@ -3,9 +3,10 @@
 想了想, 还是将HTML模块抽一个出来, 的确也有一些平时会遇到稀奇古怪的东西值得一说.
 
 - [HTML](#html)
-    - [[common] 常见的coding规范](#common-%E5%B8%B8%E8%A7%81%E7%9A%84coding%E8%A7%84%E8%8C%83)
-    - [[common] script标签](#common-script%E6%A0%87%E7%AD%BE)
-    - [[link]视频首屏最先加载方法](#link%E8%A7%86%E9%A2%91%E9%A6%96%E5%B1%8F%E6%9C%80%E5%85%88%E5%8A%A0%E8%BD%BD%E6%96%B9%E6%B3%95)
+  - [[common] 常见的coding规范](#common-%E5%B8%B8%E8%A7%81%E7%9A%84coding%E8%A7%84%E8%8C%83)
+  - [[common] script标签](#common-script%E6%A0%87%E7%AD%BE)
+  - [[link]视频首屏最先加载方法](#link%E8%A7%86%E9%A2%91%E9%A6%96%E5%B1%8F%E6%9C%80%E5%85%88%E5%8A%A0%E8%BD%BD%E6%96%B9%E6%B3%95)
+  - [引用视频播放失败](#%E5%BC%95%E7%94%A8%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%A4%B1%E8%B4%A5)
 
 ## [common] 常见的coding规范
 
@@ -28,3 +29,9 @@
 ![YouTube在网络慢的场景](./image/youtube.png)
 
 但是浏览器会默认的将多媒体资源放在最后面加载, 无论你的标签在文档中放的多靠前. 这时的解决方案就是将`<script>`(初始化视频的js文件)改用为`<link>`标签引用.
+
+## 引用视频播放失败
+
+在一些业务中，会使用到第三方的视频链接。然后该链接的提供者或许会根据`referrer`来判断来源，进而拒绝请求，视频将无法播放。因此可以在页面首部加上`<meta name="referrer" content="no-referrer">`.
+
+但引用该头部后可能会影响其他依赖`referrer`的功能。比如百度统计会追踪`referrer`，设置`no-referrer`后将无法再进行统计。
