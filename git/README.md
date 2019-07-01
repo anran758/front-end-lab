@@ -1,85 +1,79 @@
-# 常见的 Git 使用示例
+# Git
 
-- [常见的 Git 使用示例](#%E5%B8%B8%E8%A7%81%E7%9A%84-git-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B)
-  - [常用命令](#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4)
-  - [常见示例](#%E5%B8%B8%E8%A7%81%E7%A4%BA%E4%BE%8B)
-    - [撤销修改](#%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9)
-    - [在已有的项目上设置远程存储库并进行初始推送](#%E5%9C%A8%E5%B7%B2%E6%9C%89%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%8A%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E5%AD%98%E5%82%A8%E5%BA%93%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E6%8E%A8%E9%80%81)
-    - [撤销还没 push 到远程的 commit](#%E6%92%A4%E9%94%80%E8%BF%98%E6%B2%A1-push-%E5%88%B0%E8%BF%9C%E7%A8%8B%E7%9A%84-commit)
-    - [撤销已经 push 到远端的 commit](#%E6%92%A4%E9%94%80%E5%B7%B2%E7%BB%8F-push-%E5%88%B0%E8%BF%9C%E7%AB%AF%E7%9A%84-commit)
-    - [git 文件夹大小写切换](#git-%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%A7%E5%B0%8F%E5%86%99%E5%88%87%E6%8D%A2)
-  - [常见报错](#%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99)
-  - [其他](#%E5%85%B6%E4%BB%96)
+- [Git](#Git)
+  - [提交流程](#提交流程)
+  - [Add](#Add)
+  - [commit](#commit)
+    - [撤销还没 push 到远程的 commit](#撤销还没-push-到远程的-commit)
+    - [撤销已经 push 到远端的 commit](#撤销已经-push-到远端的-commit)
+  - [branch and tag](#branch-and-tag)
+  - [history](#history)
+  - [remote](#remote)
+  - [操作指南](#操作指南)
+    - [初始化远程仓库](#初始化远程仓库)
+    - [清空项目的 commit 记录](#清空项目的-commit-记录)
+    - [撤销修改](#撤销修改)
+    - [文件夹大小写切换](#文件夹大小写切换)
+    - [保留空的文件夹](#保留空的文件夹)
+  - [常见错误](#常见错误)
+  - [其他](#其他)
 
-## 常用命令
+<details>
+  <summary>常见术语解释</summary>
 
-添加修改的
+  | 术语      | 解释                                      |
+  | --------- | ----------------------------------------- |
+  | origin    | 默认远端仓库                              |
+  | master    | 默认开发分支                              |
+  | HEAD      | 默认开发分支                              |
+  | HEAD^     | `HEAD`父提交                              |
+  | tracked   | `git`已经追踪文件的修改                   |
+  | untracked | 未跟踪的状态，也就是`git`不认识的新的文件 |
+  | revert    | 回退                                      |
 
-``` bash
-$ git add <change file>
-```
+</details>
 
-| 方法                        | 说明                                              |
-| --------------------------- | ------------------------------------------------- |
-| git add `<change file>`     | git add `<change file>`将其添加到 status          |
-| git add [--all / .]         | 添加全部改动的文件                                |
-| git branch                  | 查看分支                                          |
-| git commit -m "`<message>`" | 为这所有已经进入 stage 的改变添加一个 commit 信息 |
-| git commit --amend          | 修改上一次 commit                                 |
-| git checkout -b "gh-pages"  | 创建一个名为`gh-pages`的新分支，并且切换过去      |
+## 提交流程
 
-**分支:**
-
-| 命令                                     | 说明                                                                                                                                    |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| git branch --set-upstream-to orgin2/game | 让当前的分支和远程仓库（origin2）的 game 分支建立关联（前提是目标分支要存在），建立关联后就可以直接使用`git push`命令而无需添加其他参数 |
-
-`git pull --rebase`加上 --rebase 参数的作用是，提交线图有分叉的话，Git 会 rebase 策略来代替默认的 merge 策略。如果远程已经有其他人提交了的话，我们 pull 代码时加上这个参数就不会出现多余的mergel。
-
-**远程(remote)相关:**
-
-| 命令                                  | 说明                                                                                                    |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| git remote add orgin `<remote>`       | 添加一个远程仓库                                                                                        |
-| git push origin master                | 将本地分支推送到存在依赖关系的远端分支，如果远端没有`master`分支，那会新建一个                          |
-| git push -u origin master             | 相当于同时使用`git push origin master`和`git branch --set-upstream-to orgin/master`，`-u`就是`upstrean` |
-| git push --set-upstream origin master | 推送当前分支并建立与远程上游的跟踪                                                                      |
-
----
-
-## 常见示例
-
-### 撤销修改
-
-只删除所有`untracked`的文件，如果文件已经被`tracked`, 修改过的文件不会被回退
+日常提交流程
 
 ``` bash
-git clean -df
-```
-
-| 命令                | 说明                                                                                                 |
-| ------------------- | ---------------------------------------------------------------------------------------------------- |
-| git clean -df       | 只删除所有`untracked`的文件，如果文件已经被`tracked`, 修改过的文件不会被回退                         |
-| 2. git reset --hard | 把`tracked`的文件 revert(回退) 到前一个版本，对于`untracked`的文件(比如编译的临时文件)都不会被删除。 |
-
-- `untracked`，未跟踪(`git`上不认识的新的文件)。与之相反的动作是`tracked`，代表`git`已经追踪文件的修改。
-
----
-
-### 在已有的项目上设置远程存储库并进行初始推送
-
-比如你已经在远程储存库上创建了新的库(`test`)，此时需要将本地项目的代码关联并推送到远程仓库上去:
-
-``` bash
-cd test
-git init
+# 跟踪改动过的文件
+# `git add <file>` or
+# `git add -A` or
 git add .
-git commit -m "init message"
-git remote add origin git@github.com:anran758/test.git
-git push -u origin master
+
+# 添加 commit 信息
+# 不同团队有不同的编写 commit 信息规范，有的项目依赖 commit 的格式来做自动化处理
+# 常见格式如： `<action> <desc content>`
+git commit -m "fix: message commit"
+
+# 从远程仓库拉取代码，查看是否有冲突
+# 直接 git pull 可能会有冲突，可采用 rebase 代替默认的 merge 策略减少多余的 commit 提交
+git pull --rebase
+
+# 提交改动至默认的远程仓库
+git push
+
+# or 同时提交改动至指定远程仓库(orgin)和分支(develop, master)
+git push origin master develop
 ```
 
+## Add
+
+| 方法                    | 说明                                     |
+| ----------------------- | ---------------------------------------- |
+| git add `<change file>` | git add `<change file>`将其添加到 status |
+| git add [--all / .]     | 添加全部改动的文件                       |
+
 ---
+
+## commit
+
+| 方法                        | 说明                                          |
+| --------------------------- | --------------------------------------------- |
+| git commit -m "`<message>`" | 为已经进入`stage(暂存的更改)`添加`commit`信息 |
+| git commit --amend          | 修改上一次提交的`commit`信息                  |
 
 ### 撤销还没 push 到远程的 commit
 
@@ -101,8 +95,6 @@ git reset commit_hash
 git reset HEAD~1
 ```
 
----
-
 ### 撤销已经 push 到远端的 commit
 
 在使用`git`时，有时候我们会无意间错推了我们不想推上去的文件或者希望能够回退以前版本的时候.
@@ -123,35 +115,187 @@ $ git push origin <branch> --force
 
 ---
 
-### git 文件夹大小写切换
+## branch and tag
 
-默认情况下，git是不区分文件名大小写的。如果你提交了一个文件夹名为`FOO`，然后你现在想在本地改为小写的`foo`时，你会发现直接改文件名`git`是不识别的。
+常用的分支和标签命令
 
-这时有两个解决方法：
+``` bash
+# 查看分支
+git branch
 
-1. 让`git`区分大小写，但在不同平台下可能会引起别的问题。
+# git checkout <branch/tag> 切换指定的分支或标签
+git checkout develop
 
-    ``` bash
-    # 配置仓库的大小写敏感
-    $ git config core.ignorecase false
-    ```
+# 切换名为 gh-pages 的分支, 如果不存在这个分支就创建它
+git checkout -b "gh-pages"
 
-2. 通过`git mv`方法来改名，这种方式的话会比较推荐，因为没有什么后遗症。值得注意的是，修改文件夹名字大小写的话，需要额外多做一步，否则将会报: `fatal: renaming 'Foo' failed: Invalid argument git mv`的错误。
+# 查看所有标签
+git tag
 
-    ``` bash
-    # 先回避系统对大小写的判定，修改为其他的名字, git 会将修改自动添加到工作区上
-    $ git mv FOO FOO1
-    # 再将名字修改回小写的状态，修改后的操作会自动添加到工作区上, 这样就完成了名字的修改
-    $ git mv FOO1 foo
-    # 提交修改
-    $ git commit -m "Modify dir name"
-    ```
+# 基于最新提交的分支创建标签
+git tag <tagname>
+
+# 删除指定标签
+git tag -d <tagname>
+
+# 使当前的分支和远程仓库 `origin2/game` 建立关联（前提是目标分支要存在）
+# 建立关联后就可以直接使用 `git push` 命令而无需添加其他参数。
+git branch --set-upstream-to orgin2/game
+```
+
+## history
+
+查看 `git` 历史
+
+``` bash
+# 查看提交历史
+git log
+
+# 使用更简洁的模式查看提交历史
+git log --oneline
+
+# 查看指定文件的提交历史
+git log -p <file>
+
+# 以列表的方式查看指定文件的提交历史
+git blame <file>
+```
 
 ---
 
-## 常见报错
+## remote
 
-在执行`git pull origin master`命令时，发生报错无法`pull`的情况。
+添加一个远程仓库
+
+``` bash
+git remote add orgin `<remote>`
+```
+
+将本地分支推送到存在依赖关系的远端分支，如果远端没有`master`分支，那会新建一个
+
+``` bash
+git push origin master
+```
+
+推送当前分支并建立与远程上游的跟踪
+
+``` bash
+git push --set-upstream origin master
+```
+
+设置上游并推送至远程的`master`分支
+
+``` bash
+git push -u origin master
+
+# or
+git push origin master
+git branch --set-upstream-to orgin/master
+```
+
+## 操作指南
+
+### 初始化远程仓库
+
+假设你已经在远程储存库上创建了新的库(`test`)，此时需要将本地项目的代码关联并推送到远程仓库上去:
+
+``` bash
+cd test
+
+# 初始化 git
+git init
+
+# 添加全部改动
+git add .
+
+# 添加 commit 信息
+git commit -m "init message"
+
+# 添加远程地址，提交代码至远程，并设置为追踪分支
+git remote add origin git@github.com:anran758/test.git
+git push -u origin master
+```
+
+
+### 清空项目的 commit 记录
+
+当一个项目已经存在久远，或者说`commit`记录有很多历史遗留的问题，分支线跟地铁图似得。此时你想重置 `git` 线时，可以这样做:
+
+``` bash
+# 先从远端克隆一份仓库，不要在原先本地项目直接进行操作
+git clone git@github.com:anran758/test.git
+cd test
+
+# 创建一个临时分支
+git checkout --orphan tmp
+
+# 在新的分支中添加全部文件进去，并提交 commit
+git add .
+git commit -m "commit message"
+
+# 删除分支
+git branch -D master
+
+# 此时所处于的分支在 tmp 分支， 将 tmp 更名为 master
+git branch -m master
+
+# 强制推入远程仓库即可
+git push -f origin master
+```
+
+### 撤销修改
+
+``` bash
+# 只删除所有`untracked`的文件
+# 如果文件已经被`tracked`, 修改过的文件不会被回退
+git clean -df
+
+# 把`tracked`的文件回退到前一个版本
+# 对于`untracked`的文件(比如编译的临时文件)都不会被删除
+git reset --hard
+
+# 撤销指定未提交的修改内容
+git checkout HEAD <file>
+```
+
+### 文件夹大小写切换
+
+如果你提交了一个文件夹名为`FOO`，然后你现在想修改为小写的`foo`时，你会发现直接修改文件名`git`是不识别的。因为在默认情况下，`git`是不区分文件名大小写。
+
+这时有两个解决方法：
+
+**(不推荐)** 直接设置 `git config` 区分大小写，但弊端在不同平台下可能会引起别的问题。
+
+``` bash
+# 配置仓库的大小写敏感
+$ git config core.ignorecase false
+```
+
+**(推荐)** 通过 `git mv` 方法来改名。
+
+``` bash
+# 回避系统对大小写的判定，先修改为其他的名字, git 会将修改自动添加到工作区上
+$ git mv FOO FOO1
+
+# 再将名字修改回小写的状态，修改后的操作会自动添加到工作区上, 这样就完成了名字的修改
+$ git mv FOO1 foo
+
+# 提交修改
+$ git commit -m "Modify dir name"
+```
+
+### 保留空的文件夹
+
+在默认情况下，`git` 会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(名字是社区约定形成，也可以使用其他名字，原理上只是占个坑).
+
+不过`windows`平台下不能直接右键创建`.`开头的文件，系统会认为文件名不合法。这时需要使用命令行或者编辑器来完成创建。
+
+## 常见错误
+
+<details>
+<summary>常见错误</summary>
+
+在执行`git pull origin master`命令时，无法`pull`的情况。
 
 ``` bash
 $ git pull
@@ -162,7 +306,7 @@ git pull origin master --allow-unrelated-histories
 
 ---
 
-使用`git pull`遇到合并`commit`时，这时并不想因为合并代码多产生一条`commit`记录。这时将`commit`信息注释掉，`shift + :wq`退出。
+使用`git pull`遇到合并`commit`时，此时并不想因为合并代码多产生一条`commit`记录，可以将`commit`信息注释掉，`shift + :wq`退出。
 
 然后会因为自动合并失败后提示错误:
 
@@ -182,18 +326,26 @@ Applying: fix: fixed something
 $ git push
 ```
 
----
-
-合并失败, 放弃合并重新操作
-
-``` bash
-fatal: You are in the middle of a merge -- cannot amend.
-$ git merge --abort
-```
-
----
+</details>
 
 ## 其他
 
-1. 在默认情况下，git会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(这名字只是社区约定俗称的一个名称，换作其他名称都可以).  
-  一般都是通过命令行或者在一些编辑器下直接创建文件(windows不能直接创建`.`开头的文件，系统会认为文件名不合法)。
+<details>
+<summary>vim 常用命令</summary>
+
+在`vim`编辑器中，同时按住`shift + <命令>`即可操作对应的命令. 但按`a`进入插入模式。
+
+| 命令    | 说明                                           |
+| ------- | ---------------------------------------------- |
+| :q      | 不保存文件，退出 `vi(m)`                       |
+| :q!     | 不保存文件，强制退出 `vi(m)`                   |
+| :w      | 保存文件但不退出  `vi(m)`                      |
+| :w file | 将修改另外保存到 `file` 中，不退出 `vi(m)`     |
+| :w!     | 强制保存，不推出 `vi(m)`                       |
+| :wq     | 保存文件并退出 `vi(m)`                         |
+| :wq!    | 强制保存文件，并退出 `vi(m)`                   |
+| :e!     | 放弃所有修改，从上次保存文件开始再编辑命令历史 |
+
+[VIM中的保存和退出、VIM退出命令、如何退出vim编辑、VIM命令大全](https://www.jianshu.com/p/0009bf462f15)
+
+</details>

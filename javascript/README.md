@@ -35,6 +35,8 @@
     - [vuex](#vuex)
   - [React](#React)
   - [第三方库](#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93)
+  - [数据可视化](#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96)
+    - [bizcharts](#bizcharts)
 
 ## 代码简洁性
 
@@ -686,3 +688,9 @@ put 调用一个内部方法 -->
 - 高性能javascript
 - 高性能网站建设进阶指南
 - 高性能网站建设指南 -->
+
+## 数据可视化
+
+### bizcharts
+
+chart 图表使用`type: time`，数据量大了后刻度会不准，解决方法是将`type`替换为`timecat`，将日期转换为有序的分类数据。
