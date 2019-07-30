@@ -1,22 +1,23 @@
 # Git
 
-- [Git](#Git)
-  - [提交流程](#提交流程)
-  - [Add](#Add)
-  - [commit](#commit)
-    - [撤销还没 push 到远程的 commit](#撤销还没-push-到远程的-commit)
-    - [撤销已经 push 到远端的 commit](#撤销已经-push-到远端的-commit)
+- [Git](#git)
+  - [提交流程](#%e6%8f%90%e4%ba%a4%e6%b5%81%e7%a8%8b)
+  - [Add](#add)
+  - [Commit](#commit)
+    - [撤销还没 push 到远程的 commit](#%e6%92%a4%e9%94%80%e8%bf%98%e6%b2%a1-push-%e5%88%b0%e8%bf%9c%e7%a8%8b%e7%9a%84-commit)
+    - [撤销已经 push 到远端的 commit](#%e6%92%a4%e9%94%80%e5%b7%b2%e7%bb%8f-push-%e5%88%b0%e8%bf%9c%e7%ab%af%e7%9a%84-commit)
   - [branch and tag](#branch-and-tag)
   - [history](#history)
   - [remote](#remote)
-  - [操作指南](#操作指南)
-    - [初始化远程仓库](#初始化远程仓库)
-    - [清空项目的 commit 记录](#清空项目的-commit-记录)
-    - [撤销修改](#撤销修改)
-    - [文件夹大小写切换](#文件夹大小写切换)
-    - [保留空的文件夹](#保留空的文件夹)
-  - [常见错误](#常见错误)
-  - [其他](#其他)
+  - [Guide](#guide)
+    - [解决.git目录过大的问题](#%e8%a7%a3%e5%86%b3git%e7%9b%ae%e5%bd%95%e8%bf%87%e5%a4%a7%e7%9a%84%e9%97%ae%e9%a2%98)
+    - [初始化远程仓库](#%e5%88%9d%e5%a7%8b%e5%8c%96%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93)
+    - [清空项目的 commit 记录](#%e6%b8%85%e7%a9%ba%e9%a1%b9%e7%9b%ae%e7%9a%84-commit-%e8%ae%b0%e5%bd%95)
+    - [撤销修改](#%e6%92%a4%e9%94%80%e4%bf%ae%e6%94%b9)
+    - [文件夹大小写切换](#%e6%96%87%e4%bb%b6%e5%a4%b9%e5%a4%a7%e5%b0%8f%e5%86%99%e5%88%87%e6%8d%a2)
+    - [保留空的文件夹](#%e4%bf%9d%e7%95%99%e7%a9%ba%e7%9a%84%e6%96%87%e4%bb%b6%e5%a4%b9)
+  - [常见错误](#%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af)
+  - [其他](#%e5%85%b6%e4%bb%96)
 
 <details>
   <summary>常见术语解释</summary>
@@ -68,14 +69,19 @@ git push origin master develop
 
 ---
 
-## commit
+## Commit
 
 | 方法                        | 说明                                          |
 | --------------------------- | --------------------------------------------- |
 | git commit -m "`<message>`" | 为已经进入`stage(暂存的更改)`添加`commit`信息 |
 | git commit --amend          | 修改上一次提交的`commit`信息                  |
 
+---
+
 ### 撤销还没 push 到远程的 commit
+
+<details>
+<summary>Click show content</summary>
 
 ``` bash
 # 找到需要撤销的 commit 的`前一个` commit_hash(这步可以理解为找到定位的节点
@@ -95,7 +101,12 @@ git reset commit_hash
 git reset HEAD~1
 ```
 
+</details>
+
 ### 撤销已经 push 到远端的 commit
+
+<details>
+<summary>Click show content</summary>
 
 在使用`git`时，有时候我们会无意间错推了我们不想推上去的文件或者希望能够回退以前版本的时候.
 这时我们可以先在本地回退到相应的版本。
@@ -112,6 +123,8 @@ $ git reset --hard <版本号>
 # branch: 分支
 $ git push origin <branch> --force
 ```
+
+</details>
 
 ---
 
@@ -193,9 +206,66 @@ git push origin master
 git branch --set-upstream-to orgin/master
 ```
 
-## 操作指南
+## Guide
+
+### 解决.git目录过大的问题
+
+<details>
+<summary>Click show content</summary>
+
+> [如何解决 GitHub 提交次数过多 .git 文件过大的问题？ - 作者：郑宇](https://www.zhihu.com/question/29769130/answer/315745139)
+
+项目中上传了一些很大的文件(文件过大在`git cached`中占用了很大空间，可能是几百M)，经过了一段时间后又将这些文件移除，并且确定不在使用后，可以使用下面命令在树中移除它:
+
+1. 运行 gc ，生成 pack 文件（后面的 --prune=now 表示对之前的所有提交做修剪，有的时候仅仅 gc 一下.git 文件就会小很多）
+
+   ``` bash
+   git gc --prune=now
+   ```
+
+2. 找出最大的三个文件（看自己需要）
+
+   ``` bash
+   git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -3
+   # 示例输出：
+   #1debc758cf31a649c2fc5b0c59ea1b7f01416636 blob   4925660 3655422 14351
+   #c43a8da9476f97e84b52e0b34034f8c2d93b4d90 blob   154188651 152549294 12546842
+   #2272096493d061489349e0a312df00dcd0ec19a2 blob   155414465 153754005 1650961363
+   ```
+
+3. 查看那些大文件究竟是谁（c43a8da 是上面大文件的hash码）
+
+   ``` bash
+   $ git rev-list --objects --all | grep c43a8da
+   # c43a8da9476f97e84b52e0b34034f8c2d93b4d90 data/bigfile
+   ```
+
+4. 使用`git filter-branch`移除对文件的引用重写分支。因为我想删除的是一个目录(`Books`)，因此需要加上递归(`-r`)来移除`Book`文件夹下的文件.
+
+   ``` bash
+   git filter-branch --index-filter  'git rm -r --cached --ignore-unmatch Books' --prune-empty --tag-name-filter cat --force -- --all
+   ```
+
+5. 进行 `repack`
+
+   ``` bash
+   git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
+   git reflog expire --expire=now --all
+   git gc --prune=now
+   ```
+
+6. 查看 pack 的空间使用情况
+
+   ``` bash
+   git count-objects -v
+   ```
+
+</details>
 
 ### 初始化远程仓库
+
+<details>
+<summary>Click show content</summary>
 
 假设你已经在远程储存库上创建了新的库(`test`)，此时需要将本地项目的代码关联并推送到远程仓库上去:
 
@@ -216,10 +286,14 @@ git remote add origin git@github.com:anran758/test.git
 git push -u origin master
 ```
 
+</details>
 
 ### 清空项目的 commit 记录
 
 当一个项目已经存在久远，或者说`commit`记录有很多历史遗留的问题，分支线跟地铁图似得。此时你想重置 `git` 线时，可以这样做:
+
+<details>
+<summary>Click show code</summary>
 
 ``` bash
 # 先从远端克隆一份仓库，不要在原先本地项目直接进行操作
@@ -243,7 +317,13 @@ git branch -m master
 git push -f origin master
 ```
 
+</details>
+
 ### 撤销修改
+
+
+<details>
+<summary>Click show code</summary>
 
 ``` bash
 # 只删除所有`untracked`的文件
@@ -258,7 +338,12 @@ git reset --hard
 git checkout HEAD <file>
 ```
 
+</details>
+
 ### 文件夹大小写切换
+
+<details>
+<summary>Click show content</summary>
 
 如果你提交了一个文件夹名为`FOO`，然后你现在想修改为小写的`foo`时，你会发现直接修改文件名`git`是不识别的。因为在默认情况下，`git`是不区分文件名大小写。
 
@@ -284,11 +369,18 @@ $ git mv FOO1 foo
 $ git commit -m "Modify dir name"
 ```
 
+</details>
+
 ### 保留空的文件夹
+
+<details>
+<summary>Click show content</summary>
 
 在默认情况下，`git` 会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(名字是社区约定形成，也可以使用其他名字，原理上只是占个坑).
 
 不过`windows`平台下不能直接右键创建`.`开头的文件，系统会认为文件名不合法。这时需要使用命令行或者编辑器来完成创建。
+
+</details>
 
 ## 常见错误
 
