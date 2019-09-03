@@ -1,10 +1,6 @@
 # 移动端
 
-移动端的一些坑或者`bug`:
-
-1. ios和安卓下`z-index`的表现会不一样。
-
-## 常见 meta
+## Meta
 
 > [移动前端不得不了解的HTML5 head 头标签](https://www.html.cn/archives/6410)
 
@@ -74,3 +70,7 @@ SEO基础要素:
   docEl.style.fontSize = 100 * scale + 'px';
 </script>
 ```
+
+## 已知问题
+
+1. ios 和安卓下的 `z-index` 表现会不一致。

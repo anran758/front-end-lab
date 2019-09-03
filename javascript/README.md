@@ -2,41 +2,51 @@
 
 细节和技巧的交汇，本篇笔记主要用于速查。
 
-- [JavaScript](#JavaScript)
-  - [代码简洁性](#%E4%BB%A3%E7%A0%81%E7%AE%80%E6%B4%81%E6%80%A7)
-    - [科学计数法 E](#%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95-E)
-    - [三元操作符](#%E4%B8%89%E5%85%83%E6%93%8D%E4%BD%9C%E7%AC%A6)
-    - [逻辑运算符](#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6)
-    - [按位非(按位取反)](#%E6%8C%89%E4%BD%8D%E9%9D%9E%E6%8C%89%E4%BD%8D%E5%8F%96%E5%8F%8D)
-    - [位操作符](#%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6)
-  - [Array](#Array)
-    - [删除数组中指定元素](#%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0)
-    - [数组去重](#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D)
-    - [中文排序](#%E4%B8%AD%E6%96%87%E6%8E%92%E5%BA%8F)
-    - [数组扁平化](#%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96)
-    - [其他细节](#%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82)
-  - [Common](#Common)
-    - [判断原始类型](#%E5%88%A4%E6%96%AD%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B)
-    - [计算星座](#%E8%AE%A1%E7%AE%97%E6%98%9F%E5%BA%A7)
-    - [判断闰年函数](#%E5%88%A4%E6%96%AD%E9%97%B0%E5%B9%B4%E5%87%BD%E6%95%B0)
-  - [Data](#Data)
-  - [Number](#Number)
-    - [parseInt](#parseInt)
-    - [金额分隔](#%E9%87%91%E9%A2%9D%E5%88%86%E9%9A%94)
-    - [生成随机数](#%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0)
-    - [字符串转数字](#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97)
-  - [String](#String)
-    - [计算字符串长度](#%E8%AE%A1%E7%AE%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6)
-    - [截取字符串](#%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2)
-  - [Store](#Store)
+- [JavaScript](#javascript)
+  - [TODO](#todo)
+  - [代码简洁性](#%e4%bb%a3%e7%a0%81%e7%ae%80%e6%b4%81%e6%80%a7)
+    - [科学计数法 E](#%e7%a7%91%e5%ad%a6%e8%ae%a1%e6%95%b0%e6%b3%95-e)
+    - [三元操作符](#%e4%b8%89%e5%85%83%e6%93%8d%e4%bd%9c%e7%ac%a6)
+    - [逻辑运算符](#%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6)
+  - [Array](#array)
+    - [删除数组中指定元素](#%e5%88%a0%e9%99%a4%e6%95%b0%e7%bb%84%e4%b8%ad%e6%8c%87%e5%ae%9a%e5%85%83%e7%b4%a0)
+    - [数组去重](#%e6%95%b0%e7%bb%84%e5%8e%bb%e9%87%8d)
+    - [中文排序](#%e4%b8%ad%e6%96%87%e6%8e%92%e5%ba%8f)
+    - [数组扁平化](#%e6%95%b0%e7%bb%84%e6%89%81%e5%b9%b3%e5%8c%96)
+    - [其他细节](#%e5%85%b6%e4%bb%96%e7%bb%86%e8%8a%82)
+  - [Common](#common)
+    - [判断原始类型](#%e5%88%a4%e6%96%ad%e5%8e%9f%e5%a7%8b%e7%b1%bb%e5%9e%8b)
+    - [计算星座](#%e8%ae%a1%e7%ae%97%e6%98%9f%e5%ba%a7)
+    - [判断闰年函数](#%e5%88%a4%e6%96%ad%e9%97%b0%e5%b9%b4%e5%87%bd%e6%95%b0)
+  - [Number](#number)
+    - [parseInt](#parseint)
+    - [金额分隔](#%e9%87%91%e9%a2%9d%e5%88%86%e9%9a%94)
+    - [生成随机数](#%e7%94%9f%e6%88%90%e9%9a%8f%e6%9c%ba%e6%95%b0)
+    - [字符串转数字](#%e5%ad%97%e7%ac%a6%e4%b8%b2%e8%bd%ac%e6%95%b0%e5%ad%97)
+  - [String](#string)
+    - [计算字符串长度](#%e8%ae%a1%e7%ae%97%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%95%bf%e5%ba%a6)
+    - [截取字符串](#%e6%88%aa%e5%8f%96%e5%ad%97%e7%ac%a6%e4%b8%b2)
+  - [Store](#store)
+  - [存取数据](#%e5%ad%98%e5%8f%96%e6%95%b0%e6%8d%ae)
     - [cookie](#cookie)
-  - [Date](#Date)
-  - [Vue](#Vue)
+  - [Date](#date)
+  - [Vue](#vue)
     - [vuex](#vuex)
-  - [React](#React)
-  - [第三方库](#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93)
-  - [数据可视化](#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96)
+  - [React](#react)
+  - [第三方库](#%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93)
+  - [数据可视化](#%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96)
     - [bizcharts](#bizcharts)
+
+## TODO
+
+我记得当初自学学完 `js` 语法后是比较茫然的，什么都看过了一遍，但又感觉好像还是什么都不懂。
+
+实际上这是熟练度不高的一种表现，如果你已经学习完 `js` 的语法。这时你可以来做一些 Demo 来验证你的学习成果。
+
+比如下面完成下面的小应用能提高你对应 API 熟练度。demo 列表后续还会有所补充，未来有空也会把参考 demo 发布至博客中。
+
+- [ ] 日历: 考验对 `Date` 对象的使用。
+- [ ] 简单的四则计算器: 考验对处理**浮点数溢出**的能力、`Math` 的使用等。
 
 ## 代码简洁性
 
@@ -46,9 +56,9 @@
 
 似乎很多人都不爱用`js`的科学计数法，但实际上科学计数法用来表示大数字能使代码显得很简洁易读，如下：
 
-``` javascript
-console.log(1000000000 === 1e+9);  // true
-console.log(1e+9 * 4);             // 4000000000
+```javascript
+console.log(1000000000 === 1e9); // true
+console.log(1e9 * 4); // 4000000000
 ```
 
 两者对比就能看出差异，而且科学计数法也能做同等的运算。
@@ -63,9 +73,9 @@ const age = 16;
 // bad
 let hint = '';
 if (age >= 18) {
-    hint = '欢迎打开新世界(';
+  hint = '欢迎打开新世界(';
 } else {
-    hint = '嘿, 未成年不得入内!';
+  hint = '嘿, 未成年不得入内!';
 }
 
 // good
@@ -84,7 +94,7 @@ container.addEventListener('mouseup', () => (ismoving = false));
 
 // if 语句
 container.addEventListener('mousemove', () => {
-    if (isMoving) handleMove();
+  if (isMoving) handleMove();
 });
 
 // && 操作符. 前者为 true 的话, 就调用函数
@@ -93,7 +103,12 @@ container.addEventListener('mousemove', () => isMoving && handleMove());
 // || 操作符则相反，只要前面的值为true，就不继续往后走了
 ```
 
-### 按位非(按位取反)
+<details>
+<summary>不再建议使用的编程技巧</summary>
+
+下面是一些简洁但可读性不太高的一些编程技巧，在 `eslint` 中已经不建议使用。但可以了解一下：
+
+**按位非(按位取反):**
 
 对任一数值`x`进行按位非操作的结果为`-(x + 1)`.
 
@@ -110,7 +125,7 @@ console.log(~-1); // 0
 names.some(name => ~linkName.indexOf(name));
 ```
 
-### 位操作符
+**位操作符:**
 
 利用按位或 `|` 向下取整:
 
@@ -131,6 +146,8 @@ console.log(~~50.1234 / 10); // 5
 console.log(50.1234 | (0 / 10)); // 50
 console.log((50.1234 | 0) / 10); // 5
 ```
+
+</details>
 
 ---
 
@@ -162,7 +179,7 @@ let newarr = [...new Set(arr)];
 
 ```javascript
 ['张三', '李四', '王五'].sort((a, b) =>
-    a.localeCompare(b, 'zh-Hans-CN', { sensitivity: 'accent' })
+  a.localeCompare(b, 'zh-Hans-CN', { sensitivity: 'accent' })
 );
 ```
 
@@ -170,35 +187,38 @@ let newarr = [...new Set(arr)];
 
 二维数组扁平化
 
-``` javascript
-const arr = [[1, 2, 3], [4, 5], [7, 8, 9], 10, null, undefined, {}]
-const newArr = arr.reduce((p, n) => Array.isArray(n) ? p.concat(n) : (p.push(n), p), [])
+```javascript
+const arr = [[1, 2, 3], [4, 5], [7, 8, 9], 10, null, undefined, {}];
+const newArr = arr.reduce(
+  (p, n) => (Array.isArray(n) ? p.concat(n) : (p.push(n), p)),
+  []
+);
 
-console.log(newArr);    // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
+console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
 ```
 
 **[ES6+]** 多维数组扁平化
 
-``` javascript
+```javascript
 function flatten(arr) {
-    const newArr = arr.map(item => Array.isArray(item) ? flatten(item) : item);
-    return [].concat(...newArr);
+  const newArr = arr.map(item => (Array.isArray(item) ? flatten(item) : item));
+  return [].concat(...newArr);
 }
 
-const arr = [[1, 2, 3], [4, 5], [7, [8, [9]]], 10, null, undefined, {}]
+const arr = [[1, 2, 3], [4, 5], [7, [8, [9]]], 10, null, undefined, {}];
 const newArr = flatten(arr);
 
-console.log(newArr);  // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
+console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
 ```
 
 ### 其他细节
 
 `map`和`forEach`的区别:
 
-| 方法      | 相同之处         | 不同之处                                                                                                                  |
-| --------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `map`     | 同样用于遍历数组 | `map`对每项调用的函数后会取得函数的返回值，并推入新的数组中去(意味着可以链式调用)。<br>但是这个方法只有数组才能使用。     |
-| `forEach` | 同样用于遍历数组 | `forEach`单纯对数组中每一项调用回调函数，不作其他操作。<br>该方法并不是只有数组能用，部分类数组(如NodeList)也有这个方法。 |
+| 方法      | 相同之处         | 不同之处                                                                                                                   |
+| --------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `map`     | 同样用于遍历数组 | `map`对每项调用的函数后会取得函数的返回值，并推入新的数组中去(意味着可以链式调用)。<br>但是这个方法只有数组才能使用。      |
+| `forEach` | 同样用于遍历数组 | `forEach`单纯对数组中每一项调用回调函数，不作其他操作。<br>该方法并不是只有数组能用，部分类数组(如 NodeList)也有这个方法。 |
 
 > 你知道吗？
 
@@ -215,29 +235,26 @@ console.log(newArr);  // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
 ```javascript
 // 目标是否是对象
 function isObject(obj) {
-    return Object.prototype.toString.call(obj) === '[object Object]';
+  return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
 // 使用同样的方法进行测试, 结果如下:
-Object.prototype.toString.call([]);              // [object Array]
-Object.prototype.toString.call(null);            // [object Null]
-Object.prototype.toString.call('12');            // [object String]
-Object.prototype.toString.call(NaN);             // [object Number]. 注意, NaN 是属于数字类型
-Object.prototype.toString.call(345);             // [object Number]
-Object.prototype.toString.call(undefined);       // [object Undefined]
-Object.prototype.toString.call(Symbol())         // [object Symbol]
-Object.prototype.toString.call(function() {})    // [object Function]
+Object.prototype.toString.call([]); // [object Array]
+Object.prototype.toString.call(null); // [object Null]
+Object.prototype.toString.call('12'); // [object String]
+Object.prototype.toString.call(NaN); // [object Number]. 注意, NaN 是属于数字类型
+Object.prototype.toString.call(345); // [object Number]
+Object.prototype.toString.call(undefined); // [object Undefined]
+Object.prototype.toString.call(Symbol()); // [object Symbol]
+Object.prototype.toString.call(function() {}); // [object Function]
 
 // 根据上述规则，可以对字符串进行操作
 // 获取基础类型
 function getBaseType(target) {
-    const typeStr = Object.prototype.toString
-        .call(target)
-        .toLocaleLowerCase();
+  const typeStr = Object.prototype.toString.call(target).toLocaleLowerCase();
 
-    return typeStr.slice(8, -1);
+  return typeStr.slice(8, -1);
 }
-
 ```
 
 ### 计算星座
@@ -250,10 +267,10 @@ function getBaseType(target) {
  * @desc 返回星座名
  */
 function getAstro(m, d) {
-    return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
-        m * 2 - (d < '102223444433'.charAt(m - 1) - -19) * 2,
-        2
-    );
+  return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
+    m * 2 - (d < '102223444433'.charAt(m - 1) - -19) * 2,
+    2
+  );
 }
 ```
 
@@ -261,32 +278,23 @@ function getAstro(m, d) {
 
 判断闰年其实只要满足下面几个条件即可:
 
-- 普通年**能被4整除**且**不能被100整除**的为闰年。如2004年就是闰年,1900年不是闰年
-- **世纪年**能被**400整除**的是闰年。如2000年是闰年，1900年不是闰年
+- 普通年**能被 4 整除**且**不能被 100 整除**的为闰年。如 2004 年就是闰年,1900 年不是闰年
+- **世纪年**能被**400 整除**的是闰年。如 2000 年是闰年，1900 年不是闰年
 
-``` javascript
+```javascript
 /**
  * 判断闰年函数
  * @param  {number} year 要判断的年份
  * @return {bool} 返回布尔值
  */
 function leapYear(year) {
-    return !(year % (year % 100 ? 4 : 400));
+  return !(year % (year % 100 ? 4 : 400));
 }
 ```
 
 > 你知道吗？
 
 - 很多编译器在压缩代码的时候，喜欢用`!0`和`!1`来代替布尔值`false`和`true`。因为可以有效减少文件体积, 但会破坏可读性。
-
----
-
-## Data
-
-使用`localStorage`的时候需要对数据进行一些处理：
-
-- 存入数据时对目标值转为合法的 JSON 值，`localStorage.setItem('name', JSON.stringify(name))`
-- 读取数据后对 JSON 值进行解析取得目标值，`JSON.parse(localStorage.getItem('name'))`
 
 ---
 
@@ -305,8 +313,8 @@ parseInt('08', 10); // 8
 
 还有一个常见的问题就是，不能直接将`parseInt`作为数组`map`的回调函数，因为两者所传(接受)的形参的用途不一:
 
-``` javascript
-[1,2,3].map(parseInt);       // [1, NaN, NaN]
+```javascript
+[1, 2, 3].map(parseInt); // [1, NaN, NaN]
 ```
 
 [parseInt(string, radix)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt) 函数解析一个字符串参数，并返回一个指定基数的整数;
@@ -323,15 +331,15 @@ parseInt('08', 10); // 8
  * @returns 返回格式化后的数字
  */
 function numberWithCommas(n) {
-    // 正则解释: 匹配到 \B(非单词边界)后, 后面要匹配到 (\d{3})+(?!\d)
-    // (\d{3})+ 至少匹配到一次或多次三个数字
-    // (?!\d) 同时后面不是数字的话, 就匹配.
-    // 注意, 后面的(?=)那一段代码只是判断的规则, 匹配到后只替换掉\B
-    // 而\B 元字符匹配的是非单词边界
+  // 正则解释: 匹配到 \B(非单词边界)后, 后面要匹配到 (\d{3})+(?!\d)
+  // (\d{3})+ 至少匹配到一次或多次三个数字
+  // (?!\d) 同时后面不是数字的话, 就匹配.
+  // 注意, 后面的(?=)那一段代码只是判断的规则, 匹配到后只替换掉\B
+  // 而\B 元字符匹配的是非单词边界
 
-    let num = n.toString().split('.');
-    num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return num.join('.');
+  let num = n.toString().split('.');
+  num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return num.join('.');
 }
 
 console.log(numberWithCommas(12345678912.123)); // "12,345,678,912.1234"
@@ -353,7 +361,7 @@ console.log(numberWithCommas(12345678912.123)); // "12,345,678,912.1234"
  * @returns 返回指定范围内的随机数
  */
 function randomTime(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
+  return Math.round(Math.random() * (max - min) + min);
 }
 ```
 
@@ -374,17 +382,17 @@ function randomTime(min, max) {
 
 ```javascript
 String.prototype.strLen = function() {
-    var len = 0;
-    for (var i = 0; i < this.length; i++) {
-        if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2;
-        else len++;
-    }
-    return len;
+  var len = 0;
+  for (var i = 0; i < this.length; i++) {
+    if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2;
+    else len++;
+  }
+  return len;
 };
 
 //判断某个字符是否是汉字
 String.prototype.isCHS = function(i) {
-    return this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0;
+  return this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0;
 };
 ```
 
@@ -393,37 +401,44 @@ String.prototype.isCHS = function(i) {
 ```javascript
 // 将字符串拆成字符，并存到数组中
 String.prototype.strToChars = function() {
-    var chars = [];
-    for (var i = 0; i < this.length; i++) {
-        chars[i] = [this.substr(i, 1), this.isCHS(i)];
-    }
-    String.prototype.charsArray = chars;
-    return chars;
+  var chars = [];
+  for (var i = 0; i < this.length; i++) {
+    chars[i] = [this.substr(i, 1), this.isCHS(i)];
+  }
+  String.prototype.charsArray = chars;
+  return chars;
 };
 
 // 截取字符串（从start字节到end字节）
 String.prototype.subCHString = function(start, end) {
-    var len = 0;
-    var str = '';
-    this.strToChars();
-    for (var i = 0; i < this.length; i++) {
-        if (this.charsArray[i][1]) len += 2;
-        else len++;
-        if (end < len) return str;
-        else if (start < len) str += this.charsArray[i][0];
-    }
-    return str;
+  var len = 0;
+  var str = '';
+  this.strToChars();
+  for (var i = 0; i < this.length; i++) {
+    if (this.charsArray[i][1]) len += 2;
+    else len++;
+    if (end < len) return str;
+    else if (start < len) str += this.charsArray[i][0];
+  }
+  return str;
 };
 
 // 截取字符串（从start字节截取length个字节）
 String.prototype.subCHStr = function(start, length) {
-    return this.subCHString(start, start + length);
+  return this.subCHString(start, start + length);
 };
 ```
 
 ---
 
 ## Store
+
+## 存取数据
+
+使用`localStorage`的时候需要对数据进行一些处理：
+
+- 存入数据时对目标值转为合法的 JSON 值，`localStorage.setItem('name', JSON.stringify(name))`
+- 读取数据后对 JSON 值进行解析取得目标值，`JSON.parse(localStorage.getItem('name'))`
 
 ### cookie
 
@@ -437,13 +452,13 @@ String.prototype.subCHStr = function(start, length) {
 
 创建一个新的`Cookie`的语法格式是:
 
-``` javascript
+```javascript
 document.cookie = newCookie;
 ```
 
 当对`document.cookie`进行赋值操作时，该属性会调用它底层所绑定的函数来设置`cookie`。其中`newCookie`是一个键值对的字符串，其格式如下:
 
-``` javascript
+```javascript
 // 语法格式
 document.cookie = key=value[
     ;path=path |
@@ -481,60 +496,60 @@ document.cookie = 'nickname=anran758;path=/;max-age=31536000'
 
 了解了`cookies`的规则之后，我们需要对它进一步的封装以便在实际应用中使用：
 
-``` javascript
+```javascript
 const tools = {
-    /**
-     * 读取 cookies
-     * @param name - cookie 名，不传拿全部
-     */
-    cookieGet(name) {
-        const cookies = document.cookie.split(';').map(item => {
-            const [key, value] = item.trim().split('=')
-            return { key, value };
-        });
+  /**
+   * 读取 cookies
+   * @param name - cookie 名，不传拿全部
+   */
+  cookieGet(name) {
+    const cookies = document.cookie.split(';').map(item => {
+      const [key, value] = item.trim().split('=');
+      return { key, value };
+    });
 
-        if (!name) return cookies;
+    if (!name) return cookies;
 
-        const cookie = cookies.find(item => item.key === name);
-        return cookie ? cookie.value :  null;
-    },
+    const cookie = cookies.find(item => item.key === name);
+    return cookie ? cookie.value : null;
+  },
 
-    /**
-     * 设置cookie
-     * @param name - cookie 名
-     * @param value - cookie 值
-     * @param days - 几天后过期
-     * @param domain - 该 cookie 在哪些域名下可用
-     * @param path - 指定 cookie 路径
-     */
-    cookieSet(name, value, days, domain, path = '/') {
-        if (!name || !value) return false;
+  /**
+   * 设置cookie
+   * @param name - cookie 名
+   * @param value - cookie 值
+   * @param days - 几天后过期
+   * @param domain - 该 cookie 在哪些域名下可用
+   * @param path - 指定 cookie 路径
+   */
+  cookieSet(name, value, days, domain, path = '/') {
+    if (!name || !value) return false;
 
-        let cookie = `${name}=${value}`
-        if (days === 0 || days) {
-            const date = new Date();
-            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-            cookie += `; expires=${date.toGMTString()}`;
-        }
+    let cookie = `${name}=${value}`;
+    if (days === 0 || days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      cookie += `; expires=${date.toGMTString()}`;
+    }
 
-        if (domain) cookie += `; domain=${domain}`
-        if (path) cookie += `; path=${path}`
-        document.cookie = cookie;
+    if (domain) cookie += `; domain=${domain}`;
+    if (path) cookie += `; path=${path}`;
+    document.cookie = cookie;
 
-        return true
-    },
-}
+    return true;
+  }
+};
 
 // 查询 cookie
-tools.cookieGet('nickName')     // null
+tools.cookieGet('nickName'); // null
 
 // 设置 cookie
-tools.cookieSet('nickName', 'anran758')     // true
-tools.cookieGet('nickName')     // "anran758"
+tools.cookieSet('nickName', 'anran758'); // true
+tools.cookieGet('nickName'); // "anran758"
 
 // 清除 cookie
-tools.cookieSet('nickName', 'anran758', 0)  // true
-tools.cookieGet('nickName')     // null
+tools.cookieSet('nickName', 'anran758', 0); // true
+tools.cookieGet('nickName'); // null
 ```
 
 具体更多有关`cookies`信息可以戳[MDN - Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
@@ -547,11 +562,11 @@ tools.cookieGet('nickName')     // null
 
 ```javascript
 function setFullDate(day) {
-    let start = new Date().setHours(0, 0, 0, 0);
-    let end = new Date().setHours(23, 59, 59, 999);
-    let base = 24 * 60 * 60 * 1000;
+  let start = new Date().setHours(0, 0, 0, 0);
+  let end = new Date().setHours(23, 59, 59, 999);
+  let base = 24 * 60 * 60 * 1000;
 
-    return [start - day * base, end];
+  return [start - day * base, end];
 }
 ```
 
@@ -562,48 +577,58 @@ function setFullDate(day) {
 一些常见的问题
 
 1. 如果给子组件设置`v-if`的话，那么 vue 会在切换过程中将条件块内的事件监听器和子组件适当地被销毁和重建。也就是说就算里面用了`watch`也会失效。
-2. 如果组件不是通过`new Vue`这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
 
-    ```javascript
-    // 这种会报错
-    export default {
-      template: '<div>{{text}}</div>',
-      data: {
-        text: 'hello'
-      }
-    }
+1. 如果组件不是通过`new Vue`这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
 
-    // 下面两者都不会
-    new Vue({
-      el: '#root',
-      template: '<div>{{text}}</div>',
-      data: {
-        text: '123'
-      }
-    })
+   ```javascript
+   // 这种会报错
+   export default {
+     template: '<div>{{text}}</div>',
+     data: {
+       text: 'hello'
+     }
+   }
 
-    export default {
-      template: '<div>{{text}}</div>',
-      data () {
-        return {
-          text: 'hello'
-        }
-      }
-    }
-    ```
+   // 下面两者都不会
+   new Vue({
+     el: '#root',
+     template: '<div>{{text}}</div>',
+     data: {
+       text: '123'
+     }
+   })
 
-3. 在父组件的`created`钩子上进行赋值操作的话，数值的变化是传不到子组件的`watch`里的。
-4. 实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。
+   export default {
+     template: '<div>{{text}}</div>',
+     data () {
+       return {
+         text: 'hello'
+       }
+     }
+   }
+   ```
+
+1. 在父组件的`created`钩子上进行赋值操作的话，数值的变化是传不到子组件的`watch`里的。
+
+1. 实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。
    通常我们会通过`this.$emit('postHandle', data)`这种形式去激活，通知父级更改。
-5. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
-6. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。
+
+1. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
+
+1. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。
    但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
 
 ### vuex
 
-vuex 的 commit mutation是一个同步的方法，而 Action 通过`store.dispatch`方法触发的是一个异步的方法。
-<!-- 
+vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.dispatch`方法触发的是一个异步的方法。
+
 ## React
+
+- [ ] React 生命周期各钩子使用场景总结
+- [ ] redux、redux-sage 总结
+- [ ] router 相关总结
+
+<!--
 
 在项目架构时, React 相比 vue 会更灵活一些，在遇到非常复杂的业务时倾向于使用 React, 它的技术方案会更多一点选择, vue 则提供了更丰富的 API 实现功能会更简单，但相对来说缺少一定的灵活性，存在一定的限制。
 
@@ -636,7 +661,15 @@ componentWillMount 在组件即将被挂载到页面的时刻自动执行，只�
 render 页面被渲染时
 componentDidMount 在组件被挂载到页面后自动执行，只会在第一次会执行
 
-shouleComponentUpdate 组件被更新之前，它会自动被执行
+static getDerivedStateFromProps(props, state)
+
+getDerivedStateFromProps 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
+
+## shouldComponentUpdate
+
+shouldComponentUpdate 组件被更新之前，它会自动被执行,如果 shouldComponentUpdate() 返回 false，则不会调用 render(),
+
+如果 shouldComponentUpdate() 返回值为 false，则不会调用 componentDidUpdate()。
 
 redux-sage
 
@@ -646,9 +679,12 @@ put 调用一个内部方法 -->
 
 > 比较好使的第三方库
 
-| name        | 用途           | npm |
-| ----------- | -------------- | --- |
-| node-qrcode | 用以生成二维码 | Y   |
+| name        | 用途                             | npm 是否存在 |
+| ----------- | -------------------------------- | ------------ |
+| node-qrcode | 用以生成二维码                   | Y            |
+| xlsx        | excel 之类的表格处理，如导入导出 | Y            |
+| moment      | 专门处理 date 的操作             | Y            |
+| lodash      | JavaScript 的实用工具库          | Y            |
 
 ---
 
@@ -680,14 +716,6 @@ put 调用一个内部方法 -->
             methods: {/* ... */}
         })
     ``` -->
-
-<!-- ## 性能相关
-
-性能相关的内容以及有很多前辈有了丰富的经验，这里可以推荐几本关于性能的书，系统全面的了解一下会比单独拿片段出来讲会好很多。
-
-- 高性能javascript
-- 高性能网站建设进阶指南
-- 高性能网站建设指南 -->
 
 ## 数据可视化
 
