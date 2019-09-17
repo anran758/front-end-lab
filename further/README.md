@@ -38,12 +38,6 @@
 
 - [Respond](https://github.com/scottjehl/Respond) - 让`IE6 ~ 8`支持媒体查询其中的 min/max-width 能让这些老旧的浏览器提供一些有限的支持.
 
-## test
-
-UI测试：
-
-- selenium-webdriver
-
 ## 扩展知识
 
 ### 百科类

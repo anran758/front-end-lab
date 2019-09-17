@@ -9,6 +9,7 @@
   - [branch and tag](#branch-and-tag)
   - [history](#history)
   - [remote](#remote)
+    - [合并两个不同仓库的 commit](#%e5%90%88%e5%b9%b6%e4%b8%a4%e4%b8%aa%e4%b8%8d%e5%90%8c%e4%bb%93%e5%ba%93%e7%9a%84-commit)
   - [Guide](#guide)
     - [解决.git目录过大的问题](#%e8%a7%a3%e5%86%b3git%e7%9b%ae%e5%bd%95%e8%bf%87%e5%a4%a7%e7%9a%84%e9%97%ae%e9%a2%98)
     - [初始化远程仓库](#%e5%88%9d%e5%a7%8b%e5%8c%96%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93)
@@ -18,6 +19,8 @@
     - [保留空的文件夹](#%e4%bf%9d%e7%95%99%e7%a9%ba%e7%9a%84%e6%96%87%e4%bb%b6%e5%a4%b9)
   - [常见错误](#%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af)
   - [其他](#%e5%85%b6%e4%bb%96)
+    - [更改项目中作者信息](#%e6%9b%b4%e6%94%b9%e9%a1%b9%e7%9b%ae%e4%b8%ad%e4%bd%9c%e8%80%85%e4%bf%a1%e6%81%af)
+    - [vim 常用命令](#vim-%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
 
 <details>
   <summary>常见术语解释</summary>
@@ -204,6 +207,30 @@ git push -u origin master
 # or
 git push origin master
 git branch --set-upstream-to orgin/master
+```
+
+### 合并两个不同仓库的 commit
+
+首先我们有两个仓库: `repo1` 和 `repo2`. `repo1` 是我们想要保留的仓库：
+
+``` bash
+# 添加远程地址
+git remote add repo2 git@github.com:anran758/repo2.git
+
+# 拉取代码
+git fetch repo2
+
+# 切换至 master 分支
+git checkout master
+
+# 合并 repo2 的 master
+# 由于两个 master 分支的 commit 会有所不同，此时需要添加：
+# --allow-unrelated-histories, 允许 git 合并不相关的历史，其余有冲突让我们手动确认
+git merge repo2/master --allow-unrelated-histories
+
+# 合并冲突、后提交 commit
+git commit -m "chg: 合并两个仓库的历史"
+git push
 ```
 
 ## Guide
@@ -422,8 +449,13 @@ $ git push
 
 ## 其他
 
-<details>
-<summary>vim 常用命令</summary>
+### 更改项目中作者信息
+
+[git 更改作者信息](https://help.github.com/en/articles/changing-author-info)
+
+### vim 常用命令
+
+> [VIM中的保存和退出、VIM退出命令、如何退出vim编辑、VIM命令大全](https://www.jianshu.com/p/0009bf462f15)
 
 在`vim`编辑器中，同时按住`shift + <命令>`即可操作对应的命令. 但按`a`进入插入模式。
 
@@ -437,7 +469,3 @@ $ git push
 | :wq     | 保存文件并退出 `vi(m)`                         |
 | :wq!    | 强制保存文件，并退出 `vi(m)`                   |
 | :e!     | 放弃所有修改，从上次保存文件开始再编辑命令历史 |
-
-[VIM中的保存和退出、VIM退出命令、如何退出vim编辑、VIM命令大全](https://www.jianshu.com/p/0009bf462f15)
-
-</details>
