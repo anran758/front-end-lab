@@ -5,7 +5,7 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/watchers)
 [![CRAN/METACRAN](https://img.shields.io/cran/l/devtools.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab)
 
-:art: 将曾经踩过的坑、常用的解决方案还有一些待完成的想法记录下来，完善自己的知识库。
+:art: 将曾经踩过的坑、常用的解决方案还有一些待完成的想法记录下来，完善自己的知识库。更新的内容取决于最近工作接触的东西~
 
 ---
 
@@ -18,7 +18,7 @@
 - [ ] Node.js
 - [ ] 数据结构
 - [ ] 数据可视化(D2, D6, echart 等)
-- [ ] 常用库整理
+- [ ] 针对特定业务需求的库整理
 
 ---
 
@@ -54,9 +54,19 @@
 :construction: 待完善
 
 - [HTML](./html)
-- [移动端解决方案](./mobile)
+- [移动端开发解决方案](./mobile)
 
 ## 专栏与博客
 
 - [anran758's blog](https://anran758.github.io/blog/): 业务场景的分析与解决方案、计算机相关的笔记、简单的教程等。
 - [专栏 | 初级前端工程师的进阶之路](https://zhuanlan.zhihu.com/c_1147180666474176512): 专门针对初级工程师进阶时常遇到的一些问题专辑。
+
+## 浏览器机制
+
+[JavaScript ASI 机制详解](https://segmentfault.com/a/1190000004548664)
+
+这篇文章可以解释写 js 时不加分号什么情况下会报错，什么情况下不会报错。
+
+[浏览器的回流与重绘](https://anran758.github.io/blog/2018/01/15/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E6%B1%87/)
+
+[浏览器页面渲染过程](https://anran758.github.io/blog/2018/04/06/URL-to-browser/)

@@ -48,21 +48,24 @@
 
 ### 工具类
 
-- 性能相关
-  - [webpagetest](www.webpagetest.org): 网页性能测试
-  - [jsperf](https://jsperf.com/): 可以在不同的浏览器测试`JavaScript`的性能
-  - [csstriggers](https://csstriggers.com/): 一个CSS属性影响渲染的参考表(回流与重绘)
-- css
-  - [css动画库](http://elrumordelaluz.github.io/csshake/)
-  - [stylie](http://jeremyckahn.github.io/stylie/): css3贝塞尔曲线可视化工具
-- tools
-  - [草料二维码](https://cli.im/)
-  - [tinypng](https://tinypng.com/): 压缩图片
-  - [在线工具](http://tool.oschina.net/encrypt?type=3): 在线加解密, 转base64等
-  - [jsbin](http://jsbin.com/?js,console,output): 在线编辑器, 可以将自己的代码保存发给别人
-  - [可视化正则表达式](https://regexper.com/) 将正则表达式转为可视化图表, 让你一眼能看懂这段正则是干啥的
-- UI
-  - [loading](https://loading.io/)
+性能相关：
+
+- [webpagetest](www.webpagetest.org): 网页性能测试
+- [jsperf](https://jsperf.com/): 可以在不同的浏览器测试 `JavaScript` 的性能
+- [csstriggers](https://csstriggers.com/): 一个CSS属性影响渲染的参考表(回流与重绘)
+
+CSS
+
+- [css动画库](http://elrumordelaluz.github.io/csshake/)
+- [stylie](http://jeremyckahn.github.io/stylie/): css3贝塞尔曲线可视化工具
+
+在线工具
+
+- [草料二维码](https://cli.im/)
+- [tinypng](https://tinypng.com/): 压缩图片
+- [在线工具](http://tool.oschina.net/encrypt?type=3): 在线加解密, 转base64等
+- [jsbin](http://jsbin.com/?js,console,output): 在线编辑器, 可以将自己的代码保存发给别人
+- [可视化正则表达式](https://regexper.com/) 将正则表达式转为可视化图表, 让你一眼能看懂这段正则是干啥的
 
 ### 学习资源
 
@@ -71,12 +74,9 @@
   - [JavaScript Web Quiz](http://davidshariff.com/js-quiz/#): 测试你的javascript水平(面试题)
   - [freeCodeCamp](https://freecodecamp.cn/home)知名题目, 主要让你认识API的使用
   - [牛客网](https://www.nowcoder.com/): 知名题库, 不过题目大多有点老
+
 - 关于性能
   - [前端优化：雅虎35条](http://blog.csdn.net/magneto7/article/details/53140269)
-
-### 浏览器机制
-
-- [ASI机制](https://segmentfault.com/a/1190000004548664) - ASI机制
 
 ### 推荐书单
 

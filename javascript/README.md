@@ -30,9 +30,13 @@
   - [存取数据](#%e5%ad%98%e5%8f%96%e6%95%b0%e6%8d%ae)
     - [cookie](#cookie)
   - [Date](#date)
-  - [Vue](#vue)
-    - [vuex](#vuex)
-  - [React](#react)
+  - [技术栈](#%e6%8a%80%e6%9c%af%e6%a0%88)
+    - [Vue](#vue)
+      - [vuex](#vuex)
+    - [React](#react)
+      - [React 与 Vue 的选择](#react-%e4%b8%8e-vue-%e7%9a%84%e9%80%89%e6%8b%a9)
+      - [注意事项与技巧](#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e4%b8%8e%e6%8a%80%e5%b7%a7)
+    - [小程序](#%e5%b0%8f%e7%a8%8b%e5%ba%8f)
   - [第三方库](#%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93)
   - [数据可视化](#%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96)
     - [bizcharts](#bizcharts)
@@ -572,13 +576,17 @@ function setFullDate(day) {
 
 ---
 
-## Vue
+## 技术栈
 
-一些常见的问题
+根据目前主流框架进行划分技术栈。
+
+### Vue
+
+开发常见问题
 
 1. 如果给子组件设置`v-if`的话，那么 vue 会在切换过程中将条件块内的事件监听器和子组件适当地被销毁和重建。也就是说就算里面用了`watch`也会失效。
 
-1. 如果组件不是通过`new Vue`这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
+2. 如果组件不是通过`new Vue`这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
 
    ```javascript
    // 这种会报错
@@ -608,45 +616,42 @@ function setFullDate(day) {
    }
    ```
 
-1. 在父组件的`created`钩子上进行赋值操作的话，数值的变化是传不到子组件的`watch`里的。
+3. 在父组件的`created`钩子上进行赋值操作的话，数值的变化是传不到子组件的`watch`里的。
+4. 实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。<br>通常我们会通过`this.$emit('postHandle', data)`这种形式去激活，通知父级更改。
+5. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
+6. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。<br>但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
 
-1. 实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。
-   通常我们会通过`this.$emit('postHandle', data)`这种形式去激活，通知父级更改。
-
-1. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
-
-1. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。
-   但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
-
-### vuex
+#### vuex
 
 vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.dispatch`方法触发的是一个异步的方法。
 
-## React
+---
+
+### React
 
 - [ ] React 生命周期各钩子使用场景总结
 - [ ] redux、redux-sage 总结
 - [ ] router 相关总结
 
+#### React 与 Vue 的选择
+
+在项目架构时, React 相比 Vue 会更灵活一些，在遇到非常复杂的业务时倾向于使用 React, 它的技术方案会更多一点选择；vue 则提供了更丰富的 API 实现功能会更简单，但相对来说缺少一定的灵活性，存在一定的限制。
+
+#### 注意事项与技巧
+
+1. react 组件需要以大写字母开头的标签才能正常解析
+1. react 是响应式框架，只需要关心数据
+1. react 绑定事件名是驼峰式
+1. react 不允许直接修改 state 的数据，因为会对性能有影响
+1. react 是单向数据流，是视图层框架，只解决视图和数据渲染方面
+1. jsx 一个组件内需要包裹一个元素，但如果这个组件内你不想再最外层额外包一个 `<div>` 的话，可以使用 `<Fragment></Fragment>` 占位符，或者它的简写形式 `<></>`。
+1. 当组件的 state 或者 props 发生改变时，render 函数就会重新执行。
+
 <!--
-
-在项目架构时, React 相比 vue 会更灵活一些，在遇到非常复杂的业务时倾向于使用 React, 它的技术方案会更多一点选择, vue 则提供了更丰富的 API 实现功能会更简单，但相对来说缺少一定的灵活性，存在一定的限制。
-
-React 组件需要以大写字母开头的标签才能正常解析
-
-JSX 一个组件内需要包裹一个元素，可以使用`Fragment`占位符
-
-react 是响应式框架，只需要关心数据
-react 绑定事件名是驼峰式
-
-react 不允许直接修改 state 的数据，因为会对性能有影响
 
 在组件内使用 constructor 接受参数
 
-react 是单向数据流，是视图层框架，只解决视图和数据渲染方面
 便于自动化测试
-
-当组件的state或者props发生改变时，render函数就会重新执行。
 
 新的虚拟DOM减少了真实DOM的创建，较少了性能损耗
 
@@ -661,7 +666,7 @@ componentWillMount 在组件即将被挂载到页面的时刻自动执行，只�
 render 页面被渲染时
 componentDidMount 在组件被挂载到页面后自动执行，只会在第一次会执行
 
-static getDerivedStateFromProps(props, state)
+static getDerivedStateFromProps(props, state) 用于 props 改变后 针对更新 state
 
 getDerivedStateFromProps 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
 
@@ -675,50 +680,54 @@ redux-sage
 
 put 调用一个内部方法 -->
 
-## 第三方库
-
-> 比较好使的第三方库
-
-| name        | 用途                             | npm 是否存在 |
-| ----------- | -------------------------------- | ------------ |
-| node-qrcode | 用以生成二维码                   | Y            |
-| xlsx        | excel 之类的表格处理，如导入导出 | Y            |
-| moment      | 专门处理 date 的操作             | Y            |
-| lodash      | JavaScript 的实用工具库          | Y            |
-
 ---
 
-<!-- ## mini-programs
+### 小程序
 
-微信小程序开发的提示：
+小程序与`React`、`Vue` 之间有很多共通之处，将一些概念转换过来可以快速融入微信小程序思路：
 
-- 一般会在`onLoad`处理请求接口，因为它是最触发的生命周期钩子。
-- 在小程序中使用`import`语法时，要使用相对路径，不能使用绝对路径(如访问根目录 / )。
-- 在组件上，小程序的`this.triggerEvent`相当于`vue`的`this.$emit`，在很多语法上都和`React`、`Vue`有共同之处。
-- 只有跟`WXML`有绑定的变量才需要放在`data`中，其余的放在`this`里。这样能减少渲染的压力。
+1. 小程序也有生命周期，一般会在`onLoad`处理请求接口，因为它是最触发的生命周期钩子。
+2. 在小程序中使用 `import` 语法时，要使用相对路径，不能使用绝对路径(如访问根目录 `/` ), 否则会抛错。
+3. 在组件上，小程序的 `this.triggerEvent` 相当于 `vue` 的 `this.$emit`, 通过调用 API 来通知父组件有事件触发。
+4. 只有跟 `wxml` 内有绑定的变量才需要放在 `this.data` 中，其余的放在 `this` 里。这样能减轻渲染的压力。
 
-    ``` javascript
-        Page({
-            /**
-             * 页面的初始数据
-             */
-            data: {
-                // 需要跟 wxml 模板绑定的数据
-                gifts: {},
-            },
+   ```javascript
+   Page({
+     /**
+      * 页面的初始数据
+      */
+     data: {
+       // 需要跟 wxml 模板绑定的数据
+       gifts: {}
+     },
 
-            // timer 只是用于储存定时器，不需要在页面中渲染
-            _timer: null,
+     // timer 只是用于储存定时器，不需要在页面中渲染
+     _timer: null,
 
-            /**
-             * 页面的方法列表
-             */
-            methods: {/* ... */}
-        })
-    ``` -->
+     /**
+      * 页面的方法列表
+      */
+     methods: {
+       /* ... */
+     }
+   });
+   ```
+
+## 第三方库
+
+实际工作中总会遇到很多形形色色的业务需求，这篇针对特定业务需求所需推荐的库。
+
+| name        | 用途                             | 是否有 npm 包 |
+| ----------- | -------------------------------- | ------------- |
+| moment      | 专门处理 date 的操作             | Y             |
+| lodash      | 主要用于数据处理相关的 js 工具库 | Y             |
+| node-qrcode | 用以生成二维码                   | Y             |
+| xlsx        | excel 之类的表格处理，如导入导出 | Y             |
+
+---
 
 ## 数据可视化
 
 ### bizcharts
 
-chart 图表使用`type: time`，数据量大了后刻度会不准，解决方法是将`type`替换为`timecat`，将日期转换为有序的分类数据。
+`Chart` 图表使用`type: time`，数据量大了后刻度会不准，解决方法是将`type`替换为`timecat`，将日期转换为有序的分类数据。
