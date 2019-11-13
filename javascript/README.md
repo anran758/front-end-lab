@@ -662,9 +662,30 @@ vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.disp
 
 生命周期指的是
 
-componentWillMount 在组件即将被挂载到页面的时刻自动执行，只会在第一次会执行
+getDefaultProps
+
+getInitialState
+
+componentWillMount 在组件即将被挂载到页面的时刻自动执行，只会在第一次会执行 === vue.ready
 render 页面被渲染时
 componentDidMount 在组件被挂载到页面后自动执行，只会在第一次会执行
+
+componentWillReceiveProps: 如果需要父组件某个信息更新时，子组件自动覆盖内部的某个state可以使用这个生命周期：
+
+```
+componentWillReceiveProps(nextProps) {
+ const { projectInfo } = this.props;
+
+ // 设置项目时间
+ if (nextProps.projectInfo !== projectInfo) {
+   const date = [moment(projectInfo.startTime), moment(projectInfo.endTime)];
+   this.setState({
+     rangPickerData: [...date],
+     itemRangDate: [...date],
+   });
+ }
+}
+```
 
 static getDerivedStateFromProps(props, state) 用于 props 改变后 针对更新 state
 
@@ -674,7 +695,41 @@ getDerivedStateFromProps 会在调用 render 方法之前调用，并且在初�
 
 shouldComponentUpdate 组件被更新之前，它会自动被执行,如果 shouldComponentUpdate() 返回 false，则不会调用 render(),
 
+关于避免重复渲染，Component 是用 shouldComponentUpdate, PureComponent 会对 props 和 state 进行浅对比，如果 props 或 state 内部的某个对象里的值发生了改变，但还是不会发生渲染。
+memo 则是让无状态组件避免重复渲染
+
 如果 shouldComponentUpdate() 返回值为 false，则不会调用 componentDidUpdate()。
+
+#### hooks
+
+- 类组件逻辑复用难
+  - 缺少复用逻辑
+  - 渲染属性和高阶组件导致层级冗余
+- 趋向复杂难以维护
+  - 生命周期函数混杂不相干逻辑
+  - 相干逻辑分散在不同生命周期
+- this 指向困扰
+  - 内联函数过度创建新句柄
+  - 类成员函数不能保证 this
+
+hooks 优势
+
+优化组件三大问题
+
+- 函数组件无 this 问题
+- 自定义 hook 方便复用状态逻辑
+- 副作用的关注点分离
+
+memo 与 useMemo
+
+memo 针对一个组件的渲染是否重复执行
+useMemo 定义一段函数逻辑是否重复执行
+
+useMemo(() => fn) 返回的是一个函数，那么等同于 useCallback(fn)
+
+### redux
+
+redux 三大原则：单一数据源、状态不可变、纯函数修改状态
 
 redux-sage
 
@@ -723,6 +778,7 @@ put 调用一个内部方法 -->
 | lodash      | 主要用于数据处理相关的 js 工具库 | Y             |
 | node-qrcode | 用以生成二维码                   | Y             |
 | xlsx        | excel 之类的表格处理，如导入导出 | Y             |
+| classnames  | 类名管理工具                     | y
 
 ---
 

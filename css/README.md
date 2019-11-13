@@ -23,13 +23,13 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
     - [[layout] 居中元素](#layout-%e5%b1%85%e4%b8%ad%e5%85%83%e7%b4%a0)
     - [[text] 文本溢出溢出隐藏](#text-%e6%96%87%e6%9c%ac%e6%ba%a2%e5%87%ba%e6%ba%a2%e5%87%ba%e9%9a%90%e8%97%8f)
     - [图形绘制](#%e5%9b%be%e5%bd%a2%e7%bb%98%e5%88%b6)
-  - [功能](#%e5%8a%9f%e8%83%bd)
+  - [feature](#feature)
     - [[nav] 导航渐变色分割线](#nav-%e5%af%bc%e8%88%aa%e6%b8%90%e5%8f%98%e8%89%b2%e5%88%86%e5%89%b2%e7%ba%bf)
     - [[nav] 导航列表下标，悬浮动画显示](#nav-%e5%af%bc%e8%88%aa%e5%88%97%e8%a1%a8%e4%b8%8b%e6%a0%87%e6%82%ac%e6%b5%ae%e5%8a%a8%e7%94%bb%e6%98%be%e7%a4%ba)
     - [[overflow] 查看更多](#overflow-%e6%9f%a5%e7%9c%8b%e6%9b%b4%e5%a4%9a)
     - [[animation] loading](#animation-loading)
     - [[image] 悬浮头像动画](#image-%e6%82%ac%e6%b5%ae%e5%a4%b4%e5%83%8f%e5%8a%a8%e7%94%bb)
-  - [布局](#%e5%b8%83%e5%b1%80)
+  - [layout](#layout)
     - [圣杯布局](#%e5%9c%a3%e6%9d%af%e5%b8%83%e5%b1%80)
     - [双飞翼布局](#%e5%8f%8c%e9%a3%9e%e7%bf%bc%e5%b8%83%e5%b1%80)
     - [Flexbox 布局](#flexbox-%e5%b8%83%e5%b1%80)
@@ -127,99 +127,99 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 ![avatar](./images/avatar-1.png)
 
-其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.  
-[codepen / try it](https://codepen.io/anran758/pen/WdOvRY/)
+其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.
 
+[codepen / try it](https://codepen.io/anran758/pen/WdOvRY/)
 
 ### [layout] 居中元素
 
-> 常用的居中方法
+常用的居中方法：
 
-1. `absolute` + `margin` 分配剩余空间。这个方法**需要设置宽高**.
+- `absolute` + `margin` 分配剩余空间。这个方法**需要设置宽高**.
 
-   ```css
-   .element {
-     width: 600px;
-     height: 400px;
-     position: absolute;
-     left: 0;
-     top: 0;
-     right: 0;
-     bottom: 0;
-     margin: auto;
-   }
-   ```
+  ```css
+  .element {
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  ```
 
-2. `absolute` + `transform`自身宽高的一半, 副作用是`transform`会**占据原来的文档流位置**。
+- `absolute` + `transform`自身宽高的一半, 副作用是`transform`会**占据原来的文档流位置**。
 
-   ```css
-   .element {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-   }
-   ```
+  ```css
+  .element {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  ```
 
-3. 基于 `vertical-align` 的水平垂直居中 --by 张鑫旭
+- 基于 `vertical-align` 的水平垂直居中 --by 张鑫旭
 
-   ```html
-   <div class="container">
-     <div class="dialog">
-       <div class="content">内容占位</div>
-     </div>
-   </div>
-   ```
+  ```html
+  <div class="container">
+    <div class="dialog">
+      <div class="content">内容占位</div>
+    </div>
+  </div>
+  ```
 
-   ```css
-   .container {
-     position: fixed;
-     top: 0;
-     right: 0;
-     bottom: 0;
-     left: 0;
-     /* for IE8 */
-     /* background: url(data:image/png;base64,iVB...g==); */
-     /* for IE9+ */
-     background: rgba(0, 0, 0, 0.5);
-     text-align: center;
-     white-space: nowrap;
-     z-index: 99;
-   }
-   .container:after {
-     content: '';
-     display: inline-block;
-     height: 100%;
-     vertical-align: middle;
-   }
-   .dialog {
-     display: inline-block;
-     vertical-align: middle;
-     border-radius: 6px;
-     background-color: #fff;
-     text-align: left;
-     white-space: normal;
-   }
-   ```
+  ```css
+  .container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* for IE8 */
+    /* background: url(data:image/png;base64,iVB...g==); */
+    /* for IE9+ */
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    white-space: nowrap;
+    z-index: 99;
+  }
+  .container:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .dialog {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 6px;
+    background-color: #fff;
+    text-align: left;
+    white-space: normal;
+  }
+  ```
 
-4. `Flex` 布局方式
+- 使用 `Flex` 布局方式
 
-   ```html
-   <div class="parent">
-     <div>children</div>
-   </div>
-   ```
+  ```html
+  <div class="parent">
+    <div>children</div>
+  </div>
+  ```
 
-   ```css
-   .parent {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     width: 100px;
-     height: 100px;
-     border: 1px solid red;
-   }
-   ```
+  ```css
+  .parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+  }
+  ```
 
 ### [text] 文本溢出溢出隐藏
 
@@ -263,7 +263,7 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 ---
 
-## 功能
+## feature
 
 ### [nav] 导航渐变色分割线
 
@@ -306,7 +306,7 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 ---
 
-## 布局
+## layout
 
 ### 圣杯布局
 

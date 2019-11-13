@@ -59,6 +59,10 @@ SEO基础要素:
 
 ## 方案
 
+## 调试
+
+众所周知，移动端一般没有控制台来看输出信息，因此我们可以安装[vConsole](https://github.com/Tencent/vConsole)来查看相关信息。
+
 ### REM适配
 
 将下面降本插入`<HTML>`中，计算缩放后，`1rem`就等于`100px`了。

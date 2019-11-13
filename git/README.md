@@ -83,33 +83,24 @@ git push origin master develop
 
 ### 撤销还没 push 到远程的 commit
 
-<details>
-<summary>Click show content</summary>
-
 ``` bash
 # 找到需要撤销的 commit 的`前一个` commit_hash(这步可以理解为找到定位的节点
 # bash 的 commit 顺序是从上(最新 commit)至下的顺序
 git log --online
 
-# 撤销 commit, 将代码恢复为前一个版本(会丢失修改)
+# 撤销 commit, 将代码恢复为前一个版本(会丢失修改的代码)
 git reset --hard commit_hash
 
-# or 完成 commit 撤销，但不对代码进行撤销修改，可以重新提交 commit
+# or 完成 commit 撤销，可以重新提交 commit(不会丢失修改的代码)
 git reset commit_hash
 
-
-# 如果只 commit 了一次，想给回退到 commit 前上一个版本的话，还可以用`HEAD`代替`hash`
+# 如果只 commit 了一次，想给回退到 commit 前上一个版本的话，还可以用`HEAD`代替`hash`(不会丢失修改的代码)
 # HEAD    就是本次的版本
 # HEAD~1  就是上一次的版本
 git reset HEAD~1
 ```
 
-</details>
-
 ### 撤销已经 push 到远端的 commit
-
-<details>
-<summary>Click show content</summary>
 
 在使用`git`时，有时候我们会无意间错推了我们不想推上去的文件或者希望能够回退以前版本的时候.
 这时我们可以先在本地回退到相应的版本。
@@ -117,17 +108,15 @@ git reset HEAD~1
 ``` bash
 # 注意使用 --hard 参数会抛弃当前工作区的修改
 # 使用 --soft 参数的话会回退到之前的版本，但是保留当前工作区的修改，可以重新提交
-$ git reset --hard <版本号>
+git reset --hard <版本号>
 ```
 
 为了覆盖掉远端的版本信息，使远端的仓库也回退到相应的版本，需要加上参数`--force`
 
 ``` bash
 # branch: 分支
-$ git push origin <branch> --force
+git push origin <branch> --force
 ```
-
-</details>
 
 ---
 
