@@ -78,6 +78,10 @@ CSS
 - 关于性能
   - [前端优化：雅虎35条](http://blog.csdn.net/magneto7/article/details/53140269)
 
+## 浏览器机制
+
+[JavaScript ASI 机制详解](https://segmentfault.com/a/1190000004548664)
+
 ### 推荐书单
 
 <details>

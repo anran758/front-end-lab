@@ -13,8 +13,6 @@
 
 待完善的 flags
 
-- [ ] Vue
-- [ ] React
 - [ ] Node.js
 - [ ] 数据结构
 - [ ] 数据可视化(D2, D6, echart 等)
@@ -47,7 +45,6 @@
   - [百科类](./further/#百科类)
   - [工具类](./further/#工具类)
   - [学习资源](./further/#学习资源)
-  - [浏览器机制](./further/#浏览器机制)
   - [推荐书单](./further/#推荐书单)
   - (more...)
 
@@ -60,13 +57,3 @@
 
 - [anran758's blog](https://anran758.github.io/blog/): 业务场景的分析与解决方案、计算机相关的笔记、简单的教程等。
 - [专栏 | 初级前端工程师的进阶之路](https://zhuanlan.zhihu.com/c_1147180666474176512): 专门针对初级工程师进阶时常遇到的一些问题专辑。
-
-## 浏览器机制
-
-[JavaScript ASI 机制详解](https://segmentfault.com/a/1190000004548664)
-
-这篇文章可以解释写 js 时不加分号什么情况下会报错，什么情况下不会报错。
-
-[浏览器的回流与重绘](https://anran758.github.io/blog/2018/01/15/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E6%B1%87/)
-
-[浏览器页面渲染过程](https://anran758.github.io/blog/2018/04/06/URL-to-browser/)
