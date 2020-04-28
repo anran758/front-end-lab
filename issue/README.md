@@ -45,3 +45,14 @@ npm ERR!     /Users/anran/.npm/_logs/2019-04-27T14_09_30_297Z-debug.log
 ➜  module-test git:(master) npm publish
 + module-test@1.0.0
 ```
+
+## npm 安装依赖报权限不足的问题
+
+如果在安装依赖时发现错误中由以下错误, 可以尝试通过[此指南](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)解决问题:
+
+``` log
+Please try running this command again as root/Administrator. npm
+(node:10370) UnhandledPromiseRejectionWarning: Error: EACCES: permission denied, open '/Users/anran/.zshrc'
+```
+
+如果是在项目内碰见权限问题，可以先检查是不是 `node_modules` 所属权限是 `root` 的，如是应该调整为当前用户才对(macOS 环境)。

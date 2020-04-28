@@ -30,12 +30,16 @@
   - [存取数据](#%e5%ad%98%e5%8f%96%e6%95%b0%e6%8d%ae)
     - [cookie](#cookie)
   - [Date](#date)
+  - [DOM](#dom)
+    - [批量插入节点](#%e6%89%b9%e9%87%8f%e6%8f%92%e5%85%a5%e8%8a%82%e7%82%b9)
   - [技术栈](#%e6%8a%80%e6%9c%af%e6%a0%88)
     - [Vue](#vue)
       - [vuex](#vuex)
     - [React](#react)
-      - [React 与 Vue 的选择](#react-%e4%b8%8e-vue-%e7%9a%84%e9%80%89%e6%8b%a9)
       - [注意事项与技巧](#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e4%b8%8e%e6%8a%80%e5%b7%a7)
+      - [展示型组件特点](#%e5%b1%95%e7%a4%ba%e5%9e%8b%e7%bb%84%e4%bb%b6%e7%89%b9%e7%82%b9)
+      - [hooks](#hooks)
+    - [React 与 Vue 的选择](#react-%e4%b8%8e-vue-%e7%9a%84%e9%80%89%e6%8b%a9)
     - [小程序](#%e5%b0%8f%e7%a8%8b%e5%ba%8f)
   - [第三方库](#%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93)
   - [数据可视化](#%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96)
@@ -338,8 +342,8 @@ function numberWithCommas(n) {
   // 正则解释: 匹配到 \B(非单词边界)后, 后面要匹配到 (\d{3})+(?!\d)
   // (\d{3})+ 至少匹配到一次或多次三个数字
   // (?!\d) 同时后面不是数字的话, 就匹配.
-  // 注意, 后面的(?=)那一段代码只是判断的规则, 匹配到后只替换掉\B
-  // 而\B 元字符匹配的是非单词边界
+  // 注意, 后面的 (?=) 那一段代码只是判断的规则, 匹配到后只替换掉 \B
+  // 而 \B 元字符匹配的是非单词边界
 
   let num = n.toString().split('.');
   num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -349,11 +353,79 @@ function numberWithCommas(n) {
 console.log(numberWithCommas(12345678912.123)); // "12,345,678,912.1234"
 ```
 
-不需要兼容 IE11，则可以使用`toLocaleString`
+以上方法的缺陷是需要额外处理小数位，在 `ES2018` 中可以使用 [后行断言](https://es6.ruanyifeng.com/#docs/regex#%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80) 的语法(chrome 62+)，可以完全通过正则来处理，性能也比上一种方式会更高:
+
+``` js
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+```
+
+<details>
+  <summary>测试用例</summary>
+
+``` js
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function test(x, expect) {
+  const result = numberWithCommas(x);
+  const pass = result === expect;
+  console.log(`${pass ? "✓" : "ERROR ====>"} ${x} => ${result}`);
+  return pass;
+}
+
+let failures = 0;
+failures += !test(0,               "0");
+failures += !test(0.123456,        "0.123456");
+failures += !test(100,             "100");
+failures += !test(100.123456,      "100.123456");
+failures += !test(1000,            "1,000");
+failures += !test(1000.123456,     "1,000.123456");
+failures += !test(10000,           "10,000");
+failures += !test(10000.123456,    "10,000.123456");
+failures += !test(100000,          "100,000");
+failures += !test(100000.123456,   "100,000.123456");
+failures += !test(1000000,         "1,000,000");
+failures += !test(1000000.123456,  "1,000,000.123456");
+failures += !test(10000000,        "10,000,000");
+failures += !test(10000000.123456, "10,000,000.123456");
+if (failures) {
+    console.log(`${failures} test(s) failed`);
+} else {
+    console.log("All tests passed");
+}
+```
+
+</details>
+
+除了正则还可以使用 [Number.prototype.toLocaleString](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) 或 [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) 来格式数字。该方法的缺点是低版本 IE 及移动端的兼容性支持不够好.
 
 ```javascript
-(12345678.912).toLocaleString(); // "12,345,678.912"
+var num = 1234567.123456;
+
+// toLocaleString
+num.toLocaleString();                                            // "1,234,567.123"
+
+// result => "1,234,567.123"
+new Intl.NumberFormat().format(num);
+
+// 设置格式选项
+var CNY_OPTIOONS = { style: "currency", currency: 'CNY' }
+
+// result => "¥1,234,567.12"
+new Intl.NumberFormat('zh-CN', CNY_OPTIOONS).format(num);
+
+// result => "¥1,234,567.123450"
+// 设置小数位
+new Intl.NumberFormat('zh-CN', { ...CNY_OPTIOONS, minimumFractionDigits: 6 }).format(num);
+
 ```
+
+或者使用 [numeral.js](https://github.com/adamwdraper/Numeral-js/blob/master/numeral.js) 进行数字格式化。
+
+参考资料: [How to print a number with commas as thousands separators in JavaScript](https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
 
 ### 生成随机数
 
@@ -576,6 +648,31 @@ function setFullDate(day) {
 
 ---
 
+## DOM
+
+### 批量插入节点
+
+DOM 操作实际上是一个挺耗费渲染性能的操作，我们应该尽可能的减少对 DOM 的操作。
+
+比如批量插入节点时可以先在 js 中将新创建的节点插入到 `Fragment` 节点中，再将该节点插入到页面中，这样就仅触发一次渲染。
+
+``` javascript
+const $fragment = document.createDocumentFragment();
+const $list = document.querySelector('.list');
+
+for (let i = 0; i < 10; i++) {
+  const $ele = document.createElement("li");
+  $ele.innerText = `item - ${i}`;
+  $ele.setAttribute('class', 'item')
+
+  $fragment.appendChild($ele);
+}
+
+$list.appendChild(fragment);
+```
+
+---
+
 ## 技术栈
 
 根据目前主流框架进行划分技术栈。
@@ -629,13 +726,9 @@ vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.disp
 
 ### React
 
-- [ ] React 生命周期各钩子使用场景总结
+- [ ] React / React Hooks 生命周期各钩子使用场景总结
 - [ ] redux、redux-sage 总结
 - [ ] router 相关总结
-
-#### React 与 Vue 的选择
-
-在项目架构时, React 相比 Vue 会更灵活一些，在遇到非常复杂的业务时倾向于使用 React, 它的技术方案会更多一点选择；vue 则提供了更丰富的 API 实现功能会更简单，但相对来说缺少一定的灵活性，存在一定的限制。
 
 #### 注意事项与技巧
 
@@ -644,8 +737,44 @@ vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.disp
 1. react 绑定事件名是驼峰式
 1. react 不允许直接修改 state 的数据，因为会对性能有影响
 1. react 是单向数据流，是视图层框架，只解决视图和数据渲染方面
-1. jsx 一个组件内需要包裹一个元素，但如果这个组件内你不想再最外层额外包一个 `<div>` 的话，可以使用 `<Fragment></Fragment>` 占位符，或者它的简写形式 `<></>`。
+1. jsx/tsx 一个组件内需要包裹一个元素，但如果这个组件内你不想再最外层额外包一个 `<div>` 的话，可以使用 `<Fragment></Fragment>` 占位符，或者它的简写形式 `<></>`。
 1. 当组件的 state 或者 props 发生改变时，render 函数就会重新执行。
+
+#### 展示型组件特点
+
+1. 关心数据的展示方式
+2. 不依赖 APP 的其他文件
+3. 不关心数据是如何加装和变化
+4. 仅通过 props 接受数据和回调
+5. 通常为函数式组件
+
+#### hooks
+
+- 类组件逻辑复用难
+  - 缺少复用逻辑
+  - 渲染属性和高阶组件导致层级冗余
+- 趋向复杂难以维护
+  - 生命周期函数混杂不相干逻辑
+  - 相干逻辑分散在不同生命周期
+- this 指向困扰
+  - 内联函数过度创建新句柄
+  - 类成员函数不能保证 this
+
+hooks 优势
+
+优化组件三大问题
+
+- 函数组件无 this 问题
+- 自定义 hook 方便复用状态逻辑
+- 副作用的关注点分离
+
+memo 与 useMemo
+
+memo 针对一个组件的渲染是否重复执行
+useMemo 定义一段函数逻辑是否重复执行
+
+useMemo(() => fn) 返回的是一个函数，那么等同于 useCallback(fn)
+
 
 <!--
 
@@ -700,32 +829,6 @@ memo 则是让无状态组件避免重复渲染
 
 如果 shouldComponentUpdate() 返回值为 false，则不会调用 componentDidUpdate()。
 
-#### hooks
-
-- 类组件逻辑复用难
-  - 缺少复用逻辑
-  - 渲染属性和高阶组件导致层级冗余
-- 趋向复杂难以维护
-  - 生命周期函数混杂不相干逻辑
-  - 相干逻辑分散在不同生命周期
-- this 指向困扰
-  - 内联函数过度创建新句柄
-  - 类成员函数不能保证 this
-
-hooks 优势
-
-优化组件三大问题
-
-- 函数组件无 this 问题
-- 自定义 hook 方便复用状态逻辑
-- 副作用的关注点分离
-
-memo 与 useMemo
-
-memo 针对一个组件的渲染是否重复执行
-useMemo 定义一段函数逻辑是否重复执行
-
-useMemo(() => fn) 返回的是一个函数，那么等同于 useCallback(fn)
 
 ### redux
 
@@ -734,6 +837,10 @@ redux 三大原则：单一数据源、状态不可变、纯函数修改状态
 redux-sage
 
 put 调用一个内部方法 -->
+
+### React 与 Vue 的选择
+
+在项目架构时, React 相比 Vue 会更灵活一些，在遇到非常复杂的业务时倾向于使用 React, 它的技术方案会更多一点选择；vue 则提供了更丰富的 API 实现功能会更简单，但相对来说缺少一定的灵活性，存在一定的限制。
 
 ---
 
@@ -778,7 +885,7 @@ put 调用一个内部方法 -->
 | lodash      | 主要用于数据处理相关的 js 工具库 | Y             |
 | node-qrcode | 用以生成二维码                   | Y             |
 | xlsx        | excel 之类的表格处理，如导入导出 | Y             |
-| classnames  | 类名管理工具                     | y
+| classnames  | 类名管理工具                     | y             |
 
 ---
 

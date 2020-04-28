@@ -19,8 +19,10 @@
     - [保留空的文件夹](#%e4%bf%9d%e7%95%99%e7%a9%ba%e7%9a%84%e6%96%87%e4%bb%b6%e5%a4%b9)
   - [常见错误](#%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af)
   - [其他](#%e5%85%b6%e4%bb%96)
+  - [查看仓库提交者的统计](#%e6%9f%a5%e7%9c%8b%e4%bb%93%e5%ba%93%e6%8f%90%e4%ba%a4%e8%80%85%e7%9a%84%e7%bb%9f%e8%ae%a1)
     - [更改项目中作者信息](#%e6%9b%b4%e6%94%b9%e9%a1%b9%e7%9b%ae%e4%b8%ad%e4%bd%9c%e8%80%85%e4%bf%a1%e6%81%af)
     - [vim 常用命令](#vim-%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
+    - [扩展阅读](#%e6%89%a9%e5%b1%95%e9%98%85%e8%af%bb)
 
 <details>
   <summary>常见术语解释</summary>
@@ -438,6 +440,16 @@ $ git push
 
 ## 其他
 
+## 查看仓库提交者的统计
+
+``` git
+# 查看选项
+git shortlog --help
+
+# 统计排除合并提交
+git shortlog -sn --no-merges
+```
+
 ### 更改项目中作者信息
 
 [git 更改作者信息](https://help.github.com/en/articles/changing-author-info)
@@ -458,3 +470,7 @@ $ git push
 | :wq     | 保存文件并退出 `vi(m)`                         |
 | :wq!    | 强制保存文件，并退出 `vi(m)`                   |
 | :e!     | 放弃所有修改，从上次保存文件开始再编辑命令历史 |
+
+### 扩展阅读
+
+[GitHub Protips: Tips, tricks, hacks, and secrets from Lee Reilly](https://github.blog/2020-04-09-github-protips-tips-tricks-hacks-and-secrets-from-lee-reilly)

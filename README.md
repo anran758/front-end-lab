@@ -34,9 +34,7 @@
   - [动画与特效](./css#%e5%8a%a8%e7%94%bb%e4%b8%8e%e7%89%b9%e6%95%88)
 - [JavaScrip](./javascript)
   - [代码简洁性](./javascript#%E4%BB%A3%E7%A0%81%E7%AE%80%E6%B4%81%E6%80%A7)
-  - [Array](./javascript#array)
   - [Common](./javascript#common)
-  - [Number](./javascript#number)
   - [Store](./javascript#store)
   - (more...)
 - [扩展阅读](./further)
@@ -52,6 +50,8 @@
 
 - [HTML](./html)
 - [移动端开发解决方案](./mobile)
+
+---
 
 ## 专栏与博客
 
