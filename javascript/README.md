@@ -32,15 +32,15 @@
   - [Date](#date)
   - [DOM](#dom)
     - [批量插入节点](#%e6%89%b9%e9%87%8f%e6%8f%92%e5%85%a5%e8%8a%82%e7%82%b9)
-  - [技术栈](#%e6%8a%80%e6%9c%af%e6%a0%88)
-    - [Vue](#vue)
-      - [vuex](#vuex)
-    - [React](#react)
-      - [注意事项与技巧](#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e4%b8%8e%e6%8a%80%e5%b7%a7)
-      - [展示型组件特点](#%e5%b1%95%e7%a4%ba%e5%9e%8b%e7%bb%84%e4%bb%b6%e7%89%b9%e7%82%b9)
-      - [hooks](#hooks)
+  - [Vue](#vue)
+    - [vuex](#vuex)
+  - [React](#react)
+    - [注意事项与技巧](#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e4%b8%8e%e6%8a%80%e5%b7%a7)
+    - [展示型组件特点](#%e5%b1%95%e7%a4%ba%e5%9e%8b%e7%bb%84%e4%bb%b6%e7%89%b9%e7%82%b9)
+    - [Hook](#hook)
+    - [redux](#redux)
     - [React 与 Vue 的选择](#react-%e4%b8%8e-vue-%e7%9a%84%e9%80%89%e6%8b%a9)
-    - [小程序](#%e5%b0%8f%e7%a8%8b%e5%ba%8f)
+  - [小程序](#%e5%b0%8f%e7%a8%8b%e5%ba%8f)
   - [第三方库](#%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93)
   - [数据可视化](#%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96)
     - [bizcharts](#bizcharts)
@@ -673,11 +673,7 @@ $list.appendChild(fragment);
 
 ---
 
-## 技术栈
-
-根据目前主流框架进行划分技术栈。
-
-### Vue
+## Vue
 
 开发常见问题
 
@@ -718,19 +714,19 @@ $list.appendChild(fragment);
 5. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
 6. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。<br>但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
 
-#### vuex
+### vuex
 
 vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.dispatch`方法触发的是一个异步的方法。
 
 ---
 
-### React
+## React
 
 - [ ] React / React Hooks 生命周期各钩子使用场景总结
 - [ ] redux、redux-sage 总结
 - [ ] router 相关总结
 
-#### 注意事项与技巧
+### 注意事项与技巧
 
 1. react 组件需要以大写字母开头的标签才能正常解析
 1. react 是响应式框架，只需要关心数据
@@ -740,7 +736,7 @@ vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.disp
 1. jsx/tsx 一个组件内需要包裹一个元素，但如果这个组件内你不想再最外层额外包一个 `<div>` 的话，可以使用 `<Fragment></Fragment>` 占位符，或者它的简写形式 `<></>`。
 1. 当组件的 state 或者 props 发生改变时，render 函数就会重新执行。
 
-#### 展示型组件特点
+### 展示型组件特点
 
 1. 关心数据的展示方式
 2. 不依赖 APP 的其他文件
@@ -748,33 +744,38 @@ vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.disp
 4. 仅通过 props 接受数据和回调
 5. 通常为函数式组件
 
-#### hooks
+### Hook
 
-- 类组件逻辑复用难
+`Hook` 的引入是为了解决以前 `React` 的一些痛点:
+
+- 类组件状态逻辑难以复用
   - 缺少复用逻辑
   - 渲染属性和高阶组件导致层级冗余
+
 - 趋向复杂难以维护
   - 生命周期函数混杂不相干逻辑
   - 相干逻辑分散在不同生命周期
+
 - this 指向困扰
   - 内联函数过度创建新句柄
   - 类成员函数不能保证 this
 
-hooks 优势
+**Hook 的优势:**
 
-优化组件三大问题
+1. 函数组件无 this 问题
+1. 自定义 hook 方便复用状态逻辑
+1. 副作用的关注点分离
 
-- 函数组件无 this 问题
-- 自定义 hook 方便复用状态逻辑
-- 副作用的关注点分离
+**Hook 需要准守的规则:**
 
-memo 与 useMemo
+1. 只在最顶层使用 Hook
+2. 只在 React 函数中调用 Hook
 
-memo 针对一个组件的渲染是否重复执行
-useMemo 定义一段函数逻辑是否重复执行
+**React.memo 与 React.useMemo:**
 
-useMemo(() => fn) 返回的是一个函数，那么等同于 useCallback(fn)
+`memo` 针对一个组件的渲染是否重复执行, `useMemo` 定义一段函数逻辑是否重复执行。
 
+`useMemo(() => fn)` 返回的是一个函数，将等同于 `useCallback(fn)`
 
 <!--
 
@@ -829,14 +830,13 @@ memo 则是让无状态组件避免重复渲染
 
 如果 shouldComponentUpdate() 返回值为 false，则不会调用 componentDidUpdate()。
 
-
-### redux
-
-redux 三大原则：单一数据源、状态不可变、纯函数修改状态
-
 redux-sage
 
 put 调用一个内部方法 -->
+
+### redux
+
+`redux` 三大原则：单一数据源、状态不可变、纯函数修改状态
 
 ### React 与 Vue 的选择
 
@@ -844,7 +844,7 @@ put 调用一个内部方法 -->
 
 ---
 
-### 小程序
+## 小程序
 
 小程序与`React`、`Vue` 之间有很多共通之处，将一些概念转换过来可以快速融入微信小程序思路：
 

@@ -5,13 +5,11 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/watchers)
 [![CRAN/METACRAN](https://img.shields.io/cran/l/devtools.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab)
 
-:art: 将曾经踩过的坑、常用的解决方案还有一些待完成的想法记录下来，完善自己的知识库。更新的内容取决于最近工作接触的东西~
-
----
+:art: 将曾经踩过的坑、常用的解决方案还有一些待完成的想法记录下来，完善自己的知识库。
 
 ## TODO
 
-待完善的 flags
+待拆的 `Flags`
 
 - [ ] Node.js
 - [ ] 数据结构
@@ -27,21 +25,18 @@
 - [Git](./git)
 - [RegExp](./REGEXP)
 - [CSS](./css)
-  - [common](./css#common)
   - [常见工具类](./css#%e5%b8%b8%e8%a7%81%e5%b7%a5%e5%85%b7%e7%b1%bb)
   - [功能](./css#%e5%8a%9f%e8%83%bd)
   - [布局](./css#%e5%b8%83%e5%b1%80)
   - [动画与特效](./css#%e5%8a%a8%e7%94%bb%e4%b8%8e%e7%89%b9%e6%95%88)
+  - (more...)
 - [JavaScrip](./javascript)
   - [代码简洁性](./javascript#%E4%BB%A3%E7%A0%81%E7%AE%80%E6%B4%81%E6%80%A7)
-  - [Common](./javascript#common)
   - [Store](./javascript#store)
   - (more...)
 - [扩展阅读](./further)
   - [代码风格指南](./further/#代码风格指南)
   - [兼容性处理](./further/#兼容性处理)
-  - [百科类](./further/#百科类)
-  - [工具类](./further/#工具类)
   - [学习资源](./further/#学习资源)
   - [推荐书单](./further/#推荐书单)
   - (more...)
