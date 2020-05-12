@@ -1,7 +1,5 @@
 # CSS World
 
-![](./images/css.jpg)
-
 > CSS 世界中的各类属性相互间有着紧密联系，而非独立的个体。 --by 张鑫旭
 
 css 看似简单，但我们在编写 css 时，时常能看到动了一个属性，然后牵扯出其他属性或者布局的变化。有些对 css 不够熟悉的同学就容易踩到坑。因此将一些常用的 css 方法抽出来，可以现拿现用~
@@ -19,16 +17,17 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
     - [继承性与通配符](#%e7%bb%a7%e6%89%bf%e6%80%a7%e4%b8%8e%e9%80%9a%e9%85%8d%e7%ac%a6)
   - [常见工具类](#%e5%b8%b8%e8%a7%81%e5%b7%a5%e5%85%b7%e7%b1%bb)
     - [[display] 隐藏元素](#display-%e9%9a%90%e8%97%8f%e5%85%83%e7%b4%a0)
-    - [[image] 居中裁剪图片](#image-%e5%b1%85%e4%b8%ad%e8%a3%81%e5%89%aa%e5%9b%be%e7%89%87)
     - [[layout] 居中元素](#layout-%e5%b1%85%e4%b8%ad%e5%85%83%e7%b4%a0)
     - [[text] 文本溢出溢出隐藏](#text-%e6%96%87%e6%9c%ac%e6%ba%a2%e5%87%ba%e6%ba%a2%e5%87%ba%e9%9a%90%e8%97%8f)
-    - [图形绘制](#%e5%9b%be%e5%bd%a2%e7%bb%98%e5%88%b6)
-  - [feature](#feature)
+    - [[text] 文本颜色渐变](#text-%e6%96%87%e6%9c%ac%e9%a2%9c%e8%89%b2%e6%b8%90%e5%8f%98)
+  - [Feature](#feature)
     - [[nav] 导航渐变色分割线](#nav-%e5%af%bc%e8%88%aa%e6%b8%90%e5%8f%98%e8%89%b2%e5%88%86%e5%89%b2%e7%ba%bf)
     - [[nav] 导航列表下标，悬浮动画显示](#nav-%e5%af%bc%e8%88%aa%e5%88%97%e8%a1%a8%e4%b8%8b%e6%a0%87%e6%82%ac%e6%b5%ae%e5%8a%a8%e7%94%bb%e6%98%be%e7%a4%ba)
     - [[overflow] 查看更多](#overflow-%e6%9f%a5%e7%9c%8b%e6%9b%b4%e5%a4%9a)
     - [[animation] loading](#animation-loading)
+    - [[image] 居中裁剪展示图片](#image-%e5%b1%85%e4%b8%ad%e8%a3%81%e5%89%aa%e5%b1%95%e7%a4%ba%e5%9b%be%e7%89%87)
     - [[image] 悬浮头像动画](#image-%e6%82%ac%e6%b5%ae%e5%a4%b4%e5%83%8f%e5%8a%a8%e7%94%bb)
+    - [图形绘制](#%e5%9b%be%e5%bd%a2%e7%bb%98%e5%88%b6)
   - [layout](#layout)
     - [圣杯布局](#%e5%9c%a3%e6%9d%af%e5%b8%83%e5%b1%80)
     - [双飞翼布局](#%e5%8f%8c%e9%a3%9e%e7%bf%bc%e5%b8%83%e5%b1%80)
@@ -110,27 +109,6 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 }
 ```
 
-### [image] 居中裁剪图片
-
-我们经常能遇到这种情景, 做一个用户头像. 拿到的图片是一个长方形的长图, 但是我们并不需要这么长的图, 因此我们需要"裁剪". 这时我们只需设置图片中心为原点, 设置相应的宽高再加上圆角即可, 代码如下:
-
-```css
-.user-info-box .avatar {
-  width: 86px;
-  height: 86px;
-  border-radius: 50%;
-  background: 50%/cover;
-  background-color: #f1f1f1;
-  background-image: url(https://avatars.githubusercontent.com/u/23024075?v=3);
-}
-```
-
-![avatar](./images/avatar-1.png)
-
-其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.
-
-[codepen / try it](https://codepen.io/anran758/pen/WdOvRY/)
-
 ### [layout] 居中元素
 
 常用的居中方法：
@@ -202,7 +180,7 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
   }
   ```
 
-- 使用 `Flex` 布局方式
+- `flex` 布局
 
   ```html
   <div class="parent">
@@ -253,23 +231,31 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 除此之外的方法就只能使用 js 计算了.
 
-### 图形绘制
+### [text] 文本颜色渐变
 
-可以利用`css`属性来绘制常见的图形, 来完成一些设计所需，同时还可以节省图片的 HTTP 请求.
+``` css
+.text-gradient {
+  background: linear-gradient(90deg, #00aeff, #3369e7);
+  /* IE9+ */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: none;
+}
+```
 
-[codepen / try it](https://codepen.io/anran758/pen/jxjGyo)
-
-![form](./images/drawing_graphics.png)
+[点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/ExVRLeX)
 
 ---
 
-## feature
+## Feature
 
 ### [nav] 导航渐变色分割线
 
 使用`after`对导航进行分割, 对`background`使用`linear-gradient`渐变.
 
-[codepen / try it](https://codepen.io/anran758/pen/ypXYba)
+[点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/ypXYba)
 
 ![nav-split](./images/nav-split.png)
 
@@ -277,14 +263,15 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 利用`:before`和`transition`实现悬浮后, 下标从底部中间向两边展开.
 
-[codepen / try it](https://codepen.io/anran758/pen/BJZdLL)
+[点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/BJZdLL)
 
 ![nav-anima](./images/nav-anima.png)
 
 ### [overflow] 查看更多
 
-白色半透明遮罩的"查看更多"，使用 `linear-gradient` 颜色渐变，再使用 `pointer-events: none` 清除默认事件.  
-[codepen / try it](https://codepen.io/anran758/pen/ppwwKN)
+白色半透明遮罩的"查看更多"，使用 `linear-gradient` 颜色渐变，再使用 `pointer-events: none` 清除默认事件.
+
+[点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/ppwwKN)
 
 ![background-more](./images/background-more.png)
 
@@ -294,7 +281,28 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 ![anima-loading](./images/anima-loading.gif)
 
-[codepen / try it](https://codepen.io/anran758/pen/dmOPdO)
+[点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/dmOPdO)
+
+### [image] 居中裁剪展示图片
+
+我们经常能遇到这种情景, 做一个用户头像. 拿到的图片是一个长方形的长图, 但是我们并不需要这么长的图, 因此我们需要"裁剪". 这时我们只需设置图片中心为原点, 设置相应的宽高再加上圆角即可, 代码如下:
+
+```css
+.user-info-box .avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: 50%/cover;
+  background-color: #f1f1f1;
+  background-image: url(https://avatars.githubusercontent.com/u/23024075?v=3);
+}
+```
+
+![avatar middle](./images/avatar-1.png)
+
+其中`background: 50%/cover`是关键, 这一个方法同时也可以适用于其他有图片的场景.
+
+[点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/WdOvRY/)
 
 ### [image] 悬浮头像动画
 
@@ -302,7 +310,15 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 ![avatar hover](./images/image-hover.gif)
 
-[codepen / try it](https://codepen.io/anran758/pen/YapWKd)
+[点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/YapWKd)
+
+### 图形绘制
+
+可以利用`css`属性来绘制常见的图形, 来完成一些设计所需，同时还可以节省图片的 HTTP 请求。
+
+[点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/jxjGyo)
+
+![form](./images/drawing_graphics.png)
 
 ---
 
@@ -390,11 +406,10 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 ![flexbox-2](./design/images/flexbox-2.gif)
 
-关于 `Flexbox` 的使用这里也不多说了, 下面是一些学习资料, 感兴趣的朋友可以看一下:
+以下是 `Flex` 布局的参考资料:
 
-- [Flexbox 简介](https://segmentfault.com/a/1190000002910324#articleHeader6)
-- [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
-- [Flex 入门](http://ife.baidu.com/note/detail/id/952)
+- [Flexbox 布局入门](https://zhuanlan.zhihu.com/p/106311718)
+- [Flexbox 布局实际用例](https://zhuanlan.zhihu.com/p/109144068)
 
 ### 响应式布局
 
@@ -450,7 +465,10 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 ### Grid
 
-[网格布局(Grid)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout) 是新一代布局方式。占个坑，未来抽空补充。
+`Grid` 是新一代布局方式，下面是相关的学习资料:
+
+- [网格布局(Grid) | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout)
+- [CSS Grid | freeCodeCamp](https://learn.freecodecamp.one/responsive-web-design/css-grid)
 
 ---
 
