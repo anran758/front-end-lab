@@ -81,6 +81,29 @@ SEO 基础要素:
 </script>
 ```
 
+## 滚动穿透
+
+如果我们需要做弹框组件的话，在 `ios` 中可能会遇到滚动穿透的问题。常见的解决方案是打开弹框时将 body 悬浮起来，关闭时将 body 恢复原状。由于悬浮后会改变页面的尺寸，因此同时给 `body` 加上 `width: 100%; height: 100%;` 的样式:
+
+``` js
+// 开启弹框前调用
+function fixedBody() {
+  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+  document.body.style.cssText += `position:fixed;top:-${scrollTop}px`;
+}
+
+// 关闭弹框后调用
+function looseBody() {
+  const body = document.body;
+  body.style.position = '';
+
+  const top = body.style.top;
+  document.body.scrollTop = document.documentElement.scrollTop = -parseInt(top);
+  body.style.top = '';
+}
+
+```
+
 ## 已知 bug
 
 1. ios 和安卓下的 `z-index` 表现会不一致。

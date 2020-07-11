@@ -4,45 +4,45 @@
 
 - [JavaScript](#javascript)
   - [TODO](#todo)
-  - [代码简洁性](#%e4%bb%a3%e7%a0%81%e7%ae%80%e6%b4%81%e6%80%a7)
-    - [科学计数法 E](#%e7%a7%91%e5%ad%a6%e8%ae%a1%e6%95%b0%e6%b3%95-e)
-    - [三元操作符](#%e4%b8%89%e5%85%83%e6%93%8d%e4%bd%9c%e7%ac%a6)
-    - [逻辑运算符](#%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6)
+  - [代码简洁性](#代码简洁性)
+    - [科学计数法 E](#科学计数法-e)
+    - [三元操作符](#三元操作符)
+    - [逻辑运算符](#逻辑运算符)
   - [Array](#array)
-    - [删除数组中指定元素](#%e5%88%a0%e9%99%a4%e6%95%b0%e7%bb%84%e4%b8%ad%e6%8c%87%e5%ae%9a%e5%85%83%e7%b4%a0)
-    - [数组去重](#%e6%95%b0%e7%bb%84%e5%8e%bb%e9%87%8d)
-    - [中文排序](#%e4%b8%ad%e6%96%87%e6%8e%92%e5%ba%8f)
-    - [数组扁平化](#%e6%95%b0%e7%bb%84%e6%89%81%e5%b9%b3%e5%8c%96)
-    - [其他细节](#%e5%85%b6%e4%bb%96%e7%bb%86%e8%8a%82)
+    - [删除数组中指定元素](#删除数组中指定元素)
+    - [数组去重](#数组去重)
+    - [中文排序](#中文排序)
+    - [数组扁平化](#数组扁平化)
+    - [其他细节](#其他细节)
   - [Common](#common)
-    - [判断原始类型](#%e5%88%a4%e6%96%ad%e5%8e%9f%e5%a7%8b%e7%b1%bb%e5%9e%8b)
-    - [计算星座](#%e8%ae%a1%e7%ae%97%e6%98%9f%e5%ba%a7)
-    - [判断闰年函数](#%e5%88%a4%e6%96%ad%e9%97%b0%e5%b9%b4%e5%87%bd%e6%95%b0)
+    - [判断原始类型](#判断原始类型)
+    - [计算星座](#计算星座)
+    - [判断闰年函数](#判断闰年函数)
   - [Number](#number)
     - [parseInt](#parseint)
-    - [金额分隔](#%e9%87%91%e9%a2%9d%e5%88%86%e9%9a%94)
-    - [生成随机数](#%e7%94%9f%e6%88%90%e9%9a%8f%e6%9c%ba%e6%95%b0)
-    - [字符串转数字](#%e5%ad%97%e7%ac%a6%e4%b8%b2%e8%bd%ac%e6%95%b0%e5%ad%97)
+    - [金额分隔](#金额分隔)
+    - [生成随机数](#生成随机数)
+    - [字符串转数字](#字符串转数字)
   - [String](#string)
-    - [计算字符串长度](#%e8%ae%a1%e7%ae%97%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%95%bf%e5%ba%a6)
-    - [截取字符串](#%e6%88%aa%e5%8f%96%e5%ad%97%e7%ac%a6%e4%b8%b2)
+    - [计算字符串长度](#计算字符串长度)
+    - [截取字符串](#截取字符串)
   - [Store](#store)
-  - [存取数据](#%e5%ad%98%e5%8f%96%e6%95%b0%e6%8d%ae)
+  - [存取数据](#存取数据)
     - [cookie](#cookie)
   - [Date](#date)
   - [DOM](#dom)
-    - [批量插入节点](#%e6%89%b9%e9%87%8f%e6%8f%92%e5%85%a5%e8%8a%82%e7%82%b9)
+    - [批量插入节点](#批量插入节点)
   - [Vue](#vue)
     - [vuex](#vuex)
   - [React](#react)
-    - [注意事项与技巧](#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e4%b8%8e%e6%8a%80%e5%b7%a7)
-    - [展示型组件特点](#%e5%b1%95%e7%a4%ba%e5%9e%8b%e7%bb%84%e4%bb%b6%e7%89%b9%e7%82%b9)
+    - [注意事项与技巧](#注意事项与技巧)
+    - [展示型组件特点](#展示型组件特点)
     - [Hook](#hook)
     - [redux](#redux)
-    - [React 与 Vue 的选择](#react-%e4%b8%8e-vue-%e7%9a%84%e9%80%89%e6%8b%a9)
-  - [小程序](#%e5%b0%8f%e7%a8%8b%e5%ba%8f)
-  - [第三方库](#%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93)
-  - [数据可视化](#%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96)
+    - [React 与 Vue 的选择](#react-与-vue-的选择)
+  - [小程序](#小程序)
+  - [第三方库](#第三方库)
+  - [数据可视化](#数据可视化)
     - [bizcharts](#bizcharts)
 
 ## TODO
@@ -436,7 +436,7 @@ new Intl.NumberFormat('zh-CN', { ...CNY_OPTIOONS, minimumFractionDigits: 6 }).fo
  * @param {number} max - 随机数的上限
  * @returns 返回指定范围内的随机数
  */
-function randomTime(min, max) {
+function randomNum(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 ```
@@ -773,9 +773,15 @@ vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.disp
 
 **React.memo 与 React.useMemo:**
 
-`memo` 针对一个组件的渲染是否重复执行, `useMemo` 定义一段函数逻辑是否重复执行。
+`memo` 针对一个组件的渲染是否重复执行，`useMemo` 定义一段函数逻辑是否重复执行。
+
+**React.useMemo 与 React.useCallback:**
 
 `useMemo(() => fn)` 返回的是一个函数，将等同于 `useCallback(fn)`
+
+**React.useStatus 与 React.useRef:**
+
+`React.useStatus` 的使用相当于类的 `state` 的某项，`React.useRef` 是相当于类的内部属性。前者用于渲染，后者类似于普通的变量。
 
 <!--
 

@@ -339,7 +339,6 @@ git push -f origin master
 
 ### 撤销修改
 
-
 <details>
 <summary>Click show code</summary>
 
@@ -453,6 +452,12 @@ git shortlog -sn --no-merges
 ### 更改项目中作者信息
 
 [git 更改作者信息](https://help.github.com/en/articles/changing-author-info)
+
+同样的方法还可以修改 commit 时间为作者时间:
+
+``` bash
+git filter-branch --env-filter 'GIT_COMMITTER_DATE=$GIT_AUTHOR_DATE; export GIT_COMMITTER_DATE'
+```
 
 ### vim 常用命令
 
