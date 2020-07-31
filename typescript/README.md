@@ -4,7 +4,7 @@
 
 ### Partial\<T>
 
-将 `T` 的所有属性转为可选项:
+将类型 `T` 的所有属性转为可选项:
 
 ``` ts
 interface Todo {
@@ -28,7 +28,7 @@ const todo2 = updateTodo(todo1, {
 
 ### Required\<T>
 
-将类型 T 所有属性变为必选的:
+将类型 `T` 所有属性变为必选的:
 
 ``` ts
 interface Props {
@@ -43,7 +43,7 @@ const obj2: Required<Props> = { a: 5 }; // Error: property 'b' missing
 
 ### Omit<T,K>
 
-从 `T` 从中移除 `K` 类型:
+从类型 `T` 从中移除 `K` 属性:
 
 ``` ts
 interface Todo {
@@ -58,4 +58,40 @@ type TodoPreview = Omit<Todo, "description" | "completed">;
 const todo: TodoPreview = {
   title: "Clean room",
 };
+```
+
+### Pick<T,K>
+
+将类型 `T` 中提取出 `K` 属性来构造一个新类型:
+
+``` ts
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+type TodoPreview = Pick<Todo, 'title' | 'completed'>;
+
+const todo: TodoPreview = {
+  title: 'Clean room',
+  completed: false,
+};
+```
+
+### Readonly\<T>
+
+将类型 `T` 的所有属性都设为 `readonly`，也就是说使用该泛型后就只能读不能写。
+
+``` ts
+interface Todo {
+  title: string;
+}
+
+const todo: Readonly<Todo> = {
+  title: 'Todo',
+};
+
+// 改不得
+todo.title = 'Hello'; // Error: cannot reassign a readonly property
 ```
