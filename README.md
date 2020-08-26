@@ -17,9 +17,7 @@
 
 ---
 
-## 导读
-
-当前目录并不是完整的，详细的子目录需要在子页查看。
+## 目录概览
 
 - [Git](./git)
 - [RegExp](./REGEXP)
@@ -30,9 +28,8 @@
   - [动画与特效](./css#%e5%8a%a8%e7%94%bb%e4%b8%8e%e7%89%b9%e6%95%88)
   - (more...)
 - [JavaScrip](./javascript)
-  - [代码简洁性](./javascript#%E4%BB%A3%E7%A0%81%E7%AE%80%E6%B4%81%E6%80%A7)
-  - [Store](./javascript#store)
   - (more...)
+- [TypeScript](./typescript)
 - [扩展阅读](./further)
   - [代码风格指南](./further/#代码风格指南)
   - [兼容性处理](./further/#兼容性处理)
@@ -55,3 +52,4 @@
 ## 推荐阅读
 
 - [Introducing npx: an npm package runner | npx 简介](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
+- [usehooks | React Hooks 封装示例](https://usehooks.com/)
