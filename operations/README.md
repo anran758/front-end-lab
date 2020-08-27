@@ -1,5 +1,14 @@
 # 运维笔记
 
+## 常用快捷键速览
+
+想要提高办公效率，其中熟记常用的快捷键是其中一种途径。
+
+- [Windows 中的快捷键](https://support.microsoft.com/zh-cn/help/12445/windows-keyboard-shortcuts)
+- [Mac 键盘快捷键](https://support.apple.com/zh-cn/HT201236)
+- [Chrome 键盘快捷键](https://support.google.com/chrome/answer/157179?hl=zh-Hans)
+- [VS Code Tips and Tricks](https://github.com/Microsoft/vscode-tips-and-tricks)
+
 ## vim
 
 **注意事项：**
@@ -24,11 +33,11 @@
 
 **光标调整：**
 
-| 命令                       | 说明                           |
-| -------------------------- | ------------------------------ |
-| `0`、`^`                   | 跳到行首                       |
-| `$`                        | 跳到行尾                       |
-| `:<number>`                | 直接输入数字可以跳去指定的行号 |
+| 命令                   | 说明                           |
+| ---------------------- | ------------------------------ |
+| `0`、`^`               | 跳到行首                       |
+| `$`                    | 跳到行尾                       |
+| `:<number>`            | 直接输入数字可以跳去指定的行号 |
 | `gg`、`:1`             | 跳到文件第一行行首             |
 | `G`、`:$`、`Shift + G` | 跳到文件最后一行行首           |
 
