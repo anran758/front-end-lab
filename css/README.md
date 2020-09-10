@@ -113,7 +113,17 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
 
 常用的居中方法：
 
-- `absolute` + `margin` 分配剩余空间。这个方法**需要设置宽高**.
+1. [单行垂直水平居中]: 容器 `height` 与 `line-height` 设为相同的值
+
+  ``` css
+    .container {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+    }
+  ```
+
+2. `absolute` + `margin` 分配剩余空间。这个方法**需要设置宽高**.
 
   ```css
   .element {
@@ -128,7 +138,7 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
   }
   ```
 
-- `absolute` + `transform`自身宽高的一半, 副作用是`transform`会**占据原来的文档流位置**。
+3. `absolute` + `transform`自身宽高的一半, 副作用是`transform`会**占据原来的文档流位置**。
 
   ```css
   .element {
@@ -139,7 +149,7 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
   }
   ```
 
-- 基于 `vertical-align` 的水平垂直居中 --by 张鑫旭
+4. 基于 `vertical-align` 的水平垂直居中 --by 张鑫旭
 
   ```html
   <div class="container">
@@ -180,7 +190,7 @@ css 看似简单，但我们在编写 css 时，时常能看到动了一个属�
   }
   ```
 
-- `flex` 布局
+5. `flex` 布局
 
   ```html
   <div class="parent">

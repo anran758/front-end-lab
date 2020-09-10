@@ -7,14 +7,6 @@
 
 :art: 将曾经踩过的坑、常用的解决方案还有一些待完成的想法记录下来，完善自己的知识库。
 
-## TODO
-
-待拆的 `Flags`
-
-- [ ] Node.js
-- [ ] 数据可视化(D2, D6, echart 等)
-- [ ] 针对特定业务需求的库整理
-
 ---
 
 ## 目录概览
@@ -22,14 +14,7 @@
 - [Git](./git)
 - [RegExp](./REGEXP)
 - [CSS](./css)
-  - [常见工具类](./css#%e5%b8%b8%e8%a7%81%e5%b7%a5%e5%85%b7%e7%b1%bb)
-  - [功能](./css#%e5%8a%9f%e8%83%bd)
-  - [布局](./css#%e5%b8%83%e5%b1%80)
-  - [动画与特效](./css#%e5%8a%a8%e7%94%bb%e4%b8%8e%e7%89%b9%e6%95%88)
-  - (more...)
 - [JavaScrip](./javascript)
-  - (more...)
-- [TypeScript](./typescript)
 - [扩展阅读](./further)
   - [代码风格指南](./further/#代码风格指南)
   - [兼容性处理](./further/#兼容性处理)
@@ -39,8 +24,10 @@
 
 :construction: 待完善
 
-- [HTML](./html)
 - [移动端开发解决方案](./mobile)
+- [面试笔记](./topic/2020.md)
+- [运维笔记](./operations/README.md)
+- [HTML](./html)
 
 ---
 
