@@ -1,4 +1,15 @@
+<!-- omit in toc -->
 # 运维笔记
+
+- [常用快捷键速览](#常用快捷键速览)
+- [vim](#vim)
+- [iTerm2](#iterm2)
+  - [常用快捷键](#常用快捷键)
+  - [输入](#输入)
+  - [标签](#标签)
+  - [分屏](#分屏)
+- [设置淘宝镜像](#设置淘宝镜像)
+- [nginx](#nginx)
 
 ## 常用快捷键速览
 
@@ -8,6 +19,7 @@
 - [Chrome 键盘快捷键](https://support.google.com/chrome/answer/157179?hl=zh-Hans)
 - [VS Code Tips and Tricks](https://github.com/Microsoft/vscode-tips-and-tricks)
 
+<!-- omit in toc -->
 ### windows 速查快捷键
 
 > [Windows 中的快捷键](https://support.microsoft.com/zh-cn/help/12445/windows-keyboard-shortcuts)
@@ -101,6 +113,30 @@ iTerm 2是 Terminal 的替代品，是 iTerm 的后继产品。它有好看的 U
 | `win` + `;`                                           | 查看历史命令   |
 | `win` + `Shift` + `H`                                 | 查看剪贴板历史 |
 | `win` + `Enter`                                       | 切换全屏       |
+
+## 设置淘宝镜像
+
+`npm` 和 `yarn` 都可以通过国内的淘宝镜像来安装依赖。
+
+如果只想单个项目中使用淘宝镜像来安装依赖，可以输入以下命令:
+
+``` shell
+# npm
+npm install --registry=https://registry.npm.taobao.org
+
+# yarn
+yarn --registry=https://registry.npm.taobao.org
+```
+
+也可以安装他们定制的 `cnpm` 命令:
+
+``` shell
+# 全局安装命令
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+# 使用 cnpm 安装依赖
+cnpm install
+```
 
 ## nginx
 

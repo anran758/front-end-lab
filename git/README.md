@@ -1,3 +1,4 @@
+<!-- omit in toc -->
 # Git
 
 - [Git](#git)
@@ -439,7 +440,7 @@ $ git push
 
 ## 其他
 
-## 查看仓库提交者的统计
+### 查看仓库提交者的统计
 
 ``` git
 # 查看选项
@@ -461,20 +462,7 @@ git filter-branch --env-filter 'GIT_COMMITTER_DATE=$GIT_AUTHOR_DATE; export GIT_
 
 ### vim 常用命令
 
-> [VIM中的保存和退出、VIM退出命令、如何退出vim编辑、VIM命令大全](https://www.jianshu.com/p/0009bf462f15)
-
-在`vim`编辑器中，同时按住`shift + <命令>`即可操作对应的命令. 但按`a`进入插入模式。
-
-| 命令    | 说明                                           |
-| ------- | ---------------------------------------------- |
-| :q      | 不保存文件，退出 `vi(m)`                       |
-| :q!     | 不保存文件，强制退出 `vi(m)`                   |
-| :w      | 保存文件但不退出  `vi(m)`                      |
-| :w file | 将修改另外保存到 `file` 中，不退出 `vi(m)`     |
-| :w!     | 强制保存，不推出 `vi(m)`                       |
-| :wq     | 保存文件并退出 `vi(m)`                         |
-| :wq!    | 强制保存文件，并退出 `vi(m)`                   |
-| :e!     | 放弃所有修改，从上次保存文件开始再编辑命令历史 |
+[vim 常用命令](../operations/README.md#vim)
 
 ### 扩展阅读
 
