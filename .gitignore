@@ -1,4 +1,8 @@
-javascript/node.js.md
+# 编辑器配置
+.vscode
 
-buffer/**
-.vscode/**
+# 本地临时文件
+buffer
+
+# 本地依赖
+node_modules
