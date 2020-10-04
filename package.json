@@ -1,0 +1,32 @@
+{
+  "name": "front-end-lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anran758/Front-End-Lab.git"
+  },
+  "author": "anran758",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anran758/Front-End-Lab/issues"
+  },
+  "homepage": "https://github.com/anran758/Front-End-Lab#readme",
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.6.0",
+    "@vuepress/plugin-google-analytics": "^1.6.0",
+    "@vuepress/plugin-medium-zoom": "^1.6.0",
+    "@vuepress/plugin-pwa": "^1.6.0",
+    "vuepress": "^1.6.0"
+  },
+  "dependencies": {}
+}

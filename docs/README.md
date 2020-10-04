@@ -1,4 +1,7 @@
-# Front-End-Lab
+---
+home: true
+footer: GPL Licensed | Copyright © 2019-present anran758
+---
 
 [![GitHub stars](https://img.shields.io/github/stars/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/network)
@@ -7,30 +10,13 @@
 
 :art: 将曾经踩过的坑、常用的解决方案还有一些待完成的想法记录下来，完善自己的知识库。
 
----
-
-## Start
-
-``` shell
-# 本地开发
-yarn docs:dev
-
-# 构建
-yarn docs:build
-```
-
-## 目录概览
+## 阅读概览
 
 - [Git](./git)
-- [RegExp](./REGEXP)
 - [CSS](./css)
 - [JavaScrip](./javascript)
+- [RegExp](./REGEXP)
 - [扩展阅读](./further)
-  - [代码风格指南](./further/#代码风格指南)
-  - [兼容性处理](./further/#兼容性处理)
-  - [学习资源](./further/#学习资源)
-  - [推荐书单](./further/#推荐书单)
-  - (more...)
 
 :construction: 待完善
 
