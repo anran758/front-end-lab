@@ -6,3 +6,5 @@ buffer
 
 # 本地依赖
 node_modules
+
+docs/.vuepress/dist/**
