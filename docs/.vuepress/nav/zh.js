@@ -8,12 +8,20 @@ module.exports = [
     link: '/javascript/'
   },
   {
-    text: '面试笔记',
+    text: 'Git',
+    link: '/git/'
+  },
+  {
+    text: 'REGEXP',
+    link: '/REGEXP/'
+  },
+  {
+    text: '面试指南',
     link: '/topic/2020'
   },
   {
-    text: '其他',
-    ariaLabel: '其他',
+    text: '了解更多',
+    ariaLabel: '了解更多',
     items: [
       {
         text: '开发',
@@ -29,16 +37,8 @@ module.exports = [
         ]
       },
       {
-        text: 'Note',
+        text: '笔记',
         items: [
-          {
-            text: 'GIT',
-            link: '/git/'
-          },
-          {
-            text: 'REGEXP',
-            link: '/REGEXP/'
-          },
           {
             text: '运维笔记',
             link: '/operations/'
@@ -50,8 +50,21 @@ module.exports = [
         ]
       },
       {
-        text: '扩展阅读',
-        link: '/further/'
+        text: '其他',
+        items: [
+          {
+            text: '扩展阅读',
+            link: '/further/'
+          },
+          {
+            text: 'Blog',
+            link: 'https://anran758.github.io/blog/'
+          },
+          {
+            text: 'Web 展示页',
+            link: 'https://anran758.github.io/'
+          },
+        ]
       }
     ]
   }
