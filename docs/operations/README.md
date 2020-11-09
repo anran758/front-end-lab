@@ -1,14 +1,17 @@
 # 运维笔记
 
-- [常用快捷键速览](#常用快捷键速览)
-- [vim](#vim)
-- [iTerm2](#iterm2)
-  - [常用快捷键](#常用快捷键)
-  - [输入](#输入)
-  - [标签](#标签)
-  - [分屏](#分屏)
-- [设置淘宝镜像](#设置淘宝镜像)
-- [nginx](#nginx)
+- [运维笔记](#运维笔记)
+  - [常用快捷键速览](#常用快捷键速览)
+    - [MacOS 常用快捷键](#macos-常用快捷键)
+  - [vim](#vim)
+  - [iTerm2](#iterm2)
+    - [常用快捷键](#常用快捷键)
+    - [输入](#输入)
+    - [标签](#标签)
+    - [分屏](#分屏)
+  - [设置淘宝镜像](#设置淘宝镜像)
+  - [更新 Node.js 版本](#更新-nodejs-版本)
+  - [nginx](#nginx)
 
 ## 常用快捷键速览
 
@@ -29,6 +32,13 @@
 | `win` + `Ctrl` + `D`          | 创建新的虚拟桌面 |
 | `win` + `Ctrl` + `F4`         | 删除当前虚拟桌面 |
 | `win` + `Ctrl` + `left/right` | 切换虚拟桌面     |
+| `win` + `E`                   | 打开资源管理器   |
+
+### MacOS 常用快捷键
+
+| 快捷键                    | 说明               |
+| ------------------------- | ------------------ |
+| `Shift` `+` `Alt` `+` `.` | 显示和隐藏隐藏文件 |
 
 ## vim
 
@@ -78,7 +88,6 @@ iTerm 2是 Terminal 的替代品，是 iTerm 的后继产品。它有好看的 U
 
 ### 输入
 
-
 | 快捷键       | 说明                               |
 | ------------ | ---------------------------------- |
 | `win` + `R`  | 将输出过的信息隐藏到屏幕外(伪清屏) |
@@ -100,7 +109,6 @@ iTerm 2是 Terminal 的替代品，是 iTerm 的后继产品。它有好看的 U
 | `win` + `T`                            | 新建标签                 |
 | `win` + `W`                            | 关闭标签                 |
 | `win` + `number`、`win` + `left/right` | 切换标签                 |
-
 
 ### 分屏
 
@@ -135,6 +143,36 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 # 使用 cnpm 安装依赖
 cnpm install
+```
+
+## 更新 Node.js 版本
+
+推荐使用 `nvm` 来管理 `Node.js` 的版本:
+
+- Windows： [Node Version Manager (nvm) for Windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows)
+- MacOS/unix: [Installing and Updating](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+使用方法如下:
+
+``` shell
+# [mac]: 查看可以安装的 Node.js 版本
+nvm ls-remote
+
+# [windows]: 查看本地已安装的版本
+#            加上 available 参数后查看 Node.js 可安装的版本
+nvm list [available]
+
+# 查看本地已安装的版本
+vm ls
+
+# 安装指定版本
+nvm install 6.14.4
+
+# 安装最新版本的 Node.js
+nvm install --lts
+
+# 使用已安装的版本
+nvm use 6.14.4
 ```
 
 ## nginx
