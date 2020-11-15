@@ -1,17 +1,20 @@
+<!-- omit in toc -->
 # 运维笔记
 
-- [运维笔记](#运维笔记)
-  - [常用快捷键速览](#常用快捷键速览)
-    - [MacOS 常用快捷键](#macos-常用快捷键)
-  - [vim](#vim)
-  - [iTerm2](#iterm2)
-    - [常用快捷键](#常用快捷键)
-    - [输入](#输入)
-    - [标签](#标签)
-    - [分屏](#分屏)
+- [常用快捷键速览](#常用快捷键速览)
+  - [windows 速查快捷键](#windows-速查快捷键)
+  - [MacOS 常用快捷键](#macos-常用快捷键)
+- [vim](#vim)
+- [iTerm2](#iterm2)
+  - [常用快捷键](#常用快捷键)
+  - [输入](#输入)
+  - [标签页](#标签页)
+  - [分屏](#分屏)
+- [CMD](#cmd)
+- [环境](#环境)
   - [设置淘宝镜像](#设置淘宝镜像)
   - [更新 Node.js 版本](#更新-nodejs-版本)
-  - [nginx](#nginx)
+- [nginx](#nginx)
 
 ## 常用快捷键速览
 
@@ -21,7 +24,6 @@
 - [Chrome 键盘快捷键](https://support.google.com/chrome/answer/157179?hl=zh-Hans)
 - [VS Code Tips and Tricks](https://github.com/Microsoft/vscode-tips-and-tricks)
 
-<!-- omit in toc -->
 ### windows 速查快捷键
 
 > [Windows 中的快捷键](https://support.microsoft.com/zh-cn/help/12445/windows-keyboard-shortcuts)
@@ -101,7 +103,7 @@ iTerm 2是 Terminal 的替代品，是 iTerm 的后继产品。它有好看的 U
 | `Ctrl` + `K` | 删除到文本末尾                     |
 | `Ctrl` + `T` | 交换光标处文本                     |
 
-### 标签
+### 标签页
 
 | 快捷键                                 | 说明                     |
 | -------------------------------------- | ------------------------ |
@@ -121,7 +123,16 @@ iTerm 2是 Terminal 的替代品，是 iTerm 的后继产品。它有好看的 U
 | `win` + `Shift` + `H`                                 | 查看剪贴板历史 |
 | `win` + `Enter`                                       | 切换全屏       |
 
-## 设置淘宝镜像
+## CMD
+
+| 命令         | 说明                     |
+| ------------ | ------------------------ |
+| `pwd`        | 显示当前路径             |
+| `explorer .` | 打开当前路径的文件管理器 |
+
+## 环境
+
+### 设置淘宝镜像
 
 `npm` 和 `yarn` 都可以通过国内的淘宝镜像来安装依赖。
 
@@ -145,7 +156,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install
 ```
 
-## 更新 Node.js 版本
+### 更新 Node.js 版本
 
 推荐使用 `nvm` 来管理 `Node.js` 的版本:
 
