@@ -6,48 +6,45 @@ sidebar: auto
 <!-- omit in toc -->
 # Git
 
-- [Git](#git)
-  - [提交流程](#%e6%8f%90%e4%ba%a4%e6%b5%81%e7%a8%8b)
-  - [Add](#add)
-  - [Commit](#commit)
-    - [撤销还没 push 到远程的 commit](#%e6%92%a4%e9%94%80%e8%bf%98%e6%b2%a1-push-%e5%88%b0%e8%bf%9c%e7%a8%8b%e7%9a%84-commit)
-    - [撤销已经 push 到远端的 commit](#%e6%92%a4%e9%94%80%e5%b7%b2%e7%bb%8f-push-%e5%88%b0%e8%bf%9c%e7%ab%af%e7%9a%84-commit)
-  - [branch and tag](#branch-and-tag)
-  - [history](#history)
-  - [remote](#remote)
-    - [合并两个不同仓库的 commit](#%e5%90%88%e5%b9%b6%e4%b8%a4%e4%b8%aa%e4%b8%8d%e5%90%8c%e4%bb%93%e5%ba%93%e7%9a%84-commit)
-  - [Guide](#guide)
-    - [解决.git目录过大的问题](#%e8%a7%a3%e5%86%b3git%e7%9b%ae%e5%bd%95%e8%bf%87%e5%a4%a7%e7%9a%84%e9%97%ae%e9%a2%98)
-    - [初始化远程仓库](#%e5%88%9d%e5%a7%8b%e5%8c%96%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93)
-    - [清空项目的 commit 记录](#%e6%b8%85%e7%a9%ba%e9%a1%b9%e7%9b%ae%e7%9a%84-commit-%e8%ae%b0%e5%bd%95)
-    - [撤销修改](#%e6%92%a4%e9%94%80%e4%bf%ae%e6%94%b9)
-    - [文件夹大小写切换](#%e6%96%87%e4%bb%b6%e5%a4%b9%e5%a4%a7%e5%b0%8f%e5%86%99%e5%88%87%e6%8d%a2)
-    - [保留空的文件夹](#%e4%bf%9d%e7%95%99%e7%a9%ba%e7%9a%84%e6%96%87%e4%bb%b6%e5%a4%b9)
-  - [常见错误](#%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af)
-  - [其他](#%e5%85%b6%e4%bb%96)
-    - [查看仓库提交者的统计](#%e6%9f%a5%e7%9c%8b%e4%bb%93%e5%ba%93%e6%8f%90%e4%ba%a4%e8%80%85%e7%9a%84%e7%bb%9f%e8%ae%a1)
-    - [更改项目中作者信息](#%e6%9b%b4%e6%94%b9%e9%a1%b9%e7%9b%ae%e4%b8%ad%e4%bd%9c%e8%80%85%e4%bf%a1%e6%81%af)
-    - [vim 常用命令](#vim-%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
-    - [扩展阅读](#%e6%89%a9%e5%b1%95%e9%98%85%e8%af%bb)
+- [日常提交流程](#日常提交流程)
+- [Add](#add)
+- [Commit](#commit)
+  - [撤销还没 push 到远程的 commit](#撤销还没-push-到远程的-commit)
+  - [撤销已经 push 到远端的 commit](#撤销已经-push-到远端的-commit)
+- [branch and tag](#branch-and-tag)
+- [history](#history)
+- [remote](#remote)
+  - [合并两个不同仓库的 commit](#合并两个不同仓库的-commit)
+- [Guide](#guide)
+  - [解决.git目录过大的问题](#解决git目录过大的问题)
+  - [初始化远程仓库](#初始化远程仓库)
+  - [清空项目的 commit 记录](#清空项目的-commit-记录)
+  - [撤销修改](#撤销修改)
+  - [文件夹大小写切换](#文件夹大小写切换)
+  - [保留空的文件夹](#保留空的文件夹)
+- [常见错误](#常见错误)
+- [其他](#其他)
+  - [查看仓库提交者的统计](#查看仓库提交者的统计)
+  - [更改项目中作者信息](#更改项目中作者信息)
+  - [vim 常用命令](#vim-常用命令)
+  - [扩展阅读](#扩展阅读)
 
 <details>
   <summary>常见术语解释</summary>
 
-  | 术语      | 解释                                      |
-  | --------- | ----------------------------------------- |
-  | origin    | 默认远端仓库                              |
-  | master    | 默认开发分支                              |
-  | HEAD      | 默认开发分支                              |
-  | HEAD^     | `HEAD`父提交                              |
-  | tracked   | `git`已经追踪文件的修改                   |
-  | untracked | 未跟踪的状态，也就是`git`不认识的新的文件 |
-  | revert    | 回退                                      |
+  | 术语      | 解释                                        |
+  | --------- | ------------------------------------------- |
+  | origin    | 默认远端仓库                                |
+  | master    | 默认开发分支                                |
+  | HEAD      | 默认开发分支                                |
+  | HEAD^     | `HEAD` 父提交                               |
+  | tracked   | `git` 已经追踪文件的修改                    |
+  | untracked | 未跟踪的状态，也就是 `git` 不认识的新的文件 |
+  | revert    | 回退                                        |
 
 </details>
 
-## 提交流程
-
-日常提交流程
+## 日常提交流程
 
 ``` bash
 # 跟踪改动过的文件
@@ -76,7 +73,7 @@ git push origin master develop
 | 方法                    | 说明                                     |
 | ----------------------- | ---------------------------------------- |
 | git add `<change file>` | git add `<change file>`将其添加到 status |
-| git add [--all / .]     | 添加全部改动的文件                       |
+| git add `[--all / .]`   | 添加全部改动的文件                       |
 
 ---
 
@@ -142,23 +139,21 @@ git checkout develop
 # 切换名为 gh-pages 的分支, 如果不存在这个分支就创建它
 git checkout -b "gh-pages"
 
+# 使当前的分支和远程仓库 `origin2/game` 建立关联（前提是目标分支要存在）
+# 建立关联后就可以直接使用 `git push` 命令而无需添加其他参数。
+git branch --set-upstream-to orgin2/game
+
 # 查看所有标签
 git tag
 
-# 基于最新提交的分支创建标签
+# 基于当前 commit 创建标签
 git tag <tagname>
 
 # 删除指定标签
 git tag -d <tagname>
-
-# 使当前的分支和远程仓库 `origin2/game` 建立关联（前提是目标分支要存在）
-# 建立关联后就可以直接使用 `git push` 命令而无需添加其他参数。
-git branch --set-upstream-to orgin2/game
 ```
 
 ## history
-
-查看 `git` 历史
 
 ``` bash
 # 查看提交历史
@@ -178,37 +173,40 @@ git blame <file>
 
 ## remote
 
-添加一个远程仓库
+添加新的 remote
 
 ``` bash
-git remote add orgin `<remote>`
+git remote add <originName> <remoteUrl>
+
+# example, 添加一个 origin name 为 `newOrigin`
+git remote add newOrigin https://github.com/anran758/front-end-lab.git
 ```
 
-将本地分支推送到存在依赖关系的远端分支，如果远端没有`master`分支，那会新建一个
+将本地分支推送到存在依赖关系的远端分支，如果 remote 没有推送的分支，那就新建一个:
 
 ``` bash
 git push origin master
 ```
 
-推送当前分支并建立与远程上游的跟踪
+推送当前分支并与 remote 上游建立跟踪
 
 ``` bash
 git push --set-upstream origin master
 ```
 
-设置上游并推送至远程的`master`分支
+设置上游并推送至远程的 `master` 分支
 
 ``` bash
 git push -u origin master
 
-# or
+# 以下两条与上面一条功能相似
 git push origin master
 git branch --set-upstream-to orgin/master
 ```
 
 ### 合并两个不同仓库的 commit
 
-首先我们有两个仓库: `repo1` 和 `repo2`. `repo1` 是我们想要保留的仓库：
+首先我们有两个仓库: `repo1` 和 `repo2`。`repo1` 是我们想要保留的仓库：
 
 ``` bash
 # 添加远程地址
@@ -235,7 +233,7 @@ git push
 ### 解决.git目录过大的问题
 
 <details>
-<summary>Click show content</summary>
+<summary>Click show details</summary>
 
 > [如何解决 GitHub 提交次数过多 .git 文件过大的问题？ - 作者：郑宇](https://www.zhihu.com/question/29769130/answer/315745139)
 
@@ -288,10 +286,10 @@ git push
 
 ### 初始化远程仓库
 
-<details>
-<summary>Click show content</summary>
-
 假设你已经在远程储存库上创建了新的库(`test`)，此时需要将本地项目的代码关联并推送到远程仓库上去:
+
+<details>
+<summary>Click show details</summary>
 
 ``` bash
 cd test
@@ -345,9 +343,6 @@ git push -f origin master
 
 ### 撤销修改
 
-<details>
-<summary>Click show code</summary>
-
 ``` bash
 # 只删除所有`untracked`的文件
 # 如果文件已经被`tracked`, 修改过的文件不会被回退
@@ -361,12 +356,10 @@ git reset --hard
 git checkout HEAD <file>
 ```
 
-</details>
-
 ### 文件夹大小写切换
 
 <details>
-<summary>Click show content</summary>
+<summary>Click show details</summary>
 
 如果你提交了一个文件夹名为`FOO`，然后你现在想修改为小写的`foo`时，你会发现直接修改文件名`git`是不识别的。因为在默认情况下，`git`是不区分文件名大小写。
 
@@ -397,7 +390,7 @@ $ git commit -m "Modify dir name"
 ### 保留空的文件夹
 
 <details>
-<summary>Click show content</summary>
+<summary>Click show details</summary>
 
 在默认情况下，`git` 会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(名字是社区约定形成，也可以使用其他名字，原理上只是占个坑).
 
@@ -408,9 +401,7 @@ $ git commit -m "Modify dir name"
 ## 常见错误
 
 <details>
-<summary>常见错误</summary>
-
-在执行`git pull origin master`命令时，无法`pull`的情况。
+<summary>在执行 git pull origin master 命令时，无法 pull 的情况</summary>
 
 ``` bash
 $ git pull
@@ -467,7 +458,7 @@ git filter-branch --env-filter 'GIT_COMMITTER_DATE=$GIT_AUTHOR_DATE; export GIT_
 
 ### vim 常用命令
 
-[vim 常用命令](../operations/README.md#vim)
+- [vim 常用命令](../operations/README.md#vim)
 
 ### 扩展阅读
 
