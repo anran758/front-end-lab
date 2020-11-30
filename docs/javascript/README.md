@@ -8,7 +8,7 @@ sidebar: auto
 细节和技巧的交汇，本篇笔记主要用于速查。
 
 - [JavaScript](#javascript)
-  - [TODO](#todo)
+  - [练手组件](#%e7%bb%83%e6%89%8b%e7%bb%84%e4%bb%b6)
   - [代码简洁性](#%e4%bb%a3%e7%a0%81%e7%ae%80%e6%b4%81%e6%80%a7)
     - [科学计数法 E](#%e7%a7%91%e5%ad%a6%e8%ae%a1%e6%95%b0%e6%b3%95-e)
     - [三元操作符](#%e4%b8%89%e5%85%83%e6%93%8d%e4%bd%9c%e7%ac%a6)
@@ -38,6 +38,9 @@ sidebar: auto
   - [DOM](#dom)
     - [批量插入节点](#%e6%89%b9%e9%87%8f%e6%8f%92%e5%85%a5%e8%8a%82%e7%82%b9)
   - [Vue](#vue)
+    - [mixin 的问题](#mixin-%e7%9a%84%e9%97%ae%e9%a2%98)
+    - [Object.definedProperty 缺点](#objectdefinedproperty-%e7%bc%ba%e7%82%b9)
+    - [Vue 模板编译过程](#vue-%e6%a8%a1%e6%9d%bf%e7%bc%96%e8%af%91%e8%bf%87%e7%a8%8b)
     - [vuex](#vuex)
   - [React](#react)
     - [注意事项与技巧](#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e4%b8%8e%e6%8a%80%e5%b7%a7)
@@ -50,13 +53,7 @@ sidebar: auto
   - [数据可视化](#%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96)
     - [bizcharts](#bizcharts)
 
-## TODO
-
-我记得当初自学学完 `js` 语法后是比较茫然的，什么都看过了一遍，但又感觉好像还是什么都不懂。
-
-实际上这是熟练度不高的一种表现，如果你已经学习完 `js` 的语法。这时你可以来做一些 Demo 来验证你的学习成果。
-
-比如下面完成下面的小应用能提高你对应 API 熟练度。demo 列表后续还会有所补充，未来有空也会把参考 demo 发布至博客中。
+## 练手组件
 
 - [ ] 日历: 考验对 `Date` 对象的使用。
 - [ ] 简单的四则计算器: 考验对处理**浮点数溢出**的能力、`Math` 的使用等。
@@ -680,7 +677,7 @@ $list.appendChild(fragment);
 
 ## Vue
 
-开发常见问题
+开发常见问题：
 
 1. 如果给子组件设置`v-if`的话，那么 vue 会在切换过程中将条件块内的事件监听器和子组件适当地被销毁和重建。也就是说就算里面用了`watch`也会失效。
 
@@ -719,9 +716,29 @@ $list.appendChild(fragment);
 5. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
 6. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。<br>但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
 
+### mixin 的问题
+
+- 变量来源不明确，不利于代码阅读
+- 多 mixin 可能会造成命名冲突
+- mixin 和组件可能会出现多对多的关系，复杂度较高
+
+### Object.definedProperty 缺点
+
+- 深度监听，需要递归到底，一次性计算量大
+- 无法监听新增属性/删除属性(Vue.set Vue.delete)
+- 无法原生监听数组，需要特殊处理
+
+### Vue 模板编译过程
+
+vue 的模板(`template`)是通过 `loader` 或者是 `vue template complier` 编译为 `render` 函数的。`render` 函数执行后会生成 `vnode`, 最后在渲染和更新。
+
+组件内可以直接使用 `render` 方法进行渲染，在流程上也少一步模板编译的过程。
+
 ### vuex
 
 vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.dispatch`方法触发的是一个异步的方法。
+
+Vue component 中使用 `distpatch` 触发一个 `action`，`action` commit 到 `mutations` 中。`mutations` 改变 `state` 数据后，数据更新到视图中。
 
 ---
 
@@ -733,13 +750,13 @@ vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.disp
 
 ### 注意事项与技巧
 
-1. react 组件需要以大写字母开头的标签才能正常解析
-1. react 是响应式框架，只需要关心数据
-1. react 绑定事件名是驼峰式
-1. react 不允许直接修改 state 的数据，因为会对性能有影响
-1. react 是单向数据流，是视图层框架，只解决视图和数据渲染方面
-1. jsx/tsx 一个组件内需要包裹一个元素，但如果这个组件内你不想再最外层额外包一个 `<div>` 的话，可以使用 `<Fragment></Fragment>` 占位符，或者它的简写形式 `<></>`。
-1. 当组件的 state 或者 props 发生改变时，render 函数就会重新执行。
+1. React 组件需要以大写字母开头的标签才能正常解析
+2. React 是响应式框架，只需要关心数据
+3. React 绑定事件名是驼峰式
+4. React 不允许直接修改 state 的数据，因为会对性能有影响
+5. React 是单向数据流，是视图层框架，只解决视图和数据渲染方面
+6. jsx/tsx 一个组件内需要包裹一个元素，但如果这个组件内你不想再最外层额外包一个 `<div>` 的话，可以使用 `<Fragment></Fragment>` 占位符，或者它的简写形式 `<></>`。
+7. 当组件的 state 或者 props 发生改变时，render 函数就会重新执行。
 
 ### 展示型组件特点
 
