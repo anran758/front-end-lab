@@ -10,10 +10,14 @@
   - [输入](#输入)
   - [标签页](#标签页)
   - [分屏](#分屏)
-- [CMD](#cmd)
+  - [其他](#其他)
+- [command](#command)
+  - [macos](#macos)
+  - [windows](#windows)
 - [环境](#环境)
   - [设置淘宝镜像](#设置淘宝镜像)
   - [更新 Node.js 版本](#更新-nodejs-版本)
+  - [更新 package.json 中的版本号](#更新-packagejson-中的版本号)
 - [nginx](#nginx)
 
 ## 常用快捷键速览
@@ -123,12 +127,34 @@ iTerm 2是 Terminal 的替代品，是 iTerm 的后继产品。它有好看的 U
 | `win` + `Shift` + `H`                                 | 查看剪贴板历史 |
 | `win` + `Enter`                                       | 切换全屏       |
 
-## CMD
+### 其他
 
-| 命令         | 说明                     |
-| ------------ | ------------------------ |
-| `pwd`        | 显示当前路径             |
-| `explorer .` | 打开当前路径的文件管理器 |
+- [iterm 配置utf8编码，本地终端中文不乱码，ssh 远程中文乱码](https://segmentfault.com/q/1010000002426378)
+
+## command
+
+win/mac 平台通用:
+
+| command                          | 说明         |
+| -------------------------------- | ------------ |
+| `pwd`                            | 显示当前路径 |
+| `mv <fileName> <filePath>`       | 移动文件     |
+| `mv <fileName> <modifyFileName>` | 重命名文件   |
+
+### macos
+
+| command                  | 说明                                   |
+| ------------------------ | -------------------------------------- |
+| `pbcopy`                 | 操作粘贴板                             |
+| `pwd | pbcopy`           | 复制当前路径到粘贴板                   |
+| `pbcopy < blog-post.txt` | 将文件 blog-post.text 的内容读入粘贴板 |
+
+### windows
+
+| 命令         | 说明                         |
+| ------------ | ---------------------------- |
+| `explorer`   | 打开文件管理器               |
+| `explorer .` | 打开**当前路径**的文件管理器 |
 
 ## 环境
 
@@ -184,6 +210,16 @@ nvm install --lts
 
 # 使用已安装的版本
 nvm use 6.14.4
+```
+
+### 更新 package.json 中的版本号
+
+使用 `npm-check-updates` 工具进行版本升级:
+
+``` shell
+# 全局安装
+npm -g npm-check-updates
+num -u
 ```
 
 ## nginx
