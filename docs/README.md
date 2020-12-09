@@ -24,6 +24,7 @@ footer: GPL Licensed | Copyright © 2019-present anran758
 - [面试笔记](./topic/2020.md)
 - [运维笔记](./operations/README.md)
 - [HTML](./html)
+- [术语表](./further/glossary.md)
 
 ## 专栏与博客
 
