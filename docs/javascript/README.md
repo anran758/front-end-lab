@@ -3,60 +3,66 @@ sidebarDepth: 3
 sidebar: auto
 ---
 
+<!-- omit in toc -->
 # JavaScript
 
 细节和技巧的交汇，本篇笔记主要用于速查。
 
-- [JavaScript](#javascript)
-  - [练手组件](#%e7%bb%83%e6%89%8b%e7%bb%84%e4%bb%b6)
-  - [代码简洁性](#%e4%bb%a3%e7%a0%81%e7%ae%80%e6%b4%81%e6%80%a7)
-    - [科学计数法 E](#%e7%a7%91%e5%ad%a6%e8%ae%a1%e6%95%b0%e6%b3%95-e)
-    - [三元操作符](#%e4%b8%89%e5%85%83%e6%93%8d%e4%bd%9c%e7%ac%a6)
-    - [逻辑运算符](#%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6)
-  - [Array](#array)
-    - [删除数组中指定元素](#%e5%88%a0%e9%99%a4%e6%95%b0%e7%bb%84%e4%b8%ad%e6%8c%87%e5%ae%9a%e5%85%83%e7%b4%a0)
-    - [数组去重](#%e6%95%b0%e7%bb%84%e5%8e%bb%e9%87%8d)
-    - [中文排序](#%e4%b8%ad%e6%96%87%e6%8e%92%e5%ba%8f)
-    - [数组扁平化](#%e6%95%b0%e7%bb%84%e6%89%81%e5%b9%b3%e5%8c%96)
-    - [其他细节](#%e5%85%b6%e4%bb%96%e7%bb%86%e8%8a%82)
-  - [Common](#common)
-    - [判断原始类型](#%e5%88%a4%e6%96%ad%e5%8e%9f%e5%a7%8b%e7%b1%bb%e5%9e%8b)
-    - [计算星座](#%e8%ae%a1%e7%ae%97%e6%98%9f%e5%ba%a7)
-    - [判断闰年函数](#%e5%88%a4%e6%96%ad%e9%97%b0%e5%b9%b4%e5%87%bd%e6%95%b0)
-  - [Number](#number)
-    - [parseInt](#parseint)
-    - [金额分隔](#%e9%87%91%e9%a2%9d%e5%88%86%e9%9a%94)
-    - [生成随机数](#%e7%94%9f%e6%88%90%e9%9a%8f%e6%9c%ba%e6%95%b0)
-    - [字符串转数字](#%e5%ad%97%e7%ac%a6%e4%b8%b2%e8%bd%ac%e6%95%b0%e5%ad%97)
-  - [String](#string)
-    - [计算字符串长度](#%e8%ae%a1%e7%ae%97%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%95%bf%e5%ba%a6)
-    - [截取字符串](#%e6%88%aa%e5%8f%96%e5%ad%97%e7%ac%a6%e4%b8%b2)
-  - [Store](#store)
-  - [存取数据](#%e5%ad%98%e5%8f%96%e6%95%b0%e6%8d%ae)
-    - [cookie](#cookie)
-  - [Date](#date)
-  - [DOM](#dom)
-    - [批量插入节点](#%e6%89%b9%e9%87%8f%e6%8f%92%e5%85%a5%e8%8a%82%e7%82%b9)
-  - [Vue](#vue)
-    - [mixin 的问题](#mixin-%e7%9a%84%e9%97%ae%e9%a2%98)
-    - [Object.definedProperty 缺点](#objectdefinedproperty-%e7%bc%ba%e7%82%b9)
-    - [Vue 模板编译过程](#vue-%e6%a8%a1%e6%9d%bf%e7%bc%96%e8%af%91%e8%bf%87%e7%a8%8b)
-    - [vuex](#vuex)
-  - [React](#react)
-    - [注意事项与技巧](#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e4%b8%8e%e6%8a%80%e5%b7%a7)
-    - [展示型组件特点](#%e5%b1%95%e7%a4%ba%e5%9e%8b%e7%bb%84%e4%bb%b6%e7%89%b9%e7%82%b9)
-    - [Hook](#hook)
-    - [redux](#redux)
-    - [React 与 Vue 的选择](#react-%e4%b8%8e-vue-%e7%9a%84%e9%80%89%e6%8b%a9)
-  - [小程序](#%e5%b0%8f%e7%a8%8b%e5%ba%8f)
-  - [第三方库](#%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93)
-  - [数据可视化](#%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96)
-    - [bizcharts](#bizcharts)
+- [练手组件](#练手组件)
+- [代码简洁性](#代码简洁性)
+  - [科学计数法 E](#科学计数法-e)
+  - [三元操作符](#三元操作符)
+  - [逻辑运算符](#逻辑运算符)
+- [Array](#array)
+  - [删除数组中指定元素](#删除数组中指定元素)
+  - [数组去重](#数组去重)
+  - [中文排序](#中文排序)
+  - [数组扁平化](#数组扁平化)
+  - [其他细节](#其他细节)
+- [Common](#common)
+  - [判断原始类型](#判断原始类型)
+  - [计算星座](#计算星座)
+  - [判断闰年函数](#判断闰年函数)
+- [Number](#number)
+  - [parseInt](#parseint)
+  - [金额分隔](#金额分隔)
+  - [生成随机数](#生成随机数)
+  - [字符串转数字](#字符串转数字)
+- [String](#string)
+  - [计算字符串长度](#计算字符串长度)
+  - [截取字符串](#截取字符串)
+- [Store](#store)
+- [存取数据](#存取数据)
+  - [cookie](#cookie)
+- [Date](#date)
+- [DOM](#dom)
+  - [批量插入节点](#批量插入节点)
+- [Vue](#vue)
+  - [mixin 的问题](#mixin-的问题)
+  - [Object.definedProperty 缺点](#objectdefinedproperty-缺点)
+  - [Vue 模板编译过程](#vue-模板编译过程)
+  - [vuex](#vuex)
+- [React](#react)
+  - [注意事项与技巧](#注意事项与技巧)
+  - [展示型组件特点](#展示型组件特点)
+  - [Hook](#hook)
+  - [redux](#redux)
+  - [React 与 Vue 的选择](#react-与-vue-的选择)
+- [小程序](#小程序)
+- [第三方库](#第三方库)
+- [数据可视化](#数据可视化)
+  - [bizcharts](#bizcharts)
 
 ## 练手组件
 
+**Application**
+
 - [ ] 日历: 考验对 `Date` 对象的使用。
 - [ ] 简单的四则计算器: 考验对处理**浮点数溢出**的能力、`Math` 的使用等。
+
+**简单算法**
+
+- 设任意 N 行列的二维数组，要求螺旋打印出其值
 
 ## 代码简洁性
 
@@ -438,7 +444,7 @@ new Intl.NumberFormat('zh-CN', { ...CNY_OPTIOONS, minimumFractionDigits: 6 }).fo
  * @param {number} max - 随机数的上限
  * @returns 返回指定范围内的随机数
  */
-function randomNum(min, max) {
+function randomRangeNum(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 ```
@@ -679,9 +685,8 @@ $list.appendChild(fragment);
 
 开发常见问题：
 
-1. 如果给子组件设置`v-if`的话，那么 vue 会在切换过程中将条件块内的事件监听器和子组件适当地被销毁和重建。也就是说就算里面用了`watch`也会失效。
-
-2. 如果组件不是通过`new Vue`这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
+1. 如果给子组件设置 `v-if` 的话，那么 vue 会在切换过程中将条件块内的事件监听器和子组件适当地被销毁和重建。也就是说就算里面用了 `watch` 也会失效。
+2. 如果组件不是通过 `new Vue` 这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
 
    ```javascript
    // 这种会报错
@@ -711,7 +716,7 @@ $list.appendChild(fragment);
    }
    ```
 
-3. 在父组件的`created`钩子上进行赋值操作的话，数值的变化是传不到子组件的`watch`里的。
+3. 在父组件的 `created` 钩子上进行赋值操作的话，数值的变化是传不到子组件的`watch`里的。
 4. 实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。<br>通常我们会通过`this.$emit('postHandle', data)`这种形式去激活，通知父级更改。
 5. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
 6. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。<br>但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
@@ -744,7 +749,7 @@ Vue component 中使用 `distpatch` 触发一个 `action`，`action` commit 到 
 
 ## React
 
-- [ ] React / React Hooks 生命周期各钩子使用场景总结
+- [x] React / React Hooks 生命周期各钩子使用场景总结
 - [ ] redux、redux-sage 总结
 - [ ] router 相关总结
 
@@ -907,15 +912,15 @@ put 调用一个内部方法 -->
 
 实际工作中总会遇到很多形形色色的业务需求，这篇针对特定业务需求所需推荐的库。
 
-| name                                                   | 用途                               |
-| ------------------------------------------------------ | ---------------------------------- |
-| moment                                                 | 专门处理 date 的操作               |
-| lodash                                                 | 主要用于数据处理相关的 js 工具库   |
-| node-qrcode                                            | 用以生成二维码                     |
-| xlsx                                                   | excel 之类的表格处理，如导入导出   |
-| classnames                                             | 类名管理工具                       |
-| [decimal.js](https://www.npmjs.com/package/decimal.js) | JavaScript的任意精度的十进制类型。 |
-| [numeral](https://www.npmjs.com/package/numeral) | 一个用于格式化和处理数字的javascript库。 |
+| name                                                   | 用途                                     |
+| ------------------------------------------------------ | ---------------------------------------- |
+| moment                                                 | 专门处理 date 的操作                     |
+| lodash                                                 | 主要用于数据处理相关的 js 工具库         |
+| node-qrcode                                            | 用以生成二维码                           |
+| xlsx                                                   | excel 之类的表格处理，如导入导出         |
+| classnames                                             | 类名管理工具                             |
+| [decimal.js](https://www.npmjs.com/package/decimal.js) | JavaScript的任意精度的十进制类型。       |
+| [numeral](https://www.npmjs.com/package/numeral)       | 一个用于格式化和处理数字的javascript库。 |
 
 ---
 

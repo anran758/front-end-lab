@@ -135,11 +135,15 @@ iTerm 2是 Terminal 的替代品，是 iTerm 的后继产品。它有好看的 U
 
 win/mac 平台通用:
 
-| command                          | 说明         |
-| -------------------------------- | ------------ |
-| `pwd`                            | 显示当前路径 |
-| `mv <fileName> <filePath>`       | 移动文件     |
-| `mv <fileName> <modifyFileName>` | 重命名文件   |
+| command                          | 说明                           |
+| -------------------------------- | ------------------------------ |
+| `pwd`                            | 显示当前路径                   |
+| `mv <fileName> <filePath>`       | 移动文件                       |
+| `mv <fileName> <modifyFileName>` | 重命名文件                     |
+| `netstat –ano`                   | 查看所有进程端口和进程 ID      |
+| `netstat –ano | findstr 8080`    | 查看所有 8080 端口             |
+| `dir`、`ls`                      | 查看当前目录下的文件           |
+| `type NUL > .nojekyll`           | 新建文件, 并命名为 `.nojekyll` |
 
 ### macos
 
@@ -148,6 +152,8 @@ win/mac 平台通用:
 | `pbcopy`                 | 操作粘贴板                             |
 | `pwd | pbcopy`           | 复制当前路径到粘贴板                   |
 | `pbcopy < blog-post.txt` | 将文件 blog-post.text 的内容读入粘贴板 |
+
+- **[批量修改文件名]** Homebrew 安装 rename 可以实现批量修改文件名称
 
 ### windows
 

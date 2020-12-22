@@ -10,8 +10,8 @@ sidebar: auto
 - [HTML](#html)
   - [common](#common)
   - [video](#video)
-    - [视频首屏最先加载方法](#%e8%a7%86%e9%a2%91%e9%a6%96%e5%b1%8f%e6%9c%80%e5%85%88%e5%8a%a0%e8%bd%bd%e6%96%b9%e6%b3%95)
-    - [引用视频播放失败](#%e5%bc%95%e7%94%a8%e8%a7%86%e9%a2%91%e6%92%ad%e6%94%be%e5%a4%b1%e8%b4%a5)
+    - [视频首屏最先加载方法](#视频首屏最先加载方法)
+    - [引用视频播放失败](#引用视频播放失败)
     - [video api](#video-api)
   - [pre and code](#pre-and-code)
 
@@ -54,3 +54,4 @@ playbackRate 控制播放速度
 ## pre and code
 
 [Pre 和 Code 标签之间的区别](https://anran758.github.io/blog/2019/08/24/js-%E5%B0%86JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%E8%87%B3%E9%A1%B5%E9%9D%A2%E4%B8%8A/)
+ 

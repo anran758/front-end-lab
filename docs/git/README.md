@@ -11,7 +11,8 @@ sidebar: auto
 - [Commit](#commit)
   - [撤销还没 push 到远程的 commit](#撤销还没-push-到远程的-commit)
   - [撤销已经 push 到远端的 commit](#撤销已经-push-到远端的-commit)
-- [branch and tag](#branch-and-tag)
+- [barnch](#barnch)
+  - [tag](#tag)
 - [history](#history)
 - [remote](#remote)
   - [合并两个不同仓库的 commit](#合并两个不同仓库的-commit)
@@ -26,7 +27,6 @@ sidebar: auto
 - [其他](#其他)
   - [查看仓库提交者的统计](#查看仓库提交者的统计)
   - [更改项目中作者信息](#更改项目中作者信息)
-  - [vim 常用命令](#vim-常用命令)
   - [扩展阅读](#扩展阅读)
 
 <details>
@@ -125,9 +125,7 @@ git push origin <branch> --force
 
 ---
 
-## branch and tag
-
-常用的分支和标签命令
+## barnch
 
 ``` bash
 # 查看分支
@@ -142,7 +140,11 @@ git checkout -b "gh-pages"
 # 使当前的分支和远程仓库 `origin2/game` 建立关联（前提是目标分支要存在）
 # 建立关联后就可以直接使用 `git push` 命令而无需添加其他参数。
 git branch --set-upstream-to orgin2/game
+```
 
+### tag
+
+``` bash
 # 查看所有标签
 git tag
 
@@ -168,8 +170,6 @@ git log -p <file>
 # 以列表的方式查看指定文件的提交历史
 git blame <file>
 ```
-
----
 
 ## remote
 
@@ -358,19 +358,12 @@ git checkout HEAD <file>
 
 ### 文件夹大小写切换
 
-<details>
-<summary>Click show details</summary>
-
 如果你提交了一个文件夹名为`FOO`，然后你现在想修改为小写的`foo`时，你会发现直接修改文件名`git`是不识别的。因为在默认情况下，`git`是不区分文件名大小写。
 
 这时有两个解决方法：
 
-**(不推荐)** 直接设置 `git config` 区分大小写，但弊端在不同平台下可能会引起别的问题。
-
-``` bash
-# 配置仓库的大小写敏感
-$ git config core.ignorecase false
-```
+<details>
+<summary>Click show details</summary>
 
 **(推荐)** 通过 `git mv` 方法来改名。
 
@@ -383,6 +376,13 @@ $ git mv FOO1 foo
 
 # 提交修改
 $ git commit -m "Modify dir name"
+```
+
+**(不推荐)** 直接设置 `git config` 区分大小写，但弊端在不同平台下可能会引起别的问题。
+
+``` bash
+# 配置仓库的大小写敏感
+$ git config core.ignorecase false
 ```
 
 </details>
@@ -456,10 +456,7 @@ git shortlog -sn --no-merges
 git filter-branch --env-filter 'GIT_COMMITTER_DATE=$GIT_AUTHOR_DATE; export GIT_COMMITTER_DATE'
 ```
 
-### vim 常用命令
-
-- [vim 常用命令](../operations/README.md#vim)
-
 ### 扩展阅读
 
-[GitHub Protips: Tips, tricks, hacks, and secrets from Lee Reilly](https://github.blog/2020-04-09-github-protips-tips-tricks-hacks-and-secrets-from-lee-reilly)
+- [vim 常用命令](../operations/README.md#vim)
+- [GitHub Protips: Tips, tricks, hacks, and secrets from Lee Reilly](https://github.blog/2020-04-09-github-protips-tips-tricks-hacks-and-secrets-from-lee-reilly)

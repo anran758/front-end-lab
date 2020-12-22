@@ -109,6 +109,10 @@ function looseBody() {
 
 ```
 
+## 滚动体验优化
+
+1. scroll-behvior
+
 ## 已知 bug
 
 1. ios 和安卓下的 `z-index` 表现会不一致。
