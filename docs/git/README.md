@@ -24,6 +24,8 @@ sidebar: auto
   - [文件夹大小写切换](#文件夹大小写切换)
   - [保留空的文件夹](#保留空的文件夹)
 - [常见错误](#常见错误)
+  - [在执行 git pull origin master 命令时，无法 pull 的情况](#在执行-git-pull-origin-master-命令时无法-pull-的情况)
+  - [win10 修改 git 密码后无法 pull](#win10-修改-git-密码后无法-pull)
 - [其他](#其他)
   - [查看仓库提交者的统计](#查看仓库提交者的统计)
   - [更改项目中作者信息](#更改项目中作者信息)
@@ -400,8 +402,10 @@ $ git config core.ignorecase false
 
 ## 常见错误
 
+### 在执行 git pull origin master 命令时，无法 pull 的情况
+
 <details>
-<summary>在执行 git pull origin master 命令时，无法 pull 的情况</summary>
+<summary>show details</summary>
 
 ``` bash
 $ git pull
@@ -433,6 +437,18 @@ $ git push
 ```
 
 </details>
+
+### win10 修改 git 密码后无法 pull
+
+Error info:
+
+``` shell
+remote: Invalid username or password
+```
+
+解决方案:
+
+打开 控制面板 -> 用户账号 -> 管理 windows 凭证 -> 选择 `git:https://github.com` -> 编辑 -> 输入修改后的密码
 
 ## 其他
 
