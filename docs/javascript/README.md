@@ -4,61 +4,61 @@ sidebar: auto
 ---
 
 <!-- omit in toc -->
-# JavaScript
+
+# javascript/typescript note
 
 细节和技巧的交汇，本篇笔记主要用于速查。
 
-- [练手组件](#练手组件)
-- [代码简洁性](#代码简洁性)
-  - [科学计数法 E](#科学计数法-e)
-  - [三元操作符](#三元操作符)
-  - [逻辑运算符](#逻辑运算符)
-- [Array](#array)
-  - [删除数组中指定元素](#删除数组中指定元素)
-  - [数组去重](#数组去重)
-  - [中文排序](#中文排序)
-  - [数组扁平化](#数组扁平化)
-  - [其他细节](#其他细节)
-- [Common](#common)
-  - [判断原始类型](#判断原始类型)
-  - [计算星座](#计算星座)
-  - [判断闰年函数](#判断闰年函数)
-- [Number](#number)
-  - [parseInt](#parseint)
-  - [金额分隔](#金额分隔)
-  - [生成随机数](#生成随机数)
-  - [字符串转数字](#字符串转数字)
-- [String](#string)
-  - [计算字符串长度](#计算字符串长度)
-  - [截取字符串](#截取字符串)
-- [Store](#store)
-- [存取数据](#存取数据)
-  - [cookie](#cookie)
-- [Date](#date)
-- [DOM](#dom)
-  - [批量插入节点](#批量插入节点)
-- [Vue](#vue)
-  - [mixin 的问题](#mixin-的问题)
-  - [Object.definedProperty 缺点](#objectdefinedproperty-缺点)
-  - [Vue 模板编译过程](#vue-模板编译过程)
-  - [vuex](#vuex)
-- [React](#react)
-  - [注意事项与技巧](#注意事项与技巧)
-  - [展示型组件特点](#展示型组件特点)
-  - [Hook](#hook)
-  - [redux](#redux)
-  - [React 与 Vue 的选择](#react-与-vue-的选择)
-- [小程序](#小程序)
-- [第三方库](#第三方库)
-- [数据可视化](#数据可视化)
-  - [bizcharts](#bizcharts)
+- [javascript/typescript note](#javascripttypescript-note)
+  - [练手组件](#练手组件)
+  - [代码简洁性](#代码简洁性)
+    - [科学计数法 E](#科学计数法-e)
+    - [三元操作符](#三元操作符)
+    - [逻辑运算符](#逻辑运算符)
+  - [Common](#common)
+    - [判断原始类型](#判断原始类型)
+    - [计算星座](#计算星座)
+    - [判断闰年函数](#判断闰年函数)
+    - [其他](#其他)
+  - [Array](#array)
+    - [删除数组项](#删除数组项)
+    - [数组去重](#数组去重)
+    - [中文排序](#中文排序)
+    - [数组扁平化](#数组扁平化)
+    - [其他细节](#其他细节)
+  - [Number](#number)
+    - [parseInt](#parseint)
+    - [金额分隔](#金额分隔)
+    - [生成随机数](#生成随机数)
+    - [字符串转数字](#字符串转数字)
+  - [String](#string)
+    - [计算字符串长度](#计算字符串长度)
+  - [Store](#store)
+  - [存取数据](#存取数据)
+    - [cookie](#cookie)
+  - [Date](#date)
+  - [DOM](#dom)
+    - [批量插入节点](#批量插入节点)
+  - [Vue](#vue)
+    - [mixin 的问题](#mixin-的问题)
+    - [Object.definedProperty 缺点](#objectdefinedproperty-缺点)
+    - [Vue 模板编译过程](#vue-模板编译过程)
+    - [vuex](#vuex)
+  - [React](#react)
+    - [注意事项与技巧](#注意事项与技巧)
+    - [展示型组件特点](#展示型组件特点)
+  - [小程序](#小程序)
+    - [小程序授权](#小程序授权)
+    - [小程序跳转](#小程序跳转)
+  - [第三方库](#第三方库)
+    - [bizcharts](#bizcharts)
 
 ## 练手组件
 
 **Application**
 
-- [ ] 日历: 考验对 `Date` 对象的使用。
-- [ ] 简单的四则计算器: 考验对处理**浮点数溢出**的能力、`Math` 的使用等。
+- 日历: 考验对 `Date` 对象的使用。
+- 简单的四则计算器: 考验对处理**浮点数溢出**的能力、`Math` 的使用等。
 
 **简单算法**
 
@@ -95,7 +95,7 @@ if (age >= 18) {
 }
 
 // good
-const hint = age >= 18 ? '欢迎打开新世界(' : '未成年不得入内!';
+const hint = age >= 18 ? '欢迎打开新世界 (' : '未成年不得入内!';
 ```
 
 ### 逻辑运算符
@@ -146,10 +146,9 @@ names.some(name => ~linkName.indexOf(name));
 利用按位或 `|` 向下取整:
 
 ```javascript
-var num = 50.1234;
-var int = num | 0;
+const num = 50.1234 | 0;
 
-console.log(int); // 50
+console.log(num); // 50
 ```
 
 除此之外，还可以使用`~~`截除小数，但它只适用于`32`位数字。<br>
@@ -165,11 +164,81 @@ console.log((50.1234 | 0) / 10); // 5
 
 </details>
 
----
+## Common
+
+通用方法
+
+### 判断原始类型
+
+```javascript
+// 目标是否是对象
+function isObject(obj) {
+  return Object.prototype.toString.call(obj) === '[object Object]';
+}
+
+// 使用同样的方法进行测试, 结果如下:
+Object.prototype.toString.call([]); // [object Array]
+Object.prototype.toString.call(null); // [object Null]
+Object.prototype.toString.call('12'); // [object String]
+Object.prototype.toString.call(NaN); // [object Number]. 注意, NaN 是属于数字类型
+Object.prototype.toString.call(345); // [object Number]
+Object.prototype.toString.call(undefined); // [object Undefined]
+Object.prototype.toString.call(Symbol()); // [object Symbol]
+Object.prototype.toString.call(function() {}); // [object Function]
+
+// 根据上述规则，可以对字符串进行操作
+// 获取基础类型
+function getBaseType(target) {
+  const typeStr = Object.prototype.toString.call(target).toLocaleLowerCase();
+
+  return typeStr.slice(8, -1);
+}
+```
+
+### 计算星座
+
+```javascript
+/**
+ * 根据生日的月份和日期，计算星座。
+ * @param {String} month - 月份
+ * @param {String} day - 日期
+ * @desc 返回星座名
+ */
+function getAstro(month, day) {
+  return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
+    month * 2 - (day < '102223444433'.charAt(month - 1) - -19) * 2,
+    2
+  );
+}
+```
+
+### 判断闰年函数
+
+判断闰年其实只要满足下面几个条件即可:
+
+- 普通年**能被 4 整除**且**不能被 100 整除**的为闰年。如 2004 年就是闰年,1900 年不是闰年
+- **世纪年**能被**400 整除**的是闰年。如 2000 年是闰年，1900 年不是闰年
+
+```javascript
+/**
+ * 判断闰年函数
+ * @param  {number} year 要判断的年份
+ * @return {bool} 返回布尔值
+ */
+function leapYear(year) {
+  return !(year % (year % 100 ? 4 : 400));
+}
+```
+
+### 其他
+
+> 你知道吗？
+
+- 很多编译器在压缩代码的时候，会用`!0`和`!1`来代替布尔值`false`和`true`。因为可以有效减少文件体积, 但会破坏代码可读性 (虽然可读性是给人看得，机器只在乎运行效率)。
 
 ## Array
 
-### 删除数组中指定元素
+### 删除数组项
 
 ```javascript
 // 删除数组元素, index 为数组索性, 只删除一个
@@ -217,7 +286,7 @@ console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
 
 ```javascript
 function flatten(arr) {
-  const newArr = arr.map(item => (Array.isArray(item) ? flatten(item) : item));
+  const newArr = arr.map((item) => (Array.isArray(item) ? flatten(item) : item));
   return [].concat(...newArr);
 }
 
@@ -239,80 +308,6 @@ console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
 > 你知道吗？
 
 1. 数组实际上是一个类列表对象，这意味着我们可以在数组上添加属性，虽然一般不常这样做
-
----
-
-## Common
-
-通用方法
-
-### 判断原始类型
-
-```javascript
-// 目标是否是对象
-function isObject(obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
-}
-
-// 使用同样的方法进行测试, 结果如下:
-Object.prototype.toString.call([]); // [object Array]
-Object.prototype.toString.call(null); // [object Null]
-Object.prototype.toString.call('12'); // [object String]
-Object.prototype.toString.call(NaN); // [object Number]. 注意, NaN 是属于数字类型
-Object.prototype.toString.call(345); // [object Number]
-Object.prototype.toString.call(undefined); // [object Undefined]
-Object.prototype.toString.call(Symbol()); // [object Symbol]
-Object.prototype.toString.call(function() {}); // [object Function]
-
-// 根据上述规则，可以对字符串进行操作
-// 获取基础类型
-function getBaseType(target) {
-  const typeStr = Object.prototype.toString.call(target).toLocaleLowerCase();
-
-  return typeStr.slice(8, -1);
-}
-```
-
-### 计算星座
-
-```javascript
-/**
- * 根据生日的月份和日期，计算星座。
- * @param {String} m - 月份
- * @param {String} d - 日期
- * @desc 返回星座名
- */
-function getAstro(m, d) {
-  return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
-    m * 2 - (d < '102223444433'.charAt(m - 1) - -19) * 2,
-    2
-  );
-}
-```
-
-### 判断闰年函数
-
-判断闰年其实只要满足下面几个条件即可:
-
-- 普通年**能被 4 整除**且**不能被 100 整除**的为闰年。如 2004 年就是闰年,1900 年不是闰年
-- **世纪年**能被**400 整除**的是闰年。如 2000 年是闰年，1900 年不是闰年
-
-```javascript
-/**
- * 判断闰年函数
- * @param  {number} year 要判断的年份
- * @return {bool} 返回布尔值
- */
-function leapYear(year) {
-  return !(year % (year % 100 ? 4 : 400));
-}
-```
-
-> 你知道吗？
-
-- 很多编译器在压缩代码的时候，喜欢用`!0`和`!1`来代替布尔值`false`和`true`。因为可以有效减少文件体积, 但会破坏可读性。
-
----
 
 ## Number
 
@@ -363,46 +358,46 @@ console.log(numberWithCommas(12345678912.123)); // "12,345,678,912.1234"
 
 以上方法的缺陷是需要额外处理小数位，在 `ES2018` 中可以使用 [后行断言](https://es6.ruanyifeng.com/#docs/regex#%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80) 的语法(chrome 62+)，可以完全通过正则来处理，性能也比上一种方式会更高:
 
-``` js
+```js
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 }
 ```
 
 <details>
   <summary>测试用例</summary>
 
-``` js
+```js
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 }
 
 function test(x, expect) {
   const result = numberWithCommas(x);
   const pass = result === expect;
-  console.log(`${pass ? "✓" : "ERROR ====>"} ${x} => ${result}`);
+  console.log(`${pass ? '✓' : 'ERROR ====>'} ${x} => ${result}`);
   return pass;
 }
 
 let failures = 0;
-failures += !test(0,               "0");
-failures += !test(0.123456,        "0.123456");
-failures += !test(100,             "100");
-failures += !test(100.123456,      "100.123456");
-failures += !test(1000,            "1,000");
-failures += !test(1000.123456,     "1,000.123456");
-failures += !test(10000,           "10,000");
-failures += !test(10000.123456,    "10,000.123456");
-failures += !test(100000,          "100,000");
-failures += !test(100000.123456,   "100,000.123456");
-failures += !test(1000000,         "1,000,000");
-failures += !test(1000000.123456,  "1,000,000.123456");
-failures += !test(10000000,        "10,000,000");
-failures += !test(10000000.123456, "10,000,000.123456");
+failures += !test(0, '0');
+failures += !test(0.123456, '0.123456');
+failures += !test(100, '100');
+failures += !test(100.123456, '100.123456');
+failures += !test(1000, '1,000');
+failures += !test(1000.123456, '1,000.123456');
+failures += !test(10000, '10,000');
+failures += !test(10000.123456, '10,000.123456');
+failures += !test(100000, '100,000');
+failures += !test(100000.123456, '100,000.123456');
+failures += !test(1000000, '1,000,000');
+failures += !test(1000000.123456, '1,000,000.123456');
+failures += !test(10000000, '10,000,000');
+failures += !test(10000000.123456, '10,000,000.123456');
 if (failures) {
-    console.log(`${failures} test(s) failed`);
+  console.log(`${failures} test(s) failed`);
 } else {
-    console.log("All tests passed");
+  console.log('All tests passed');
 }
 ```
 
@@ -414,13 +409,13 @@ if (failures) {
 var num = 1234567.123456;
 
 // toLocaleString
-num.toLocaleString();                                            // "1,234,567.123"
+num.toLocaleString(); // "1,234,567.123"
 
 // result => "1,234,567.123"
 new Intl.NumberFormat().format(num);
 
 // 设置格式选项
-var CNY_OPTIOONS = { style: "currency", currency: 'CNY' }
+var CNY_OPTIOONS = { style: 'currency', currency: 'CNY' };
 
 // result => "¥1,234,567.12"
 new Intl.NumberFormat('zh-CN', CNY_OPTIOONS).format(num);
@@ -428,7 +423,6 @@ new Intl.NumberFormat('zh-CN', CNY_OPTIOONS).format(num);
 // result => "¥1,234,567.123450"
 // 设置小数位
 new Intl.NumberFormat('zh-CN', { ...CNY_OPTIOONS, minimumFractionDigits: 6 }).format(num);
-
 ```
 
 或者使用 [numeral.js](https://github.com/adamwdraper/Numeral-js/blob/master/numeral.js) 进行数字格式化。
@@ -456,64 +450,46 @@ function randomRangeNum(min, max) {
 ['1.1', '456a', '3e300'].map(Number); // [1.1, NaN, 3e+300]
 ```
 
----
-
 ## String
 
 ### 计算字符串长度
 
-`Unicode`编码`0 ~ 128`是单字节编码序列。因此可以利用这个特点来确定字符串的长度(单双字节实际占位)。
+`unicode` 编码 `0 ~ 128` 是单字节编码序列。因此可以利用这个特点来确定字符串的长度(单双字节实际占位)。
 
 ```javascript
-String.prototype.strLen = function() {
-  var len = 0;
-  for (var i = 0; i < this.length; i++) {
-    if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2;
-    else len++;
+/**
+ * 检查字符串中第几个字符是否为汉字
+ * @param { String } str 字符串
+ * @param { Number } i 第几个字符串，最小为 1
+ */
+function checkCHS(str, i = 1) {
+  const code = str.charCodeAt(Math.min(0, i - 1));
+  return code > 255 || code < 0;
+}
+
+/**
+ * 获取区分单双字节文本长度
+ * @desc 仅用于中英文长度判断，中文占 2 位，英文占 1 位
+ *       注意: emoji 的判断会不精准
+ */
+function getStrLength(str) {
+  let len = 0;
+
+  for (let i = 1; i <= str.length; i++) {
+    len += checkCHS(str, i) ? 2 : 1;
   }
+
   return len;
-};
+}
 
-//判断某个字符是否是汉字
-String.prototype.isCHS = function(i) {
-  return this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0;
-};
+console.log(
+  '[getStrLength result]:',
+  getStrLength('一二三四五六七八九十'),
+  getStrLength('1234567890'),
+  getStrLength('abcdefghij')
+);
+// [getStrLength result]: 20 10 10
 ```
-
-### 截取字符串
-
-```javascript
-// 将字符串拆成字符，并存到数组中
-String.prototype.strToChars = function() {
-  var chars = [];
-  for (var i = 0; i < this.length; i++) {
-    chars[i] = [this.substr(i, 1), this.isCHS(i)];
-  }
-  String.prototype.charsArray = chars;
-  return chars;
-};
-
-// 截取字符串（从start字节到end字节）
-String.prototype.subCHString = function(start, end) {
-  var len = 0;
-  var str = '';
-  this.strToChars();
-  for (var i = 0; i < this.length; i++) {
-    if (this.charsArray[i][1]) len += 2;
-    else len++;
-    if (end < len) return str;
-    else if (start < len) str += this.charsArray[i][0];
-  }
-  return str;
-};
-
-// 截取字符串（从start字节截取length个字节）
-String.prototype.subCHStr = function(start, length) {
-  return this.subCHString(start, start + length);
-};
-```
-
----
 
 ## Store
 
@@ -587,14 +563,14 @@ const tools = {
    * @param name - cookie 名，不传拿全部
    */
   cookieGet(name) {
-    const cookies = document.cookie.split(';').map(item => {
+    const cookies = document.cookie.split(';').map((item) => {
       const [key, value] = item.trim().split('=');
       return { key, value };
     });
 
     if (!name) return cookies;
 
-    const cookie = cookies.find(item => item.key === name);
+    const cookie = cookies.find((item) => item.key === name);
     return cookie ? cookie.value : null;
   },
 
@@ -621,7 +597,7 @@ const tools = {
     document.cookie = cookie;
 
     return true;
-  }
+  },
 };
 
 // 查询 cookie
@@ -638,23 +614,19 @@ tools.cookieGet('nickName'); // null
 
 具体更多有关`cookies`信息可以戳[MDN - Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
 
----
-
 ## Date
 
 - 设置某天的时间区间，区间在`00:00:00 - 23:59:59`。
 
 ```javascript
-function setFullDate(day) {
-  let start = new Date().setHours(0, 0, 0, 0);
-  let end = new Date().setHours(23, 59, 59, 999);
-  let base = 24 * 60 * 60 * 1000;
+function setFullDate(rangeDay) {
+  const start = new Date().setHours(0, 0, 0, 0);
+  const end = new Date().setHours(23, 59, 59, 999);
+  const oneDay = 24 * 60 * 60 * 1000;
 
-  return [start - day * base, end];
+  return [start - rangeDay * oneDay, end];
 }
 ```
-
----
 
 ## DOM
 
@@ -664,14 +636,14 @@ DOM 操作实际上是一个挺耗费渲染性能的操作，我们应该尽可�
 
 比如批量插入节点时可以先在 js 中将新创建的节点插入到 `Fragment` 节点中，再将该节点插入到页面中，这样就仅触发一次渲染。
 
-``` javascript
+```javascript
 const $fragment = document.createDocumentFragment();
 const $list = document.querySelector('.list');
 
 for (let i = 0; i < 10; i++) {
-  const $ele = document.createElement("li");
+  const $ele = document.createElement('li');
   $ele.innerText = `item - ${i}`;
-  $ele.setAttribute('class', 'item')
+  $ele.setAttribute('class', 'item');
 
   $fragment.appendChild($ele);
 }
@@ -693,27 +665,27 @@ $list.appendChild(fragment);
    export default {
      template: '<div>{{text}}</div>',
      data: {
-       text: 'hello'
-     }
-   }
+       text: 'hello',
+     },
+   };
 
    // 下面两者都不会
    new Vue({
      el: '#root',
      template: '<div>{{text}}</div>',
      data: {
-       text: '123'
-     }
-   })
+       text: '123',
+     },
+   });
 
    export default {
      template: '<div>{{text}}</div>',
-     data () {
+     data() {
        return {
-         text: 'hello'
-       }
-     }
-   }
+         text: 'hello',
+       };
+     },
+   };
    ```
 
 3. 在父组件的 `created` 钩子上进行赋值操作的话，数值的变化是传不到子组件的`watch`里的。
@@ -749,7 +721,8 @@ Vue component 中使用 `distpatch` 触发一个 `action`，`action` commit 到 
 
 ## React
 
-- [x] React / React Hooks 生命周期各钩子使用场景总结
+- [x] [React 知识回顾 (使用篇)](https://anran758.github.io/blog/2020/10/31/react-retrospection/) (生命周期、组件通信、Hooks 等)
+- [x] [React 知识回顾 (优化篇)](https://anran758.github.io/blog/2020/11/04/react-retrospection-2/)
 - [ ] redux、redux-sage 总结
 - [ ] router 相关总结
 
@@ -771,117 +744,11 @@ Vue component 中使用 `distpatch` 触发一个 `action`，`action` commit 到 
 4. 仅通过 props 接受数据和回调
 5. 通常为函数式组件
 
-### Hook
-
-`Hook` 的引入是为了解决以前 `React` 的一些痛点:
-
-- 类组件状态逻辑难以复用
-  - 缺少复用逻辑
-  - 渲染属性和高阶组件导致层级冗余
-
-- 趋向复杂难以维护
-  - 生命周期函数混杂不相干逻辑
-  - 相干逻辑分散在不同生命周期
-
-- this 指向困扰
-  - 内联函数过度创建新句柄
-  - 类成员函数不能保证 this
-
-**Hook 的优势:**
-
-1. 函数组件无 this 问题
-1. 自定义 hook 方便复用状态逻辑
-1. 副作用的关注点分离
-
-**Hook 需要准守的规则:**
-
-1. 只在最顶层使用 Hook
-2. 只在 React 函数中调用 Hook
-
-**React.memo 与 React.useMemo:**
-
-`memo` 针对一个组件的渲染是否重复执行，`useMemo` 定义一段函数逻辑是否重复执行。
-
-**React.useMemo 与 React.useCallback:**
-
-`useMemo(() => fn)` 返回的是一个函数，将等同于 `useCallback(fn)`
-
-**React.useStatus 与 React.useRef:**
-
-`React.useStatus` 的使用相当于类的 `state` 的某项，`React.useRef` 是相当于类的内部属性。前者用于渲染，后者类似于普通的变量。
-
-<!--
-
-在组件内使用 constructor 接受参数
-
-便于自动化测试
-
-新的虚拟DOM减少了真实DOM的创建，较少了性能损耗
-
-虚拟DOM优点：
-
-1. 性能提升了
-2. 使得跨端应用得以实现（React Native）
-
-生命周期指的是
-
-getDefaultProps
-
-getInitialState
-
-componentWillMount 在组件即将被挂载到页面的时刻自动执行，只会在第一次会执行 === vue.ready
-render 页面被渲染时
-componentDidMount 在组件被挂载到页面后自动执行，只会在第一次会执行
-
-componentWillReceiveProps: 如果需要父组件某个信息更新时，子组件自动覆盖内部的某个state可以使用这个生命周期：
-
-```
-componentWillReceiveProps(nextProps) {
- const { projectInfo } = this.props;
-
- // 设置项目时间
- if (nextProps.projectInfo !== projectInfo) {
-   const date = [moment(projectInfo.startTime), moment(projectInfo.endTime)];
-   this.setState({
-     rangPickerData: [...date],
-     itemRangDate: [...date],
-   });
- }
-}
-```
-
-static getDerivedStateFromProps(props, state) 用于 props 改变后 针对更新 state
-
-getDerivedStateFromProps 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
-
-## shouldComponentUpdate
-
-shouldComponentUpdate 组件被更新之前，它会自动被执行,如果 shouldComponentUpdate() 返回 false，则不会调用 render(),
-
-关于避免重复渲染，Component 是用 shouldComponentUpdate, PureComponent 会对 props 和 state 进行浅对比，如果 props 或 state 内部的某个对象里的值发生了改变，但还是不会发生渲染。
-memo 则是让无状态组件避免重复渲染
-
-如果 shouldComponentUpdate() 返回值为 false，则不会调用 componentDidUpdate()。
-
-redux-sage
-
-put 调用一个内部方法 -->
-
-### redux
-
-`redux` 三大原则：单一数据源、状态不可变、纯函数修改状态
-
-### React 与 Vue 的选择
-
-在项目架构时, React 相比 Vue 会更灵活一些，在遇到非常复杂的业务时倾向于使用 React, 它的技术方案会更多一点选择；vue 则提供了更丰富的 API 实现功能会更简单，但相对来说缺少一定的灵活性，存在一定的限制。
-
----
-
 ## 小程序
 
 小程序与`React`、`Vue` 之间有很多共通之处，将一些概念转换过来可以快速融入微信小程序思路：
 
-1. 小程序也有生命周期，一般会在`onLoad`处理请求接口，因为它是最触发的生命周期钩子。
+1. 小程序也有生命周期，一般会在 `onLoad` 处理请求接口，因为它是最触发的生命周期钩子。
 2. 在小程序中使用 `import` 语法时，要使用相对路径，不能使用绝对路径(如访问根目录 `/` ), 否则会抛错。
 3. 在组件上，小程序的 `this.triggerEvent` 相当于 `vue` 的 `this.$emit`, 通过调用 API 来通知父组件有事件触发。
 4. 只有跟 `wxml` 内有绑定的变量才需要放在 `this.data` 中，其余的放在 `this` 里。这样能减轻渲染的压力。
@@ -893,7 +760,7 @@ put 调用一个内部方法 -->
       */
      data: {
        // 需要跟 wxml 模板绑定的数据
-       gifts: {}
+       gifts: {},
      },
 
      // timer 只是用于储存定时器，不需要在页面中渲染
@@ -904,28 +771,38 @@ put 调用一个内部方法 -->
       */
      methods: {
        /* ... */
-     }
+     },
    });
    ```
+
+### 小程序授权
+
+- 可以通过调用`wx.getSetting`，判断`data.authSetting['scope.userInfo']`来获取用户是否授权的信息
+- 没有授权的话，我们可以标记一个状态变量(`hasLogin`)，当没有授权信息的时候，设置为`false`。
+- 页面通过这个变量来控制显示真正的按钮，还是授权按钮(wx:if-else)
+- 现在微信的授权，需要引导用户主动点击按钮才会弹出授权的窗口，需要使用原生的 button 组件，通过调用 `getuserinfo`的回调拿到`userInfo`信息，判断用户是否点击了授权
+
+### 小程序跳转
+
+如果想从一个小程序跳转到另一个小程序中，那么这两个小程序就**必须同时关联同一个公众号**（服务号或者订阅号）。与之相关联的关键词如下:
+
+1. target="miniProgram"
+2. app-id="appid"
 
 ## 第三方库
 
 实际工作中总会遇到很多形形色色的业务需求，这篇针对特定业务需求所需推荐的库。
 
-| name                                                   | 用途                                     |
-| ------------------------------------------------------ | ---------------------------------------- |
-| moment                                                 | 专门处理 date 的操作                     |
-| lodash                                                 | 主要用于数据处理相关的 js 工具库         |
-| node-qrcode                                            | 用以生成二维码                           |
-| xlsx                                                   | excel 之类的表格处理，如导入导出         |
-| classnames                                             | 类名管理工具                             |
-| [decimal.js](https://www.npmjs.com/package/decimal.js) | JavaScript的任意精度的十进制类型。       |
-| [numeral](https://www.npmjs.com/package/numeral)       | 一个用于格式化和处理数字的javascript库。 |
-
----
-
-## 数据可视化
+| name                                                   | 用途                                       |
+| ------------------------------------------------------ | ------------------------------------------ |
+| moment                                                 | 专门处理 date 的操作                       |
+| lodash                                                 | 主要用于数据处理相关的 js 工具库           |
+| node-qrcode                                            | 用以生成二维码                             |
+| xlsx                                                   | excel 之类的表格处理，如导入导出           |
+| classnames                                             | 类名管理工具                               |
+| [decimal.js](https://www.npmjs.com/package/decimal.js) | JavaScript 的任意精度的十进制类型。        |
+| [numeral](https://www.npmjs.com/package/numeral)       | 一个用于格式化和处理数字的 javascript 库。 |
 
 ### bizcharts
 
-`Chart` 图表使用`type: time`，数据量大了后刻度会不准，解决方法是将`type`替换为`timecat`，将日期转换为有序的分类数据。
+`Chart` 图表使用 `type: time`，数据量大了后刻度会不准，解决方法是将 `type` 替换为 `timecat`，将日期转换为有序的分类数据。
