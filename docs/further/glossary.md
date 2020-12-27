@@ -17,12 +17,14 @@
 
 常见简写一览:
 
-| name | description                |
-| ---- | -------------------------- |
-| toB  | toBusiness, 面向企业产品   |
-| toC  | toCustomer, 面向消费者     |
-| CMS  | 内容管理系统               |
-| OA   | 办公自动化, 一般指办公系统 |
+| name | description                                     |
+| ---- | ----------------------------------------------- |
+| toB  | toBusiness, 面向企业产品                        |
+| toC  | toCustomer, 面向消费者                          |
+| OA   | 办公自动化 (Office Automation)                  |
+| ERP  | 企业资源计划 (Enterprise resource planning)     |
+| CRM  | 客户关系管理 (Customer relationship management) |
+| CMS  | 内容管理系统 (Content management system)        |
 
 ## 软件开发
 
