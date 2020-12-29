@@ -16,4 +16,48 @@
 
 ## email
 
-Best regards 通常作为邮件结尾的祝福语。
+常见缩写:
+
+- **To**: 收件人/致
+- **From**: 发件人/由
+- **Subject**: 主题
+- **CC (Carbon Copy)**: 抄送给除收件人外的其他相关的人
+- **BCC (Blind Carbon Copy)**: 密件抄送，除了寄件人本身可以看到所有 BCC 栏位的人，其他栏位的人都不會看見 BCC 栏位的人
+- **RE (replay)**: 用來指出此封 email 是关于之前（有讨论或是待讨论）的主題
+- **FW / FWD / Fwd / Fw**: 转寄(forward)
+- **ATTN (attention)** 附件
+- **Date**: 日期
+- **reference**: 参考资料通常写公司名称
+
+### 常见短语
+
+**Please find in the attached / enclosed documents, …**  
+请查阅附件…
+
+**I look forward to your reply.**  
+我期待您的回复。
+
+**Thank you for your time and consideration.**  
+感谢您的宝贵时间。
+
+**If you have any questions , please don't hesitate to contact me.**  
+如有任何疑问，请随时与我联系
+
+### 请假
+
+假如需要在 2020.12.25 (25 Dec 2020) 请假一天，可参考以下例子:
+
+``` example
+Subject: (Your name)'s leave application on 25 Dec 2020
+To: (leader name)
+-----
+
+Hi (leader name),
+
+For some Personal affairs. Could i apply one day leave on 25 Dec 2020?
+Thank for you consideration and i am expecting your approval.
+
+Thanks and Best regards,
+(Your name)
+
+```
