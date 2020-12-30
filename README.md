@@ -46,8 +46,3 @@ yarn docs:build
 - [anran758's homepage](https://anran758.github.io/blog/): web 相关的效果展示页
 - [anran758's blog](https://anran758.github.io/blog/): 业务场景的分析与解决方案、计算机相关的笔记、简单的教程等。
 - [专栏 | 初级前端工程师的进阶之路](https://zhuanlan.zhihu.com/c_1147180666474176512): 专门针对初级工程师进阶时常遇到的一些问题专辑。
-
-## 推荐阅读
-
-- [Introducing npx: an npm package runner | npx 简介](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
-- [usehooks | React Hooks 封装示例](https://usehooks.com/)
