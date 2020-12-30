@@ -1,31 +1,16 @@
 // https://vuepress.vuejs.org/zh/config/
-// const { fs, path } = require("@vuepress/shared-utils");
-
-// const DEFAULT_PAGE = ['readme', 'index']
-// function getSidebarItem(pathInfo = {}, options = {}) {
-//   const {dirPath = '', prefix = ''} = pathInfo
-//   const names = fs
-//     .readdirSync(path.resolve(__dirname, dirPath))
-//     .map(filename => {
-//       const name = filename.slice(0, -3).toLowerCase()
-//       return DEFAULT_PAGE.includes(name)  ? prefix : prefix + name;
-//     })
-//     .sort();
-
-//   return {
-//       collapsable: false,
-//       children: names,
-//       ...options,
-//     }
-// }
-
 function getOperationsSidebar(operationsTitle, issueTitle) {
   return [
     {
       title: operationsTitle,
-      collapsable: false,
-      children: ['', 'issue']
-    }
+      collapsable: true,
+      path: './',
+    },
+    {
+      title: issueTitle,
+      collapsable: true,
+      path: 'issue',
+    },
   ];
 }
 
@@ -34,7 +19,7 @@ module.exports = ctx => ({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'Front end Lab',
+      title: 'Web 实验室',
       description: 'Web 开发笔记与解决方案'
     }
   },
@@ -82,10 +67,9 @@ module.exports = ctx => ({
         editLinkText: '在 GitHub 上编辑此页',
         lastUpdated: '上次更新',
         nav: require('./nav/zh'),
-        // sidebar: ['auto']
+        displayAllHeaders: true,
         sidebar: {
-          // '/operations/': getOperationsSidebar('运维笔记', 'issue')
-          '/operations/': ['', 'issue']
+          '/operations/': getOperationsSidebar('运维笔记', 'issue')
         }
       }
     }
