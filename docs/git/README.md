@@ -12,7 +12,7 @@ sidebar: auto
   - [撤销还没 push 到远程的 commit](#撤销还没-push-到远程的-commit)
   - [撤销已经 push 到远端的 commit](#撤销已经-push-到远端的-commit)
 - [barnch](#barnch)
-  - [tag](#tag)
+- [tag](#tag)
 - [history](#history)
 - [remote](#remote)
   - [合并两个不同仓库的 commit](#合并两个不同仓库的-commit)
@@ -144,7 +144,7 @@ git checkout -b "gh-pages"
 git branch --set-upstream-to orgin2/game
 ```
 
-### tag
+## tag
 
 ``` bash
 # 查看所有标签

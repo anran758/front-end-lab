@@ -3,17 +3,15 @@ sidebarDepth: 3
 sidebar: auto
 ---
 
+<!-- omit in toc -->
 # HTML
 
-想了想, 还是将HTML模块抽一个出来, 的确也有一些平时会遇到稀奇古怪的东西值得一说.
-
-- [HTML](#html)
-  - [common](#common)
-  - [video](#video)
-    - [视频首屏最先加载方法](#视频首屏最先加载方法)
-    - [引用视频播放失败](#引用视频播放失败)
-    - [video api](#video-api)
-  - [pre and code](#pre-and-code)
+- [common](#common)
+- [video](#video)
+  - [视频首屏最先加载方法](#视频首屏最先加载方法)
+  - [引用视频播放失败](#引用视频播放失败)
+  - [video api](#video-api)
+- [pre and code](#pre-and-code)
 
 ## common
 
@@ -54,4 +52,3 @@ playbackRate 控制播放速度
 ## pre and code
 
 [Pre 和 Code 标签之间的区别](https://anran758.github.io/blog/2019/08/24/js-%E5%B0%86JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%E8%87%B3%E9%A1%B5%E9%9D%A2%E4%B8%8A/)
- 
