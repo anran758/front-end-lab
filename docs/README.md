@@ -5,15 +5,19 @@ footer: GPL Licensed | Copyright © 2019-present anran758
 ---
 
 <hide-outbound>
-
-  [![GitHub stars](https://img.shields.io/github/stars/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/stargazers)
-  [![GitHub forks](https://img.shields.io/github/forks/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/network)
-  [![GitHub watchers](https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/watchers)
-  [![CRAN/METACRAN](https://img.shields.io/cran/l/devtools.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab)
-
+  <p align="center">
+    <a href="https://github.com/anran758/Front-End-Lab/stargazers">
+      <img alt="GitHub stars" src="https://img.shields.io/github/stars/anran758/Front-End-Lab.svg?style=flat-square"></a>
+    <a href="https://github.com/anran758/Front-End-Lab/network"><img alt="GitHub forks"
+        src="https://img.shields.io/github/forks/anran758/Front-End-Lab.svg?style=flat-square"></a>
+    <a href="https://github.com/anran758/Front-End-Lab/watchers"><img alt="GitHub watchers"
+        src="https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square"></a>
+    <a href="https://github.com/anran758/Front-End-Lab"><img alt="CRAN/METACRAN"
+        src="https://img.shields.io/cran/l/devtools.svg?style=flat-square"></a>
+  </p>
 </hide-outbound>
 
-:art: 将曾经踩过的坑、常用的解决方案还有一些待完成的想法记录下来，完善自己的知识库。
+> :art: 记录 Web 领域的研究与实践
 
 ## 阅读概览
 

@@ -1,45 +1,41 @@
-# Front-End-Lab
+<h1 align="center">Web Lab</h1>
 
-[![GitHub stars](https://img.shields.io/github/stars/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/network)
-[![GitHub watchers](https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab/watchers)
-[![CRAN/METACRAN](https://img.shields.io/cran/l/devtools.svg?style=flat-square)](https://github.com/anran758/Front-End-Lab)
+<p align="center">
+  <a href="https://github.com/anran758/Front-End-Lab/stargazers">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/anran758/Front-End-Lab.svg?style=flat-square"></a>
+  <a href="https://github.com/anran758/Front-End-Lab/network"><img alt="GitHub forks"
+      src="https://img.shields.io/github/forks/anran758/Front-End-Lab.svg?style=flat-square"></a>
+  <a href="https://github.com/anran758/Front-End-Lab/watchers"><img alt="GitHub watchers"
+      src="https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square"></a>
+  <a href="https://github.com/anran758/Front-End-Lab"><img alt="CRAN/METACRAN"
+      src="https://img.shields.io/cran/l/devtools.svg?style=flat-square"></a>
+</p>
 
-:art: 将曾经踩过的坑、常用的解决方案还有一些待完成的想法记录下来，完善自己的知识库。
+<p align="center">
+  <a href="https://anran758.github.io/front-end-lab/">Website</a> ·
+  <a href="https://github.com/anran758/front-end-lab/tree/master/docs#%E9%98%85%E8%AF%BB%E6%A6%82%E8%A7%88">目录概览</a>
+</p>
+
+> :art: 记录 Web 领域的研究与实践
 
 ---
 
-## start
+## Start
 
 ``` shell
 # 本地开发
-yarn docs:dev
+yarn start
 
-# 构建文档
-yarn docs:build
+# 生成文档
+yarn build
 ```
 
-## 开发分支
+## Barnch
 
 | branch  | description                                                            |
 | ------- | ---------------------------------------------------------------------- |
 | master  | 主/文档分支。编写笔记在此分支进行更新                                  |
 | develop | 开发分支。项目构建类先在开发分支进行，开发完毕后再合并至 master 分支中 |
-
-## 目录概览
-
-- [Git](./docs/git)
-- [CSS](./docs/css)
-- [JavaScrip](./docs/javascript)
-- [RegExp](./docs/REGEXP)
-- [扩展阅读](./docs/further)
-
-:construction: 待完善
-
-- [移动端开发解决方案](./docs/mobile)
-- [面试笔记](./docs/topic/2020.md)
-- [运维笔记](./docs/operations/README.md)
-- [HTML](./docs/html)
 
 ## 专栏与博客
 
