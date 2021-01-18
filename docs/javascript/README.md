@@ -33,11 +33,15 @@ sidebar: auto
     - [字符串转数字](#字符串转数字)
   - [String](#string)
     - [计算字符串长度](#计算字符串长度)
+  - [ES6+](#es6)
+    - [Symbol](#symbol)
+    - [class](#class)
   - [Store](#store)
   - [存取数据](#存取数据)
     - [cookie](#cookie)
   - [Date](#date)
   - [DOM](#dom)
+    - [box model 对应的 DOM API](#box-model-对应的-dom-api)
     - [批量插入节点](#批量插入节点)
   - [Vue](#vue)
     - [mixin 的问题](#mixin-的问题)
@@ -52,6 +56,7 @@ sidebar: auto
     - [小程序跳转](#小程序跳转)
   - [第三方库](#第三方库)
     - [bizcharts](#bizcharts)
+  - [error](#error)
 
 ## 练手组件
 
@@ -491,6 +496,20 @@ console.log(
 // [getStrLength result]: 20 10 10
 ```
 
+## ES6+
+
+### Symbol
+
+1. 我们使用 Symbol 主要是因为它独一无二的特性(避免覆盖)。
+2. 对于一些私有的方法，最好使用 Symbol 作为 key。但值得注意的是，用 Symbol 作为 key的话还有一个问题就是，不会被 `for` 循环、`Object.keys`等遍历返回。
+
+### class
+
+1. class 和传统的 `prototype` 在可枚举性是不一样的，class 不通过 `this.__protp__` 上获取原型方法
+2. class 内部默认采用严格模式(意味着不能使用非严格性语法了)
+3. class 必须使用 new 来调用, 但可以直接使用类的静态方法
+4. ES6的 class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
+
 ## Store
 
 ## 存取数据
@@ -629,6 +648,15 @@ function setFullDate(rangeDay) {
 ```
 
 ## DOM
+
+### box model 对应的 DOM API
+
+![box model example](../_images/box-model-example.png)
+
+盒子模型上对应的 DOM API:
+
+- border 上的实线为可视尺寸 -> `clientWidth` (标准 API)
+- margin 上的虚线为占据尺寸 -> `outerWidth`  (非标准 API)
 
 ### 批量插入节点
 
@@ -806,3 +834,21 @@ Vue component 中使用 `distpatch` 触发一个 `action`，`action` commit 到 
 ### bizcharts
 
 `Chart` 图表使用 `type: time`，数据量大了后刻度会不准，解决方法是将 `type` 替换为 `timecat`，将日期转换为有序的分类数据。
+
+## error
+
+1. 使用 JSONP 出现以下问题，查看 jsonp 是否将 format 设置为了 json：
+
+   ``` error
+   Uncaught SyntaxError: Unexpected token :
+   ```
+
+2. import 引入有问题。在 webpack中，提示不认识 `import` 这个语法，这时就需要安装 babel-plugin-syntax-dynamic-import，同时在 `.babelrc` 加入这个插件
+
+   ```shell
+   Module build failed: SyntaxError: Unexpected token (16:21)
+
+   14 |   {
+   15 |     path: '/app',
+   > 16 |     component: () => import('../views/todo/todo.vue'),
+   ```
