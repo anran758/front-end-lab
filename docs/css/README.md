@@ -12,7 +12,6 @@ sidebar: auto
 **目录:**
 
 - [common](#common)
-  - [Reset、Normalize 的选择](#resetnormalize-的选择)
   - [继承性与通配符](#继承性与通配符)
   - [清除浮动](#清除浮动)
 - [常见工具类](#常见工具类)
@@ -39,12 +38,6 @@ sidebar: auto
 ---
 
 ## common
-
-### Reset、Normalize 的选择
-
-关于这两者有什么区别, 该如何取舍. 我曾经写过一篇博客, 感兴趣的同学可以过去看一下 - [浅谈 Normalize 与 reset](https://anran758.github.io/blog/2017/10/15/%E6%B5%85%E8%B0%88Normalize%E4%B8%8Ereset/)
-
-优化后的[reset.css](./reset.css)
 
 ### 继承性与通配符
 

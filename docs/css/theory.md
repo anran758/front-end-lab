@@ -6,6 +6,10 @@
 2. 了解哪些属性可以通过继承而来，避免重复指定规则。
 3. 滚动容器避免使用 `padding-bottom` 进行留白，IOS 低版本会直接忽略掉。除此之外 `IE`, 低版本的 `firefox` 据说也有这种情况。
 
+**相关资料:**
+
+- [normalize 与 reset 的取舍](https://anran758.github.io/blog/2017/10/15/%E6%B5%85%E8%B0%88Normalize%E4%B8%8Ereset/)
+
 ## margin
 
 ### marin 百分比计算
@@ -36,3 +40,50 @@ img {
 1. 相邻的兄弟元素
 2. 父级和第一个 / 最后一个子元素
 3. 空的 block 元素
+
+### 父子 margin 重叠的其他条件
+
+**margin-top 重叠**：
+
+1. 父元素非块状格式化上下文元素
+2. 父元素没有 `border-top` 设置
+3. 父元素没有 `padding-top` 值
+4. 父元素和第一个子元素之间没有 `inline` 元素分隔
+
+**margin-bottom 重叠**:
+
+1. 父元素非块状格式化上下文元素
+2. 父元素没有 `border-bottom` 设置
+3. 父元素没有 `padding-bottom` 值
+4. 父元素和最后一个子元素之间没有 `inline` 元素分隔
+5. 父元素没有 `height`、`min-height`、`max-height` 限制
+
+### 空 block 元素重叠
+
+1. 元素没有 `border`/`padding`/`inline` 元素;
+2. 没有设置 `height`/`min-height`;
+
+### margin 重叠计算规则
+
+1. 正正取大值
+2. 正负值相加
+3. 正负最负值
+
+### 清除 margin 重叠
+
+1. 加入 css 属性 `overflow: hidden;`
+2. 加入边框 (`border`) 属性;
+3. 加入 `padding-top`
+4. 加入内联元素，如 `&nbsp;`
+5. 限制高度 `height`
+
+### 善用 margin 重叠
+
+``` css
+.list {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+```
+
+写垂直布局的时候，利用 margin 重叠 (外边距塌陷) 的特性，在容器上下加上 margin 会更具有稳定性，哪怕移除元素或者元素没加载出来都不会破坏布局。
