@@ -18,8 +18,6 @@
 
 > :art: 记录 Web 领域的研究与实践
 
----
-
 ## Start
 
 ``` shell
@@ -32,10 +30,26 @@ yarn build
 
 ## Barnch
 
-| branch  | description                                                            |
+| Branch  | Description                                                            |
 | ------- | ---------------------------------------------------------------------- |
 | master  | 主/文档分支。编写笔记在此分支进行更新                                  |
 | develop | 开发分支。项目构建类先在开发分支进行，开发完毕后再合并至 master 分支中 |
+
+## commit type
+
+| Type     | Description      |
+| -------- | ---------------- |
+| `docs:`  | 编写文档         |
+| `build:` | website 配置相关 |
+| `ci:`    | CI 配置相关      |
+
+由于更多情况是编写文档，还可以约定 emoji 来增强 commit message 的语义:
+
+| emoji     | code        | Description    |
+| --------- | ----------- | -------------- |
+| :pencil2: | `:pencil2:` | 编写文档 (README 相关)       |
+| :art:     | `:art:`     | 润色/完善内容  |
+| :truck:   | `:truck:`   | 内容拆分或重构 |
 
 ## 专栏与博客
 
