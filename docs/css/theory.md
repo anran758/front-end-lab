@@ -87,3 +87,44 @@ img {
 ```
 
 写垂直布局的时候，利用 margin 重叠 (外边距塌陷) 的特性，在容器上下加上 margin 会更具有稳定性，哪怕移除元素或者元素没加载出来都不会破坏布局。
+
+### margin 分配空间
+
+`block` 元素可以使用 `margin` 分配剩余空间。
+
+1. `margin:auto` 就是为了填充而设置的。
+2. 如果一侧值是定值，另一侧是 auto，则 auto 为剩余值的空间大小
+3. 如果两侧均是 `auto`，则平分剩余空间大小
+
+元素上设置 `position: absolute;`、`width/height`，`left/right` 后可以通过 `margin: auto` 居中，兼容性: `IE8+`。
+
+```css
+.element {
+ width: 400px;
+ height: 400px;
+ position: absolute;
+ left: 0;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ margin: auto;
+}
+```
+
+### margin 实现等高布局
+
+通过 `margin-boottom` 改变空间大小，`padding-bottom` 将内容填充回来，这时候元素占据的空间就是真实占高度据的空间。(副作用是必须要父元素 `overflow:hidden` 限制它，让 `margin-bottom` 不会影响外面的布局)
+
+<!-- TODO:: 等高布局实现例子 -->
+
+### margin 失效的情况
+
+1. `inline` 元素的垂直 `margin` 无效。
+2. `margin` 重叠
+3. 元素处于 `display:table-cell` 或 `display:table-row`
+4. `position: absolute` 与 `margin`。
+
+   绝对定位的 `margin` 值一直有效，只是表现形式不像普通元素那样。绝对定位元素是脱离文档流，它和相邻元素没有任何关系。可以理解为一个在地下，一个在天上，不在同一个维度)
+
+5. 鞭长莫及导致的 margin 无效。
+6. 内联特性导致的 margin 无效。(在有 `height` 限制下，`-margin` 小到一定程度时，会受制于内联默认对齐特性给限制住)
