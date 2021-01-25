@@ -7,6 +7,9 @@ sidebar: auto
 # HTML
 
 - [common](#common)
+- [img](#img)
+- [attribute](#attribute)
+  - [href](#href)
 - [video](#video)
   - [视频首屏最先加载方法](#视频首屏最先加载方法)
   - [引用视频播放失败](#引用视频播放失败)
@@ -26,6 +29,50 @@ sidebar: auto
 5. `em`、`strong` 表示强调等
 
 在模块化工程中，`<script>`标签加上了`type="ecmascript-6"`后, eslint 部分规则会失效。
+
+## img
+
+`<img />` 自适应 `div` 大小
+
+``` css
+img { max-width: 100%; max-height: 100%; }
+```
+
+`max-width:100%` 和 `width:100%` 的区别在于:
+
+`max-width` 是相对于 img 自身的尺寸而言的，意思是图片最大宽度为自身尺寸的宽，在这里就是 100px。而 `width` 的 100% 我们上面已经说过了是相对于父级宽度的，所以为了不让图片被放大后失真我们可以设置 img 的最大宽度为自身尺寸大小，更通俗的讲就是只允许缩小不允许放大 img。
+
+HTML5 图片自适应:
+
+``` html
+<!--
+* html 设置了 font-size: 62.5%;
+* em 是相对 html 的 .50em 即 800px;
+* picture 标签的兼容性是IE10 +
+-->
+<div class="item">
+  <picture>
+    <source srcset="img/xxx01-l.png" midia="(min-width: 50em)">
+    <source srcset="img/xxx01-l.png" hmidia="(min-width: 50em)">
+    <img srcset="img/xxx01.png" alt="something">
+  </picture>
+</div>
+```
+
+## attribute
+
+### href
+
+`href` 属性常被 `a` 标签用于跳转。有时只是想通过 `a` 标签来模拟 UI，并不想跳转的话可以使用以下方式:
+
+``` js
+// 阻止浏览器的默认行为，表示交给 JavaScript 控制。不填会直接跳到页面顶部。
+<a href="javascript:;">link</a>
+
+// 使用锚点标签，### 创建一个不会出现在任何地方的 link
+// 若只写一个 # 的话，还是会跳回页面顶部
+<a href="###">link</a>
+```
 
 ## video
 
