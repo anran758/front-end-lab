@@ -6,6 +6,8 @@
 2. 了解哪些属性可以通过继承而来，避免重复指定规则。
 3. 滚动容器避免使用 `padding-bottom` 进行留白，IOS 低版本会直接忽略掉。除此之外 `IE`, 低版本的 `firefox` 据说也有这种情况。
 
+在中文版 chrome 浏览器下, 最小的字号会有一个下限, 这个下限会强制改变小于该值的文字大小。使其成为默认浏览器最小的值。中文版最低是 `12px`，英文版则是 `10px`。
+
 **相关资料:**
 
 - [normalize 与 reset 的取舍](https://anran758.github.io/blog/2017/10/15/%E6%B5%85%E8%B0%88Normalize%E4%B8%8Ereset/)
@@ -145,3 +147,65 @@ img {
 绝对定位元素脱离了文档流也脱离了文本流，文字都可以显示，这是**绝对定位和 float 的区别**。
 
 总的来说，标准文档流=文档流+文本流。
+
+## line-height
+
+`line-height` 的定义：行高，表示两行文字基线的距离。
+
+1. 行高由于其继承性，影响无处不在，即使单行文本也不例外。
+2. 行高只是幕后黑手，高度的表现不是行高，而是内容区域和行间距。
+
+``` example
+内容区域高度 + 行间距 = 行高
+```
+
+1. 内容区域高度只与字号以及字体有关，与 `line-height` 没有关系.
+2. 在 `simsun(宋体)` 字体下，内容区域等于文字大小值。
+
+``` example
+font-size + 行间距 = line-height
+
+font-size: 240px;
+line-height: 360px;
+行间距 = 360px - 240px = 120px;
+```
+
+### 应用元素有差别
+
+- `line-height: 1.5` 所有可继承元素根据 `font-size` 重计算行高
+- `line-height: 150%/1.5em` 当前元素根据 `font-size` 计算行高，继承给下面的元素
+
+### body 全局数值行高使用经验
+
+面向用户: 匹配 `20px`的使用经验--方便心算
+
+``` css
+body {
+  font-size: 14px;
+  line-height: 20px;
+}
+```
+
+### 消除图片底部间隙的方法
+
+1. 图片块状化 - 无基线对齐
+
+   ``` css
+   img { display: block; }
+   ```
+
+2. 图片底线对齐
+
+   ``` css
+   img { vertical-align: bottom; }
+   ```
+
+3. 行高足够小 - 基线位置上移
+
+   ``` css
+   .box { line-height: 0; }
+   ```
+
+### middle
+
+`vertical-align: middle` 其实就是基线往上1/2高度。
