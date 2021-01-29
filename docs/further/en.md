@@ -4,7 +4,23 @@
 
 - **FYI (For Your Information)**:  提供给你的信息，目的是想接收者传达他们可能对给定主题感兴趣的信息，但不坚持执行任何动作
 - **btw (by the way)**: 顺带一提。
-- **plz (please)**, 请的缩写。
+- **plz (please)**: 请的缩写。
+
+### 互联网相关的角色
+
+- **PM (Project manager)**: 项目经理
+- **PO (Product Owner)**: 产品/业务负责人
+- **TL (Team leader)**: 常指团队负责人
+- **RD (Research & Develop)**: 研发工程师
+- **FE (Front End)**: 前端工程师
+- **BE (Back End)**: 后端工程师
+- **QA (Quality Assurance)**: 测试工程师
+- **DBA (Database Administrator)**: 数据库
+- **PM (Product & Marketing)**: 产品经理
+- **TS (Technology Support)**: 技术支持
+- **OP (Operation)**: 运维工程师
+- **UE (User Experience)**: 用户体验设计师
+- **UI (User Interface)**: 用户界面设计师
 
 ## 常用短语
 
@@ -61,3 +77,5 @@ Thanks and Best regards,
 (Your name)
 
 ```
+
+Best regards 常用于邮件结尾的祝福。
