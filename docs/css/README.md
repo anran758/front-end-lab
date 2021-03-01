@@ -351,7 +351,7 @@ Nicholas C. Zakas( 尼古拉斯)提出了个更好清除浮动的一个方案, �
 3. 将主要内容 `main` 排在前头, 让**DOM 树**先加载.
 4. 两侧栏添加 `relative` 定位，左列使用 `margin-left: -100%`，右例使用 `margin-left: -右列宽度`。
 
-[源码](./design/layout/grail.html)
+[示例](https://anran758.github.io/pages/demos/layout/grail)
 
 ![image](./design/images/auto-width.gif)
 
