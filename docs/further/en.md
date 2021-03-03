@@ -1,14 +1,16 @@
-# English note
+# 互联网行业常用的英语笔记
 
 ## 常见缩写短语
 
 - **FYI (For Your Information)**:  提供给你的信息，目的是想接收者传达他们可能对给定主题感兴趣的信息，但不坚持执行任何动作
 - **btw (by the way)**: 顺带一提。
 - **plz (please)**: 请的缩写。
+- **WFH (work from home)**: 远程工作/在家办公
 
-### 互联网相关的角色
+### role
 
 - **PM (Project manager)**: 项目经理
+- **BA (Business analyst)**: 商业分析师
 - **PO (Product Owner)**: 产品/业务负责人
 - **TL (Team leader)**: 常指团队负责人
 - **RD (Research & Develop)**: 研发工程师
@@ -21,6 +23,10 @@
 - **OP (Operation)**: 运维工程师
 - **UE (User Experience)**: 用户体验设计师
 - **UI (User Interface)**: 用户界面设计师
+
+### project 管理相关
+
+- **NFRs (non-functional requirements)**: 非功能性要求
 
 ## 常用短语
 
@@ -79,3 +85,8 @@ Thanks and Best regards,
 ```
 
 Best regards 常用于邮件结尾的祝福。
+
+## testing
+
+- SIT: 系统集成测试 (System Integration Testing)
+- UAT: 用户验收测试 (User Acceptance Testing)
