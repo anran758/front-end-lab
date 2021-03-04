@@ -14,6 +14,15 @@ function getOperationsSidebar(operationsTitle, issueTitle) {
   ];
 }
 
+function getTopicSidebar() {
+  return [
+    '2020',
+    'react',
+    'vue',
+    'webpack',
+  ];
+}
+
 module.exports = ctx => ({
   base: '/front-end-lab/',
   locales: {
@@ -69,7 +78,8 @@ module.exports = ctx => ({
         nav: require('./nav/zh'),
         displayAllHeaders: true,
         sidebar: {
-          '/operations/': getOperationsSidebar('运维笔记', 'issue')
+          '/operations/': getOperationsSidebar('运维笔记', 'issue'),
+          '/topic/': getTopicSidebar(),
         }
       }
     }
