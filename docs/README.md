@@ -21,8 +21,8 @@ footer: GPL Licensed | Copyright © 2019-present anran758
 
 ## 导读
 
-<!-- <details>
-<summary><strong>Emoji Status (Click me show details)</strong></summary> -->
+<details>
+<summary><strong>Emoji Status (Click me show details)</strong></summary>
 
 ::: tip Emoji 对应的状态
 
@@ -34,14 +34,14 @@ none，内容近期不会有太大的结构性改变
 
 :::
 
-<!-- </details> -->
+</details>
 
 <details open>
 <summary><strong>Language</strong></summary>
 
 - [HTML :memo:](./html)
-- [CSS 理论笔记 :construction:](./css)
-- [CSS 实践笔记 :truck:](./css)
+- [CSS 理论笔记 :construction:](./css/theory.md)
+- [CSS 实践笔记 :truck:](./css/README.md)
 - [JavaScrip / TypeScript](./javascript)
 - [RegExp](./REGEXP)
 
