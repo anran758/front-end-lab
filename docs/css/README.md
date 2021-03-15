@@ -428,52 +428,24 @@ Nicholas C. Zakas( 尼古拉斯)提出了个更好清除浮动的一个方案, �
 
 ### 响应式布局
 
-响应式布局实际上是一个设计理念, 它是多项技术的综合体. 能适应于各种的屏幕. 其核心围绕着媒体查询(@media).
+响应式布局实际上是一个设计理念, 它是多项技术的综合体. 能适应于各种的屏幕. 其核心围绕着媒体查询(@media)。`max-width`是媒体查询的一个特性，其意思是指媒体类型小于或等于指定的宽度时, `min-width`则相反.
 
-`max-width`是媒体查询的一个特性，其意思是指媒体类型小于或等于指定的宽度时, `min-width`则相反.
+[Bootstrap](https://getbootstrap.com/docs/4.1/layout/overview/) 已经有相关的指导：
 
-```css
-/* 1024px显屏 */
-@media screen and (max-width: 1024px) {
-  /* 样式代码 */
-}
+``` css
+/* 超小型设备 (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { ... }
 
-/* 800px显屏 */
-@media screen and (max-width: 800px) {
-}
+/* 小型 (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { ... }
 
-/* 640px显屏 */
-@media screen and (max-width: 640px) {
-}
+/* 中型设备 (tablets, less than 992px) */
+@media (max-width: 991.98px) { ... }
 
-/* iPad横板显屏 */
-@media screen and (max-device-width: 1024px) and (orientation: landscape) {
-}
+/* 大型设备 (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { ... }
 
-/* iPad竖板显屏 */
-@media screen and (max-device-width: 768px) and (orientation: portrait) {
-}
-
-/* iPhone 和 Smartphones */
-@media screen and (min-device-width: 320px) and (min-device-width: 480px) {
-}
-```
-
-现在有关于这方面的运用也是相当的成熟，twitter 的 Bootstrap 第二版本中就加上了这方面的运用。大家可以对比一下：
-
-```css
-@media (max-width: 480px) {
-  /* ... */
-}
-@media (max-width: 768px) {
-  /* ... */
-}
-@media (min-width: 768px) and (max-width: 980px) {
-  /* ... */
-}
-@media (min-width: 1200px) {
-  /* ... */
-}
+/* 超大型设备 (large desktops): 没有 media query, 因为超大断点的宽度没有上限 */
 ```
 
 关于响应式布局设计的其他几个点可以看[这里](https://anran758.github.io/blog/2018/01/25/web-%E8%B5%B0%E8%BF%9Bweb%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80)
