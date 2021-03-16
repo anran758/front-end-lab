@@ -111,7 +111,22 @@ function looseBody() {
 
 ## 滚动体验优化
 
-1. scroll-behvior
+### scroll-behvior
+
+当用户手动导航或者 CSSOM scrolling API 触发滚动操作时，CSS 属性 [scroll-behavior](https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-behavior) 为一个滚动框指定滚动行为，其他任何的滚动，例如那些由于用户行为而产生的滚动，不受这个属性的影响。在根元素中指定这个属性时，它反而适用于视窗。
+
+``` css
+/* 平滑滚动 */
+scroll-behavior: smooth;
+```
+
+### 滑动卡顿
+
+`-webkit-overflow-scrolling` 可以解决移动端滑动卡顿的问题，但可能会并发一些问题:
+
+1. 滑动中 scrollTop 属性不会变化
+2. 手势可穿过其他元素触发元素滚动
+3. 滑动时可能会暂停其他元素的 transition 效果
 
 ## 已知 bug
 
