@@ -3,48 +3,20 @@ sidebarDepth: 3
 sidebar: auto
 ---
 
-<!-- omit in toc -->
 # Git
 
-- [日常提交流程](#日常提交流程)
-- [Add](#add)
-- [Commit](#commit)
-  - [撤销还没 push 到远程的 commit](#撤销还没-push-到远程的-commit)
-  - [撤销已经 push 到远端的 commit](#撤销已经-push-到远端的-commit)
-- [barnch](#barnch)
-- [tag](#tag)
-- [history](#history)
-- [remote](#remote)
-  - [合并两个不同仓库的 commit](#合并两个不同仓库的-commit)
-- [Guide](#guide)
-  - [解决.git目录过大的问题](#解决git目录过大的问题)
-  - [初始化远程仓库](#初始化远程仓库)
-  - [清空项目的 commit 记录](#清空项目的-commit-记录)
-  - [撤销修改](#撤销修改)
-  - [文件夹大小写切换](#文件夹大小写切换)
-  - [保留空的文件夹](#保留空的文件夹)
-- [常见错误](#常见错误)
-  - [在执行 git pull origin master 命令时，无法 pull 的情况](#在执行-git-pull-origin-master-命令时无法-pull-的情况)
-  - [win10 修改 git 密码后无法 pull](#win10-修改-git-密码后无法-pull)
-- [其他](#其他)
-  - [查看仓库提交者的统计](#查看仓库提交者的统计)
-  - [更改项目中作者信息](#更改项目中作者信息)
-  - [扩展阅读](#扩展阅读)
+[[toc]]
 
-<details>
-  <summary>常见术语解释</summary>
-
-  | 术语      | 解释                                        |
-  | --------- | ------------------------------------------- |
-  | origin    | 默认远端仓库                                |
-  | master    | 默认开发分支                                |
-  | HEAD      | 默认开发分支                                |
-  | HEAD^     | `HEAD` 父提交                               |
-  | tracked   | `git` 已经追踪文件的修改                    |
-  | untracked | 未跟踪的状态，也就是 `git` 不认识的新的文件 |
-  | revert    | 回退                                        |
-
-</details>
+| 术语      | 解释                                                                |
+| --------- | ------------------------------------------------------------------- |
+| origin    | 默认远端仓库                                                        |
+| master    | 默认开发分支                                                        |
+| HEAD      | 当前活跃分支的游标, 如果当前处于 master 分支，那么 HEAD 指向 master |
+| HEAD^     | `HEAD` 父提交                                                       |
+| tracked   | `git` 已经追踪文件                                                  |
+| untracked | `git` 未跟踪的文件，也就是没有提交到 `git` 过的新文件               |
+| revert    | 回退                                                                |
+| stage     | 暂存的更改，此时文件还没有提交到远程                                |
 
 ## 日常提交流程
 
@@ -72,60 +44,30 @@ git push origin master develop
 
 ## Add
 
-| 方法                    | 说明                                     |
-| ----------------------- | ---------------------------------------- |
-| git add `<change file>` | git add `<change file>`将其添加到 status |
-| git add `[--all / .]`   | 添加全部改动的文件                       |
+``` shell
+# 将 <change file> 将其添加到 “暂存的更改” 中
+git add <change file>
 
----
+# Example: 将当前路径下 ./docs/git/README.md 文件添加到 “暂存的更改” 中
+git add docs/git/README.md
+
+# 以下两者都是将修改的文件全部添加到缓存区中
+git add .
+git add --all
+```
 
 ## Commit
 
-| 方法                        | 说明                                          |
-| --------------------------- | --------------------------------------------- |
-| git commit -m "`<message>`" | 为已经进入`stage(暂存的更改)`添加`commit`信息 |
-| git commit --amend          | 修改上一次提交的`commit`信息                  |
+``` shell
+# 为已经进入 `stage(暂存的更改)` 添加`commit`信息
+git commit -m <message>
 
----
+# Example:
+git commit -m "docs: uupdate README"
 
-### 撤销还没 push 到远程的 commit
-
-``` bash
-# 找到需要撤销的 commit 的`前一个` commit_hash(这步可以理解为找到定位的节点
-# bash 的 commit 顺序是从上(最新 commit)至下的顺序
-git log --online
-
-# 撤销 commit, 将代码恢复为前一个版本(会丢失修改的代码)
-git reset --hard commit_hash
-
-# or 完成 commit 撤销，可以重新提交 commit(不会丢失修改的代码)
-git reset commit_hash
-
-# 如果只 commit 了一次，想给回退到 commit 前上一个版本的话，还可以用`HEAD`代替`hash`(不会丢失修改的代码)
-# HEAD    就是本次的版本
-# HEAD~1  就是上一次的版本
-git reset HEAD~1
+# 修改上次提交的 `commit` 信息, 之后会进入编辑器模式(一般是 vim 编辑器)
+git commit --amend
 ```
-
-### 撤销已经 push 到远端的 commit
-
-在使用`git`时，有时候我们会无意间错推了我们不想推上去的文件或者希望能够回退以前版本的时候.
-这时我们可以先在本地回退到相应的版本。
-
-``` bash
-# 注意使用 --hard 参数会抛弃当前工作区的修改
-# 使用 --soft 参数的话会回退到之前的版本，但是保留当前工作区的修改，可以重新提交
-git reset --hard <版本号>
-```
-
-为了覆盖掉远端的版本信息，使远端的仓库也回退到相应的版本，需要加上参数`--force`
-
-``` bash
-# branch: 分支
-git push origin <branch> --force
-```
-
----
 
 ## barnch
 
@@ -206,6 +148,90 @@ git push origin master
 git branch --set-upstream-to orgin/master
 ```
 
+## Guide
+
+### 初始化远程仓库
+
+假设你已经在远程储存库上创建了新的库(`test`)，此时需要将本地项目的代码关联并推送到远程仓库上去:
+
+``` bash
+cd test
+
+# 初始化 git
+git init
+
+# 添加全部改动
+git add .
+
+# 添加 commit 信息
+git commit -m "feat: init message"
+
+# 添加远程地址
+git remote add origin git@github.com:anran758/test.git
+
+# 提交代码至 origin，并设置 master 分支为追踪分支
+git push -u origin master
+```
+
+### 撤销还没 push 到远程的 commit
+
+``` bash
+# 仅删除所有未追踪的文件，修改过已追踪的文件不会被回退
+git clean -df
+
+# 把已追踪的文件回退到前一个版本，不会删除未追踪的文件
+git reset --hard
+```
+
+如果想撤销指定 commit 的话:
+
+``` bash
+# [保留文件的改动] 
+#    如果当前只 commit 了一次，想给回退到 commit 前的上一个版本的话，
+#    可以用 `HEAD` 指针来代替 `commit_hash`
+# 
+# HEAD    当前版本
+# HEAD~1  当前版本向后移 1 个版本
+# HEAD~5  当前版本向后移 5 个版本
+git reset HEAD~1
+
+# 如果想回退的版本过长，不好算 HEAD 偏移量时，可以根据 commit_hash 回退到指定版本
+#
+# Example: 我想将代码回退到第三个 commit(3333333) 的版本
+git log --oneline
+# 左侧=commit_hash, 右侧=commit_info
+#
+# 1111111 (HEAD -> master, origin/master, origin/HEAD) docs: modify README
+# 2222222 build: update details styles
+# 3333333 docs(topic): update topic note
+
+# [保留文件的改动] 将代码恢复为 commit_hash=3333333 的版本
+#   1111111 和 2222222 所做的改动会被保留，可以重新选择 commit
+git reset 3333333
+
+# [丢弃文件的改动] 将代码恢复为 commit_hash=3333333 的版本
+#   1111111 和 2222222 所做的改动都会被丢弃
+git reset --hard 3333333
+```
+
+### 撤销已经 push 到远端的 commit
+
+在使用`git`时，有时候我们会无意间错推了我们不想推上去的文件或者希望能够回退以前版本的时候.
+这时我们可以先在本地回退到相应的版本。
+
+``` bash
+# 注意使用 --hard 参数会抛弃当前工作区的修改
+# 使用 --soft 参数的话会回退到之前的版本，但是保留当前工作区的修改，可以重新提交
+git reset --hard <commit_hash>
+```
+
+为了覆盖掉远端的版本信息，使远端的仓库也回退到相应的版本，需要加上参数`--force`
+
+``` bash
+# branch: 分支
+git push origin <branch> --force
+```
+
 ### 合并两个不同仓库的 commit
 
 首先我们有两个仓库: `repo1` 和 `repo2`。`repo1` 是我们想要保留的仓库：
@@ -226,15 +252,39 @@ git checkout master
 git merge repo2/master --allow-unrelated-histories
 
 # 合并冲突、后提交 commit
-git commit -m "chg: 合并两个仓库的历史"
+git commit -m "chore: 合并两个仓库的历史"
 git push
 ```
 
-## Guide
+### 清空项目的 commit 记录
+
+当一个项目已经存在久远，或者说`commit`记录有很多历史遗留的问题，分支线跟地铁图似得。此时你想重置 `git` 线时，可以这样做:
+
+``` bash
+# 先从远端克隆一份仓库，不要在原先本地项目直接进行操作
+git clone git@github.com:anran758/test.git
+cd test
+
+# 创建一个临时分支
+git checkout --orphan tmp
+
+# 在新的分支中添加全部文件进去，并提交 commit
+git add .
+git commit -m "commit message"
+
+# 删除分支
+git branch -D master
+
+# 此时所处于的分支在 tmp 分支， 将 tmp 更名为 master
+git branch -m master
+
+# 强制推入远程仓库即可
+git push -f origin master
+```
 
 ### 解决.git目录过大的问题
 
-<details>
+<details block>
 <summary>Click show details</summary>
 
 > [如何解决 GitHub 提交次数过多 .git 文件过大的问题？ - 作者：郑宇](https://www.zhihu.com/question/29769130/answer/315745139)
@@ -286,88 +336,13 @@ git push
 
 </details>
 
-### 初始化远程仓库
-
-假设你已经在远程储存库上创建了新的库(`test`)，此时需要将本地项目的代码关联并推送到远程仓库上去:
-
-<details>
-<summary>Click show details</summary>
-
-``` bash
-cd test
-
-# 初始化 git
-git init
-
-# 添加全部改动
-git add .
-
-# 添加 commit 信息
-git commit -m "init message"
-
-# 添加远程地址，提交代码至远程，并设置为追踪分支
-git remote add origin git@github.com:anran758/test.git
-git push -u origin master
-```
-
-</details>
-
-### 清空项目的 commit 记录
-
-当一个项目已经存在久远，或者说`commit`记录有很多历史遗留的问题，分支线跟地铁图似得。此时你想重置 `git` 线时，可以这样做:
-
-<details>
-<summary>Click show code</summary>
-
-``` bash
-# 先从远端克隆一份仓库，不要在原先本地项目直接进行操作
-git clone git@github.com:anran758/test.git
-cd test
-
-# 创建一个临时分支
-git checkout --orphan tmp
-
-# 在新的分支中添加全部文件进去，并提交 commit
-git add .
-git commit -m "commit message"
-
-# 删除分支
-git branch -D master
-
-# 此时所处于的分支在 tmp 分支， 将 tmp 更名为 master
-git branch -m master
-
-# 强制推入远程仓库即可
-git push -f origin master
-```
-
-</details>
-
-### 撤销修改
-
-``` bash
-# 只删除所有`untracked`的文件
-# 如果文件已经被`tracked`, 修改过的文件不会被回退
-git clean -df
-
-# 把`tracked`的文件回退到前一个版本
-# 对于`untracked`的文件(比如编译的临时文件)都不会被删除
-git reset --hard
-
-# 撤销指定未提交的修改内容
-git checkout HEAD <file>
-```
-
 ### 文件夹大小写切换
 
 如果你提交了一个文件夹名为`FOO`，然后你现在想修改为小写的`foo`时，你会发现直接修改文件名`git`是不识别的。因为在默认情况下，`git`是不区分文件名大小写。
 
 这时有两个解决方法：
 
-<details>
-<summary>Click show details</summary>
-
-**(推荐)** 通过 `git mv` 方法来改名。
+**推荐**：通过 `git mv` 方法来改名。
 
 ``` bash
 # 回避系统对大小写的判定，先修改为其他的名字, git 会将修改自动添加到工作区上
@@ -380,32 +355,22 @@ $ git mv FOO1 foo
 $ git commit -m "Modify dir name"
 ```
 
-**(不推荐)** 直接设置 `git config` 区分大小写，但弊端在不同平台下可能会引起别的问题。
+**不推荐**：直接设置 `git config` 区分大小写，但弊端在不同平台下可能会引起别的问题。
 
 ``` bash
 # 配置仓库的大小写敏感
 $ git config core.ignorecase false
 ```
 
-</details>
-
 ### 保留空的文件夹
-
-<details>
-<summary>Click show details</summary>
 
 在默认情况下，`git` 会忽略掉空的文件夹。如果想要保留这个文件夹的话，可以在里面创建一个名为`.gitkeep`的空文件(名字是社区约定形成，也可以使用其他名字，原理上只是占个坑).
 
 不过`windows`平台下不能直接右键创建`.`开头的文件，系统会认为文件名不合法。这时需要使用命令行或者编辑器来完成创建。
 
-</details>
-
 ## 常见错误
 
 ### 在执行 git pull origin master 命令时，无法 pull 的情况
-
-<details>
-<summary>show details</summary>
 
 ``` bash
 $ git pull
@@ -414,9 +379,7 @@ $ fatal: refusing to merge unrelated histories
 git pull origin master --allow-unrelated-histories
 ```
 
----
-
-使用`git pull`遇到合并`commit`时，此时并不想因为合并代码多产生一条`commit`记录，可以将`commit`信息注释掉，`shift + :wq`退出。
+使用 `git pull` 遇到合并 `commit` 时，此时并不想因为合并代码多产生一条 `commit` 记录，可以将 `commit` 信息注释掉，`shift + :wq`退出。
 
 然后会因为自动合并失败后提示错误:
 
@@ -426,29 +389,49 @@ error: Empty commit message.
 Not committing merge; use 'git commit' to complete the merge.
 ```
 
-撤消合并并再次拉动，使用`rebase`解决冲突：
+撤消合并并再次拉动，使用 `rebase` 解决冲突：
 
 ``` bash
 $ git merge --abort
 $ git pull --rebase
 First, rewinding head to replay your work on top of it...
 Applying: fix: fixed something
+
 $ git push
 ```
 
-</details>
-
 ### win10 修改 git 密码后无法 pull
 
-Error info:
+**Error info**:
 
 ``` shell
 remote: Invalid username or password
 ```
 
-解决方案:
+**解决方案**:
 
-打开 控制面板 -> 用户账号 -> 管理 windows 凭证 -> 选择 `git:https://github.com` -> 编辑 -> 输入修改后的密码
+打开控制面板 -> 用户账号 -> 管理 windows 凭证 -> 选择 `git:https://github.com` -> 编辑 -> 输入修改后的密码
+
+### Filename too long
+
+执行 `git push` 时报 `Filename too long` 的错误。
+
+原因: Git 的文件名限制为 4096 个字符，但在 Windows 上使用 msys 编译 git 时情况会有所不同。它会使用 Windows API 的较旧版本，文件名限制为 260 个字符。这是对 msys 的限制，而不是对 git 的限制。
+
+我们可以通过使用 Windows 上的 git 的另一个客户端来绕过限制：
+
+``` shell
+# 在当前 project 下开启 longpaths
+git config core.longpaths true
+
+# 如果是 clone repository 时出现这个问题，可以使用如下命令来设置针对该 repository 的配置:
+git clone -c core.longpaths=true <repo-url>
+
+# 全局使用，但可能会引起一些脚本的失效，故 default=false
+git config --system core.longpaths true
+```
+
+参考资料: [Filename too long in Git for Windows](https://stackoverflow.com/questions/22575662/filename-too-long-in-git-for-windows)
 
 ## 其他
 
