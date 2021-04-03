@@ -69,7 +69,7 @@ git commit -m "docs: uupdate README"
 git commit --amend
 ```
 
-## barnch
+## Barnch
 
 ``` bash
 # 查看分支
@@ -78,15 +78,22 @@ git branch
 # git checkout <branch/tag> 切换指定的分支或标签
 git checkout develop
 
-# 切换名为 gh-pages 的分支, 如果不存在这个分支就创建它
+# 切换名为 gh-pages 的分支, 如果不存在这个分支就基于当前分支创建它
+# 比如当前分支为 develop, 那新分支的代码是基于 develop 的代码
 git checkout -b "gh-pages"
 
 # 使当前的分支和远程仓库 `origin2/game` 建立关联（前提是目标分支要存在）
 # 建立关联后就可以直接使用 `git push` 命令而无需添加其他参数。
 git branch --set-upstream-to orgin2/game
+
+# 删除已合并的分支, 未合并过分支删除会失败
+git branch -d feature/TICKET-382
+
+# 强制删除分支
+git branch -D feature/TICKET-382
 ```
 
-## tag
+## Tag
 
 ``` bash
 # 查看所有标签
@@ -99,7 +106,7 @@ git tag <tagname>
 git tag -d <tagname>
 ```
 
-## history
+## History
 
 ``` bash
 # 查看提交历史
@@ -115,7 +122,7 @@ git log -p <file>
 git blame <file>
 ```
 
-## remote
+## Remote
 
 添加新的 remote
 
