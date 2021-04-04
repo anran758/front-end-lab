@@ -218,9 +218,78 @@ function getBaseType(target) {
 }
 ```
 
-## 简述一下原型链 <Badge text="TODO" type="warning"/>
+## 简述一下原型链
 
-TODO: 待补充...
+原型链是实例对象与原型之间的连接，每个对象都有一个特殊的 `[[Prototype]]` 属性，它指向原型对象引用。当访问对象的某个属性时，首先会在对象自身查找这个属性。
+
+若这个属性在自身没有找到，就会通过 `[[Prototype]]` 属性指向的原型对象上查找。如果该原型对象里也没有找到的话该属性的话，就会从这个**原型对象中**的 `[[Prototype]]` 属性继续往下找，直到找到属性或者 `[[Prototype]]` 的值为 `null` 时停止查找。
+
+这一个通过 `[[Prototype]]` 链相连的机制被为原型链。
+
+## prototype、__proto__ 和 constructor 的关系
+
+**简单版**:
+
+构造函数的 `prototype` 和通过该构造函数实例化出来的对象的 `__proto__` 属性是指向同一个原型对象。由于它们共享同一个原型对象，因此构造函数上的 `prototype.constructor` 等价于实例化对象的 `__proto__.constructor`
+
+---
+
+**详细版**:
+
+在 js 中，每个函数都有一个 `prototype` 属性, 该属性指向的是调用该构造函数而创建的**实例的原型**:
+
+``` js
+function Person() {}
+
+console.log('1. Person prototype:', Person.prototype);
+```
+
+每个 js 对象中都有个 `__proto__` 属性，这个属性会指向**该对象的原型**。比如将 `Person` 进行实例化赋值给 `person1`, `person1.__proto__` 将指向构造函数的 `prototype`。
+
+``` js
+// 此处 Person 是构造函数
+const person1 = new Person();
+
+console.log(
+  "2. person1.__proto__ equal to Person.prototype:",
+  person1.__proto__ === Person.prototype
+);
+```
+
+<details block>
+  <summary>扩展: 如果是像 `"This is a string"`、`18`、`true` 这种基本类型也会有 `__proto__` 属性吗？</summary>
+
+  这里就需要引入**封装对象包装**的概念。当我们定义完基本类型字面量后，js 引擎自动会为这些基本类型值包装成一个对象，包装后的对象就拥有了 `__proto__` 属性:
+
+  ``` js
+  console.log(0.__proto__);
+  // Uncaught SyntaxError: Invalid or unexpected token
+  // 上行代码会抛错，因为字面量没有来得及封装为对象。直接访问是访问失败的
+
+  // 将字面量存入变量中或使用括号提升优先级后就可以正常访问了
+  var n = 0;
+  console.log(n.__proto__);
+  console.log((0).__proto__);
+  ```
+
+  具体细节请参考: **《你不知道的 JavaScript 中卷》 3.2 封装对象包装**
+
+</details>
+
+根据以上例子可以推出结论: `原型对象 === Person.prototype === person1.__proto__`。`person1` 没有 `prototype` 属性是因为该属性只有函数对象才有，但他们指向的引用是同一个。
+
+除此之外，每个原型都有一个 `constructor` 属性默认指向关联的构造函数:
+
+``` js
+console.log('3. Person === Person.prototype.constructor:', Person === Person.prototype.constructor)
+console.log('4. person1.__proto__.constructor === Person.prototype.constructor:', person1.__proto__.constructor === Person.prototype.constructor)
+```
+
+::: warning
+
+`__proto__` 可能随时被废弃，若想获取原型对象，请优先使用 [Object.getPrototypeOf(object)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/GetPrototypeOf) API
+
+:::
 
 ## 使用过 ES6 吗？你常用的有哪一些？
 
