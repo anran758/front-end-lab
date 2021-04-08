@@ -43,6 +43,7 @@ sidebar: auto
   - [DOM](#dom)
     - [box model 对应的 DOM API](#box-model-对应的-dom-api)
     - [批量插入节点](#批量插入节点)
+    - [事件冒泡与事件捕获](#事件冒泡与事件捕获)
   - [Vue](#vue)
     - [mixin 的问题](#mixin-的问题)
     - [Object.definedProperty 缺点](#objectdefinedproperty-缺点)
@@ -678,6 +679,12 @@ for (let i = 0; i < 10; i++) {
 
 $list.appendChild(fragment);
 ```
+
+### 事件冒泡与事件捕获
+
+事件捕获是从上到下(click p, document -> body -> p)，事件冒泡则是从下到上(click p, p -> body -> html)。使用 `addEventListener` 监听事件时默认是事件冒泡，但有一些场景使用事件捕获会有奇效。
+
+比如我们正在使用第三方的组件，这个组件内置了 click 事件，并且没有对外暴露。组件内的 click 事件总是比我们后绑定的事件监听器先触发，这时我们的一些需求就没法实现。此时可以将事件监听器的模式切为**事件捕获**，这时事件捕获会先于事件冒泡触发，这样就能达到预期的效果。
 
 ---
 
