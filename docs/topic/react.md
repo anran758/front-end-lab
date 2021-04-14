@@ -52,9 +52,48 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 
 ## React 生命周期
 
-[React 生命周期图](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+针对 React 生命周期中函数的调用顺序，笔者写了一个简易的 Demo 用于演示: [React 父子组件生命周期示例](https://codesandbox.io/s/react-lifecycle-forked-2dvdg?file=/src/Parent.jsx)
 
-TODO: 待补充*(父子)组件生命周期*...
+**React 组件挂载阶段**先后会触发 `constuctor`、`static getDerivedStateFromProps`、`render`、`componentDidMount` 函数。若 `render` 函数内还有子组件存在的话，则会进一步递归:
+
+``` log
+[Parent]: constuctor
+[Parent]: static getDerivedStateFromProps
+[Parent]: render
+[Children]: constuctor
+[Children]: static getDerivedStateFromProps
+[Children]: render
+[Children]: componentDidMount
+[Children]: 挂载阶段结束!
+[Parent]: componentDidMount
+[Parent]: 挂载阶段结束!
+```
+
+**React 组件更新阶段**：主要是组件的 props 或 state 发生变化时触发。若组件内还有子组件，则子组件会判断是否也需要触发更新。默认情况下 `component` 组件是只要父组件发生了变化，子组件也会跟着变化。以下是更新父组件 `state` 数据时所触发的生命周期函数:
+
+``` log
+[Parent]: static getDerivedStateFromProps
+[Parent]: shouldComponentUpdate
+[Parent]: render
+[Children]: static getDerivedStateFromProps
+[Children]: shouldComponentUpdate
+[Children]: render
+[Children]: getSnapshotBeforeUpdate
+[Parent]: getSnapshotBeforeUpdate
+[Children]: componentDidUpdate
+[Children]: 更新阶段结束!
+[Parent]: componentDidUpdate
+[Parent]: 更新阶段结束!
+```
+
+**React 组件销毁阶段**：父组件先触发销毁前的函数，再逐层向下触发:
+
+``` log
+[Parent]: componentWillUnmount
+[Parent]: 卸载阶段结束!
+[Children]: componentWillUnmount
+[Children]: 卸载阶段结束!
+```
 
 ## React 组件通信
 
