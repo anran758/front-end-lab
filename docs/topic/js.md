@@ -342,10 +342,6 @@ TODO: 待补充...
 - async/await 使用了 Promise，并没有和 Promise 产生冲突
 - 但还是改变不了 js 单线程、异步的本质
 
-## 一定要使用 async/await 吗，如果我不做异步处理，可能只是处理简单的关闭弹框不能用 Promise 吗?
-
-这个问题没有标准答案，这个提问的目的是主要看你自己的见解或看法。面试官倾向非异步请求可以通过 Promise 处理，异步请求可以使用 async/await 处理，将使用用途区分开。
-
 ## 事件循环 (event-loop) <Badge text="TODO" type="warning"/>
 
 1. 什么是单线程？和异步有什么关系？

@@ -16,10 +16,6 @@ module.exports = [
     link: '/REGEXP/'
   },
   {
-    text: '面试指南',
-    link: '/topic/2020'
-  },
-  {
     text: '了解更多',
     ariaLabel: '了解更多',
     items: [
@@ -39,6 +35,10 @@ module.exports = [
       {
         text: '笔记',
         items: [
+          {
+            text: 'topic',
+            link: '/topic/2020'
+          },
           {
             text: '运维笔记',
             link: '/operations/'

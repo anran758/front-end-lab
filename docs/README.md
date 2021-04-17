@@ -59,7 +59,7 @@ none，内容近期不会有太大的结构性改变
 <details open>
 <summary><strong>其他</strong></summary>
 
-- [面试笔记 :art:](./topic/2020.md)
+- [Topic :art:](./topic/2020.md)
 - [术语表 :construction:](./further/glossary.md)
 - [扩展阅读](./further)
 
@@ -67,7 +67,7 @@ none，内容近期不会有太大的结构性改变
 
 ## 专栏与博客
 
-- [anran758's blog](https://anran758.github.io/blog/): 业务场景的分析与解决方案、计算机相关的笔记、简单的教程等。
+- [anran758's blog](https://anran758.github.io/blog/): 分享 web 相关的教程、科普实用/常用的工具库、实际业务场景分析与解决方案、计算机相关的笔记等。
 - [专栏 | 初级前端工程师的进阶之路](https://zhuanlan.zhihu.com/c_1147180666474176512): 专门针对初级工程师进阶时常遇到的一些问题专辑。
 
 ## 推荐阅读
