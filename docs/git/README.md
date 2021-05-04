@@ -87,10 +87,13 @@ git checkout -b "gh-pages"
 git branch --set-upstream-to orgin2/game
 
 # 删除已合并的分支, 未合并过分支删除会失败
-git branch -d feature/TICKET-382
+git branch -d feature/ticket-382
 
 # 强制删除分支
-git branch -D feature/TICKET-382
+git branch -D feature/ticket-382
+
+# 删除远程的指定分支
+git push origin --delete feature/ticket-382
 ```
 
 ## Tag
@@ -120,6 +123,15 @@ git log -p <file>
 
 # 以列表的方式查看指定文件的提交历史
 git blame <file>
+
+# 查看指定用户 commit 记录
+git log --author <authorName>
+
+# 查看上一次 commit 的修改内容
+git show
+
+# 查看指定 commit 的修改内容
+git show <commitHash>
 ```
 
 ## Remote
