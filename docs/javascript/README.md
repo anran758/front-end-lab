@@ -5,59 +5,11 @@ sidebar: auto
 
 <!-- omit in toc -->
 
-# javascript/typescript note
+# javascript
 
 细节和技巧的交汇，本篇笔记主要用于速查。
 
-- [javascript/typescript note](#javascripttypescript-note)
-  - [练手组件](#练手组件)
-  - [代码简洁性](#代码简洁性)
-    - [科学计数法 E](#科学计数法-e)
-    - [三元操作符](#三元操作符)
-    - [逻辑运算符](#逻辑运算符)
-  - [Common](#common)
-    - [判断原始类型](#判断原始类型)
-    - [计算星座](#计算星座)
-    - [判断闰年函数](#判断闰年函数)
-    - [其他](#其他)
-  - [Array](#array)
-    - [删除数组项](#删除数组项)
-    - [数组去重](#数组去重)
-    - [中文排序](#中文排序)
-    - [数组扁平化](#数组扁平化)
-    - [其他细节](#其他细节)
-  - [Number](#number)
-    - [parseInt](#parseint)
-    - [金额分隔](#金额分隔)
-    - [生成随机数](#生成随机数)
-    - [字符串转数字](#字符串转数字)
-  - [String](#string)
-    - [计算字符串长度](#计算字符串长度)
-  - [ES6+](#es6)
-    - [Symbol](#symbol)
-    - [class](#class)
-  - [Store](#store)
-  - [存取数据](#存取数据)
-    - [cookie](#cookie)
-  - [Date](#date)
-  - [DOM](#dom)
-    - [box model 对应的 DOM API](#box-model-对应的-dom-api)
-    - [批量插入节点](#批量插入节点)
-    - [事件冒泡与事件捕获](#事件冒泡与事件捕获)
-  - [Vue](#vue)
-    - [mixin 的问题](#mixin-的问题)
-    - [Object.definedProperty 缺点](#objectdefinedproperty-缺点)
-    - [Vue 模板编译过程](#vue-模板编译过程)
-    - [vuex](#vuex)
-  - [React](#react)
-    - [注意事项与技巧](#注意事项与技巧)
-    - [展示型组件特点](#展示型组件特点)
-  - [小程序](#小程序)
-    - [小程序授权](#小程序授权)
-    - [小程序跳转](#小程序跳转)
-  - [第三方库](#第三方库)
-    - [bizcharts](#bizcharts)
-  - [error](#error)
+[[toc]]
 
 ## 练手组件
 
@@ -233,6 +185,23 @@ function getAstro(month, day) {
  */
 function leapYear(year) {
   return !(year % (year % 100 ? 4 : 400));
+}
+```
+
+### URL 拼接
+
+``` ts
+url += (url.indexof('?') > 0 ? '?' : '&') + param(data)
+
+function param(data: object) {
+  let url = ''
+
+  for (var k in data) {
+    let value = data[k] !== undefined ? data[k] : ''
+    url += `&${k}=${encodeURIComponent(value)}`
+  }
+
+  return url ? url.substring(1) : ''
 }
 ```
 
