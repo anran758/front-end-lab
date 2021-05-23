@@ -6,8 +6,9 @@
 - **btw (by the way)**: 顺带一提。
 - **plz (please)**: 请的缩写。
 - **WFH (work from home)**: 远程工作/在家办公
+- **OT (overtime)**: 加班
 
-### role
+### Role
 
 - **PM (Project manager)**: 项目经理
 - **BA (Business analyst)**: 商业分析师
@@ -24,7 +25,7 @@
 - **UE (User Experience)**: 用户体验设计师
 - **UI (User Interface)**: 用户界面设计师
 
-### project 管理相关
+### Project 管理相关
 
 - **NFRs (non-functional requirements)**: 非功能性要求
 
@@ -36,7 +37,7 @@
 | Place hold on this moment | 请稍等片刻       |
 | I encountered a problem   | 我遇到了一些问题 |
 
-## email
+## Email
 
 常见缩写:
 
@@ -90,3 +91,4 @@ Best regards 常用于邮件结尾的祝福。
 
 - SIT: 系统集成测试 (System Integration Testing)
 - UAT: 用户验收测试 (User Acceptance Testing)
+- LP: 生存验证测试 (Live proving Test)，指该测试环境上使用的真实的数据
