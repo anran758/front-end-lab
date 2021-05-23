@@ -69,7 +69,7 @@ git commit -m "docs: uupdate README"
 git commit --amend
 ```
 
-## Barnch
+## Branch
 
 ``` bash
 # 查看分支
@@ -95,6 +95,16 @@ git branch -D feature/ticket-382
 # 删除远程的指定分支
 git push origin --delete feature/ticket-382
 ```
+
+### 批量删除分支
+
+比如我现在 local 有很多不再需要使用的某个开发周期分支，因此可以通过管道批量删除分支：
+
+``` shell
+git branch | grep -v 13 | grep SPRINT | xargs git branch -D
+```
+
+上列代码中的 grep 用于查找文件里符合条件的字符串，用于过滤移除的结果，通过管道操作符可多次对结果进行筛选。xargs 是给命令行传递参数的工具。
 
 ## Tag
 
