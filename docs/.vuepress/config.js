@@ -23,6 +23,21 @@ function getTopicSidebar() {
   ];
 }
 
+function getCssSidebar() {
+  return [
+    {
+      title: 'css 理论笔记',
+      collapsable: true,
+      path: './',
+    },
+    {
+      title: 'css 实践笔记',
+      collapsable: true,
+      path: 'theory',
+    },
+  ];
+}
+
 module.exports = ctx => ({
   base: '/front-end-lab/',
   locales: {
@@ -80,6 +95,7 @@ module.exports = ctx => ({
         sidebar: {
           '/operations/': getOperationsSidebar('运维笔记', 'issue'),
           '/topic/': getTopicSidebar(),
+          '/css/': getCssSidebar(),
         }
       }
     }
