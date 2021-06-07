@@ -26,12 +26,12 @@ function getTopicSidebar() {
 function getCssSidebar() {
   return [
     {
-      title: 'css 理论笔记',
+      title: 'css 实践笔记',
       collapsable: true,
       path: './',
     },
     {
-      title: 'css 实践笔记',
+      title: 'css 理论笔记',
       collapsable: true,
       path: 'theory',
     },
