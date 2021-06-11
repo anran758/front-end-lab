@@ -14,6 +14,21 @@ function getOperationsSidebar(operationsTitle, issueTitle) {
   ];
 }
 
+function getFurtherSidebar() {
+  return [
+    {
+      title: '扩展阅读',
+      collapsable: true,
+      path: './',
+    },
+    {
+      title: '推荐书单',
+      collapsable: true,
+      path: './booklist',
+    },
+  ];
+}
+
 function getTopicSidebar() {
   return [
     '2020',
@@ -96,6 +111,7 @@ module.exports = ctx => ({
           '/operations/': getOperationsSidebar('运维笔记', 'issue'),
           '/topic/': getTopicSidebar(),
           '/css/': getCssSidebar(),
+          '/further/': getFurtherSidebar(),
         }
       }
     }
