@@ -73,7 +73,7 @@ img {
 
 ### 清除 margin 重叠
 
-1. 加入 css 属性 `overflow: hidden;`
+1. -加入 css 属性 `overflow: hidden;`- 使父元素触发BFC,包括但不限于overflow:hidden;display:inline-block;等等
 2. 加入边框 (`border`) 属性;
 3. 加入 `padding-top`
 4. 加入内联元素，如 `&nbsp;`
