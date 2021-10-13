@@ -466,6 +466,16 @@ console.log(
 // [getStrLength result]: 20 10 10
 ```
 
+### 驼峰命名类型字符串转为常量命名类型
+
+有时候开发时需要将某些驼峰命令规范的操作转为常量形式，因此写一个小函数来处理。
+
+``` js
+function modifyNamingType(name) {
+  return name.replace(/([A-Z])/g, '_$1').toUpperCase()
+}
+```
+
 ## ES6+
 
 ### Symbol

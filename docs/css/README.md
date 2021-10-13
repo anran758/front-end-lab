@@ -1,3 +1,7 @@
+---
+sidebarDepth: 3
+---
+
 # CSS 实践
 
 > css 实践搭配 codepen 预览效果会更佳噢~
