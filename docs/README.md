@@ -21,49 +21,44 @@ footer: GPL Licensed | Copyright © 2019-present anran758
 
 ## 导读
 
-<details>
-<summary><strong>Emoji Status (Click me show details)</strong></summary>
+**Emoji 对应的状态**
 
-::: tip Emoji 对应的状态
+| emoji          | status                         |
+| -------------- | ------------------------------ |
+| :memo:         | pending，待补充内容            |
+| :truck:        | move，内容拆分或重构           |
+| :construction: | working，正在处理中            |
+| :art:          | optimization，润色中 / 待润色  |
+| 没有 icon           | 内容近期不会有太大的结构性改变 |
 
-:memo: pending，待补充内容  
-:truck: move，内容拆分或重构  
-:construction: working，正在处理中  
-:art: optimization，润色中 / 待润色  
-none，内容近期不会有太大的结构性改变  
+**开发语言相关的笔记**
 
-:::
-
-</details>
-
-<details open>
-<summary><strong>Language</strong></summary>
-
-- [HTML :memo:](./html)
-- [CSS 理论笔记 :construction:](./css/theory.md)
-- [CSS 实践笔记 :truck:](./css/README.md)
-- [JavaScrip / TypeScript](./javascript)
+- [:memo: HTML](./html)
+- [:truck: CSS 实践笔记](./css/README.md)
+- [:construction: CSS 理论笔记](./css/theory.md)
+- [JavaScript](./javascript)
+- [TypeScript](./typescript)
 - [RegExp](./REGEXP)
 
-</details>
+**版本控制**
 
-<details open>
-<summary><strong>解决方案</strong></summary>
+- [Git 使用指南](./git)
+- [Hg 使用指南](./hg)
 
-- [Git 速查](./git)
-- [Mobile 开发 :memo:](./mobile)
-- [运维与开发环境相关笔记 :memo:](./operations/README.md)
+**解决方案**
 
-</details>
+- [Mobile 开发](./mobile)
+- [开发环境与运维](./operations/README.md)
 
-<details open>
-<summary><strong>其他</strong></summary>
+**其他**
 
-- [Topic :art:](./topic/2020.md)
-- [术语表 :construction:](./further/glossary.md)
+- [:art: Jira 项目管理](./jira/)
+- [:art: 前端工程师常讨论的话题](./topic/2020.md)
 - [扩展阅读](./further)
-
-</details>
+  - [术语表](./further/glossary.md)
+  - [web 书单](./further/booklist.md)
+  - [职场常用英语](./further/en.md)
+  - [实用的在线工具](./further/booklist.md)
 
 ## 专栏与博客
 

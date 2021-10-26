@@ -1,6 +1,8 @@
-# 术语表
+# 互联网术语表
 
-## web
+## Web
+
+web 开发中有很多只有行内人才熟悉的术语，因此想将一些经典的术语与解释收集起来，方便查询。
 
 ### SPA
 
@@ -11,9 +13,9 @@
 
 ### SSR
 
-服务端渲染，所有页面都是通过服务端进行渲染的。
+服务端渲染，页面的结构是直接通过服务端进行渲染的。
 
-## production
+## Production
 
 常见简写一览:
 
@@ -28,7 +30,9 @@
 
 ## 软件开发
 
-| name | description                            |
-| ---- | -------------------------------------- |
-| ST   | 软件测试 (Software testing )           |
-| UAT  | 用户验收测试 (User Acceptance Testing) |
+| name | description                                                      |
+| ---- | ---------------------------------------------------------------- |
+| ST   | 软件测试 (Software testing )                                     |
+| LP   | 生存验证测试 (Live proving Test)，指该测试环境上使用的真实的数据 |
+| SIT  | 系统集成测试 (System Integration Testing)                        |
+| UAT  | 用户验收测试 (User Acceptance Testing)                           |

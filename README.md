@@ -28,7 +28,7 @@ yarn start
 yarn build
 ```
 
-## Barnch
+## Branch
 
 | Branch  | Description                                                            |
 | ------- | ---------------------------------------------------------------------- |
