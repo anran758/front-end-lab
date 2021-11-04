@@ -1,6 +1,5 @@
 ---
 sidebarDepth: 3
-sidebar: auto
 ---
 
 <!-- omit in toc -->
@@ -15,14 +14,16 @@ sidebar: auto
 
 **Application**
 
-- 日历: 考验对 `Date` 对象的使用。
-- 简单的四则计算器: 考验对处理**浮点数溢出**的能力、`Math` 的使用等。
+如果一些刚入门的朋友学完语法后不知道该做什么，可以自个尝试实现以下的简单组件，将知识学以致用：
+
+- **日历**: 考验对 `Date` 对象的使用。
+- **四则计算器**: 考验对处理**浮点数溢出**的能力、`Math` 的使用等。
 
 **简单算法**
 
 - 设任意 N 行列的二维数组，要求螺旋打印出其值
 
-## 代码简洁性
+## 代码简化
 
 在实际工作中，可以在保证语义化的前提使用一些简写方法来提升代码的简洁性
 
@@ -80,7 +81,7 @@ container.addEventListener('mousemove', () => isMoving && handleMove());
 <details>
 <summary>不再建议使用的编程技巧</summary>
 
-下面是一些简洁但可读性不太高的一些编程技巧，在 `eslint` 中已经不建议使用。但可以了解一下：
+以下是一些写法简洁但可读性不太高的编程技巧。这些技巧一般不会在 web 项目中使用，在 `eslint` 规则中是被禁止使用的。但可以了解一下用途：
 
 **按位非(按位取反):**
 
@@ -120,11 +121,13 @@ console.log(50.1234 | (0 / 10)); // 50
 console.log((50.1234 | 0) / 10); // 5
 ```
 
+**压缩后的布尔值**
+
+很多编译器在压缩代码的时候，会用 `!0` 和 `!1` 来代替布尔值 `false` 和 `true`。因为可以有效减少文件体积, 但会破坏代码可读性 (虽然可读性是给人看得，机器只在乎运行效率)。
+
 </details>
 
-## Common
-
-通用方法
+## Utils
 
 ### 判断原始类型
 
@@ -170,57 +173,14 @@ function getAstro(month, day) {
 }
 ```
 
-### 判断闰年函数
-
-判断闰年其实只要满足下面几个条件即可:
-
-- 普通年**能被 4 整除**且**不能被 100 整除**的为闰年。如 2004 年就是闰年,1900 年不是闰年
-- **世纪年**能被**400 整除**的是闰年。如 2000 年是闰年，1900 年不是闰年
-
-```javascript
-/**
- * 判断闰年函数
- * @param  {number} year 要判断的年份
- * @return {bool} 返回布尔值
- */
-function leapYear(year) {
-  return !(year % (year % 100 ? 4 : 400));
-}
-```
-
-### URL 拼接
-
-``` ts
-url += (url.indexof('?') > 0 ? '?' : '&') + param(data)
-
-function param(data: object) {
-  let url = ''
-
-  for (var k in data) {
-    let value = data[k] !== undefined ? data[k] : ''
-    url += `&${k}=${encodeURIComponent(value)}`
-  }
-
-  return url ? url.substring(1) : ''
-}
-```
-
-### 其他
-
-> 你知道吗？
-
-- 很多编译器在压缩代码的时候，会用`!0`和`!1`来代替布尔值`false`和`true`。因为可以有效减少文件体积, 但会破坏代码可读性 (虽然可读性是给人看得，机器只在乎运行效率)。
-
-## Array
-
-### 删除数组项
+### 【Array】删除数组项
 
 ```javascript
 // 删除数组元素, index 为数组索性, 只删除一个
 arr.splice(index, 1);
 ```
 
-### 数组去重
+### 【Array】数组去重
 
 ```javascript
 let arr = [1, 2, 3, '1', 5, 2, 4, 5, 3, 4];
@@ -233,7 +193,7 @@ let newarr = Array.from(new Set(arr));
 let newarr = [...new Set(arr)];
 ```
 
-### 中文排序
+### 【Array】中文排序
 
 **[IE11+]** [String.prototype.localeCompare](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)，会返回一个数字，配合数组的`sort`方法进行排序。
 
@@ -243,7 +203,7 @@ let newarr = [...new Set(arr)];
 );
 ```
 
-### 数组扁平化
+### 【Array】数组扁平化
 
 二维数组扁平化
 
@@ -271,43 +231,7 @@ const newArr = flatten(arr);
 console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
 ```
 
-### 其他细节
-
-`map`和`forEach`的区别:
-
-| 方法      | 相同之处         | 不同之处                                                                                                                   |
-| --------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `map`     | 同样用于遍历数组 | `map`对每项调用的函数后会取得函数的返回值，并推入新的数组中去(意味着可以链式调用)。<br>但是这个方法只有数组才能使用。      |
-| `forEach` | 同样用于遍历数组 | `forEach`单纯对数组中每一项调用回调函数，不作其他操作。<br>该方法并不是只有数组能用，部分类数组(如 NodeList)也有这个方法。 |
-
-> 你知道吗？
-
-1. 数组实际上是一个类列表对象，这意味着我们可以在数组上添加属性，虽然一般不常这样做
-
-## Number
-
-### parseInt
-
-在`ES5`之前，`parseInt`在没有传第二个参数的时候，会根据传入字符串的第一个字符来判断使用什么方式进行解析，这个历史遗留的问题可能会导致预期之外的效果。
-
-```javascript
-parseInt('08'); // 有些旧版本的浏览器可能会解析为 0， 因为浏览器会当做八进制进行解析。
-
-// 因此我们用这个方法的时候，一定要显示加上第二个参数，而不要让浏览器去猜
-parseInt('08', 10); // 8
-```
-
-还有一个常见的问题就是，不能直接将`parseInt`作为数组`map`的回调函数，因为两者所传(接受)的形参的用途不一:
-
-```javascript
-[1, 2, 3].map(parseInt); // [1, NaN, NaN]
-```
-
-[parseInt(string, radix)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt) 函数解析一个字符串参数，并返回一个指定基数的整数;
-
-上面的例子就是因为`map`函数传入的第二个参数为数组的索引(`index`)。`parseInt`在处理到`2`时，传入了索引`2`作为基数，然而二进制并没有`2`这个数字，处理后自然会返回`NaN`。
-
-### 金额分隔
+### 【Number】金额分隔
 
 ```javascript
 /**
@@ -404,7 +328,7 @@ new Intl.NumberFormat('zh-CN', { ...CNY_OPTIOONS, minimumFractionDigits: 6 }).fo
 
 参考资料: [How to print a number with commas as thousands separators in JavaScript](https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
 
-### 生成随机数
+### 【Number】生成随机数
 
 ```javascript
 /**
@@ -418,16 +342,64 @@ function randomRangeNum(min, max) {
 }
 ```
 
-### 字符串转数字
+### 【Number】字符串转数字
 
 ```javascript
 ['1.1', '4566', '3e300'].map(Number); // [1.1, 4566, 3e+300]
 ['1.1', '456a', '3e300'].map(Number); // [1.1, NaN, 3e+300]
 ```
 
-## String
+### 【Number】判断闰年函数
 
-### 计算字符串长度
+判断闰年其实只要满足下面几个条件即可:
+
+- 普通年**能被 4 整除**且**不能被 100 整除**的为闰年。如 2004 年就是闰年,1900 年不是闰年
+- **世纪年**能被**400 整除**的是闰年。如 2000 年是闰年，1900 年不是闰年
+
+```javascript
+/**
+ * 判断闰年函数
+ * @param  {number} year 要判断的年份
+ * @return {bool} 返回布尔值
+ */
+function leapYear(year) {
+  return !(year % (year % 100 ? 4 : 400));
+}
+```
+
+### 【String】URL 拼接
+
+新方法可以使用 [URLSearchParams](https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams) API 来处理 URL 的查询字符串，兼容性为 Edge 17+：
+
+``` js
+const params = new URLSearchParams({
+  name: 'Danny chan',
+  age: 18,
+})
+
+console.log('params toString:', params.toString())
+// params toString: name=Danny+chan&age=18
+```
+
+老方法可以通过拼接字符串的方式处理：
+
+``` ts
+function param(data: object) {
+  let url = ''
+
+  for (var k in data) {
+    let value = data[k] !== undefined ? data[k] : ''
+    url += `&${k}=${encodeURIComponent(value)}`
+  }
+
+  return url ? url.substring(1) : ''
+}
+
+// 使用示例
+url += (url.indexOf('?') > 0 ? '?' : '&') + param(data)
+```
+
+### 【String】计算字符串长度
 
 `unicode` 编码 `0 ~ 128` 是单字节编码序列。因此可以利用这个特点来确定字符串的长度(单双字节实际占位)。
 
@@ -466,7 +438,25 @@ console.log(
 // [getStrLength result]: 20 10 10
 ```
 
-### 驼峰命名类型字符串转为常量命名类型
+### 【String】生成 UUID
+
+UUID，即通用唯一识别码（Universally Unique Identifier）用于计算机体系中以识别信息的一个128位标识符。生成 UUID 是有规范约束的，详情可以查看《[通用唯一识别码](https://zh.wikipedia.org/wiki/通用唯一识别码)》。
+
+``` js
+/**
+ * 生成唯一标识符
+ */
+function getUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, str => {
+    const r = (Math.random() * 16) | 0
+    const v = str === 'x' ? r : (r & 0x3) | 0x8
+
+    return v.toString(16)
+  })
+}
+```
+
+### 【String】驼峰命名类型字符串转为常量命名类型
 
 有时候开发时需要将某些驼峰命令规范的操作转为常量形式，因此写一个小函数来处理。
 
@@ -474,25 +464,27 @@ console.log(
 function modifyNamingType(name) {
   return name.replace(/([A-Z])/g, '_$1').toUpperCase()
 }
+
+modifyNamingType('spaceNameMapping') // 输出: "SPACE_NAME_MAPPING"
 ```
 
-## ES6+
+### 【Date】获取指定天前的时间区间
 
-### Symbol
+获取 rangeDay 天的时间区间，区间在 `00:00:00 - 23:59:59`。
 
-1. 我们使用 Symbol 主要是因为它独一无二的特性(避免覆盖)。
-2. 对于一些私有的方法，最好使用 Symbol 作为 key。但值得注意的是，用 Symbol 作为 key的话还有一个问题就是，不会被 `for` 循环、`Object.keys`等遍历返回。
+```javascript
+function getFullDate(rangeDay) {
+  const start = new Date().setHours(0, 0, 0, 0);
+  const end = new Date().setHours(23, 59, 59, 999);
+  const oneDay = 24 * 60 * 60 * 1000;
 
-### class
-
-1. class 和传统的 `prototype` 在可枚举性是不一样的，class 不通过 `this.__protp__` 上获取原型方法
-2. class 内部默认采用严格模式(意味着不能使用非严格性语法了)
-3. class 必须使用 new 来调用, 但可以直接使用类的静态方法
-4. ES6的 class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
+  return [start - rangeDay * oneDay, end];
+}
+```
 
 ## Store
 
-## 存取数据
+### localStorage
 
 使用`localStorage`的时候需要对数据进行一些处理：
 
@@ -503,19 +495,19 @@ function modifyNamingType(name) {
 
 > 浏览器`Cookie`是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上
 
-`cookie`用途：
+cookie 的用途：
 
 - 会话管理(用户状态信息等)
 - 个性化设置(根据`cookie`信息为用户提供更进一步的功能)
 - 浏览器行为跟踪(追踪用户行为、统计等)
 
-创建一个新的`Cookie`的语法格式是:
+创建一个新的 `Cookie` 的语法格式是:
 
 ```javascript
 document.cookie = newCookie;
 ```
 
-当对`document.cookie`进行赋值操作时，该属性会调用它底层所绑定的函数来设置`cookie`。其中`newCookie`是一个键值对的字符串，其格式如下:
+当对 `document.cookie` 进行赋值操作时，该属性会调用它底层所绑定的函数来设置 `cookie`。其中 `newCookie` 是一个键值对的字符串，其格式如下:
 
 ```javascript
 // 语法格式
@@ -613,23 +605,9 @@ tools.cookieGet('nickName'); // null
 
 具体更多有关`cookies`信息可以戳[MDN - Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
 
-## Date
-
-- 设置某天的时间区间，区间在`00:00:00 - 23:59:59`。
-
-```javascript
-function setFullDate(rangeDay) {
-  const start = new Date().setHours(0, 0, 0, 0);
-  const end = new Date().setHours(23, 59, 59, 999);
-  const oneDay = 24 * 60 * 60 * 1000;
-
-  return [start - rangeDay * oneDay, end];
-}
-```
-
 ## DOM
 
-### box model 对应的 DOM API
+### 盒子模型对应的 DOM API
 
 ![box model example](../_images/box-model-example.png)
 
@@ -665,7 +643,51 @@ $list.appendChild(fragment);
 
 比如我们正在使用第三方的组件，这个组件内置了 click 事件，并且没有对外暴露。组件内的 click 事件总是比我们后绑定的事件监听器先触发，这时我们的一些需求就没法实现。此时可以将事件监听器的模式切为**事件捕获**，这时事件捕获会先于事件冒泡触发，这样就能达到预期的效果。
 
----
+## 技术细节
+
+### parseInt
+
+在`ES5`之前，`parseInt`在没有传第二个参数的时候，会根据传入字符串的第一个字符来判断使用什么方式进行解析，这个历史遗留的问题可能会导致预期之外的效果。
+
+```javascript
+parseInt('08'); // 有些旧版本的浏览器可能会解析为 0， 因为浏览器会当做八进制进行解析。
+
+// 因此我们用这个方法的时候，一定要显示加上第二个参数，而不要让浏览器去猜
+parseInt('08', 10); // 8
+```
+
+还有一个常见的问题就是，不能直接将`parseInt`作为数组`map`的回调函数，因为两者所传(接受)的形参的用途不一:
+
+```javascript
+[1, 2, 3].map(parseInt); // [1, NaN, NaN]
+```
+
+[parseInt(string, radix)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt) 函数解析一个字符串参数，并返回一个指定基数的整数;
+
+上面的例子就是因为`map`函数传入的第二个参数为数组的索引(`index`)。`parseInt`在处理到`2`时，传入了索引`2`作为基数，然而二进制并没有`2`这个数字，处理后自然会返回`NaN`。
+
+### map 与 forEach 的区别:
+
+| 方法      | 相同之处         | 不同之处                                                                                                                   |
+| --------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `map`     | 同样用于遍历数组 | `map`对每项调用的函数后会取得函数的返回值，并推入新的数组中去(意味着可以链式调用)。<br>但是这个方法只有数组才能使用。      |
+| `forEach` | 同样用于遍历数组 | `forEach`单纯对数组中每一项调用回调函数，不作其他操作。<br>该方法并不是只有数组能用，部分类数组(如 NodeList)也有这个方法。 |
+
+> 你知道吗？
+
+数组实际上是一个类列表对象，这意味着我们可以在数组上添加属性，虽然一般不常这样做
+
+### Symbol
+
+1. 我们使用 Symbol 主要是因为它独一无二的特性(避免覆盖)。
+2. 对于一些私有的方法，最好使用 Symbol 作为 key。但值得注意的是，用 Symbol 作为 key的话还有一个问题就是，不会被 `for` 循环、`Object.keys`等遍历返回。
+
+### class
+
+1. class 和传统的 `prototype` 在可枚举性是不一样的，class 不通过 `this.__protp__` 上获取原型方法
+2. class 内部默认采用严格模式(意味着不能使用非严格性语法了)
+3. class 必须使用 new 来调用, 但可以直接使用类的静态方法
+4. ES6的 class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
 
 ## Vue
 
@@ -802,39 +824,3 @@ Vue component 中使用 `distpatch` 触发一个 `action`，`action` commit 到 
 
 1. target="miniProgram"
 2. app-id="appid"
-
-## 第三方库
-
-实际工作中总会遇到很多形形色色的业务需求，这篇针对特定业务需求所需推荐的库。
-
-| name                                                   | 用途                                       |
-| ------------------------------------------------------ | ------------------------------------------ |
-| moment                                                 | 专门处理 date 的操作                       |
-| lodash                                                 | 主要用于数据处理相关的 js 工具库           |
-| node-qrcode                                            | 用以生成二维码                             |
-| xlsx                                                   | excel 之类的表格处理，如导入导出           |
-| classnames                                             | 类名管理工具                               |
-| [decimal.js](https://www.npmjs.com/package/decimal.js) | JavaScript 的任意精度的十进制类型。        |
-| [numeral](https://www.npmjs.com/package/numeral)       | 一个用于格式化和处理数字的 javascript 库。 |
-
-### bizcharts
-
-`Chart` 图表使用 `type: time`，数据量大了后刻度会不准，解决方法是将 `type` 替换为 `timecat`，将日期转换为有序的分类数据。
-
-## error
-
-1. 使用 JSONP 出现以下问题，查看 jsonp 是否将 format 设置为了 json：
-
-   ``` error
-   Uncaught SyntaxError: Unexpected token :
-   ```
-
-2. import 引入有问题。在 webpack中，提示不认识 `import` 这个语法，这时就需要安装 babel-plugin-syntax-dynamic-import，同时在 `.babelrc` 加入这个插件
-
-   ```shell
-   Module build failed: SyntaxError: Unexpected token (16:21)
-
-   14 |   {
-   15 |     path: '/app',
-   > 16 |     component: () => import('../views/todo/todo.vue'),
-   ```
