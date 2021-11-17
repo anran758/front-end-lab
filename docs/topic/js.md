@@ -12,7 +12,7 @@
 
 ``` js
 function createName(name) {
-  let prefix = "dvelopment_";
+  let prefix = "developer_";
   return function showName() {
     console.log(prefix + name);
   };
@@ -98,7 +98,7 @@ curry(add)(1)(2)(3);
    > 优点: 兼容低版本 IE
    > 缺点: 没有实现深比较去重
 
-3. 引入 [loadsh](https://www.lodashjs.com/docs/lodash.uniq) 工具库来处理:
+3. 引入 [lodash](https://www.lodashjs.com/docs/lodash.uniq) 工具库来处理:
   
    ``` js
    var arr = [0, 2, 4, 3, 3, 2, 6];
@@ -202,11 +202,11 @@ call 与 apply 第一个参数也是指定的 this 值，其余的不同是接�
 
 ## 如何检测变量的类型(尽可能多，描述可能出现的问题)?
 
-主要使用 `typeof`、`instantof`、`Object.prototype.toString.call`。还可以使用 `Array.isArray` 方法判断是否是数组，`Number.isNaN` 是否是 `NaN` 等。
+主要使用 `typeOf`、`instanceOf`、`Object.prototype.toString.call`。还可以使用 `Array.isArray` 方法判断是否是数组，`Number.isNaN` 是否是 `NaN` 等。
 
-`typeof` 可以用于 `String`、`Number`、`Symbol`、`Boolean`、`undefined` 等类型，但用于 `null`、`Array` 类型的话会展示为 `object` 类型。
+`typeOf` 可以用于 `String`、`Number`、`Symbol`、`Boolean`、`undefined` 等类型，但用于 `null`、`Array` 类型的话会展示为 `object` 类型。
 
-`instanceof` 则是通过原型链的方式来判断对象类型。但它的局限性在于只要被操作的变量原型有上有该类型的值。它主要缺点是不能检测 `number`, `boolean`, `string` 字面量的类型。
+`instanceOf` 则是通过原型链的方式来判断对象类型。但它的局限性在于只要被操作的变量原型有上有该类型的值。它主要缺点是不能检测 `number`, `boolean`, `string` 字面量的类型。
 
 `Object.prototype.toString.call` 可以精准的判断类型的值，主要的问题是写法繁琐，可以基于此函数做一层封装:
 
