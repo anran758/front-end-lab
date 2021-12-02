@@ -8,3 +8,6 @@ buffer
 node_modules
 
 docs/.vuepress/dist/**
+
+.cache
+.temp
