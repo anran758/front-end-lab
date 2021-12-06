@@ -1230,6 +1230,17 @@
     markdown-it "^12.2.0"
     markdown-it-container "^3.0.0"
 
+"@vuepress/plugin-debug@^2.0.0-beta.29":
+  version "2.0.0-beta.29"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-debug/-/plugin-debug-2.0.0-beta.29.tgz#fef80a2187e55c2dbb85b1eac0e2a59806a14670"
+  integrity sha512-PV8k/RXzyQKRdhohAZHC8y7Xi0NKvTL4ALP2sHmsPNL3qHfWHO+C4SYJxFFZqX+fsLxOzKaiAl71G7qnpOO8jA==
+  dependencies:
+    "@vuepress/client" "2.0.0-beta.29"
+    "@vuepress/core" "2.0.0-beta.29"
+    "@vuepress/utils" "2.0.0-beta.28"
+    vue "^3.2.24"
+    vue-router "^4.0.12"
+
 "@vuepress/plugin-external-link-icon@2.0.0-beta.29":
   version "2.0.0-beta.29"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-external-link-icon/-/plugin-external-link-icon-2.0.0-beta.29.tgz#1d9e96f8a7006bb52003f71eb0199813c9cf201e"

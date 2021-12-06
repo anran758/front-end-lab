@@ -1,8 +1,3 @@
----
-sidebarDepth: 3
-sidebar: auto
----
-
 # Typescript
 
 ## 常见内置工具泛型

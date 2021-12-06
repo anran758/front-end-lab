@@ -20,7 +20,9 @@
     "url": "https://github.com/anran758/Front-End-Lab/issues"
   },
   "homepage": "https://github.com/anran758/Front-End-Lab#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "@vuepress/plugin-debug": "^2.0.0-beta.29"
+  },
   "dependencies": {
     "@vuepress/cli": "^2.0.0-beta.27",
     "@vuepress/plugin-container": "^2.0.0-beta.27",

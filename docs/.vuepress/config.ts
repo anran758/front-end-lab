@@ -49,6 +49,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     editLinks: true,
     docsDir: 'docs',
     smoothScroll: true,
+    backToTop: true,
     locales: {
       '/': {
         label: '简体中文',
@@ -63,6 +64,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     }
   },
   plugins: [
+    ['@vuepress/plugin-debug'],
     ['@vuepress/pwa'],
     [
       '@vuepress/plugin-pwa-popup',

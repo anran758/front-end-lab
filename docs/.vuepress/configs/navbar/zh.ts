@@ -10,35 +10,55 @@ export const zh: NavbarConfig = [
     link: '/javascript/'
   },
   {
-    text: 'Git',
-    link: '/git/'
-  },
-  {
     text: 'REGEXP',
     link: '/REGEXP/'
   },
   {
-    text: '了解更多',
-    ariaLabel: '了解更多',
+    text: '完整目录',
     children: [
       {
-        text: '开发',
+        text: '开发语言',
         children: [
           {
             text: 'HTML',
             link: '/html/'
           },
           {
-            text: 'TypeScript',
-            link: '/typescript/'
+            text: 'CSS',
+            link: '/css/'
+          },
+          {
+            text: 'JavaScript',
+            link: '/javascript/'
           }
+        ]
+      },
+      {
+        text: '版本控制',
+        children: [
+          {
+            text: 'Git',
+            link: '/git/'
+          },
+          {
+            text: 'Hg (Mercurial)',
+            link: '/hg/'
+          },
         ]
       },
       {
         text: '笔记',
         children: [
           {
-            text: 'topic',
+            text: 'REGEXP',
+            link: '/REGEXP/'
+          },
+          {
+            text: '移动端开发解决方案',
+            link: '/mobile/'
+          },
+          {
+            text: '前端 QA',
             link: '/topic/2020'
           },
           {
@@ -46,28 +66,28 @@ export const zh: NavbarConfig = [
             link: '/operations/'
           },
           {
-            text: '移动端开发解决方案',
-            link: '/mobile/'
-          }
+            text: 'Jira',
+            link: '/jira/'
+          },
         ]
       },
       {
-        text: '其他',
-        children: [
-          {
-            text: '扩展阅读',
-            link: '/further/'
-          },
-          {
-            text: 'Blog',
-            link: 'https://anran758.github.io/blog/'
-          },
-          {
-            text: 'Web 展示页',
-            link: 'https://anran758.github.io/'
-          },
-        ]
-      }
+        text: '扩展阅读',
+        link: '/further/'
+      },
     ]
-  }
+  },
+  {
+    text: '了解更多',
+    children: [
+      {
+        text: 'Home',
+        link: 'https://anran758.github.io/'
+      },
+      {
+        text: 'Blog',
+        link: 'https://anran758.github.io/blog/'
+      },
+    ],
+  },
 ];
