@@ -17,12 +17,6 @@ hg status
 # 查看远程仓库地址
 hg paths
 
-# 查看当前分支
-hg branch
-
-# 查看所有的分支
-hg branches
-
 # 查看日志
 hg log
 
@@ -36,8 +30,41 @@ hg pull --update
 hg pull --rebase
 
 # 可以修改上次提交的 commit 的内容
-#   ⚠️ WARNING: 该操作会把当前还没有提交的 change 也一起提交上去，使用前应 hg shelve 保存草稿
+#   ⚠️ WARNING: 由于 hg 不像 git 有缓存区，该操作会把当前还没有提交的 change 也一起提交上去，使用前应 hg shelve 保存草稿
 hg commit --amend
+```
+
+## 回退
+
+``` bash
+# 撤销上一次提交, 并将上一次提交的内容，放入待提交区
+hg rollback
+```
+
+## 分支管理
+
+``` bash
+# 查看当前分支
+hg branch
+
+# 查看所有的分支
+hg branches
+
+# 切换到 feature_branch_name 分支中
+hg checkout feature_branch_name
+
+## 将 feature_branch_name_1 合并到当前分支上
+$ hg merge "feature_branch_name_1"
+```
+
+## 日志 (log)
+
+``` bash
+# 查看日志
+hg log
+
+# 按日期升序查看日志
+hg log -r "sort(all(), date)"
 ```
 
 ## 草稿 (shelve)
@@ -66,6 +93,18 @@ hg shelve -d "draft_name"
 hg shelve --delete "draft_name"
 ```
 
+## 移植 (graft)
+
+将其他分支的 commit 复制到当前分支中。
+
+``` shell
+# 将 9393 的 commit 复制到当前分支中
+hg graft -r 9393
+
+# 将 9393 的 commit 复制到当前分支中，并修改提交信息
+hg graft --edit 9393
+```
+
 ## rebase (变基)
 
 ``` shell
@@ -86,4 +125,17 @@ hg rebase --dest {destination branch (e.g. master)} --base . --collapse
 # -l 展示行号
 # file_path 为文件路径
 hg blame -ucl <file_path>
+```
+
+## diff
+
+``` bash
+# 查看当前版本与指定版本 (241290dffcea) 的差异
+$ hg diff -r 241290dffcea
+
+# diff 指定两个 commit 之间的差异
+hg diff -r 241290dffcea -r da3019539240
+
+# or, 可以直接使用指定序号
+hg diff -r 102 -r 101
 ```
