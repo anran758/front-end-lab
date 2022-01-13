@@ -1,4 +1,27 @@
-# javascript
+# JavaScript 篇
+
+**目录**
+
+[[toc]]
+
+## 什么是纯函数
+
+纯函数由三大原则构成：
+
+1. 给定相同输入，它总是返回相同的输出
+2. 过程没有副作用(side effect)
+3. 没有额外的状态依赖
+
+## 谈谈对 MVVM 的理解
+
+MVVM (Model–view–viewmodel) 是一种软件架构模式。它主要由以下四点组成。
+
+- **模型 (Model)**: Modal 储存数据操作等逻辑。
+- **视图 (View)**: View 用于展示给用户看的 UI、布局和结构。
+- **视图模型 (View model)**: 暴露公共属性和命令的视图的抽象。在视图模型中，绑定器在 View 和数据绑定器之间进行通信。
+- **绑定器 (Binder)**: 声明性数据和命令绑定隐含在 MVVM 模式中。绑定器使开发人员免于被迫编写样板式逻辑来同步视图模型和视图。
+
+![mvvm design](./images/mvvm-design.png)
 
 ## 什么是闭包？列举闭包的应用场景
 
@@ -202,11 +225,11 @@ call 与 apply 第一个参数也是指定的 this 值，其余的不同是接�
 
 ## 如何检测变量的类型(尽可能多，描述可能出现的问题)?
 
-主要使用 `typeOf`、`instanceOf`、`Object.prototype.toString.call`。还可以使用 `Array.isArray` 方法判断是否是数组，`Number.isNaN` 是否是 `NaN` 等。
+主要使用 `typeof`、`instanceof`、`Object.prototype.toString.call`。还可以使用 `Array.isArray` 方法判断是否是数组，`Number.isNaN` 是否是 `NaN` 等。
 
-`typeOf` 可以用于 `String`、`Number`、`Symbol`、`Boolean`、`undefined` 等类型，但用于 `null`、`Array` 类型的话会展示为 `object` 类型。
+`typeof` 可以用于 `String`、`Number`、`Symbol`、`Boolean`、`undefined` 等类型，但用于 `null`、`Array` 类型的话会展示为 `object` 类型。
 
-`instanceOf` 则是通过原型链的方式来判断对象类型。但它的局限性在于只要被操作的变量原型有上有该类型的值。它主要缺点是不能检测 `number`, `boolean`, `string` 字面量的类型。
+`instanceof` 则是通过原型链的方式来判断对象类型。但它的局限性在于只要被操作的变量原型有上有该类型的值。它主要缺点是不能检测 `number`, `boolean`, `string` 字面量的类型。
 
 `Object.prototype.toString.call` 可以精准的判断类型的值，主要的问题是写法繁琐，可以基于此函数做一层封装:
 
@@ -452,7 +475,7 @@ TODO: 待补充...
 
        ``` js
        for (var i = 0;i < 10; i++) {
-            setTimeout((j) => {
+          setTimeout((j) => {
             console.log(j);
           }, 1000, i);
         }

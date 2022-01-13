@@ -11,10 +11,21 @@ export const zh: SidebarConfig = {
     '/javascript/libs.md',
   ],
   '/topic/': [
-    '/topic/2020.md',
-    '/topic/react.md',
-    '/topic/vue.md',
-    '/topic/webpack.md',
+    {
+      text: '面试指南',
+      link: '/topic/README.md',
+      children: [
+        '/topic/html.md',
+        '/topic/css.md',
+        '/topic/js.md',
+        '/topic/react.md',
+        '/topic/vue.md',
+        '/topic/webpack.md',
+        '/topic/performance.md',
+        '/topic/network.md',
+        '/topic/complex.md',
+      ],
+    },
   ],
   '/operations/': [
     '/operations/README.md',

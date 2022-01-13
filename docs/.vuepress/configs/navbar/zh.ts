@@ -59,7 +59,7 @@ export const zh: NavbarConfig = [
           },
           {
             text: '前端 QA',
-            link: '/topic/2020'
+            link: '/topic/'
           },
           {
             text: '运维笔记',
