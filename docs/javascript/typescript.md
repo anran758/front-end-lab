@@ -95,3 +95,10 @@ const todo: Readonly<Todo> = {
 // 改不得
 todo.title = 'Hello'; // Error: cannot reassign a readonly property
 ```
+
+## 在 js 项目中使用 ts
+
+参考资料：
+
+1. [jsdoc-support](https://www.typescriptlang.org/zh/play#example/jsdoc-support)
+2. [vscode](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_global-variables-and-type-checking)

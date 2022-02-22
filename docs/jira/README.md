@@ -1,4 +1,4 @@
-# jira
+# Jira
 
 - [高级搜索 和 JQL 入门](https://www.atlassian.com/zh/software/jira/guides/expand-jira/jql#jql-syntax)
 - [Advanced search reference - JQL fields](https://support.atlassian.com/jira-software-cloud/docs/advanced-search-reference-jql-fields/)
@@ -71,5 +71,5 @@ ORDER BY priority DESC
 查询还未完成的工作内容
 
 ``` sql
-assignee = currentUser() AND resolution = Unresolved ORDER BY updated DESC
+assignee = currentUser() AND resolution = Unresolved AND status not in ("Ready For Deploy", "Testing") ORDER BY updated DESC
 ```

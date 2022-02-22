@@ -78,6 +78,13 @@
 | `gg`、`:1`             | 跳到文件第一行行首             |
 | `G`、`:$`、`Shift + G` | 跳到文件最后一行行首           |
 
+**文本处理：**
+
+| 命令              | 说明                                           |
+| ----------------- | ---------------------------------------------- |
+| `dd`              | 删除当前行                                     |
+| `:[start],[end]d` | 删除指定行，例如 `:3,5d` 是删除第 3~5 行的文本 |
+
 ## iTerm2
 
 iTerm 2是 Terminal 的替代品，是 iTerm 的后继产品。它有好看的 UI 界面与使用的功能，比如[分隔终端](https://www.iterm2.com/features.html)等功能。
@@ -141,7 +148,7 @@ win/mac 平台通用:
 | `mv <fileName> <filePath>`       | 移动文件                       |
 | `mv <fileName> <modifyFileName>` | 重命名文件                     |
 | `netstat –ano`                   | 查看所有进程端口和进程 ID      |
-| `netstat –ano | findstr 8080`    | 查看所有 8080 端口             |
+| `netstat –ano \| findstr 8080`   | 查看所有 8080 端口             |
 | `dir`、`ls`                      | 查看当前目录下的文件           |
 | `type NUL > .nojekyll`           | 新建文件, 并命名为 `.nojekyll` |
 
@@ -150,7 +157,7 @@ win/mac 平台通用:
 | command                  | 说明                                   |
 | ------------------------ | -------------------------------------- |
 | `pbcopy`                 | 操作粘贴板                             |
-| `pwd | pbcopy`           | 复制当前路径到粘贴板                   |
+| `pwd \| pbcopy`          | 复制当前路径到粘贴板                   |
 | `pbcopy < blog-post.txt` | 将文件 blog-post.text 的内容读入粘贴板 |
 
 - **[批量修改文件名]** Homebrew 安装 rename 可以实现批量修改文件名称

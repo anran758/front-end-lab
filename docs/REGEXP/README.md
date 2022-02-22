@@ -3,6 +3,7 @@ sidebarDepth: 3
 sidebar: auto
 ---
 
+<!-- omit in toc -->
 # REGEXP
 
 ![banner](./images/regex.jpg)
@@ -11,23 +12,30 @@ sidebar: auto
 
 自己收集了一套针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。
 
-- [REGEXP](#REGEXP)
-  - [常见正则校验](#常见正则校验)
-    - [表单验证](#表单验证)
-    - [网络相关](#网络相关)
-    - [联系方式](#联系方式)
-    - [匹配特定数字](#匹配特定数字)
-    - [字符串相关](#字符串相关)
-    - [匹配语系字符范围](#匹配语系字符范围)
-  - [正则函数使用示例](#正则函数使用示例)
-    - [replace](#replace)
-    - [test](#test)
-  - [正则技巧](#正则技巧)
-    - [反向引用](#反向引用)
-    - [忽略分組](#忽略分組)
-    - [前瞻](#前瞻)
+- [常见正则校验](#常见正则校验)
+  - [表单验证](#表单验证)
+  - [网络相关](#网络相关)
+  - [联系方式](#联系方式)
+  - [匹配特定数字](#匹配特定数字)
+  - [字符串相关](#字符串相关)
+  - [匹配语系字符范围](#匹配语系字符范围)
+- [正则函数使用示例](#正则函数使用示例)
+  - [replace](#replace)
+  - [test](#test)
+- [正则技巧](#正则技巧)
+  - [反向引用](#反向引用)
+  - [忽略分組](#忽略分組)
+  - [前瞻](#前瞻)
 
 ----
+
+**[REGEXP 可视化工具](https://regexper.com/)**
+
+<iframe
+  title="regexp"
+  src="https://regexper.com/"
+  style="height: 600px;width: 100%;"
+></iframe>
 
 ## 常见正则校验
 
@@ -63,7 +71,7 @@ var mate = numName.test(value.replace(/[\u4e00-\u9fa5]/g, 'aa'));
 
 ### 网络相关
 
-``` JavaScript
+``` js
 //ipv4地址正则
 var IPReg = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 
@@ -79,7 +87,7 @@ var reg = /^\w+\(({[^()]+})\)$/
 
 匹配`json`字符串
 
-``` JavaScript
+``` js
 var ret = response.data;
 if (typeof ret === 'string') {
   var reg = /^\w+\(({[^()]+})\)$/
@@ -87,12 +95,13 @@ if (typeof ret === 'string') {
 
   if (matches) ret = JSON.parse(matches[1]);
 }
+
 res.json(ret);
 ```
 
 ### 联系方式
 
-``` JavaScript
+``` js
 // 5-11位的腾讯qq号
 var qqReg = /^[1-9][0-9]{4,11}$/;
 
@@ -273,4 +282,4 @@ var reg = /(?:Byron).(ok)/;
 
 ![regexper](./images/regexper.png)
 
-如果有哪些正则规则有问题的, 可以在issue留言探讨~
+如果有上述正则规则存在问题, 可在 issue 留言探讨~

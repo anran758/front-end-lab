@@ -40,6 +40,11 @@ git push
 
 # or 同时提交改动至指定远程仓库(orgin)和分支(develop, master)
 git push origin master develop
+
+# 查看命令历史,
+# 使用场景: 误操作 reset 错了 commit，现在期望恢复回来。
+# 使用 git reflog 找到操作的历史，找到需要恢复的 commit_id 可以通过 git reset --hard <commit_id> 回退到原本的版本中
+git reflog
 ```
 
 ## Add
@@ -208,7 +213,7 @@ git push -u origin master
 # 仅删除所有未追踪的文件，修改过已追踪的文件不会被回退
 git clean -df
 
-# 把已追踪的文件回退到前一个版本，不会删除未追踪的文件
+# 把已追踪的文件回退到前一个版本，不会删除未追踪的文件。也就是说当前版本提交的修改会丢失
 git reset --hard
 ```
 

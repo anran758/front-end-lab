@@ -4,32 +4,21 @@ tagline:
 footer: GPL Licensed | Copyright © 2019-present anran758
 ---
 
-<hide-outbound>
-  <p align="center">
-    <a href="https://github.com/anran758/Front-End-Lab/stargazers">
-      <img alt="GitHub stars" src="https://img.shields.io/github/stars/anran758/Front-End-Lab.svg?style=flat-square"></a>
-    <a href="https://github.com/anran758/Front-End-Lab/network"><img alt="GitHub forks"
-        src="https://img.shields.io/github/forks/anran758/Front-End-Lab.svg?style=flat-square"></a>
-    <a href="https://github.com/anran758/Front-End-Lab/watchers"><img alt="GitHub watchers"
-        src="https://img.shields.io/github/watchers/anran758/Front-End-Lab.svg?style=flat-square"></a>
-    <a href="https://github.com/anran758/Front-End-Lab"><img alt="CRAN/METACRAN"
-        src="https://img.shields.io/cran/l/devtools.svg?style=flat-square"></a>
-  </p>
-</hide-outbound>
+<p align="center">
+  <a style="margin-right: 4px" href="https://github.com/anran758/Front-End-Lab/stargazers">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/anran758/Front-End-Lab.svg?style=flat-square">
+  </a>
+  <a style="margin-right: 4px" href="https://github.com/anran758/Front-End-Lab/network">
+    <img alt="GitHub forks" src="https://img.shields.io/github/forks/anran758/Front-End-Lab.svg?style=flat-square">
+  </a>
+  <a href="https://github.com/anran758/Front-End-Lab">
+    <img alt="CRAN/METACRAN" src="https://img.shields.io/cran/l/devtools.svg?style=flat-square">
+  </a>
+</p>
 
 > :art: 记录 Web 领域的研究与实践
 
 ## 导读
-
-**Emoji 对应的状态**
-
-| emoji          | status                         |
-| -------------- | ------------------------------ |
-| :memo:         | pending，待补充内容            |
-| :truck:        | move，内容拆分或重构           |
-| :construction: | working，正在处理中            |
-| :art:          | optimization，润色中 / 待润色  |
-| 没有 icon           | 内容近期不会有太大的结构性改变 |
 
 **开发语言相关的笔记**
 
@@ -52,8 +41,8 @@ footer: GPL Licensed | Copyright © 2019-present anran758
 
 **其他**
 
-- [:art: Jira 项目管理](./jira/)
-- [:art: 前端工程师常讨论的话题](./topic/2020.md)
+- [:art: Jira 项目管理](./jira)
+- [:art: 前端老生常谈的话题](./topic/README.md)
 - [扩展阅读](./further)
   - [术语表](./further/glossary.md)
   - [web 书单](./further/booklist.md)
