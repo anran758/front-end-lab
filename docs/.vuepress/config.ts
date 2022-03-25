@@ -6,7 +6,6 @@ import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
-import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defaultTheme } from '@vuepress/theme-default'
 import { searchPlugin } from '@vuepress/plugin-search'
 
@@ -151,7 +150,7 @@ export default defineUserConfig({
     }),
 
     // only enable shiki plugin in production mode
-    isProd ? shikiPlugin({ theme: 'dark-plus' }) : [],
+    // isProd ? shikiPlugin({ theme: 'dark-plus' }) : [],
   ],
 
   // extraWatchFiles: ['.vuepress/nav/zh.js']
