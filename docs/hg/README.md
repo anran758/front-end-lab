@@ -27,6 +27,7 @@ hg pull
 hg pull --update
 
 # 拉取代码 (通过 rebase 的方式进行合并，需工作区没有未提交的文件)
+# 若本地没有其他改动的代码，在 commit 前又忘记 pull --update, 可以使用该项命令避免产生冲突而生成新的无用 commit
 hg pull --rebase
 
 # 可以修改上次提交的 commit 的内容
@@ -36,9 +37,26 @@ hg commit --amend
 
 ## 回退
 
+撤销上一次提交, 并将上一次提交的内容，放入待提交区
+
 ``` bash
-# 撤销上一次提交, 并将上一次提交的内容，放入待提交区
 hg rollback
+```
+
+丢弃文件的修改
+
+``` bash
+# 当前工作目录上有两个文件有改动
+hg status
+# M faas/README.md
+# M faas/package.json
+# (END)
+
+# 丢弃 README.md 文件的改动，使其变回上一个版本的模样
+hg revert faas-community/README.md 
+
+# 丢弃所有文件的修改，等价于 git reset --hard
+hg revert -a
 ```
 
 ## 分支管理
@@ -65,6 +83,12 @@ hg log
 
 # 按日期升序查看日志
 hg log -r "sort(all(), date)"
+
+# 显示分支图
+hg log -G
+
+# 查看上一个提交
+hg parent 
 ```
 
 ## 草稿 (shelve)
@@ -99,6 +123,7 @@ hg shelve --delete "draft_name"
 
 ``` shell
 # 将 9393 的 commit 复制到当前分支中
+# 相当于 git cherry-pick
 hg graft -r 9393
 
 # 将 9393 的 commit 复制到当前分支中，并修改提交信息
@@ -139,3 +164,9 @@ hg diff -r 241290dffcea -r da3019539240
 # or, 可以直接使用指定序号
 hg diff -r 102 -r 101
 ```
+
+---
+
+**参考资料**
+
+[Git hg rosetta stone](https://github.com/sympy/sympy/wiki/Git-hg-rosetta-stone)
