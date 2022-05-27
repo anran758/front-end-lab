@@ -1,8 +1,8 @@
-# 分布式软件配置管理工具 - Mercurial(水银)
+# HG
 
 Mercurial 是一种版本管理工具。将 Mercurial 安装完毕后可在命令行输入 hg (即为元素周期表中汞（Hydrargyrum）的元素符号 `Hg`) 作为调用程序的关键字。
 
-## common
+## 常用命令
 
 ``` shell
 # 帮助
@@ -59,7 +59,7 @@ hg revert faas-community/README.md
 hg revert -a
 ```
 
-## 分支管理
+## 分支管理 (branch)
 
 ``` bash
 # 查看当前分支
@@ -130,7 +130,7 @@ hg graft -r 9393
 hg graft --edit 9393
 ```
 
-## rebase (变基)
+## Rebase (变基)
 
 ``` shell
 # 压缩最近两个 commit
@@ -140,7 +140,7 @@ hg rebase --dest .~2 --base . --collapse
 hg rebase --dest {destination branch (e.g. master)} --base . --collapse
 ```
 
-## blame (annotate)
+## Blame (annotate)
 
 按行显示每个文件的变更集信息，可以用于追踪指定文件的每行代码是谁提交的、修改的 commit hash 是多少。
 
@@ -152,7 +152,7 @@ hg rebase --dest {destination branch (e.g. master)} --base . --collapse
 hg blame -ucl <file_path>
 ```
 
-## diff
+## Diff
 
 ``` bash
 # 查看当前版本与指定版本 (241290dffcea) 的差异

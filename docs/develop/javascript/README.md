@@ -3,21 +3,51 @@ sidebarDepth: 3
 ---
 
 <!-- omit in toc -->
-
-# javascript
+# 原生语法
 
 细节和技巧的交汇，本篇笔记主要用于速查。
 
-[[toc]]
+- [练手组件](#练手组件)
+- [代码简化](#代码简化)
+  - [科学计数法 E](#科学计数法-e)
+  - [三元操作符](#三元操作符)
+  - [逻辑运算符](#逻辑运算符)
+- [Utils](#utils)
+  - [判断原始类型](#判断原始类型)
+  - [计算星座](#计算星座)
+  - [【Array】删除数组项](#array删除数组项)
+  - [【Array】数组去重](#array数组去重)
+  - [【Array】中文排序](#array中文排序)
+  - [【Array】数组扁平化](#array数组扁平化)
+  - [【Number】金额分隔](#number金额分隔)
+  - [【Number】生成随机数](#number生成随机数)
+  - [【Number】字符串转数字](#number字符串转数字)
+  - [【Number】判断闰年函数](#number判断闰年函数)
+  - [【String】URL 拼接](#stringurl-拼接)
+  - [【String】计算字符串长度](#string计算字符串长度)
+  - [【String】生成 UUID](#string生成-uuid)
+  - [【String】驼峰命名类型字符串转为常量命名类型](#string驼峰命名类型字符串转为常量命名类型)
+  - [【Date】获取指定天前的时间区间](#date获取指定天前的时间区间)
+- [Store](#store)
+  - [localStorage](#localstorage)
+  - [cookie](#cookie)
+- [DOM](#dom)
+  - [盒子模型对应的 DOM API](#盒子模型对应的-dom-api)
+  - [批量插入节点](#批量插入节点)
+  - [事件冒泡与事件捕获](#事件冒泡与事件捕获)
+- [技术细节](#技术细节)
+  - [parseInt](#parseint)
+  - [map 与 forEach 的区别](#map-与-foreach-的区别)
+  - [Symbol](#symbol)
+  - [class](#class)
 
 ## 练手组件
-
-**Application**
 
 如果一些刚入门的朋友学完语法后不知道该做什么，可以自个尝试实现以下的简单组件，将知识学以致用：
 
 - **日历**: 考验对 `Date` 对象的使用。
 - **四则计算器**: 考验对处理**浮点数溢出**的能力、`Math` 的使用等。
+- **轮播图**: 考验对 setTimeout 相关的定时器的处理。
 
 **简单算法**
 
@@ -609,7 +639,7 @@ tools.cookieGet('nickName'); // null
 
 ### 盒子模型对应的 DOM API
 
-![box model example](../_images/box-model-example.png)
+![box model example](@image/box-model-example.png)
 
 盒子模型上对应的 DOM API:
 
@@ -666,7 +696,7 @@ parseInt('08', 10); // 8
 
 上面的例子就是因为`map`函数传入的第二个参数为数组的索引(`index`)。`parseInt`在处理到`2`时，传入了索引`2`作为基数，然而二进制并没有`2`这个数字，处理后自然会返回`NaN`。
 
-### map 与 forEach 的区别:
+### map 与 forEach 的区别
 
 | 方法      | 相同之处         | 不同之处                                                                                                                   |
 | --------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -688,139 +718,3 @@ parseInt('08', 10); // 8
 2. class 内部默认采用严格模式(意味着不能使用非严格性语法了)
 3. class 必须使用 new 来调用, 但可以直接使用类的静态方法
 4. ES6的 class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
-
-## Vue
-
-开发常见问题：
-
-1. 如果给子组件设置 `v-if` 的话，那么 vue 会在切换过程中将条件块内的事件监听器和子组件适当地被销毁和重建。也就是说就算里面用了 `watch` 也会失效。
-2. 如果组件不是通过 `new Vue` 这种形式生成出来的话，那么`data`就必须要使用`function`的形式返回一个对象，而不是直接使用对象。不然的话`vue`会提示报错的。
-
-   ```javascript
-   // 这种会报错
-   export default {
-     template: '<div>{{text}}</div>',
-     data: {
-       text: 'hello',
-     },
-   };
-
-   // 下面两者都不会
-   new Vue({
-     el: '#root',
-     template: '<div>{{text}}</div>',
-     data: {
-       text: '123',
-     },
-   });
-
-   export default {
-     template: '<div>{{text}}</div>',
-     data() {
-       return {
-         text: 'hello',
-       };
-     },
-   };
-   ```
-
-3. 在父组件的 `created` 钩子上进行赋值操作的话，数值的变化是传不到子组件的`watch`里的。
-4. 实际上，`props`的值是可以直接修改的。但是一般情况下我们并不推荐去修改`prop`里的内容，因为这会直接修改到父级的`data`。会引起组件之间的逻辑的混乱，未来 debug 也变得麻烦了起来。<br>通常我们会通过`this.$emit('postHandle', data)`这种形式去激活，通知父级更改。
-5. 组件的通信上，`props`里可以使用驼峰性命名参数，但传入的时候需要转变为**连字号(-)**。
-6. 在使用`vue-router`时，将`mode`设置为`history`模式的话，没有后端进行做相应的匹配会报 404。<br>但如果在开发模式下，使用`webpack-dev-server`作为本地服务器的话，可以让`webpack`设置`devServer`下的`historyApiFallback`做路径的映射，这样就可以用干净简洁的`history`模式啦~
-
-### mixin 的问题
-
-- 变量来源不明确，不利于代码阅读
-- 多 mixin 可能会造成命名冲突
-- mixin 和组件可能会出现多对多的关系，复杂度较高
-
-### Object.definedProperty 缺点
-
-- 深度监听，需要递归到底，一次性计算量大
-- 无法监听新增属性/删除属性(Vue.set Vue.delete)
-- 无法原生监听数组，需要特殊处理
-
-### Vue 模板编译过程
-
-vue 的模板(`template`)是通过 `loader` 或者是 `vue template complier` 编译为 `render` 函数的。`render` 函数执行后会生成 `vnode`, 最后在渲染和更新。
-
-组件内可以直接使用 `render` 方法进行渲染，在流程上也少一步模板编译的过程。
-
-### vuex
-
-vuex 的 commit mutation 是一个同步的方法，而 Action 通过`store.dispatch`方法触发的是一个异步的方法。
-
-Vue component 中使用 `distpatch` 触发一个 `action`，`action` commit 到 `mutations` 中。`mutations` 改变 `state` 数据后，数据更新到视图中。
-
----
-
-## React
-
-- [x] [React 知识回顾 (使用篇)](https://anran758.github.io/blog/2020/10/31/react-retrospection/) (生命周期、组件通信、Hooks 等)
-- [x] [React 知识回顾 (优化篇)](https://anran758.github.io/blog/2020/11/04/react-retrospection-2/)
-- [ ] redux、redux-sage 总结
-- [ ] router 相关总结
-
-### 注意事项与技巧
-
-1. React 组件需要以大写字母开头的标签才能正常解析
-2. React 是响应式框架，只需要关心数据
-3. React 绑定事件名是驼峰式
-4. React 不允许直接修改 state 的数据，因为会对性能有影响
-5. React 是单向数据流，是视图层框架，只解决视图和数据渲染方面
-6. jsx/tsx 一个组件内需要包裹一个元素，但如果这个组件内你不想再最外层额外包一个 `<div>` 的话，可以使用 `<Fragment></Fragment>` 占位符，或者它的简写形式 `<></>`。
-7. 当组件的 state 或者 props 发生改变时，render 函数就会重新执行。
-
-### 展示型组件特点
-
-1. 关心数据的展示方式
-2. 不依赖 APP 的其他文件
-3. 不关心数据是如何加装和变化
-4. 仅通过 props 接受数据和回调
-5. 通常为函数式组件
-
-## 小程序
-
-小程序与`React`、`Vue` 之间有很多共通之处，将一些概念转换过来可以快速融入微信小程序思路：
-
-1. 小程序也有生命周期，一般会在 `onLoad` 处理请求接口，因为它是最触发的生命周期钩子。
-2. 在小程序中使用 `import` 语法时，要使用相对路径，不能使用绝对路径(如访问根目录 `/` ), 否则会抛错。
-3. 在组件上，小程序的 `this.triggerEvent` 相当于 `vue` 的 `this.$emit`, 通过调用 API 来通知父组件有事件触发。
-4. 只有跟 `wxml` 内有绑定的变量才需要放在 `this.data` 中，其余的放在 `this` 里。这样能减轻渲染的压力。
-
-   ```javascript
-   Page({
-     /**
-      * 页面的初始数据
-      */
-     data: {
-       // 需要跟 wxml 模板绑定的数据
-       gifts: {},
-     },
-
-     // timer 只是用于储存定时器，不需要在页面中渲染
-     _timer: null,
-
-     /**
-      * 页面的方法列表
-      */
-     methods: {
-       /* ... */
-     },
-   });
-   ```
-
-### 小程序授权
-
-- 可以通过调用`wx.getSetting`，判断`data.authSetting['scope.userInfo']`来获取用户是否授权的信息
-- 没有授权的话，我们可以标记一个状态变量(`hasLogin`)，当没有授权信息的时候，设置为`false`。
-- 页面通过这个变量来控制显示真正的按钮，还是授权按钮(wx:if-else)
-- 现在微信的授权，需要引导用户主动点击按钮才会弹出授权的窗口，需要使用原生的 button 组件，通过调用 `getuserinfo`的回调拿到`userInfo`信息，判断用户是否点击了授权
-
-### 小程序跳转
-
-如果想从一个小程序跳转到另一个小程序中，那么这两个小程序就**必须同时关联同一个公众号**（服务号或者订阅号）。与之相关联的关键词如下:
-
-1. target="miniProgram"
-2. app-id="appid"

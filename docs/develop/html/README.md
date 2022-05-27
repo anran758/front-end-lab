@@ -1,22 +1,19 @@
 ---
 sidebarDepth: 3
-sidebar: auto
 ---
 
 <!-- omit in toc -->
 # HTML
 
-- [common](#common)
 - [img](#img)
-- [attribute](#attribute)
+- [CSS 属性](#css-属性)
   - [href](#href)
 - [video](#video)
   - [视频首屏最先加载方法](#视频首屏最先加载方法)
   - [引用视频播放失败](#引用视频播放失败)
-  - [video api](#video-api)
-- [pre and code](#pre-and-code)
+- [pre / code](#pre--code)
 
-## common
+---
 
 编写`HTML`的一些好习惯:
 
@@ -59,7 +56,7 @@ HTML5 图片自适应:
 </div>
 ```
 
-## attribute
+## CSS 属性
 
 ### href
 
@@ -80,7 +77,7 @@ HTML5 图片自适应:
 
 如爱奇艺、优酷等以视频为核心的网站, 用户点击进来无非就像看视频. 在进行性能优化的时候, 理所当然的先让用户看到想要看到的东西(视频). 因此我们需要把视频和相关依赖文件等最先加载.
 
-![YouTube在网络慢的场景](../_images/youtube.png)
+![YouTube在网络慢的场景](@image/youtube.png)
 
 但是浏览器会默认的将多媒体资源放在最后面加载, 无论你的标签在文档中放的多靠前. 这时的解决方案就是将`<script>`(初始化视频的js文件)改用为`<link>`标签引用.
 
@@ -92,10 +89,10 @@ HTML5 图片自适应:
 
 遇到 `403`, 通常是防盗链在作用。
 
-### video api
+<!-- ### video api
 
-playbackRate 控制播放速度
+playbackRate 控制播放速度 -->
 
-## pre and code
+## pre / code
 
 [Pre 和 Code 标签之间的区别](https://anran758.github.io/blog/2019/08/24/js-%E5%B0%86JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%E8%87%B3%E9%A1%B5%E9%9D%A2%E4%B8%8A/)

@@ -1,6 +1,5 @@
 ---
 sidebarDepth: 3
-sidebar: auto
 ---
 
 # 移动端开发

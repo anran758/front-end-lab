@@ -1,8 +1,8 @@
-# node.js
+# Node.js
 
 记录 Node.js 中相关的 API 使用场景与相关细节。
 
-## 环境相关
+## API
 
 ``` JS
 // 返回 Node.js 进程的当前工作目录
@@ -16,6 +16,11 @@ fs.realpathSync(pathStr)
 fs.realpathSync(process.cwd())
 ```
 
+## 技术方案
+
+1. 数据该如何存储
+2. 如何与前端对接（接口设计）
+
 ## pm2
 
 ``` bash
@@ -28,11 +33,6 @@ pm2 log
 # 可以查看运行了几个项目
 pm2 list
 ```
-
-## Node.js 需要确定的技术方案
-
-1. 数据该如何存储
-2. 如何与前端对接（接口设计）
 
 ## 爬虫
 
@@ -55,7 +55,7 @@ pm2 list
 
 1. cheerio
 
-## MongoDB 简要用法
+## MongoDB
 
 ``` bash
 # 显示内存

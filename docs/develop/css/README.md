@@ -6,53 +6,6 @@
 
 [[toc]]
 
-## Common
-
-### 继承性与通配符
-
-使用通配符(`*`), 意味着页面中的所有的标签都会加上通配符里的属性. 然而很多人在使用的时候, 尤其在不了解属性特性的情况下, 容易造成很大性能浪费.
-
-就比如说有些属性是具有**继承性**的, 在下例中`<em>`标签在没有制定`color`属性时, 就逐级向上找到`.container`的`color`继承.
-
-```html
-<style>
-  .container {
-    color: green;
-  }
-</style>
-
-<div class="container">
-  这里是div容器内
-  <p>这是一个<em>演示</em>的例子</p>
-</div>
-```
-
-这意味着如果我们用通配符设置这些属性时, 会徒劳给页面的增加没必要的性能负担.
-
-再来看一个典型的例子. iOS 系统下, 点击一个链接或者通过 Javascript 定义的可点击元素的时候, 会出现一个半透明的灰色背景(就是所谓会闪一下), 这时`可以设置-webkit-tap-highlight-color`为透明来重置这个"BUG", 这里属性没用错, 但问题就出现在错误的使用了通配符. 如下图:
-
-![wildcard](./images/wildcard.png)
-
-还有一种就是使用`* {margin: 0; padding: 0}`则就过分了, `H1 ~ 6`标签本身就没有默认`padding`, 你特么非要给人家重置一下. `<li>`就更无辜了, 没有默认的`padding`和`margin`也要被批斗. 因此我们应该避免使用通配符.
-
-### 清除浮动
-
-Nicholas C. Zakas( 尼古拉斯)提出了个更好清除浮动的一个方案, 即:
-
-设置 `display: table;` 可以创建一个匿名的表格单元，同时这个匿名的表格单元会触发 `BFC(block formatting context)` 来清除浮动。
-
-``` css
-.clearfix:before,
-.clearfix:after {
-  content: '';
-  display: block;
-}
-
-.clearfix:after {
-  clear: both;
-}
-```
-
 ## Layout
 
 ### 圣杯布局
@@ -421,6 +374,53 @@ Nicholas C. Zakas( 尼古拉斯)提出了个更好清除浮动的一个方案, �
 [点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/jxjGyo)
 
 ![form](./images/drawing_graphics.png)
+
+## 技术细节
+
+### 继承性与通配符
+
+使用通配符(`*`), 意味着页面中的所有的标签都会加上通配符里的属性. 然而很多人在使用的时候, 尤其在不了解属性特性的情况下, 容易造成很大性能浪费.
+
+就比如说有些属性是具有**继承性**的, 在下例中`<em>`标签在没有制定`color`属性时, 就逐级向上找到`.container`的`color`继承.
+
+```html
+<style>
+  .container {
+    color: green;
+  }
+</style>
+
+<div class="container">
+  这里是div容器内
+  <p>这是一个<em>演示</em>的例子</p>
+</div>
+```
+
+这意味着如果我们用通配符设置这些属性时, 会徒劳给页面的增加没必要的性能负担.
+
+再来看一个典型的例子. iOS 系统下, 点击一个链接或者通过 Javascript 定义的可点击元素的时候, 会出现一个半透明的灰色背景(就是所谓会闪一下), 这时`可以设置-webkit-tap-highlight-color`为透明来重置这个"BUG", 这里属性没用错, 但问题就出现在错误的使用了通配符. 如下图:
+
+![wildcard](./images/wildcard.png)
+
+还有一种就是使用`* {margin: 0; padding: 0}`则就过分了, `H1 ~ 6`标签本身就没有默认`padding`, 你特么非要给人家重置一下. `<li>`就更无辜了, 没有默认的`padding`和`margin`也要被批斗. 因此我们应该避免使用通配符.
+
+### 清除浮动
+
+Nicholas C. Zakas( 尼古拉斯)提出了个更好清除浮动的一个方案, 即:
+
+设置 `display: table;` 可以创建一个匿名的表格单元，同时这个匿名的表格单元会触发 `BFC(block formatting context)` 来清除浮动。
+
+``` css
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: block;
+}
+
+.clearfix:after {
+  clear: both;
+}
+```
 
 ## 动画与特效
 
