@@ -14,15 +14,11 @@ export const zh: NavbarConfig = [
     link: '/further/',
     children: [
       {
-        text: '扩展阅读',
-        link: '/further/',
-      },
-      {
-        text: 'Home',
+        text: "Anran758's Homepage",
         link: 'https://anran758.github.io/',
       },
       {
-        text: 'Blog',
+        text: "Anran758's Blog",
         link: 'https://anran758.github.io/blog/',
       },
     ],

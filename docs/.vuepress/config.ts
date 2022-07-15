@@ -72,7 +72,7 @@ export default defineUserConfig({
     docsDir: 'docs',
     smoothScroll: true,
     backToTop: true,
-    sidebarDepth: 3,
+    sidebarDepth: 4,
     displayAllHeaders: true,
     locales: {
       '/': {

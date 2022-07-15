@@ -3,7 +3,7 @@ sidebarDepth: 3
 ---
 
 <!-- omit in toc -->
-# 原生语法
+# JavaScript Native
 
 细节和技巧的交汇，本篇笔记主要用于速查。
 

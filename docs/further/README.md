@@ -1,4 +1,4 @@
-# 扩展阅读
+# More
 
 ## 代码风格指南
 
@@ -16,8 +16,6 @@
 - [JavaScript ASI 机制详解](https://segmentfault.com/a/1190000004548664)
 
 ## 其他指南
-
-**[兼容性处理指南](./compatibility.md)**
 
 ### URL design
 

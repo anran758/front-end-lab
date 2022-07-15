@@ -1,5 +1,7 @@
 # Jira
 
+> JIRA 是一个缺陷跟踪管理系统，为针对缺陷管理、任务追踪和项目管理的商业性应用软件
+
 - [高级搜索 和 JQL 入门](https://www.atlassian.com/zh/software/jira/guides/expand-jira/jql#jql-syntax)
 - [Advanced search reference - JQL fields](https://support.atlassian.com/jira-software-cloud/docs/advanced-search-reference-jql-fields/)
 - [Advanced search reference - JQL operators](https://support.atlassian.com/jira-software-cloud/docs/advanced-search-reference-jql-operators/)
@@ -40,7 +42,7 @@ worklogAuthor = currentUser()
 登记工作的日期范围:
 
 ``` sql
-worklogDate >= startOfWeek() AND worklogDate < endOfWeek()
+worklogAuthor = currentUser() AND worklogDate >= startOfWeek() AND worklogDate < endOfWeek()
 
 -- 2021-06-28 ~ 2021-07-02 登记过工作的 jira
 worklogDate >= 2021-06-28 AND worklogDate < 2021-07-02
@@ -72,4 +74,22 @@ ORDER BY priority DESC
 
 ``` sql
 assignee = currentUser() AND resolution = Unresolved AND status not in ("Ready For Deploy", "Testing") ORDER BY updated DESC
+```
+
+## 在浏览器快速 copy key
+
+在浏览器快速 copy jira 的 key:
+
+``` js
+function getJiraKeys() {
+  const keys = Array.from($$('.issue-key-column span')).map((item) => {
+    return item.textContent?.trim();
+  });
+
+  const content = `key in (${keys})`
+  copy?.(content)
+
+  return content
+}
+getJiraKeys()
 ```
