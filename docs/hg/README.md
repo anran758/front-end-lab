@@ -177,9 +177,26 @@ hg diff -r 102 -r 101
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/mercurial
 ```
 
-下载插件后若还想像 git 仓库一样会显示当前分支，则需要修改主题的配置，主题文件都放在 `~/.oh-my-zsh/themes` 目录下。
+下载插件后编辑 `~/.zshrc` 文件中的 plugins 字段，添加 mercurial:
 
-笔者使用的是默认主题，`~/.zshrc` 配置中可以修改 ZSH_THEME 切换主题，默认主题为 `robbyrussell`。以修改 `robbyrussell` 为例:
+``` shell
+plugins=(
+  git
+  yarn
+  zsh-autosuggestions
+  mercurial
+)
+```
+
+若命令行处于 git 项目的目录下，则会在命令行显示当前分支，例如:
+
+``` bash
+➜  front-end-lab git:(master) ✗ 
+```
+
+当 hg 不行，需要做额外的配置或选择支持 hg 的主题。zsh 可以通过 `ZSH_THEME` 变量切换主题，默认的主题为 `robbyrussell`。
+
+zsh 主题文件都放在 `~/.oh-my-zsh/themes` 目录下。笔者以默认主题为例，对默认的主题进行扩展:
 
 ``` shell
 # 通过 vim 修改
@@ -200,7 +217,7 @@ ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_HG_PROMPT_CLEAN="%{$fg[blue]%})"
 ```
 
-新开窗口后就能看到结果了。
+再新开 zsh 后就能看到修改后的效果啦。
 
 ---
 
