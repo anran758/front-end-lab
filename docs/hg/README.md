@@ -167,6 +167,43 @@ hg diff -r 102 -r 101
 
 ---
 
+## on-my-zsh
+
+在 on-my-zsh 中使用 hg 的扩展: [Mercurial plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/mercurial)
+
+首先下载插件。
+
+``` shell
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/mercurial
+```
+
+下载插件后若还想像 git 仓库一样会显示当前分支，则需要修改主题的配置，主题文件都放在 `~/.oh-my-zsh/themes` 目录下。
+
+笔者使用的是默认主题，`~/.zshrc` 配置中可以修改 ZSH_THEME 切换主题，默认主题为 `robbyrussell`。以修改 `robbyrussell` 为例:
+
+``` shell
+# 通过 vim 修改
+vim ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+
+# 或者通过 vscode 修改的
+code ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+```
+
+添加如下变量:
+
+``` shell
+PROMPT+='$(hg_prompt_info)'
+
+ZSH_THEME_HG_PROMPT_PREFIX="%{$fg_bold[blue]%}hg:(%{$fg[red]%}"
+ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
+ZSH_THEME_HG_PROMPT_CLEAN="%{$fg[blue]%})"
+```
+
+新开窗口后就能看到结果了。
+
+---
+
 **参考资料**
 
 [Git hg rosetta stone](https://github.com/sympy/sympy/wiki/Git-hg-rosetta-stone)
