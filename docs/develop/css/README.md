@@ -97,15 +97,31 @@
 
 ### 响应式布局
 
-响应式布局实际上是一个设计理念, 它是多项技术的综合体. 能适应于各种的屏幕. 其核心围绕着媒体查询(@media)。`max-width`是媒体查询的一个特性，其意思是指媒体类型小于或等于指定的宽度时, `min-width`则相反.
+响应式布局实际上是一个设计理念, 它是多项技术的综合体. 能适应于各种的屏幕. 其核心围绕着媒体查询(@media)。`max-width`是媒体查询的一个特性，其意思是指媒体类型小于或等于指定的宽度时, `min-width`则相反。在 [Bootstrap](https://getbootstrap.com/docs/4.1/layout/overview/) 中已经有相关文档的指导。
 
-[Bootstrap](https://getbootstrap.com/docs/4.1/layout/overview/) 已经有相关的指导：
+以下代码是当设备的宽度**大于等于**指定尺寸时，代码会被应用：
+
+``` css
+/* Small devices (landscape phones, devices width >= 576px) */
+@media (min-width: 576px) { ... }
+
+/* Medium devices (tablets, devices width >= 768px) */
+@media (min-width: 768px) { ... }
+
+/* Large devices (desktops, devices width >= 992px) */
+@media (min-width: 992px) { ... }
+
+/* Extra large devices (large desktops, devices width >= 1200px) */
+@media (min-width: 1200px) { ... }
+```
+
+以下代码是当设备的宽度**小于**指定尺寸时，代码会被应用：
 
 ``` css
 /* 超小型设备 (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { ... }
 
-/* 小型 (landscape phones, less than 768px) */
+/* 小型设备 (landscape phones, less than 768px) */
 @media (max-width: 767.98px) { ... }
 
 /* 中型设备 (tablets, less than 992px) */
@@ -114,10 +130,30 @@
 /* 大型设备 (desktops, less than 1200px) */
 @media (max-width: 1199.98px) { ... }
 
-/* 超大型设备 (large desktops): 没有 media query, 因为超大断点的宽度没有上限 */
+/* 超大型设备 (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... }
 ```
 
 以上使用 `.98px` 的原因在于避免 `max-width` 与 `min-width` 同时出现时规则用冲突的情况。具体原因参见: [Why does Bootstrap use a 0.02px difference between screen size thresholds in its media queries?](https://stackoverflow.com/questions/51566916/why-does-bootstrap-use-a-0-02px-difference-between-screen-size-thresholds-in-its)
+
+还可以针对指定大小的设备宽度做定制化样式:
+
+``` css
+/* 超小型设备 (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { ... }
+
+/* 小型设备 (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { ... }
+
+/* 中型设备 (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+/* 大型设备 (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { ... }
+
+/* 超大型设备 (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... }
+```
 
 关于响应式布局设计的其他几个点可以看[这里](https://anran758.github.io/blog/2018/01/25/web-%E8%B5%B0%E8%BF%9Bweb%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80)
 
@@ -367,6 +403,18 @@
 
 [点击此链接跳转至 codepen demo](https://codepen.io/anran758/pen/YapWKd)
 
+### [image] 图像置灰
+
+css 中的 filter 可以将**模糊**或**颜色偏移**等图形效果应用于元素。其中 `grayscale` 函数可以设置图像的灰度:
+
+``` css
+.image {
+  filter: grayscale(100%);
+}
+```
+
+![example](../../_images/css-grayscale-example.png)
+
 ### 图形绘制
 
 可以利用`css`属性来绘制常见的图形, 来完成一些设计所需，同时还可以节省图片的 HTTP 请求。
@@ -420,6 +468,22 @@ Nicholas C. Zakas( 尼古拉斯)提出了个更好清除浮动的一个方案, �
 .clearfix:after {
   clear: both;
 }
+```
+
+### z-index design
+
+css 中的 z-index 可以控制元素的层级，在多人项目开发中很容易产生相互覆盖的情况，所以在事先需要对该部分做一个设计约束。
+
+多数情况下，普通的元素若需要修改层级仅仅需要设置为低等级即可，如 `z-index: 1`。若设计全局组件为了避免业务代码的侵入，会设置一个大数值。以下变量可作为参考:
+
+``` scss
+$zindex-dropdown:          1000 !default;
+$zindex-sticky:            1020 !default;
+$zindex-fixed:             1030 !default;
+$zindex-modal-backdrop:    1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
 ```
 
 ## 动画与特效
