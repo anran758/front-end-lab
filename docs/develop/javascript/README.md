@@ -40,6 +40,8 @@ sidebarDepth: 3
   - [map 与 forEach 的区别](#map-与-foreach-的区别)
   - [Symbol](#symbol)
   - [class](#class)
+- [other](#other)
+  - [页面滚到指定位置显示图片(内容)](#页面滚到指定位置显示图片内容)
 
 ## 练手组件
 
@@ -703,9 +705,11 @@ parseInt('08', 10); // 8
 | `map`     | 同样用于遍历数组 | `map`对每项调用的函数后会取得函数的返回值，并推入新的数组中去(意味着可以链式调用)。<br>但是这个方法只有数组才能使用。      |
 | `forEach` | 同样用于遍历数组 | `forEach`单纯对数组中每一项调用回调函数，不作其他操作。<br>该方法并不是只有数组能用，部分类数组(如 NodeList)也有这个方法。 |
 
+该问题笔者曾在知乎上回答过更详细的回答: [js es6 中如何比较深刻的理解 for 、for  of 、 map？ - anran758的回答 - 知乎](https://www.zhihu.com/question/278332594/answer/886056097)
+
 > 你知道吗？
 
-数组实际上是一个类列表对象，这意味着我们可以在数组上添加属性，虽然一般不常这样做
+数组实际上是一个类列表对象，这意味着我们可以在数组上添加属性，虽然一般不常这样做。
 
 ### Symbol
 
@@ -718,3 +722,34 @@ parseInt('08', 10); // 8
 2. class 内部默认采用严格模式(意味着不能使用非严格性语法了)
 3. class 必须使用 new 来调用, 但可以直接使用类的静态方法
 4. ES6的 class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
+
+## other
+
+一些常见的业务逻辑的处理思路。
+
+### 页面滚到指定位置显示图片(内容)
+
+**HTML**: 给目标 DOM 设置指定类名
+
+**CSS**: 给类名设置 css3 属性
+
+   ``` css
+   .align-left.slide-in {
+     transform: translateX(-30%) scale(0.95);
+   }
+
+   .align-right.slide-in {
+     transform: translateX(30%) scale(0.95);
+   }
+
+   .slide-in.active {
+     opacity: 1;
+     transform: translateX(0%) scale(1);
+   }
+   ```
+
+**JavaScript**:
+
+1. 获取目标类名, 监听 window 滚动, 计算滚动的距离
+2. 计算滚动的位置 (slideInAt): window.scrollY(浏览器滚动Y轴位置) + window.innerHeight(窗口高度) - 内容(图片)宽度的一半。(也就是说当滚到指定内容一半位置的时候就添加类名)
+3. 判断滚动距离，若滚动距离 (slideInAt) 大于 内容的 offsetTop，添加类名反之移除类名
