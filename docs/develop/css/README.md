@@ -194,103 +194,103 @@
 
 ### [layout] 居中元素
 
-常用的居中方法：
+**常用的居中方法**：
 
-1. [单行垂直水平居中]: 容器 `height` 与 `line-height` 设为相同的值
+[单行垂直水平居中]: 容器 `height` 与 `line-height` 设为相同的值
 
-  ``` css
-    .container {
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-    }
-  ```
+``` css
+.container {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+```
 
-2. `absolute` + `margin` 分配剩余空间。这个方法**需要设置宽高**.
+`absolute` + `margin` 分配剩余空间。这个方法**需要设置宽高**.
 
-  ```css
-  .element {
-    width: 600px;
-    height: 400px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-  }
-  ```
+``` css
+.element {
+width: 600px;
+height: 400px;
+position: absolute;
+left: 0;
+top: 0;
+right: 0;
+bottom: 0;
+margin: auto;
+}
+```
 
-3. `absolute` + `transform`自身宽高的一半, 副作用是`transform`会**占据原来的文档流位置**。
+`absolute` + `transform`自身宽高的一半, 副作用是`transform`会**占据原来的文档流位置**。
 
-  ```css
-  .element {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  ```
+``` css
+.element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
 
-4. 基于 `vertical-align` 的水平垂直居中 --by 张鑫旭
+基于 `vertical-align` 的水平垂直居中 --by 张鑫旭
 
-  ```html
-  <div class="container">
-    <div class="dialog">
-      <div class="content">内容占位</div>
-    </div>
+ ```html
+ <div class="container">
+  <div class="dialog">
+    <div class="content">内容占位</div>
   </div>
-  ```
+ </div>
+ ```
 
-  ```css
-  .container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    /* for IE8 */
-    /* background: url(data:image/png;base64,iVB...g==); */
-    /* for IE9+ */
-    background: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    white-space: nowrap;
-    z-index: 99;
-  }
-  .container:after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-  }
-  .dialog {
-    display: inline-block;
-    vertical-align: middle;
-    border-radius: 6px;
-    background-color: #fff;
-    text-align: left;
-    white-space: normal;
-  }
-  ```
+``` css
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* for IE8 */
+  /* background: url(data:image/png;base64,iVB...g==); */
+  /* for IE9+ */
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  white-space: nowrap;
+  z-index: 99;
+}
+.container:after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.dialog {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 6px;
+  background-color: #fff;
+  text-align: left;
+  white-space: normal;
+}
+```
 
-5. `flex` 布局
+`flex` 布局
 
-  ```html
-  <div class="parent">
-    <div>children</div>
-  </div>
-  ```
+``` html
+<div class="parent">
+  <div>children</div>
+</div>
+```
 
-  ```css
-  .parent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
-    border: 1px solid red;
-  }
-  ```
+``` css
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+}
+```
 
 ### [text] 文本溢出隐藏
 
