@@ -365,51 +365,56 @@ TODO: 待补充...
 - async/await 使用了 Promise，并没有和 Promise 产生冲突
 - 但还是改变不了 js 单线程、异步的本质
 
-## 事件循环 (event-loop) <Badge text="TODO" type="warning"/>
+## 事件循环 (event-loop)
 
-<!-- 1. 什么是单线程？和异步有什么关系？
+**什么是事件循环?**
 
-   > TODO: 待补充... -->
+JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务都要排队。但有一些任务耗时很长，js 引擎不想因为这些耗时长的任务而阻塞后面任务的处理。因此将这些任务分为**同步任务**与**异步任务**。
 
-1. 什么是事件循环
+事件循环负责执行代码、收集和处理事件以及执行队列中的子任务，JavaScript 中的并发模型就是基于事件循环的。事件循环中的任务又区分宏任务 (Task) 与微任务 (MicroTask)：
 
-   js 是一个单线程非阻塞的语言，单线程意味着所有任务都要排队。但有一些任务耗时很长，js 引擎不想因为这些耗时长的任务而阻塞后面任务的处理。因此将这些任务分为**同步任务**与**异步任务**。
+- **宏任务 (Task)**: script(整体代码), DOM 事件触发的回调, setTimeout, setInterval, setImmediate(node独有), I/O, UI rendering
+- **微任务 (MicroTask)**: process.nextTick (node独有), Promises, Object.observe(废弃), MutationObserver
 
-   事件循环中的任务又区分宏任务(Microtasks)与微任务(task)。两种任务各有一个任务队列。首先会执行微任务，然后再执行宏任务。
+两种任务各有一个任务队列，每当队首的任务被完整的执行完毕后才会执行下一个任务。它的执行顺序为:
 
-   > TODO: 待补充...
+当执行栈空闲时，JavaScript 会先执行微任务队列中的任务，直到微任务队列中的所有任务都执行完后才会执行宏任务队列中的任务。换句话说，微任务队列就像一个优先级更高的一等公民；宏任务队列就像一个优先级较低的二等工具。
 
-1. `setTimeout` 是否有误差？若有，产生误差的原因是什么？
+**`setTimeout` 是否有误差？若有，产生误差的原因是什么？**
 
-   零延迟并不意味着回调会立即执行，其等待的时间取决于队列里待处理的消息数量。
+零延迟并不意味着回调会立即执行，其等待的时间取决于队列里待处理的消息数量。
 
-1. 以下程序依次输出的信息是:
+以下程序依次输出的信息是:
 
-   ``` js
-   (function() {
+``` js
+(function() {
+  console.log('这是开始');
 
-     console.log('这是开始');
+  setTimeout(function cb() {
+    console.log('这是来自第一个回调的消息');
+  });
 
-     setTimeout(function cb() {
-       console.log('这是来自第一个回调的消息');
-     });
+  console.log('这是一条消息');
 
-     console.log('这是一条消息');
+  setTimeout(function cb1() {
+    console.log('这是来自第二个回调的消息');
+  }, 0);
 
-     setTimeout(function cb1() {
-       console.log('这是来自第二个回调的消息');
-     }, 0);
+  console.log('这是结束');
 
-     console.log('这是结束');
+})();
 
-   })();
+// "这是开始"
+// "这是一条消息"
+// "这是结束"
+// "这是来自第一个回调的消息"
+// "这是来自第二个回调的消息"
+```
 
-   // "这是开始"
-   // "这是一条消息"
-   // "这是结束"
-   // "这是来自第一个回调的消息"
-   // "这是来自第二个回调的消息"
-   ```
+**参考资料**
+
+- [深入：微任务与 Javascript 运行时环境](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88event_loops%EF%BC%89)
+- [并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
 
 ## 计算题
 
@@ -522,6 +527,8 @@ TODO: 待补充...
    - async1 end
    - promise2
    - setTimeout
+
+   [![event loop](../_images/event_loop.gif)](https://bytefish.medium.com/the-execution-order-of-asynchronous-functions-in-the-event-loop-ff641dae4f09)
 
 5. 下面的代码会进入 `.catch` 吗？解释一下你的答案。
 

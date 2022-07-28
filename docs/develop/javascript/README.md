@@ -40,7 +40,7 @@ sidebarDepth: 3
   - [map 与 forEach 的区别](#map-与-foreach-的区别)
   - [Symbol](#symbol)
   - [class](#class)
-- [other](#other)
+- [业务逻辑实现思路](#业务逻辑实现思路)
   - [页面滚到指定位置显示图片(内容)](#页面滚到指定位置显示图片内容)
 
 ## 练手组件
@@ -723,7 +723,7 @@ parseInt('08', 10); // 8
 3. class 必须使用 new 来调用, 但可以直接使用类的静态方法
 4. ES6的 class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
 
-## other
+## 业务逻辑实现思路
 
 一些常见的业务逻辑的处理思路。
 
@@ -733,20 +733,20 @@ parseInt('08', 10); // 8
 
 **CSS**: 给类名设置 css3 属性
 
-   ``` css
-   .align-left.slide-in {
-     transform: translateX(-30%) scale(0.95);
-   }
+``` css
+.align-left.slide-in {
+  transform: translateX(-30%) scale(0.95);
+}
 
-   .align-right.slide-in {
-     transform: translateX(30%) scale(0.95);
-   }
+.align-right.slide-in {
+  transform: translateX(30%) scale(0.95);
+}
 
-   .slide-in.active {
-     opacity: 1;
-     transform: translateX(0%) scale(1);
-   }
-   ```
+.slide-in.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+```
 
 **JavaScript**:
 
