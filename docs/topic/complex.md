@@ -10,7 +10,7 @@
 
 - 前端开发时可使用 webpack dev-server 进行代理
 - jsonp
-- nginx
+- nginx 对接口做代理
 
 ## 阿里云的 CDN 资源有缓存，如何强制更新缓存?  
 
@@ -33,3 +33,7 @@
 2. 你碰到最难的一个问题是什么？
 3. 是否写过测试用例
 4. 是否了解敏捷开发
+
+## 求职者关心的问题
+
+- [反向面试](https://github.com/yifeikong/reverse-interview-zh): 技术面试最后反问面试官的话

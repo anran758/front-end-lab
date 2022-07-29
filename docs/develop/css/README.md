@@ -1,4 +1,4 @@
-# CSS 应用
+# CSS 应用示例
 
 > css 实践搭配 codepen 预览效果会更佳噢~
 
