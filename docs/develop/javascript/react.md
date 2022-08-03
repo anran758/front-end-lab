@@ -29,3 +29,64 @@ React 中可能会使用到的常见库，可以作为技术选项中参考。
 
 1. styled-components: 使用 js 管理样式冲突
 2. immutable.js 生成一个 `immutable` 对象，设置的话会返回全新的对象
+
+### react-router
+
+react-router 的 `exact` 只跟路径完全相等才显示出来
+
+### react-redux
+
+React-Redux 是 Redux 的官方 React UI 绑定层。它让 React 组件从 Redux 存储中读取数据，并将操作分派到存储以更新状态。
+
+React-redux 的 `Provider` 是一个提供器, 它将 `store` 提供给每个内部组件。
+
+``` js
+// index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TodoApp from './TodoApp'
+
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
+// As of React 18
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <Provider store={store}>
+    <TodoApp />
+  </Provider>
+)
+```
+
+组件内部可通过 `connect` 函数做连接, 如：
+
+``` js redux/actions.js
+// redux/actions.js
+import { ADD_TODO } from './actionTypes'
+
+let nextTodoId = 0
+export const addTodo = (content) => ({
+  type: ADD_TODO,
+  payload: {
+    id: ++nextTodoId,
+    content,
+  },
+})
+
+// ... other actions
+
+```
+
+``` js components/AddTodo.js
+// components/AddTodo.js
+
+import { connect } from 'react-redux'
+import { addTodo } from '../redux/actions'
+// ... other imports
+
+class AddTodo extends React.Component {
+  // ... component implementation
+}
+
+export default connect(null, { addTodo })(AddTodo)
+```
