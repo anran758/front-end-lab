@@ -79,21 +79,21 @@
 
 这样做主要是因为早年的网络和设备没有现在这么优秀，为了让主要的内容先向用户呈现，所以很多时候都使用这两种布局方式。甚至可以说，现在很多人都还在使用这两种布局方式。
 
-### Flexbox 布局
+### FlexBox 布局
 
-`Flexbox` 是 `CSS` 的一个新特性，这个新特性解决我们以前在 `CSS` 中很多麻烦问题，比如说内容的伸缩与扩展、垂直居中、等分列、等高列等等。
+`FlexBox` 是 `CSS` 的一个新特性，这个新特性解决我们以前在 `CSS` 中很多麻烦问题，比如说内容的伸缩与扩展、垂直居中、等分列、等高列等等。
 
-`Flexbox` 顾名思义就是弹性盒子, 它可以规定弹性元素如何分配空间或者布局的方式. 下面就是个例子. 利用`flex`的计算的特性, 配合 js 的`onclick`实现出来的效果.
-![flexbox-1](./design/images/flexbox-1.gif)
+`FlexBox` 顾名思义就是弹性盒子, 它可以规定弹性元素如何分配空间或者布局的方式. 下面就是个例子. 利用`flex`的计算的特性, 配合 js 的`onclick`实现出来的效果.
+![flexBox-1](./design/images/flexbox-1.gif)
 
 当我们将 Flex 布局运用在移动端, 更能体现出它的价值——它能适配移动端各种复杂的屏幕. qq 音乐的导航就是使用了`flex`的属性, 我们来随机测试一下机型. 能发现不管是什么尺寸屏幕下, `flex`都能合理的分配空间.
 
-![flexbox-2](./design/images/flexbox-2.gif)
+![flexBox-2](./design/images/flexbox-2.gif)
 
 以下是 `Flex` 布局的参考资料:
 
-- [Flexbox 布局入门](https://zhuanlan.zhihu.com/p/106311718)
-- [Flexbox 布局实际用例](https://zhuanlan.zhihu.com/p/109144068)
+- [FlexBox 布局入门](https://zhuanlan.zhihu.com/p/106311718)
+- [FlexBox 布局实际用例](https://zhuanlan.zhihu.com/p/109144068)
 
 ### 响应式布局
 
@@ -414,6 +414,18 @@ css 中的 filter 可以将**模糊**或**颜色偏移**等图形效果应用于
 ```
 
 ![example](../../_images/css-grayscale-example.png)
+
+### [table] 表格设置间隙
+
+使用 `border-spacing` 属性，该属性只有在 `border-collapse` 值是 `separate` 的时候生效。
+
+``` css
+.table {
+  /* 表格中相邻单元格共享边框 */
+  border-collapse: separate;
+  border-spacing: 16px 8px;
+}
+```
 
 ### 图形绘制
 

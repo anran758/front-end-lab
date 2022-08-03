@@ -115,9 +115,15 @@ img {
 
 ### margin 实现等高布局
 
-通过 `margin-boottom` 改变空间大小，`padding-bottom` 将内容填充回来，这时候元素占据的空间就是真实占高度据的空间。(副作用是必须要父元素 `overflow:hidden` 限制它，让 `margin-bottom` 不会影响外面的布局)
+通过 `margin-bottom` 改变空间大小，`padding-bottom` 将内容填充回来，这时候元素占据的空间就是真实占高度据的空间。
 
-<!-- TODO:: 等高布局实现例子 -->
+副作用是必须要父元素 `overflow:hidden` 限制它，让 `margin-bottom` 不会影响外面的布局。
+
+<iframe height="450" style="width: 100%;" scrolling="no" title="等高布局" src="https://codepen.io/anran758/embed/gOeyGeZ?default-tab=&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/anran758/pen/gOeyGeZ">
+  等高布局</a> by anran758 (<a href="https://codepen.io/anran758">@anran758</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 ### margin 失效的情况
 
