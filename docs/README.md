@@ -16,17 +16,17 @@ footer: GPL Licensed | Copyright © 2019-present anran758
   </a>
 </p>
 
-> :art: 记录 Web 领域的研究与实践
+> :books: 记录 Web 领域的研究与实践
 
 ## 导读
 
 **开发语言相关的笔记**
 
-- [:memo: HTML](./html)
-- [:truck: CSS 实践笔记](./css/README.md)
-- [:construction: CSS 理论笔记](./css/theory.md)
-- [JavaScript](./javascript)
-- [TypeScript](./typescript)
+- [:memo: HTML](./develop/html/README.md)
+- [:truck: CSS 实践笔记](./develop/css/README.md)
+- [:construction: CSS 理论笔记](./develop/css/theory.md)
+- [JavaScript](./develop/javascript/README.md)
+- [TypeScript](./develop/javascript/typescript.md)
 - [RegExp](./REGEXP)
 
 **版本控制**
@@ -36,7 +36,7 @@ footer: GPL Licensed | Copyright © 2019-present anran758
 
 **解决方案**
 
-- [Mobile 开发](./mobile)
+- [Mobile 开发](./develop/mobile/README.md)
 - [开发环境与运维](./operations/README.md)
 
 **其他**
