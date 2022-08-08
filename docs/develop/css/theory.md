@@ -139,9 +139,7 @@ img {
 
 ## float
 
-**特性**：
-
-父元素没有设置固定高度，子元素设置了浮动，会使父元素高度坍塌。
+**特性**：父元素没有设置固定高度，子元素设置了浮动，会使父元素高度坍塌。
 
 ### 关于标准文档流
 
@@ -161,14 +159,14 @@ img {
 1. 行高由于其继承性，影响无处不在，即使单行文本也不例外。
 2. 行高只是幕后黑手，高度的表现不是行高，而是内容区域和行间距。
 
-``` example
+``` css
 内容区域高度 + 行间距 = 行高
 ```
 
 1. 内容区域高度只与字号以及字体有关，与 `line-height` 没有关系.
 2. 在 `simsun(宋体)` 字体下，内容区域等于文字大小值。
 
-``` example
+``` css
 font-size + 行间距 = line-height
 
 font-size: 240px;
@@ -176,7 +174,7 @@ line-height: 360px;
 行间距 = 360px - 240px = 120px;
 ```
 
-### 应用元素有差别
+### 应用元素的差别
 
 - `line-height: 1.5` 所有可继承元素根据 `font-size` 重计算行高
 - `line-height: 150%/1.5em` 当前元素根据 `font-size` 计算行高，继承给下面的元素
@@ -215,3 +213,86 @@ body {
 ### middle
 
 `vertical-align: middle` 其实就是基线往上1/2高度。
+
+## position relative
+
+### relative 限制作用
+
+1. 限制 left/top/right/bottom 定位;
+2. 限制 z-index 层级; (相同relative不同层级,层级高的显示在前)
+3. 限制 overflow
+
+### relative 和定位
+
+1. 相对自身
+2. 无侵入 (无侵入定位的应用)
+
+top / bottom 和 left / right 对立属性同时存在会斗争,对立属性只有一个先来的会起作用
+
+### relative 与 z-index 层级
+
+1. 提高层叠上下文
+2. 新建层叠上下文与层级控制
+3. 设置 `position: relative` 的元素中 z-index 为 auto，不会限制内部 absolute 元素层叠问题.
+   > :: IE6/IE7 auto 也会创建层叠上下文 (auto 不符合规范, 会出 bug)
+
+### relative 的最小化影响原则
+
+所谓 relative 的最小化影响原则，指的是尽量降低 relative 属性对其他元素或布局的潜在影响。
+
+1. 尽量避免使用 relative
+2. relative 最小化
+
+## z-index
+
+### z-index 的层级水平
+
+![7 阶 z-index 层叠上下文](../../_images/z-index-stacking-level.png)
+
+1. 层叠上下文 background/border
+2. 负 z-index
+3. block 块状水平盒子
+4. float 浮动盒子
+5. inline/inline-block 水平盒子
+6. z-index: auto 或 z-index: 0 不依赖 z-index 的层叠上下文
+7. 正 z-index
+
+### z-index 的相关实践
+
+**最小化影响**
+
+- 目的: z-index 嵌套层叠关系混乱
+- 原因:
+  1. 元素的层叠水平主要由所在的层叠上下文决定;
+  2. IE7 z-index:auto 也会新建层叠上下文;
+- 做法:
+  1. 避免使用定位属性;
+  2. 定位属性从大容器平级分离为私有小容器;
+
+**避免滥用 z-index 层级**
+
+- 目的: 避免 z-index 混乱，一山比一山高的样式问题
+- 原因:
+
+  1. 多人维护以及后期维护;
+
+- 做法:
+
+  1. 对于非浮层元素 (e.g. 弹框)，避免设置 z-index 值，z-index 值没有任何道理需要超过 2
+(避免弹框被非浮层元素覆盖)
+
+**组件层级计数器**
+
+- 目的: 避免浮层组件因 z-index 被覆盖的问题
+- 原因:
+
+  1. 总会遇到意想不到的高层级元素;
+  2. 组件的覆盖规则具有动态性;
+
+- 做法:
+
+  1. 组件层级计数器方法: 通过 js 获取 body 下子元素最大的 z-index 值, 然后最大值 + 1
+
+**可访问隐藏**
+
+z-index 负值元素在层叠上下文的背景之上, 其他元素之下.

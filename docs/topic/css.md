@@ -4,6 +4,56 @@
 
 [CSS 居中元素实现示例](../develop/css/README.md#layout-%e5%b1%85%e4%b8%ad%e5%85%83%e7%b4%a0)
 
+## BFC
+
+### 什么是 BFC？
+
+块格式化上下文（Block Formatting Context，BFC）是 Web 页面的可视 CSS 渲染的一部分，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。
+
+### BFC 有什么用?
+
+- 包含内部浮动: 让浮动内容和周围的内容等高
+- 排除外部浮动
+- 阻止外边距重叠: 创建两个 BFC 阻止 margin 重叠
+
+## z-index
+
+### 请描述一下网页的层叠等级 (z-index)？
+
+当页面元素发生重叠时，会根据不同元素自身的特性决定元素的覆盖关系。而 z-index 可以控制元素展示的层级。
+
+层级可分为 7 阶：
+
+1. 层叠上下文 background/border
+2. 负 z-index
+3. block 块状水平盒子
+4. float 浮动盒子
+5. inline/inline-block 水平盒子
+6. z-index: auto 或 z-index: 0 不依赖 z-index 的层叠上下文
+7. 正 z-index
+
+![7 阶 z-index 层叠上下文](../_images/z-index-stacking-level.png)
+
+### z-index 可以是负数吗？
+
+可以。z-index 负值可以让元素在其第一个含有定位属性(relative/absolute 等) 的父元素之上显示，该父元素其他子元素之下显示。
+
+一般设置为负值是用于隐藏元素。
+
+### z-index 有时不起作用的原因是什么？怎么解决？
+
+1. 父标签 `position` 属性为 `relative`  
+   解决方法: `position:relative` 改为 `position:absolute`
+
+2. 问题标签无 `position: relative/absolute/fixed` 等属性  
+   解决方法: 添加 `position: relative` 属性 (对样式侵入性小)
+
+3. 问题标签含有浮动 (float) 属性。  
+   解决方法: 清除浮动
+
+4. 问题标签的祖先标签的 `z-index` 值比较小  
+   解决方法: 提高父标签的 `z-index` 值
+
 ## 计算样式权重
 
 已知设备 IPhone6, 写出 div 最后的 color、font-size 值:
@@ -61,18 +111,6 @@ CSS 选择器优先级:
   border-top: 6px solid red;
 }
 ```
-
-## BFC
-
-### 什么是 BFC？
-
-块格式化上下文（Block Formatting Context，BFC）是 Web 页面的可视 CSS 渲染的一部分，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。
-
-### BFC 有什么用?
-
-- 包含内部浮动: 让浮动内容和周围的内容等高
-- 排除外部浮动
-- 阻止外边距重叠: 创建两个 BFC 阻止 margin 重叠
 
 ## CSS3 有哪些新增的特性
 
