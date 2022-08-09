@@ -20,20 +20,6 @@ export const zh: SidebarConfig = {
 
   '/': [
     {
-      text: 'Web 开发',
-      children: [
-        '/develop/html/README.md',
-        '/develop/css/README.md',
-        '/develop/css/theory.md',
-        '/develop/mobile/README.md',
-        '/REGEXP/README.md',
-        {
-          text: '版本控制',
-          children: ['/git/README.md', '/hg/README.md'],
-        },
-      ],
-    },
-    {
       text: 'JavaScript',
       children: [
         '/develop/javascript/README.md',
@@ -43,6 +29,20 @@ export const zh: SidebarConfig = {
         '/develop/javascript/typescript.md',
         '/develop/javascript/mini-program.md',
         '/develop/javascript/libs.md',
+      ],
+    },
+    {
+      text: 'Web 开发',
+      children: [
+        '/develop/css/README.md',
+        '/develop/css/theory.md',
+        '/develop/html/README.md',
+        '/develop/mobile/README.md',
+        '/REGEXP/README.md',
+        {
+          text: '版本控制',
+          children: ['/git/README.md', '/hg/README.md'],
+        },
       ],
     },
     {
