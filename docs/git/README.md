@@ -206,6 +206,19 @@ git remote add origin git@github.com:anran758/test.git
 git push -u origin master
 ```
 
+### 合并分支
+
+分支合并时提供的 `--ff`, `--no-ff`, `--ff-only` 选项的不同会导致分支线可能会有不同：
+
+![分支线变动](../_images/git-merge-difference.png)
+
+其中 `ff` 为 `fast-forward` 的缩写，merge 代码时 git 默认会采用 `--ff` 的选项。
+该选项的意思为：如果 master 没有分歧，git 不会创建新的提交，而是将 master 指向 feature 分支的最新提交，在 fast-forward 合并中不会有任何 “合并提交”。
+
+一般我们合并 feature 分支时会倾向于将功能分支作为一条单独的线，合并后会保留这条分支线。此时就需要 merge 加上 `--no-ff`。即在所有情况下都创建 merge 提交。
+
+> Tips: 我们可以通过 `git log --graph` 查看带分支线的 commit 日志。
+
 ### 撤销还没 push 到远程的 commit
 
 ``` bash

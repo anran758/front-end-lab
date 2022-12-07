@@ -59,6 +59,26 @@ hg revert faas-community/README.md
 hg revert -a
 ```
 
+当执行某个操作修改了 commit 的信息后，hg 会自动做备份功能。例如:
+
+``` bash
+hg strip commitId --keep 
+
+saved backup bundle to /Users/danny/project/project_a/.hg/strip-backup/commitId-xxx-backup.hg
+```
+
+当这时执行的效果不是你想要的话可以读取之前的自动备份:
+
+``` bash
+hg unbundle /Users/danny/project/project_a/.hg/strip-backup/commitId-xxx-backup.hg
+# 正在增加修改集
+# 正在增加清单
+# 正在增加文件改变
+# 已增加 1 个修改集，包含 1 个改变，修改了 1 个文件 (+1 heads)
+# new changesets commitId (1 drafts)
+# (run 'hg heads' to see heads)
+```
+
 ## 分支管理 (branch)
 
 ``` bash

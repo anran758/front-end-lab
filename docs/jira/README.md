@@ -93,3 +93,53 @@ function getJiraKeys() {
 }
 getJiraKeys()
 ```
+
+## Linked Issues
+
+创建 jira 时若存在 jira 之间存在依赖关系，应设置 Linked Issues 表明依赖关系。
+
+jira 中 Linked Issues 之间大多数存在对应关系，如在 SC-0002 中设置 SC-0001 为 `is parent task of`，那么在 `SC-0001` issue 界面中查看依赖关系会自动显示 `SC-0002` 为 `is subtask of`。
+
+以下笔者根据用途做了简要的分类:
+
+**原因**
+
+- is caused by (是由 ... 引起)
+- causes (引起了 ... )
+
+**阻断任务执行的关系**
+
+- is blocked by (被 ... 阻断进度)
+- blocks (阻断)
+
+**层级关系**
+
+- is parent task of (... 是父任务)
+- is subtask of (... 是子任务)
+- is child of (... 是当前任务的孩子)
+- is parent of (... 是当前任务的父母)
+
+**模板关系**
+
+- clones (克隆)
+- is cloned by (被克隆)
+- is duplicated by (被 ... 复制)
+- duplicates (复制于 ...)
+
+**依赖关系**
+
+`Gantt` 为甘特图的名字。
+
+- [Gantt: finish-start] has to be done after (必须在 ... 之后完成)
+- [Gantt: finish-start] has to be done before (必须在 ... 之前完成)
+- [Gantt: start-start] has to be started together with (必须与 ... 一起开始)
+- [Gantt: finish-finish] has to be finished together with (必须与 ... 一起完成)
+- [Gantt: start-finish] start is earliest end of (开始是最早的结束): 任务不能在 ... 开始之前结束
+- [Gantt: start-finish] earliest end is start of (最早的结束是开始): 任务在 ... 结束之前无法开始
+- relates to (涉及到 ...)
+- starts with (以 ... 开始)
+- finishs with (以 ... 结束)
+- tbd. before
+- tbd. after
+
+Linked Issues 还可以为甘特图生成清晰的关联关系。
