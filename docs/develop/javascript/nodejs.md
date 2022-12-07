@@ -16,6 +16,32 @@ fs.realpathSync(pathStr)
 fs.realpathSync(process.cwd())
 ```
 
+### 若给定目录不存在，则创建目录
+
+当我们想用写入文件时若给定的路径中目录不存在，则将不能直接写入文件。此时可以引用 [mkdirp](https://www.npmjs.com/package/mkdirp) 来确保目标文件的目录能存在。
+
+``` ts
+import path from 'path';
+import mkdirp from 'mkdirp';
+import fs from 'fs/promises';
+
+
+async function writeFile({
+  fileName,
+  dirPath,
+  content,
+}: {
+  fileName: string;
+  dirPath: string;
+  content: string;
+}) {
+  // 确保目录被创建
+  const made = await mkdirp(dirPath);
+
+  return fs.writeFile(path.resolve(dirPath, fileName), content);
+}
+```
+
 ## 错误处理
 
 ### 异常状况

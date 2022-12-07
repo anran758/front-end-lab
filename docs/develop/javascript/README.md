@@ -40,6 +40,8 @@ sidebarDepth: 3
   - [map 与 forEach 的区别](#map-与-foreach-的区别)
   - [Symbol](#symbol)
   - [class](#class)
+- [编码设计思路](#编码设计思路)
+  - [限制函数参数的数量](#限制函数参数的数量)
 - [业务逻辑实现思路](#业务逻辑实现思路)
   - [页面滚到指定位置显示图片(内容)](#页面滚到指定位置显示图片内容)
 
@@ -722,6 +724,44 @@ parseInt('08', 10); // 8
 2. class 内部默认采用严格模式(意味着不能使用非严格性语法了)
 3. class 必须使用 new 来调用, 但可以直接使用类的静态方法
 4. ES6的 class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
+
+## 编码设计思路
+
+> 记录在开发时笔者个人比较推崇的编码习惯
+
+### 限制函数参数的数量
+
+在抽象函数时建议接收的参数不要超过 3 个。若需要传入多个参数，函数接收的最后一个参数应为对象，通过解构语法来获取参数。
+
+``` js
+// bad code
+function getUserList(id, query, limit, level = 1, blocked = false) {
+  // other code....
+}
+
+// 获取用户列表
+const list = await getUserList(userId, query, 20, 1, true)
+```
+
+上述代码不看函数的定义是很难理解后面几个参数的作用，额外增加理解成本。
+此外若参数 `level` 想使用默认值但后面的 `blocked` 想要指定值的话只能通过 `getUserList(userId, query, 20, undefined, true)` 方式调用，代码会显得很丑陋。
+
+因此不建议一个函数内接受过多的参数，若有需要可以通过对象的方式传值。写上指定选项还能调用函数的可读性:
+
+``` js
+// good code
+function getUserList(id, query, {limit, level, blocked} = {}) {
+  // other code....
+}
+
+// 获取用户列表
+const list = await getUserList(userId, query, {
+  limit: 20,
+  blocked: true,
+})
+```
+
+此外通过对象解构的语法会使函数调用时
 
 ## 业务逻辑实现思路
 

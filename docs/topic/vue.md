@@ -182,7 +182,7 @@ Vue.component('base-checkbox', {
 
 ## vue 原理
 
-## vue 的双向绑定原理是什么？
+### vue 的双向绑定原理是什么？
 
 vue.js 是采用数据劫持，结合**发布者-订阅者模式**的方式，通过 `Object.defineProperty()` 来劫持各个属性的 `setter`、`getter`，在数据变动时发布消息给订阅者，触发相应的监听回调。
 
