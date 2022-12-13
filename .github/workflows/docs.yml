@@ -34,7 +34,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           # cache: pnpm
 
-      - name: Install dependencies
+      # - name: Install dependencies
         # run: pnpm install --frozen-lockfile
 
       # 运行构建脚本
