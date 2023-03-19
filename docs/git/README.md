@@ -110,6 +110,19 @@ git branch | grep -v 13 | grep SPRINT | xargs git branch -D
 
 上列代码中的 grep 用于查找文件里符合条件的字符串，用于过滤移除的结果，通过管道操作符可多次对结果进行筛选。xargs 是给命令行传递参数的工具。
 
+### 修改远程分支名
+
+``` bash
+# 1. 重命名分支
+git branch -m oldBranch newBranch
+
+# 2. 删除远程分支
+git push --delete origin oldBranch
+
+# 3. 将修改后的新分支推送至远端并跟踪关联
+git push -u origin newBranch
+```
+
 ## Tag
 
 ``` bash

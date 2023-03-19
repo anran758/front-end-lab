@@ -21,6 +21,8 @@ MVVM (Model–view–viewmodel) 是一种软件架构模式。它主要由以下
 - **视图模型 (View model)**: 暴露公共属性和命令的视图的抽象。在视图模型中，绑定器在 View 和数据绑定器之间进行通信。
 - **绑定器 (Binder)**: 声明性数据和命令绑定隐含在 MVVM 模式中。绑定器使开发人员免于被迫编写样板式逻辑来同步视图模型和视图。
 
+MVVM 架构的主要优点是实现了视图和模型之间的松耦合和数据双向绑定的功能。
+
 ![mvvm design](./images/mvvm-design.png)
 
 ## 什么是闭包？列举闭包的应用场景
@@ -327,6 +329,7 @@ console.log('4. person1.__proto__.constructor === Person.prototype.constructor:'
 ## 简述一下 Promise 的特点
 
 - 主要用于异步计算.
+- Promise 对象有三种状态，分别是 pending（进行中）、fulfilled（已成功）和 rejected（已失败），状态一旦改变就不会再变了。
 - 可以将异步操作队列化，按照期望的顺序执行，返回符合预期的结果。
 - 可以在对象之间传递和操作 Promise，帮助我们处理队列。
 - 链式写法更简洁，可以避免回调地狱

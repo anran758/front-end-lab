@@ -218,9 +218,9 @@ vue.js 是采用数据劫持，结合**发布者-订阅者模式**的方式，�
 
 ### vue 如何监听 data 的每个属性变化？
 
-- 使用 Object.defineProperty
+Vue.js 提供了 `$watch` 方法来监听数据对象的变化，可以用它来监听每个属性的变化。
 
-TODO: 待补充...
+Vue.js 实现数据双向绑定的原理是通过 `Object.defineProperty()` 方法对数据对象进行拦截，将每个属性都转换为 `getter/setter`，在拦截器中进行依赖收集和派发更新的操作。$watch 实际上是对每个属性的 `getter/setter` 进行了包装，将回调函数作为其监听器。
 
 ### Vue 如何监听数组变化
 
