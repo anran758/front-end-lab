@@ -358,9 +358,55 @@ A: `try...catch` 是同步代码，而 `Promise`、`setTimeout` 等语句是异�
 
 若数组中有 `Promise` 类型，当所有 `Promise` 的状态都变为成功后，就会进入 `Promise.all` 的 then 方法中，若有一项 `Promise` 状态变为 `reject`，则 `Promise.all` 的状态变为 `reject`。
 
-## Promise 限流并发? <Badge text="TODO" type="warning"/>
+## Promise 限流并发?
 
-TODO: 待补充...
+``` js
+function parallelLimit(tasks, {concurrency = 10}) {
+  const results = [];
+  const executing = new Set();
+
+  let currentlyRunning = 0;
+  let currentIndex = 0;
+
+  return new Promise((resolve) => {
+    const next = () => {
+      if (currentIndex < tasks.length) {
+        // 取出记录数，准备执行
+        const index = currentIndex;
+        const task = tasks[index];
+
+        currentIndex += 1
+        currentlyRunning += 1;
+
+        const resultPromise = task().then((result) => {
+          // 任务执行完毕，更新运行数、保存结果
+          currentlyRunning -= 1;
+          results[index] = result;
+          executing.delete(resultPromise);
+
+          // 开启下一个任务
+          next();
+        });
+
+        executing.add(resultPromise);
+
+        // 当前运行的任务数小于限制并且还有任务未开始时，继续添加任务
+        if (currentlyRunning < concurrency && currentIndex < tasks.length) {
+          next();
+        }
+      } else if (currentlyRunning === 0) {
+        // 所有任务都已完成
+        resolve(results);
+      }
+    };
+
+    // 初始化
+    for (let i = 0; i < Math.min(concurrency, tasks.length); i += 1) {
+      next();
+    }
+  });
+}
+```
 
 ## async/await?
 

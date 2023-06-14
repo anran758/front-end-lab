@@ -209,22 +209,22 @@
 `absolute` + `margin` 分配剩余空间。这个方法**需要设置宽高**.
 
 ``` css
-.element {
-width: 600px;
-height: 400px;
-position: absolute;
-left: 0;
-top: 0;
-right: 0;
-bottom: 0;
-margin: auto;
+.container {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 ```
 
 `absolute` + `transform`自身宽高的一半, 副作用是`transform`会**占据原来的文档流位置**。
 
 ``` css
-.element {
+.container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -310,19 +310,37 @@ margin: auto;
 **多行溢出:**
 
 ```css
-.in-two-line {
-  display: -webkit-box !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-all;
+.line-clamp-2 {
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 ```
 
-不过这种纯 CSS 的方法受兼容性限制, ~~非`webkit`内核的浏览器都没有实现.~~ 不过这个方法在移动端可以适用. 在 caniuse 上我们可以得知, ios.Safari 5.1+, Android 2.3+ 均支持`-webkit-`的前缀.
+若项目中有使用 `unoCSS`，则我们可以在 `uno.config.js` 中配置：
 
-除此之外的方法就只能使用 js 计算了.
+``` js
+export default defineConfig({
+  // ...
+  rules: [
+    [
+      /^line-clamp-(\d+)$/,
+      ([, d], {constructCSS}) =>
+        constructCSS({
+          display: '-webkit-box',
+          '-webkit-box-orient': 'vertical',
+          '-webkit-line-clamp': d,
+          'line-clamp': d,
+          overflow: 'hidden',
+        }),
+    ],
+  ],
+})
+```
+
+这样通过 `unoCSS` 的正则处理后可以直接在类名添加 `line-clamp-2` 等类名。
 
 ### [text] 文本颜色渐变
 

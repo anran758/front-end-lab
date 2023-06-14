@@ -223,6 +223,19 @@ nvm install --lts
 nvm use 6.14.4
 ```
 
+注意：在 mac 环境中，某些编辑器的插件会使用 bash 来执行 node 命令，哪怕最常用的是 `zsh`。因此即便你装了 `nvm` 并且能在 `zsh` 使用，但 `bash` 默认配置未设置的情况可能会抛出 `nvm not found` 的错误。
+因此你可以尝试执行以下命令来修复路径的问题。
+
+``` bash
+source ~/.nvm/nvm.sh
+```
+
+从 `nvm ls` 可以看到当前安装的 node 版本，其中有个关键词是 `system`。`system` 是系统安装的版本，因此 `nvm` 不能直接删除或更新它。因此可以通过 `n` 包来更新：
+
+``` bash
+npx n latest
+```
+
 ### 更新 package.json 中的版本号
 
 使用 `npm-check-updates` 工具进行版本升级:
@@ -232,6 +245,8 @@ nvm use 6.14.4
 npm -g npm-check-updates
 num -u
 ```
+
+第三方库 `lerna` 中有个 `lerna version` 也能根据当前的版本引导开发者选择本次升级的版本。
 
 ## nginx
 

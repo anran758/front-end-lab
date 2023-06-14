@@ -154,11 +154,19 @@ git blame <file>
 # 查看指定用户 commit 记录
 git log --author <authorName>
 
+# 根据标签筛选出两个版本之间的 commit 信息:
+git log master..develop
+# 在 Git 中，..（两个连续的点）是一个范围操作符，用于表示两个参考点之间的范围。
+# 以上表明筛选出 v0.0.1 和 v0.0.2 区间内的 commit 记录
+
 # 查看上一次 commit 的修改内容
 git show
 
 # 查看指定 commit 的修改内容
 git show <commitHash>
+
+# 查看缓存区中文件的改动
+git diff --cached
 ```
 
 ## Remote
