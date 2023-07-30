@@ -42,36 +42,50 @@
 
 ### z-index 有时不起作用的原因是什么？怎么解决？
 
-1. 父标签 `position` 属性为 `relative`  
+1. 父标签 `position` 属性为 `relative`
    解决方法: `position:relative` 改为 `position:absolute`
 
-2. 问题标签无 `position: relative/absolute/fixed` 等属性  
+2. 问题标签无 `position: relative/absolute/fixed` 等属性
    解决方法: 添加 `position: relative` 属性 (对样式侵入性小)
 
-3. 问题标签含有浮动 (float) 属性。  
+3. 问题标签含有浮动 (float) 属性。
    解决方法: 清除浮动
 
-4. 问题标签的祖先标签的 `z-index` 值比较小  
+4. 问题标签的祖先标签的 `z-index` 值比较小
    解决方法: 提高父标签的 `z-index` 值
 
 ## 计算样式权重
 
 已知设备 IPhone6, 写出 div 最后的 color、font-size 值:
 
-``` html
+```html
 <style>
-  div { font-size: 1rem; color: blue; }
-  .class1 { font-size: .32rem; color: red; }
-  #id1 { color: #333; }
-  #id1 div { color: #666; }
-  .class1 div { color: #999; }
-  .class1 .class2 div { color: #aaa; }
+  div {
+    font-size: 1rem;
+    color: blue;
+  }
+  .class1 {
+    font-size: 0.32rem;
+    color: red;
+  }
+  #id1 {
+    color: #333;
+  }
+  #id1 div {
+    color: #666;
+  }
+  .class1 div {
+    color: #999;
+  }
+  .class1 .class2 div {
+    color: #aaa;
+  }
 </style>
 
 <div class="class1">
-    <div id="id1" class="class2">
-        <div>文字</div>
-    </div>
+  <div id="id1" class="class2">
+    <div>文字</div>
+  </div>
 </div>
 ```
 
@@ -102,7 +116,7 @@ CSS 选择器优先级:
 
 采用的是均分原理,把矩形分为4等份,这4等份其实都是边框。核心就是给块级元素设置宽高为 0, 设置边框的宽度, 不需要显示的边框使用透明色; 例如：
 
-``` css
+```css
 .square {
   width: 0;
   height: 0;

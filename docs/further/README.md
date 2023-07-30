@@ -31,8 +31,11 @@
 
 ### UI design 与 CSS 属性的关系
 
-``` css
-box-shadow:  inset(内置方向) | offset-x(水平) | offset-y(垂直) | blur-radius(模糊半径) | spread-radius(扩散半径) | color(颜色)
+```css
+box-shadow: inset(内置方向) | offset-x(水平) | offset-y(垂直) | blur-radius(
+    模糊半径
+  )
+  | spread-radius(扩散半径) | color(颜色);
 ```
 
 图层样式和CSS属性对应如下：

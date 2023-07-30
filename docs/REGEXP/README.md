@@ -3,6 +3,7 @@ sidebarDepth: 3
 ---
 
 <!-- omit in toc -->
+
 # REGEXP
 
 ![banner](./images/regex.jpg)
@@ -26,7 +27,7 @@ sidebarDepth: 3
   - [忽略分組](#忽略分組)
   - [前瞻](#前瞻)
 
-----
+---
 
 **[REGEXP 可视化工具](https://regexper.com/)**
 
@@ -40,7 +41,7 @@ sidebarDepth: 3
 
 ### 表单验证
 
-``` javascript
+```javascript
 // 用户名正则，4到16位（字母，数字，下划线，减号）
 var userNameReg = /^[a-zA-Z0-9_-]{4,16}$/;
 
@@ -56,40 +57,42 @@ var mailReg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
 var postalCode = /^\d{6}$/;
 
 // 匹配15~18位身份证
-var IDCard = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/;
+var IDCard =
+  /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/;
 
 // 匹配18位的新版身份证
-var IDCard_18 = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
-
+var IDCard_18 =
+  /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
 
 // 校验输入框是字符数为是否为 4~16 位(英文长度为1, 汉字长度为2)
 var numName = /^[a-zA-Z0-9]{4,16}$/;
-var mate = numName.test(value.replace(/[\u4e00-\u9fa5]/g, 'aa'));
-
+var mate = numName.test(value.replace(/[\u4e00-\u9fa5]/g, "aa"));
 ```
 
 ### 网络相关
 
-``` js
+```js
 //ipv4地址正则
-var IPReg = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+var IPReg =
+  /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 
 // Reg Hex颜色正则
 var pattern = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
 
 // URL正则
-var urlReg= /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+var urlReg =
+  /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 
 // 匹配JSON格式
-var reg = /^\w+\(({[^()]+})\)$/
+var reg = /^\w+\(({[^()]+})\)$/;
 ```
 
 匹配`json`字符串
 
-``` js
+```js
 var ret = response.data;
-if (typeof ret === 'string') {
-  var reg = /^\w+\(({[^()]+})\)$/
+if (typeof ret === "string") {
+  var reg = /^\w+\(({[^()]+})\)$/;
   var matches = ret.match(reg);
 
   if (matches) ret = JSON.parse(matches[1]);
@@ -100,7 +103,7 @@ res.json(ret);
 
 ### 联系方式
 
-``` js
+```js
 // 5-11位的腾讯qq号
 var qqReg = /^[1-9][0-9]{4,11}$/;
 
@@ -116,7 +119,7 @@ var telephone = /^(0[0-9]{2})\d{8}$|^(0[0-9]{3}(\d{7,8}))$/;
 
 ### 匹配特定数字
 
-``` javascript
+```javascript
 // 匹配正整数
 var reg = /^[1-9]\d*$/;
 
@@ -150,7 +153,7 @@ var reg = /^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$/;
 
 ### 字符串相关
 
-``` javascript
+```javascript
 // 匹配由26个英文字母组成的字符串
 var reg = /^[A-Za-z]+$/;
 
@@ -177,7 +180,7 @@ var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 var reg = /[^\x00-\xff]/g;
 ```
 
-----
+---
 
 ### 匹配语系字符范围
 
@@ -201,21 +204,21 @@ var reg = /[^\x00-\xff]/g;
 
 ### replace
 
-``` javascript
+```javascript
 // 使用正则匹配中文字节, 将其替换为xx, 再获取字符串的长度就是完整的长度了.
 function getLen(str) {
-  return str.replace(/[^\x00-\xff]/g, 'xx').length;
+  return str.replace(/[^\x00-\xff]/g, "xx").length;
 }
 ```
 
 ### test
 
-``` javascript
+```javascript
 // 匹配是否符合邮件规则
 var reg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
 
 // test返回一个布尔值, 表示是否匹配到制定字符串
-var mail = reg.test('anran758@gmail.com')
+var mail = reg.test("anran758@gmail.com");
 
 if (mail) {
   // 如果邮件格式正确的话, 就可以做点啥了(雾
@@ -226,20 +229,20 @@ if (mail) {
 
 ### 反向引用
 
-``` javascript
+```javascript
 // 比如这里我们想让这个日期格式反转
 // 正则括号是一个分组, 下面的代码就捕获了三个分组
 // 通过$分组符来转换位置, 来达到我们想要的结果
-'2018-3-21'.replace(/(\d{4})-(\d{1,2})-(\d{1,2})/g, '$2/$3/$1') // "3/21/2018"
+"2018-3-21".replace(/(\d{4})-(\d{1,2})-(\d{1,2})/g, "$2/$3/$1"); // "3/21/2018"
 ```
 
 ### 忽略分組
 
 不希望捕获某些分组, 只需要分组内加上`?:`即可:
 
-``` javascript
+```javascript
 var reg = /(?:Byron).(ok)/;
-'Byron-ok'.replace(reg, '$1');  // 只匹配了 ok
+"Byron-ok".replace(reg, "$1"); // 只匹配了 ok
 ```
 
 ### 前瞻
@@ -251,19 +254,19 @@ var reg = /(?:Byron).(ok)/;
 
 正向前瞻就是匹配前者, 效验后者是否存在.
 
-``` javascript
+```javascript
 // 这个正则的意思是: 匹配一个单词字符( [a-zA-Z0-9_] ), 然后验证后面是不是数字
 // 结果为: "X2*3". 因为3后面没有数字, 所以没有匹配到.
-'a2*3'.replace(/\w(?=\d)/g, 'X')
+"a2*3".replace(/\w(?=\d)/g, "X");
 
 // 结果为: "X2*X4X8"
 // 总的说就是
-'a2*34v8'.replace(/\w(?=\d)/g, 'X')
+"a2*34v8".replace(/\w(?=\d)/g, "X");
 ```
 
 负向前瞻则相反, 匹配前面, 替代后面
 
-``` javascript
+```javascript
 // a 是单词字符, 后面是数字, 因此没有匹配到
 // 2 是单词字符, 后面不是数字, 被替换成X
 // * 不是单词字符 因此没有匹配到
@@ -272,10 +275,10 @@ var reg = /(?:Byron).(ok)/;
 // v 是单词字符, 后面是数字, 因此没有匹配到
 // 8 是单词字符, 后面没有匹配到数字, 被替换成X
 // 结果: aX*4XvX
-'a2*34v8'.replace(/\w(?!\d)/g, 'X')
+"a2*34v8".replace(/\w(?!\d)/g, "X");
 ```
 
-----
+---
 
 可视化正则表达式, 可以试试[regexper](https://regexper.com/), 让你看懂正则匹配的走向.
 

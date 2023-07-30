@@ -40,53 +40,52 @@ React-Redux 是 Redux 的官方 React UI 绑定层。它让 React 组件从 Redu
 
 React-redux 的 `Provider` 是一个提供器, 它将 `store` 提供给每个内部组件。
 
-``` js
+```js
 // index.js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import TodoApp from './TodoApp'
+import React from "react";
+import ReactDOM from "react-dom";
+import TodoApp from "./TodoApp";
 
-import { Provider } from 'react-redux'
-import store from './redux/store'
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 // As of React 18
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <TodoApp />
-  </Provider>
-)
+  </Provider>,
+);
 ```
 
 组件内部可通过 `connect` 函数做连接, 如：
 
-``` js redux/actions.js
+```js redux/actions.js
 // redux/actions.js
-import { ADD_TODO } from './actionTypes'
+import { ADD_TODO } from "./actionTypes";
 
-let nextTodoId = 0
+let nextTodoId = 0;
 export const addTodo = (content) => ({
   type: ADD_TODO,
   payload: {
     id: ++nextTodoId,
     content,
   },
-})
+});
 
 // ... other actions
-
 ```
 
-``` js components/AddTodo.js
+```js components/AddTodo.js
 // components/AddTodo.js
 
-import { connect } from 'react-redux'
-import { addTodo } from '../redux/actions'
+import { connect } from "react-redux";
+import { addTodo } from "../redux/actions";
 // ... other imports
 
 class AddTodo extends React.Component {
   // ... component implementation
 }
 
-export default connect(null, { addTodo })(AddTodo)
+export default connect(null, { addTodo })(AddTodo);
 ```

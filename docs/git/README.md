@@ -19,7 +19,7 @@ sidebarDepth: 3
 
 ## 日常提交流程
 
-``` bash
+```bash
 # 跟踪改动过的文件
 # `git add <file>` or
 # `git add -A` or
@@ -48,7 +48,7 @@ git reflog
 
 ## Add
 
-``` shell
+```shell
 # 将 <change file> 将其添加到 “暂存的更改” 中
 git add <change file>
 
@@ -62,7 +62,7 @@ git add --all
 
 ## Commit
 
-``` shell
+```shell
 # 为已经进入 `stage(暂存的更改)` 添加`commit`信息
 git commit -m <message>
 
@@ -75,7 +75,7 @@ git commit --amend
 
 ## Branch
 
-``` bash
+```bash
 # 查看分支
 git branch
 
@@ -104,7 +104,7 @@ git push origin --delete feature/ticket-382
 
 比如我现在 local 有很多不再需要使用的某个开发周期分支，因此可以通过管道批量删除分支：
 
-``` shell
+```shell
 git branch | grep -v 13 | grep SPRINT | xargs git branch -D
 ```
 
@@ -112,7 +112,7 @@ git branch | grep -v 13 | grep SPRINT | xargs git branch -D
 
 ### 修改远程分支名
 
-``` bash
+```bash
 # 1. 重命名分支
 git branch -m oldBranch newBranch
 
@@ -125,7 +125,7 @@ git push -u origin newBranch
 
 ## Tag
 
-``` bash
+```bash
 # 查看所有标签
 git tag
 
@@ -138,7 +138,7 @@ git tag -d <tagname>
 
 ## History
 
-``` bash
+```bash
 # 查看提交历史
 git log
 
@@ -173,7 +173,7 @@ git diff --cached
 
 添加新的 remote
 
-``` bash
+```bash
 git remote add <originName> <remoteUrl>
 
 # example, 添加一个 origin name 为 `newOrigin`
@@ -182,19 +182,19 @@ git remote add newOrigin https://github.com/anran758/front-end-lab.git
 
 将本地分支推送到存在依赖关系的远端分支，如果 remote 没有推送的分支，那就新建一个:
 
-``` bash
+```bash
 git push origin master
 ```
 
 推送当前分支并与 remote 上游建立跟踪
 
-``` bash
+```bash
 git push --set-upstream origin master
 ```
 
 设置上游并推送至远程的 `master` 分支
 
-``` bash
+```bash
 git push -u origin master
 
 # 以下两条与上面一条功能相似
@@ -208,7 +208,7 @@ git branch --set-upstream-to orgin/master
 
 假设你已经在远程储存库上创建了新的库(`test`)，此时需要将本地项目的代码关联并推送到远程仓库上去:
 
-``` bash
+```bash
 cd test
 
 # 初始化 git
@@ -234,7 +234,7 @@ git push -u origin master
 ![分支线变动](../_images/git-merge-difference.png)
 
 其中 `ff` 为 `fast-forward` 的缩写，merge 代码时 git 默认会采用 `--ff` 的选项。
-该选项的意思为：如果 master 没有分歧，git 不会创建新的提交，而是将 master 指向 feature 分支的最新提交，在 fast-forward 合并中不会有任何 “合并提交”。
+该选项的意思为：如果 master 没有分歧，git 不会创建新的提交，而是将 master 指向 feature 分支的最新提交，在 fast-forward 合并中不会有任何 "合并提交"。
 
 一般我们合并 feature 分支时会倾向于将功能分支作为一条单独的线，合并后会保留这条分支线。此时就需要 merge 加上 `--no-ff`。即在所有情况下都创建 merge 提交。
 
@@ -242,7 +242,7 @@ git push -u origin master
 
 ### 撤销还没 push 到远程的 commit
 
-``` bash
+```bash
 # 仅删除所有未追踪的文件，修改过已追踪的文件不会被回退
 git clean -df
 
@@ -255,11 +255,11 @@ git reset --hard
 
 如果想撤销指定 commit 的话:
 
-``` bash
-# [保留文件的改动] 
+```bash
+# [保留文件的改动]
 #    如果当前只 commit 了一次，想给回退到 commit 前的上一个版本的话，
 #    可以用 `HEAD` 指针来代替 `commit_hash`
-# 
+#
 # HEAD    当前版本
 # HEAD~1  当前版本向后移 1 个版本
 # HEAD~5  当前版本向后移 5 个版本
@@ -289,7 +289,7 @@ git reset --hard 3333333
 在使用`git`时，有时候我们会无意间错推了我们不想推上去的文件或者希望能够回退以前版本的时候.
 这时我们可以先在本地回退到相应的版本。
 
-``` bash
+```bash
 # 注意使用 --hard 参数会抛弃当前工作区的修改
 # 使用 --soft 参数的话会回退到之前的版本，但是保留当前工作区的修改，可以重新提交
 git reset --hard <commit_hash>
@@ -297,7 +297,7 @@ git reset --hard <commit_hash>
 
 为了覆盖掉远端的版本信息，使远端的仓库也回退到相应的版本，需要加上参数`--force`
 
-``` bash
+```bash
 # branch: 分支
 git push origin <branch> --force
 ```
@@ -306,7 +306,7 @@ git push origin <branch> --force
 
 首先我们有两个仓库: `repo1` 和 `repo2`。`repo1` 是我们想要保留的仓库：
 
-``` bash
+```bash
 # 添加远程地址
 git remote add repo2 git@github.com:anran758/repo2.git
 
@@ -330,7 +330,7 @@ git push
 
 当一个项目已经存在久远，或者说`commit`记录有很多历史遗留的问题，分支线跟地铁图似得。此时你想重置 `git` 线时，可以这样做:
 
-``` bash
+```bash
 # 先从远端克隆一份仓库，不要在原先本地项目直接进行操作
 git clone git@github.com:anran758/test.git
 cd test
@@ -363,13 +363,13 @@ git push -f origin master
 
 1. 运行 gc ，生成 pack 文件（后面的 --prune=now 表示对之前的所有提交做修剪，有的时候仅仅 gc 一下.git 文件就会小很多）
 
-   ``` bash
+   ```bash
    git gc --prune=now
    ```
 
 2. 找出最大的三个文件（看自己需要）
 
-   ``` bash
+   ```bash
    git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -3
    # 示例输出：
    #1debc758cf31a649c2fc5b0c59ea1b7f01416636 blob   4925660 3655422 14351
@@ -379,20 +379,20 @@ git push -f origin master
 
 3. 查看那些大文件究竟是谁（c43a8da 是上面大文件的hash码）
 
-   ``` bash
+   ```bash
    $ git rev-list --objects --all | grep c43a8da
    # c43a8da9476f97e84b52e0b34034f8c2d93b4d90 data/bigfile
    ```
 
 4. 使用`git filter-branch`移除对文件的引用重写分支。因为我想删除的是一个目录(`Books`)，因此需要加上递归(`-r`)来移除`Book`文件夹下的文件.
 
-   ``` bash
+   ```bash
    git filter-branch --index-filter  'git rm -r --cached --ignore-unmatch Books' --prune-empty --tag-name-filter cat --force -- --all
    ```
 
 5. 进行 `repack`
 
-   ``` bash
+   ```bash
    git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
    git reflog expire --expire=now --all
    git gc --prune=now
@@ -400,7 +400,7 @@ git push -f origin master
 
 6. 查看 pack 的空间使用情况
 
-   ``` bash
+   ```bash
    git count-objects -v
    ```
 
@@ -414,7 +414,7 @@ git push -f origin master
 
 **推荐**：通过 `git mv` 方法来改名。
 
-``` bash
+```bash
 # 回避系统对大小写的判定，先修改为其他的名字, git 会将修改自动添加到工作区上
 $ git mv FOO FOO1
 
@@ -427,7 +427,7 @@ $ git commit -m "Modify dir name"
 
 **不推荐**：直接设置 `git config` 区分大小写，但弊端在不同平台下可能会引起别的问题。
 
-``` bash
+```bash
 # 配置仓库的大小写敏感
 $ git config core.ignorecase false
 ```
@@ -442,7 +442,7 @@ $ git config core.ignorecase false
 
 ### 在执行 git pull origin master 命令时，无法 pull 的情况
 
-``` bash
+```bash
 $ git pull
 $ fatal: refusing to merge unrelated histories
 # 原因是说在 git 2.9版本后，需要加上这句 --allow-unrelated-histories。
@@ -453,7 +453,7 @@ git pull origin master --allow-unrelated-histories
 
 然后会因为自动合并失败后提示错误:
 
-``` bash
+```bash
 Auto-merging pages/index/index.js
 error: Empty commit message.
 Not committing merge; use 'git commit' to complete the merge.
@@ -461,7 +461,7 @@ Not committing merge; use 'git commit' to complete the merge.
 
 撤消合并并再次拉动，使用 `rebase` 解决冲突：
 
-``` bash
+```bash
 $ git merge --abort
 $ git pull --rebase
 First, rewinding head to replay your work on top of it...
@@ -474,7 +474,7 @@ $ git push
 
 **Error info**:
 
-``` shell
+```shell
 remote: Invalid username or password
 ```
 
@@ -490,7 +490,7 @@ remote: Invalid username or password
 
 我们可以通过使用 Windows 上的 git 的另一个客户端来绕过限制：
 
-``` shell
+```shell
 # 在当前 project 下开启 longpaths
 git config core.longpaths true
 
@@ -507,7 +507,7 @@ git config --system core.longpaths true
 
 ### 查看仓库提交者的统计
 
-``` git
+```git
 # 查看选项
 git shortlog --help
 
@@ -521,7 +521,7 @@ git shortlog -sn --no-merges
 
 同样的方法还可以修改 commit 时间为作者时间:
 
-``` bash
+```bash
 git filter-branch --env-filter 'GIT_COMMITTER_DATE=$GIT_AUTHOR_DATE; export GIT_COMMITTER_DATE'
 ```
 

@@ -20,7 +20,7 @@
 
 ## Start
 
-``` shell
+```shell
 # 本地开发
 yarn start
 
@@ -45,11 +45,11 @@ yarn build
 
 由于更多情况是编写文档，还可以约定 emoji 来增强 commit message 的语义:
 
-| emoji     | code        | Description    |
-| --------- | ----------- | -------------- |
-| :pencil2: | `:pencil2:` | 编写文档 (README 相关)       |
-| :art:     | `:art:`     | 润色/完善内容  |
-| :truck:   | `:truck:`   | 内容拆分或重构 |
+| emoji     | code        | Description            |
+| --------- | ----------- | ---------------------- |
+| :pencil2: | `:pencil2:` | 编写文档 (README 相关) |
+| :art:     | `:art:`     | 润色/完善内容          |
+| :truck:   | `:truck:`   | 内容拆分或重构         |
 
 ## 专栏与博客
 

@@ -6,7 +6,7 @@
 
 将类型 `T` 的所有属性转为可选项:
 
-``` ts
+```ts
 interface Todo {
   title: string;
   description: string;
@@ -18,11 +18,11 @@ function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>) {
 
 const todo1 = {
   title: "organize desk",
-  description: "clear clutter"
+  description: "clear clutter",
 };
 
 const todo2 = updateTodo(todo1, {
-  description: "throw out trash"
+  description: "throw out trash",
 });
 ```
 
@@ -30,7 +30,7 @@ const todo2 = updateTodo(todo1, {
 
 将类型 `T` 所有属性变为必选的:
 
-``` ts
+```ts
 interface Props {
   a?: number;
   b?: string;
@@ -45,7 +45,7 @@ const obj2: Required<Props> = { a: 5 }; // Error: property 'b' missing
 
 从类型 `T` 从中移除 `K` 属性:
 
-``` ts
+```ts
 interface Todo {
   title: string;
   description: string;
@@ -64,17 +64,17 @@ const todo: TodoPreview = {
 
 将类型 `T` 中提取出 `K` 属性来构造一个新类型:
 
-``` ts
+```ts
 interface Todo {
   title: string;
   description: string;
   completed: boolean;
 }
 
-type TodoPreview = Pick<Todo, 'title' | 'completed'>;
+type TodoPreview = Pick<Todo, "title" | "completed">;
 
 const todo: TodoPreview = {
-  title: 'Clean room',
+  title: "Clean room",
   completed: false,
 };
 ```
@@ -83,17 +83,17 @@ const todo: TodoPreview = {
 
 将类型 `T` 的所有属性都设为 `readonly`，也就是说使用该泛型后就只能读不能写。
 
-``` ts
+```ts
 interface Todo {
   title: string;
 }
 
 const todo: Readonly<Todo> = {
-  title: 'Todo',
+  title: "Todo",
 };
 
 // 改不得
-todo.title = 'Hello'; // Error: cannot reassign a readonly property
+todo.title = "Hello"; // Error: cannot reassign a readonly property
 ```
 
 ## 在 js 项目中使用 ts

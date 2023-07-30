@@ -32,7 +32,7 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 
 可以给 `setState` 第二个参数传递一个函数，该函数是**数据更新后会触发的回调函数**。在该函数中可以拿到更新后最新的值。
 
-在 React 控制外中使用 `setState` 是同步的，比如在  `setTimeout`, 或者是原生的事件监听器中使用都是同步的。
+在 React 控制外中使用 `setState` 是同步的，比如在 `setTimeout`, 或者是原生的事件监听器中使用都是同步的。
 
 ### 函数组件是什么？与类组件有什么区别？
 
@@ -66,7 +66,7 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 
 **React 组件挂载阶段**先后会触发 `constuctor`、`static getDerivedStateFromProps`、`render`、`componentDidMount` 函数。若 `render` 函数内还有子组件存在的话，则会进一步递归:
 
-``` log
+```log
 [Parent]: constuctor
 [Parent]: static getDerivedStateFromProps
 [Parent]: render
@@ -81,7 +81,7 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 
 **React 组件更新阶段**：主要是组件的 props 或 state 发生变化时触发。若组件内还有子组件，则子组件会判断是否也需要触发更新。默认情况下 `component` 组件是只要父组件发生了变化，子组件也会跟着变化。以下是更新父组件 `state` 数据时所触发的生命周期函数:
 
-``` log
+```log
 [Parent]: static getDerivedStateFromProps
 [Parent]: shouldComponentUpdate
 [Parent]: render
@@ -98,7 +98,7 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 
 **React 组件销毁阶段**：父组件先触发销毁前的函数，再逐层向下触发:
 
-``` log
+```log
 [Parent]: componentWillUnmount
 [Parent]: 卸载阶段结束!
 [Children]: componentWillUnmount
@@ -118,13 +118,13 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 
 1. `React.createContext` 函数用于生成 `Context` 对象。可以在创建时给 `Context` 设置默认值：
 
-   ``` js
-   const ThemeContext = React.createContext('light');
+   ```js
+   const ThemeContext = React.createContext("light");
    ```
 
 2. `Context` 对象中有一个 `Provider(提供者)` 组件，`Provider` 组件接受一个 `value` 属性用以将数据传递给消费组件。
 
-   ``` jsx
+   ```jsx
    <ThemeContext.Provider value="dark">
      <page />
    </ThemeContext.Provider>
@@ -132,7 +132,7 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 
 3. 获取 `Context` 提供的值可以通过 `contextType` 或者 `Consumer(消费者)` 组件中获取。`contextType` 只能用于类组件，并且只能挂载一个 `Context`：
 
-   ``` js
+   ```js
    class MyClass extends React.Component {
      componentDidMount() {
        let value = this.context;
@@ -148,13 +148,11 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 
    若想给组件挂载多个 `Context`, 或者在函数组件内使用 `Context` 可以使用 `Consumer` 组件:
 
-   ``` jsx
+   ```jsx
    <ThemeContext.Consumer>
-     {theme => (
+     {(theme) => (
        <UserContext.Consumer>
-         {user => (
-           <ProfilePage user={user} theme={theme} />
-         )}
+         {(user) => <ProfilePage user={user} theme={theme} />}
        </UserContext.Consumer>
      )}
    </ThemeContext.Consumer>
@@ -169,15 +167,21 @@ React 是通过 `setState` 来更新数据的。调用多个 `setState` 不会�
 - 自定义 Hooks
 - Mixins (已被 React 废弃的方案)
 
-`Render props` 是一种在 React 组件之间共享代码的简单技术。具体的行为是: 
+`Render props` 是一种在 React 组件之间共享代码的简单技术。具体的行为是:
 
 1. 子组件接收一个用于渲染指定视图的 `prop` 属性，该属性的类型是函数。
 2. 父组件在组件内部定义该函数后，将函数的引入传给子组件
 3. 子组件将组件内部 `state` 作为实参传给从外面传来的函数，并将函数的返回结果渲染在指定的视图区域。
 
-``` jsx
+```jsx
 // 组件使用
-<Mouse render={(x, y) => <span>x: {x}, y: {y}</span>} />
+<Mouse
+  render={(x, y) => (
+    <span>
+      x: {x}, y: {y}
+    </span>
+  )}
+/>;
 
 // 组件内部大致实现
 class Mouse extends React.Component {
@@ -218,14 +222,14 @@ React 使用的 Diffing 算法是通过 `tag` 和 `key` 判断是否是同一个
 
 如果数组中的数据没有唯一的 `key`，可以引入 [shortid](https://www.npmjs.com/package/shortid) 预先给数组中每项数据生成唯一的 `id`：
 
-``` js
-const shortid = require('shortid');
+```js
+const shortid = require("shortid");
 
 function addId(data) {
   return {
     ...data,
     id: shortid.generate(),
-  }
+  };
 }
 
 const newList = list.map(addId);
@@ -257,7 +261,7 @@ Diffing 算法(Diffing Algorithm) 会先比较两个根元素的变化:
 
    该钩子的返回值可以决定组件是否进行渲染，如果没有在组件内定义该钩子的逻辑，则默认返回 `true`, 这也就意味着 React 默认情况下是无条件渲染的。通常 `component` 组件可以通过该钩子对比数据，以决定组件是否该渲染，从而避免重复渲染的问题。
 
-   > 值得注意的是，即便在 `shouldComponentUpdate` 对新旧 props 使用深对比也不能破坏 React **不可变值****不可变值**原值。
+   > 值得注意的是，即便在 `shouldComponentUpdate` 对新旧 props 使用深对比也不能破坏 React **不可变值\*\***不可变值\*\*原值。
    > 因为直接改变 state 的数据再通过 setState 来更新数据，因为新旧数据的值是一致的(旧数据被修改)，也就不能触发渲染。
 
 2. 列表渲染时每项添加唯一的 `key`。
@@ -284,13 +288,13 @@ Diffing 算法(Diffing Algorithm) 会先比较两个根元素的变化:
 1. 通过动态 `import()` 语法对组件代码进行分割。
 2. 使用 `React.lazy` 函数，结合 `import()` 语法引入动态组件。在组件首次渲染时，会自动导入包含 `MyComponent` 的包。
 
-   ``` jsx
-   const MyComponent = React.lazy(() => import('./MyComponent'));
+   ```jsx
+   const MyComponent = React.lazy(() => import("./MyComponent"));
    ```
 
 3. 在 `React.Suspense` 组件中渲染 `lazy` 组件，同时可以使用 `fallback` 做优雅降级(添加 `loading` 效果):
 
-   ``` jsx
+   ```jsx
    <React.Suspense fallback={<div>Loading...</div>}>
      <MyComponent />
    </React.Suspense>
@@ -298,9 +302,9 @@ Diffing 算法(Diffing Algorithm) 会先比较两个根元素的变化:
 
 4. 封装一个错误捕获组件(比如组件命名为 `MyErrorBoundary`)，组件内通过生命周期 `getDerivedStateFromError` 捕获错误信息。当异步组件加载失败时，将捕获到错误信息处理后给用户做错误提示功能。
 
-   ``` jsx
+   ```jsx
    <MyErrorBoundary>
-      <React.Suspense fallback={<div>Loading...</div>}>
+     <React.Suspense fallback={<div>Loading...</div>}>
        <MyComponent />
      </React.Suspense>
    </MyErrorBoundary>
@@ -338,17 +342,17 @@ Hooks 现有的不足:
 1. `useState`: 使函数组件支持设置 `state` 数据，可用于代替类组件的 `constructor` 函数。
 2. `useEffect`: 使函数组件支持操作副作用的能力，可以模拟类组件 `componentDidMount` 的功能。同时还能监听数据变化，进而操作一系列诸如数据获取等副作用操作。 可以在 `useEffect` 的函数中返回一个函数做清除操作。这个清除操作时可选的:
 
-   ``` js
+   ```js
    // 第一个参数是函数
    // 第二个参数是函数内所依赖的外部变量数组。若没有外部依赖，则可以忽略第二个参数。
    useEffect(() => {
-      document.addEventListener('click', handleClick);
+     document.addEventListener("click", handleClick);
 
-      // useEffect 回调函数的返回值是函数的话，当组件卸载时会执行该函数
-      // 若没有需要清除的东西，则可以忽略这一步骤
-      return () => {
-        document.removeEventListener('click', handleClick);
-      };
+     // useEffect 回调函数的返回值是函数的话，当组件卸载时会执行该函数
+     // 若没有需要清除的东西，则可以忽略这一步骤
+     return () => {
+       document.removeEventListener("click", handleClick);
+     };
    }, [handleClick]);
    ```
 
@@ -366,13 +370,13 @@ Hooks 现有的不足:
 
 下面是 [useLocalStorage](https://usehooks.com/useLocalStorage/) 的实现，它将 state 同步到本地存储，以使其在页面刷新后保持不变。 用法与 useState 相似，不同之处在于我们传入了本地存储键，以便我们可以在页面加载时默认为该值，而不是指定的初始值。
 
-``` jsx
-import { useState } from 'react';
+```jsx
+import { useState } from "react";
 
 // Usage
 function App() {
   // Similar to useState but first arg is key to the value in local storage.
-  const [name, setName] = useLocalStorage('name', 'Bob');
+  const [name, setName] = useLocalStorage("name", "Bob");
 
   return (
     <div>
@@ -380,7 +384,7 @@ function App() {
         type="text"
         placeholder="Enter your name"
         value={name}
-        onChange={e => setName(e.target.value)}
+        onChange={(e) => setName(e.target.value)}
       />
     </div>
   );
@@ -405,7 +409,7 @@ function useLocalStorage(key, initialValue) {
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  const setValue = value => {
+  const setValue = (value) => {
     try {
       // Allow value to be a function so we have same API as useState
       const valueToStore =
@@ -443,8 +447,8 @@ class 组件的构造函数一般是用于设置 state 或者给事件绑定 thi
 
 `getDerivedStateFromProps` 用于在组件 props 变化时派生 `state`。可以通过 Hook 这样实现:
 
-``` jsx
-function ScrollView({row}) {
+```jsx
+function ScrollView({ row }) {
   const [isScrollingDown, setIsScrollingDown] = useState(false);
   const [prevRow, setPrevRow] = useState(null);
 
@@ -496,7 +500,7 @@ Fiber 是 React 16 中新的**协调引擎或重新实现核心算法**。它的
 
 ### 怎么对组件的参数做类型约束呢?
 
-要对组件的参数做类型约束的话，可以引入 `prop-types` 来配置对应的 `propTypes` 属性。  
+要对组件的参数做类型约束的话，可以引入 `prop-types` 来配置对应的 `propTypes` 属性。
 `Flow` 和 `TypesScript` 则可以对整个应用做类型检查。
 
 ### 组件设计原则

@@ -8,7 +8,7 @@ Browser hack 提供了兼容低版本浏览器的 `hack` 指南。
 
 可以用于兼容 IE9 以下不能使用 HTML5 的标签的问题. 使用方式如下:
 
-``` html
+```html
 <!--[if lt IE 9]>
   <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
 <![endif]-->
@@ -20,7 +20,7 @@ Browser hack 提供了兼容低版本浏览器的 `hack` 指南。
 
 ### IE Hack 条件注释
 
-``` html
+```html
 <!--[if gt/lt/gte/lte IE8]>
   <p>content</p>
 <![endif]-->

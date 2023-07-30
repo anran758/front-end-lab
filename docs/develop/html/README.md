@@ -3,6 +3,7 @@ sidebarDepth: 3
 ---
 
 <!-- omit in toc -->
+
 # HTML
 
 - [img](#img)
@@ -31,8 +32,11 @@ sidebarDepth: 3
 
 `<img />` 自适应 `div` 大小
 
-``` css
-img { max-width: 100%; max-height: 100%; }
+```css
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
 ```
 
 `max-width:100%` 和 `width:100%` 的区别在于:
@@ -41,7 +45,7 @@ img { max-width: 100%; max-height: 100%; }
 
 HTML5 图片自适应:
 
-``` html
+```html
 <!--
 * html 设置了 font-size: 62.5%;
 * em 是相对 html 的 .50em 即 800px;
@@ -49,9 +53,9 @@ HTML5 图片自适应:
 -->
 <div class="item">
   <picture>
-    <source srcset="img/xxx01-l.png" midia="(min-width: 50em)">
-    <source srcset="img/xxx01-l.png" hmidia="(min-width: 50em)">
-    <img srcset="img/xxx01.png" alt="something">
+    <source srcset="img/xxx01-l.png" midia="(min-width: 50em)" />
+    <source srcset="img/xxx01-l.png" hmidia="(min-width: 50em)" />
+    <img srcset="img/xxx01.png" alt="something" />
   </picture>
 </div>
 ```
@@ -62,7 +66,7 @@ HTML5 图片自适应:
 
 `href` 属性常被 `a` 标签用于跳转。有时只是想通过 `a` 标签来模拟 UI，并不想跳转的话可以使用以下方式:
 
-``` js
+```js
 // 阻止浏览器的默认行为，表示交给 JavaScript 控制。不填会直接跳到页面顶部。
 <a href="javascript:;">link</a>
 

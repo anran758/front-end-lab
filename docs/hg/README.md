@@ -4,7 +4,7 @@ Mercurial 是一种版本管理工具。将 Mercurial 安装完毕后可在命�
 
 ## 常用命令
 
-``` shell
+```shell
 # 帮助
 hg help
 
@@ -39,13 +39,13 @@ hg commit --amend
 
 撤销上一次提交, 并将上一次提交的内容，放入待提交区
 
-``` bash
+```bash
 hg rollback
 ```
 
 丢弃文件的修改
 
-``` bash
+```bash
 # 当前工作目录上有两个文件有改动
 hg status
 # M faas/README.md
@@ -53,7 +53,7 @@ hg status
 # (END)
 
 # 丢弃 README.md 文件的改动，使其变回上一个版本的模样
-hg revert faas-community/README.md 
+hg revert faas-community/README.md
 
 # 丢弃所有文件的修改，等价于 git reset --hard
 hg revert -a
@@ -61,15 +61,15 @@ hg revert -a
 
 当执行某个操作修改了 commit 的信息后，hg 会自动做备份功能。例如:
 
-``` bash
-hg strip commitId --keep 
+```bash
+hg strip commitId --keep
 
 saved backup bundle to /Users/danny/project/project_a/.hg/strip-backup/commitId-xxx-backup.hg
 ```
 
 当这时执行的效果不是你想要的话可以读取之前的自动备份:
 
-``` bash
+```bash
 hg unbundle /Users/danny/project/project_a/.hg/strip-backup/commitId-xxx-backup.hg
 # 正在增加修改集
 # 正在增加清单
@@ -81,7 +81,7 @@ hg unbundle /Users/danny/project/project_a/.hg/strip-backup/commitId-xxx-backup.
 
 ## 分支管理 (branch)
 
-``` bash
+```bash
 # 查看当前分支
 hg branch
 
@@ -97,7 +97,7 @@ $ hg merge "feature_branch_name_1"
 
 ## 日志 (log)
 
-``` bash
+```bash
 # 查看日志
 hg log
 
@@ -108,7 +108,7 @@ hg log -r "sort(all(), date)"
 hg log -G
 
 # 查看上一个提交
-hg parent 
+hg parent
 ```
 
 ## 草稿 (shelve)
@@ -117,7 +117,7 @@ hg parent
 
 语法: `hg shelve [OPTION]... [FILE]...`
 
-``` shell
+```shell
 # 缓存当前工作区的改动
 hg shelve
 
@@ -141,7 +141,7 @@ hg shelve --delete "draft_name"
 
 将其他分支的 commit 复制到当前分支中。
 
-``` shell
+```shell
 # 将 9393 的 commit 复制到当前分支中
 # 相当于 git cherry-pick
 hg graft -r 9393
@@ -152,7 +152,7 @@ hg graft --edit 9393
 
 ## Rebase (变基)
 
-``` shell
+```shell
 # 压缩最近两个 commit
 hg rebase --dest .~2 --base . --collapse
 
@@ -164,7 +164,7 @@ hg rebase --dest {destination branch (e.g. master)} --base . --collapse
 
 按行显示每个文件的变更集信息，可以用于追踪指定文件的每行代码是谁提交的、修改的 commit hash 是多少。
 
-``` bash
+```bash
 # -u 展示修改的作者是谁
 # -c 展示修改集
 # -l 展示行号
@@ -174,7 +174,7 @@ hg blame -ucl <file_path>
 
 ## Diff
 
-``` bash
+```bash
 # 查看当前版本与指定版本 (241290dffcea) 的差异
 $ hg diff -r 241290dffcea
 
@@ -193,13 +193,13 @@ hg diff -r 102 -r 101
 
 首先下载插件。
 
-``` shell
+```shell
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/mercurial
 ```
 
 下载插件后编辑 `~/.zshrc` 文件中的 plugins 字段，添加 mercurial:
 
-``` shell
+```shell
 plugins=(
   git
   yarn
@@ -210,15 +210,15 @@ plugins=(
 
 若命令行处于 git 项目的目录下，则会在命令行显示当前分支，例如:
 
-``` bash
-➜  front-end-lab git:(master) ✗ 
+```bash
+➜  front-end-lab git:(master) ✗
 ```
 
 当 hg 不行，需要做额外的配置或选择支持 hg 的主题。zsh 可以通过 `ZSH_THEME` 变量切换主题，默认的主题为 `robbyrussell`。
 
 zsh 主题文件都放在 `~/.oh-my-zsh/themes` 目录下。笔者以默认主题为例，对默认的主题进行扩展:
 
-``` shell
+```shell
 # 通过 vim 修改
 vim ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
 
@@ -228,7 +228,7 @@ code ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
 
 添加如下变量:
 
-``` shell
+```shell
 PROMPT+='$(hg_prompt_info)'
 
 ZSH_THEME_HG_PROMPT_PREFIX="%{$fg_bold[blue]%}hg:(%{$fg[red]%}"

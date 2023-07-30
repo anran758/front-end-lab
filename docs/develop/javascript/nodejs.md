@@ -6,11 +6,11 @@
 
 **服务端基础概念**
 
-* 事务处理：以一个任务执行，操作失败执行回滚
+- 事务处理：以一个任务执行，操作失败执行回滚
 
 ## API
 
-``` JS
+```JS
 // 返回 Node.js 进程的当前工作目录
 // 如做脚手架时可以读取是在哪个目录下启动 node 服务的
 process.cwd()
@@ -26,11 +26,10 @@ fs.realpathSync(process.cwd())
 
 当我们想用写入文件时若给定的路径中目录不存在，则将不能直接写入文件。此时可以引用 [mkdirp](https://www.npmjs.com/package/mkdirp) 来确保目标文件的目录能存在。
 
-``` ts
-import path from 'path';
-import mkdirp from 'mkdirp';
-import fs from 'fs/promises';
-
+```ts
+import path from "path";
+import mkdirp from "mkdirp";
+import fs from "fs/promises";
 
 async function writeFile({
   fileName,
@@ -68,7 +67,7 @@ async function writeFile({
 
 ## pm2
 
-``` bash
+```bash
 # 运行nodejs项目
 pm2 start [file]
 
@@ -111,7 +110,7 @@ pm2 list
 
 ### MongoDB
 
-``` bash
+```bash
 # 显示内存
 show dbs
 

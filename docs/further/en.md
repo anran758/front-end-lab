@@ -2,7 +2,7 @@
 
 ## 常见缩写短语
 
-- **FYI (For Your Information)**:  提供给你的信息，目的是想接收者传达他们可能对给定主题感兴趣的信息，但不坚持执行任何动作
+- **FYI (For Your Information)**: 提供给你的信息，目的是想接收者传达他们可能对给定主题感兴趣的信息，但不坚持执行任何动作
 - **btw (by the way)**: 顺带一提
 - **plz (please)**: 请的缩写
 - **WFH (work from home)**: 远程工作/在家办公
@@ -54,23 +54,23 @@
 
 ### 常见短语
 
-**Please find in the attached / enclosed documents, …**  
+**Please find in the attached / enclosed documents, …**
 请查阅附件…
 
-**I look forward to your reply.**  
+**I look forward to your reply.**
 我期待您的回复。
 
-**Thank you for your time and consideration.**  
+**Thank you for your time and consideration.**
 感谢您的宝贵时间。
 
-**If you have any questions , please don't hesitate to contact me.**  
+**If you have any questions , please don't hesitate to contact me.**
 如有任何疑问，请随时与我联系
 
 ### 请假
 
 假如需要在 2020.12.25 (25 Dec 2020) 请假一天，可参考以下例子:
 
-``` example
+```example
 Subject: (Your name)'s leave application on 25 Dec 2020
 To: (leader name)
 -----

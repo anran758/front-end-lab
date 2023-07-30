@@ -1,6 +1,6 @@
 ---
 home: true
-tagline: 
+tagline:
 footer: GPL Licensed | Copyright © 2019-present anran758
 ---
 

@@ -101,7 +101,7 @@
 
 以下代码是当设备的宽度**大于等于**指定尺寸时，代码会被应用：
 
-``` css
+```css
 /* Small devices (landscape phones, devices width >= 576px) */
 @media (min-width: 576px) { ... }
 
@@ -117,7 +117,7 @@
 
 以下代码是当设备的宽度**小于**指定尺寸时，代码会被应用：
 
-``` css
+```css
 /* 超小型设备 (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { ... }
 
@@ -138,7 +138,7 @@
 
 还可以针对指定大小的设备宽度做定制化样式:
 
-``` css
+```css
 /* 超小型设备 (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { ... }
 
@@ -198,7 +198,7 @@
 
 [单行垂直水平居中]: 容器 `height` 与 `line-height` 设为相同的值
 
-``` css
+```css
 .container {
   height: 30px;
   line-height: 30px;
@@ -208,7 +208,7 @@
 
 `absolute` + `margin` 分配剩余空间。这个方法**需要设置宽高**.
 
-``` css
+```css
 .container {
   width: 600px;
   height: 400px;
@@ -223,7 +223,7 @@
 
 `absolute` + `transform`自身宽高的一半, 副作用是`transform`会**占据原来的文档流位置**。
 
-``` css
+```css
 .container {
   position: absolute;
   top: 50%;
@@ -234,15 +234,15 @@
 
 基于 `vertical-align` 的水平垂直居中 --by 张鑫旭
 
- ```html
- <div class="container">
+```html
+<div class="container">
   <div class="dialog">
     <div class="content">内容占位</div>
   </div>
- </div>
- ```
+</div>
+```
 
-``` css
+```css
 .container {
   position: fixed;
   top: 0;
@@ -258,7 +258,7 @@
   z-index: 99;
 }
 .container:after {
-  content: '';
+  content: "";
   display: inline-block;
   height: 100%;
   vertical-align: middle;
@@ -275,13 +275,13 @@
 
 `flex` 布局
 
-``` html
+```html
 <div class="parent">
   <div>children</div>
 </div>
 ```
 
-``` css
+```css
 .parent {
   display: flex;
   justify-content: center;
@@ -321,30 +321,30 @@
 
 若项目中有使用 `unoCSS`，则我们可以在 `uno.config.js` 中配置：
 
-``` js
+```js
 export default defineConfig({
   // ...
   rules: [
     [
       /^line-clamp-(\d+)$/,
-      ([, d], {constructCSS}) =>
+      ([, d], { constructCSS }) =>
         constructCSS({
-          display: '-webkit-box',
-          '-webkit-box-orient': 'vertical',
-          '-webkit-line-clamp': d,
-          'line-clamp': d,
-          overflow: 'hidden',
+          display: "-webkit-box",
+          "-webkit-box-orient": "vertical",
+          "-webkit-line-clamp": d,
+          "line-clamp": d,
+          overflow: "hidden",
         }),
     ],
   ],
-})
+});
 ```
 
 这样通过 `unoCSS` 的正则处理后可以直接在类名添加 `line-clamp-2` 等类名。
 
 ### [text] 文本颜色渐变
 
-``` css
+```css
 .text-gradient {
   background: linear-gradient(90deg, #00aeff, #3369e7);
   /* IE9+ */
@@ -398,12 +398,12 @@ export default defineConfig({
 
 ```css
 .user-info-box .avatar {
-  width: 86px;
-  height: 86px;
-  border-radius: 50%;
-  background: 50%/cover;
-  background-color: #f1f1f1;
-  background-image: url(https://avatars.githubusercontent.com/u/23024075?v=3);
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: 50% / cover;
+  background-color: #f1f1f1;
+  background-image: url(https://avatars.githubusercontent.com/u/23024075?v=3);
 }
 ```
 
@@ -425,7 +425,7 @@ export default defineConfig({
 
 css 中的 filter 可以将**模糊**或**颜色偏移**等图形效果应用于元素。其中 `grayscale` 函数可以设置图像的灰度:
 
-``` css
+```css
 .image {
   filter: grayscale(100%);
 }
@@ -437,7 +437,7 @@ css 中的 filter 可以将**模糊**或**颜色偏移**等图形效果应用于
 
 使用 `border-spacing` 属性，该属性只有在 `border-collapse` 值是 `separate` 的时候生效。
 
-``` css
+```css
 .table {
   /* 表格中相邻单元格共享边框 */
   border-collapse: separate;
@@ -488,10 +488,10 @@ Nicholas C. Zakas( 尼古拉斯)提出了个更好清除浮动的一个方案, �
 
 设置 `display: table;` 可以创建一个匿名的表格单元，同时这个匿名的表格单元会触发 `BFC(block formatting context)` 来清除浮动。
 
-``` css
+```css
 .clearfix:before,
 .clearfix:after {
-  content: '';
+  content: "";
   display: block;
 }
 
@@ -506,14 +506,14 @@ css 中的 z-index 可以控制元素的层级，在多人项目开发中很容�
 
 多数情况下，普通的元素若需要修改层级仅仅需要设置为低等级即可，如 `z-index: 1`。若设计全局组件为了避免业务代码的侵入，会设置一个大数值。以下变量可作为参考:
 
-``` scss
-$zindex-dropdown:          1000 !default;
-$zindex-sticky:            1020 !default;
-$zindex-fixed:             1030 !default;
-$zindex-modal-backdrop:    1040 !default;
-$zindex-modal:             1050 !default;
-$zindex-popover:           1060 !default;
-$zindex-tooltip:           1070 !default;
+```scss
+$zindex-dropdown: 1000 !default;
+$zindex-sticky: 1020 !default;
+$zindex-fixed: 1030 !default;
+$zindex-modal-backdrop: 1040 !default;
+$zindex-modal: 1050 !default;
+$zindex-popover: 1060 !default;
+$zindex-tooltip: 1070 !default;
 ```
 
 ## 动画与特效

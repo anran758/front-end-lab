@@ -10,38 +10,38 @@
 
 指定 project:
 
-``` sql
+```sql
 project = SC
 ```
 
 指定 Epic Link
 
-``` sql
+```sql
 "Epic Link" = "space v2.0.0"
 ```
 
 搜索指定 key:
 
-``` sql
+```sql
 key in (DC-1000,DC-2321,DC-3179)
 ```
 
 修复结果:
 
-``` sql
+```sql
 -- 修复结果: 未完成
 resolution = Unresolved
 ```
 
 当前用户登记过工作:
 
-``` sql
+```sql
 worklogAuthor = currentUser()
 ```
 
 登记工作的日期范围:
 
-``` sql
+```sql
 worklogAuthor = currentUser() AND worklogDate >= startOfWeek() AND worklogDate < endOfWeek()
 
 -- 2021-06-28 ~ 2021-07-02 登记过工作的 jira
@@ -50,7 +50,7 @@ worklogDate >= 2021-06-28 AND worklogDate < 2021-07-02
 
 排序：
 
-``` sql
+```sql
 -- 按照优先级 (priority) 升序排序
 ORDER BY priority DESC
 ```
@@ -59,20 +59,20 @@ ORDER BY priority DESC
 
 月报填写, 如 `2021-7-1` 到 `2021-8-1` 前:
 
-``` sql
-(worklogAuthor = currentUser() OR assignee = currentUser()) AND worklogDate >= 2021-7-1 AND worklogDate < 2021-8-1 ORDER BY summary DESC  
+```sql
+(worklogAuthor = currentUser() OR assignee = currentUser()) AND worklogDate >= 2021-7-1 AND worklogDate < 2021-8-1 ORDER BY summary DESC
 ```
 
 查询本周工作内容
 
-``` sql
+```sql
 -- 如果是写周报类的的话，需要将 currentUser() 替换为当前用户的名字
-(worklogAuthor = currentUser() OR assignee = currentUser()) AND worklogDate >= startOfWeek() AND worklogDate < endOfWeek() 
+(worklogAuthor = currentUser() OR assignee = currentUser()) AND worklogDate >= startOfWeek() AND worklogDate < endOfWeek()
 ```
 
 查询还未完成的工作内容
 
-``` sql
+```sql
 assignee = currentUser() AND resolution = Unresolved AND status not in ("Ready For Deploy", "Testing") ORDER BY updated DESC
 ```
 
@@ -80,18 +80,18 @@ assignee = currentUser() AND resolution = Unresolved AND status not in ("Ready F
 
 在浏览器快速 copy jira 的 key:
 
-``` js
+```js
 function getJiraKeys() {
-  const keys = Array.from($$('.issue-key-column span')).map((item) => {
+  const keys = Array.from($$(".issue-key-column span")).map((item) => {
     return item.textContent?.trim();
   });
 
-  const content = `key in (${keys})`
-  copy?.(content)
+  const content = `key in (${keys})`;
+  copy?.(content);
 
-  return content
+  return content;
 }
-getJiraKeys()
+getJiraKeys();
 ```
 
 ## Linked Issues

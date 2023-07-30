@@ -22,11 +22,11 @@
 
 1. 在 Nginx 配置文件中添加以下配置：
 
-   ``` bash
+   ```bash
    server {
        listen 80;
        server_name localhost;
-       
+
        location /api {
            proxy_pass http://api.example.com;
            add_header 'Access-Control-Allow-Origin' '*';
@@ -34,11 +34,11 @@
    }
    ```
 
-   这里的 listen 表示监听端口，server_name 表示服务器名称。location /api 表示当请求的路径以 /api 开头时，将会被转发到 `http://api.example.com` 上。add_header 'Access-Control-Allow-Origin' '*' 表示在响应头中添加 Access-Control-Allow-Origin，允许跨域请求。
+   这里的 listen 表示监听端口，server_name 表示服务器名称。location /api 表示当请求的路径以 /api 开头时，将会被转发到 `http://api.example.com` 上。add_header 'Access-Control-Allow-Origin' '\*' 表示在响应头中添加 Access-Control-Allow-Origin，允许跨域请求。
 
 2. 重新加载 Nginx 配置文件：
 
-   ``` bash
+   ```bash
    sudo nginx -s reload
    ```
 
@@ -48,11 +48,11 @@
 
 </details>
 
-### 阿里云的 CDN 资源有缓存，如何强制更新缓存?  
+### 阿里云的 CDN 资源有缓存，如何强制更新缓存?
 
 阿里云 CDN 中有一个 Tab 叫**刷新预热**, 在该选项中可以强制刷新缓存。更新缓存的方式有 **URL 刷新**、**目录刷新**以及 **URL 预热**。
 
-### git 除了 `pull`、`push` 外还了解哪些命令？  
+### git 除了 `pull`、`push` 外还了解哪些命令？
 
 可以参考 [Git 速查笔记](../git/README.md) 来回答
 

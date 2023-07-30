@@ -147,13 +147,13 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   ```javascript
   // bad
   const superman = {
-    default: { clark: 'kent' },
+    default: { clark: "kent" },
     private: true,
   };
 
   // good
   const superman = {
-    defaults: { clark: 'kent' },
+    defaults: { clark: "kent" },
     hidden: true,
   };
   ```
@@ -163,17 +163,17 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   ```javascript
   // bad
   const superman = {
-    class: 'alien',
+    class: "alien",
   };
 
   // bad
   const superman = {
-    klass: 'alien',
+    klass: "alien",
   };
 
   // good
   const superman = {
-    type: 'alien',
+    type: "alien",
   };
   ```
 
@@ -191,15 +191,15 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   // bad
   const obj = {
     id: 5,
-    name: 'San Francisco',
+    name: "San Francisco",
   };
-  obj[getKey('enabled')] = true;
+  obj[getKey("enabled")] = true;
 
   // good
   const obj = {
     id: 5,
-    name: 'San Francisco',
-    [getKey('enabled')]: true,
+    name: "San Francisco",
+    [getKey("enabled")]: true,
   };
   ```
 
@@ -212,7 +212,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   const atom = {
     value: 1,
 
-    addValue: function(value) {
+    addValue: function (value) {
       return atom.value + value;
     },
   };
@@ -234,7 +234,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   > 为什么？因为这样更短更有描述性。
 
   ```javascript
-  const lukeSkywalker = 'Luke Skywalker';
+  const lukeSkywalker = "Luke Skywalker";
 
   // bad
   const obj = {
@@ -252,8 +252,8 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   > 为什么？因为这样能清楚地看出哪些属性使用了简写。
 
   ```javascript
-  const anakinSkywalker = 'Anakin Skywalker';
-  const lukeSkywalker = 'Luke Skywalker';
+  const anakinSkywalker = "Anakin Skywalker";
+  const lukeSkywalker = "Luke Skywalker";
 
   // bad
   const obj = {
@@ -296,15 +296,12 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   const someStack = [];
+  // bad
+  someStack[someStack.length] = "abracadabra";
+
+  // good
+  someStack.push("abracadabra");
   ```
-
-
-    // bad
-    someStack[someStack.length] = 'abracadabra';
-
-    // good
-    someStack.push('abracadabra');
-    ```
 
 <a name="es6-array-spreads"></a>
 
@@ -327,7 +324,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 - [4.4](#4.4) <a name='4.4'></a> 使用 Array#from 把一个类数组对象转换成数组。
 
   ```javascript
-  const foo = document.querySelectorAll('.foo');
+  const foo = document.querySelectorAll(".foo");
   const nodes = Array.from(foo);
   ```
 
@@ -409,10 +406,10 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  const name = 'Capt. Janeway';
+  const name = "Capt. Janeway";
 
   // good
-  const name = 'Capt. Janeway';
+  const name = "Capt. Janeway";
   ```
 
 - [6.2](#6.2) <a name='6.2'></a> 字符串超过 80 个字节应该使用字符串连接号换行。
@@ -421,20 +418,20 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   ```javascript
   // bad
   const errorMessage =
-    'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+    "This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.";
 
   // bad
   const errorMessage =
-    'This is a super long error that was thrown because \
+    "This is a super long error that was thrown because \
   of Batman. When you stop to think about how Batman had anything to do \
   with this, you would get nowhere \
-  fast.';
+  fast.";
 
   // good
   const errorMessage =
-    'This is a super long error that was thrown because ' +
-    'of Batman. When you stop to think about how Batman had anything to do ' +
-    'with this, you would get nowhere fast.';
+    "This is a super long error that was thrown because " +
+    "of Batman. When you stop to think about how Batman had anything to do " +
+    "with this, you would get nowhere fast.";
   ```
 
 <a name="es6-template-literals"></a>
@@ -446,12 +443,12 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   ```javascript
   // bad
   function sayHi(name) {
-    return 'How are you, ' + name + '?';
+    return "How are you, " + name + "?";
   }
 
   // bad
   function sayHi(name) {
-    return ['How are you, ', name, '?'].join();
+    return ["How are you, ", name, "?"].join();
   }
 
   // good
@@ -472,7 +469,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  const foo = function() {};
+  const foo = function () {};
 
   // good
   function foo() {}
@@ -483,7 +480,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   ```javascript
   // 立即调用的函数表达式 (IIFE)
   (() => {
-    console.log('Welcome to the Internet. Please follow me.');
+    console.log("Welcome to the Internet. Please follow me.");
   })();
   ```
 
@@ -494,7 +491,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   // bad
   if (currentUser) {
     function test() {
-      console.log('Nope.');
+      console.log("Nope.");
     }
   }
 
@@ -502,7 +499,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   let test;
   if (currentUser) {
     test = () => {
-      console.log('Yup.');
+      console.log("Yup.");
     };
   }
   ```
@@ -531,12 +528,12 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   // bad
   function concatenateAll() {
     const args = Array.prototype.slice.call(arguments);
-    return args.join('');
+    return args.join("");
   }
 
   // good
   function concatenateAll(...args) {
-    return args.join('');
+    return args.join("");
   }
   ```
 
@@ -599,7 +596,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  [1, 2, 3].map(function(x) {
+  [1, 2, 3].map(function (x) {
     return x * x;
   });
 
@@ -635,30 +632,29 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 > 为什么? 因为 `class` 语法更为简洁更易读。
 
-    ```javascript
-    // bad
-    function Queue(contents = []) {
-      this._queue = [...contents];
-    }
-    Queue.prototype.pop = function() {
-      const value = this._queue[0];
-      this._queue.splice(0, 1);
-      return value;
-    }
+```javascript
+// bad
+function Queue(contents = []) {
+  this._queue = [...contents];
+}
+Queue.prototype.pop = function () {
+  const value = this._queue[0];
+  this._queue.splice(0, 1);
+  return value;
+};
 
-
-    // good
-    class Queue {
-      constructor(contents = []) {
-        this._queue = [...contents];
-      }
-      pop() {
-        const value = this._queue[0];
-        this._queue.splice(0, 1);
-        return value;
-      }
-    }
-    ```
+// good
+class Queue {
+  constructor(contents = []) {
+    this._queue = [...contents];
+  }
+  pop() {
+    const value = this._queue[0];
+    this._queue.splice(0, 1);
+    return value;
+  }
+}
+```
 
 - [9.2](#9.2) <a name='9.2'></a> 使用 `extends` 继承。
 
@@ -666,13 +662,13 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  const inherits = require('inherits');
+  const inherits = require("inherits");
 
   function PeekableQueue(contents) {
     Queue.apply(this, contents);
   }
   inherits(PeekableQueue, Queue);
-  PeekableQueue.prototype.peek = function() {
+  PeekableQueue.prototype.peek = function () {
     return this._queue[0];
   };
 
@@ -688,12 +684,12 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  Jedi.prototype.jump = function() {
+  Jedi.prototype.jump = function () {
     this.jumping = true;
     return true;
   };
 
-  Jedi.prototype.setHeight = function(height) {
+  Jedi.prototype.setHeight = function (height) {
     this.height = height;
   };
 
@@ -719,12 +715,12 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   luke.jump().setHeight(20);
   ```
 
-* [9.4](#9.4) <a name='9.4'></a> 可以写一个自定义的 `toString()` 方法，但要确保它能正常运行并且不会引起副作用。
+- [9.4](#9.4) <a name='9.4'></a> 可以写一个自定义的 `toString()` 方法，但要确保它能正常运行并且不会引起副作用。
 
   ```javascript
   class Jedi {
     constructor(options = {}) {
-      this.name = options.name || 'no name';
+      this.name = options.name || "no name";
     }
 
     getName() {
@@ -767,26 +763,26 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  import * as AirbnbStyleGuide from './AirbnbStyleGuide';
+  import * as AirbnbStyleGuide from "./AirbnbStyleGuide";
 
   // good
-  import AirbnbStyleGuide from './AirbnbStyleGuide';
+  import AirbnbStyleGuide from "./AirbnbStyleGuide";
   ```
 
 - [10.3](#10.3) <a name='10.3'></a>不要从 import 中直接 export。
 
 > 为什么？虽然一行代码简洁明了，但让 import 和 export 各司其职让事情能保持一致。
 
-    ```javascript
-    // bad
-    // filename es6.js
-    export { es6 as default } from './airbnbStyleGuide';
+```javascript
+ // bad
+ // filename es6.js
+ export { es6 as default } from './airbnbStyleGuide';
 
-    // good
-    // filename es6.js
-    import { es6 } from './AirbnbStyleGuide';
-    export default es6;
-    ```
+ // good
+ // filename es6.js
+ import { es6 } from './AirbnbStyleGuide';
+ export default es6;
+```
 
 **[⬆ 返回目录](#table-of-contents)**
 
@@ -838,7 +834,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   };
 
   // bad
-  const isJedi = luke['jedi'];
+  const isJedi = luke["jedi"];
 
   // good
   const isJedi = luke.jedi;
@@ -856,7 +852,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
     return luke[prop];
   }
 
-  const isJedi = getProp('jedi');
+  const isJedi = getProp("jedi");
   ```
 
 **[⬆ 返回目录](#table-of-contents)**
@@ -883,18 +879,18 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   // bad
   const items = getItems(),
     goSportsTeam = true,
-    dragonball = 'z';
+    dragonball = "z";
 
   // bad
   // (compare to above, and try to spot the mistake)
   const items = getItems(),
     goSportsTeam = true;
-  dragonball = 'z';
+  dragonball = "z";
 
   // good
   const items = getItems();
   const goSportsTeam = true;
-  const dragonball = 'z';
+  const dragonball = "z";
   ```
 
 - [13.3](#13.3) <a name='13.3'></a> 将所有的 `const` 和 `let` 分组
@@ -928,48 +924,48 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 > 为什么？`let` 和 `const` 是块级作用域而不是函数作用域。
 
-    ```javascript
-    // good
-    function() {
-      test();
-      console.log('doing stuff..');
+```javascript
+ // good
+ function() {
+   test();
+   console.log('doing stuff..');
 
-      //..other stuff..
+   //..other stuff..
 
-      const name = getName();
+   const name = getName();
 
-      if (name === 'test') {
-        return false;
-      }
+   if (name === 'test') {
+     return false;
+   }
 
-      return name;
-    }
+   return name;
+ }
 
-    // bad - unnecessary function call
-    function(hasName) {
-      const name = getName();
+ // bad - unnecessary function call
+ function(hasName) {
+   const name = getName();
 
-      if (!hasName) {
-        return false;
-      }
+   if (!hasName) {
+     return false;
+   }
 
-      this.setFirstName(name);
+   this.setFirstName(name);
 
-      return true;
-    }
+   return true;
+ }
 
-    // good
-    function(hasName) {
-      if (!hasName) {
-        return false;
-      }
+ // good
+ function(hasName) {
+   if (!hasName) {
+     return false;
+   }
 
-      const name = getName();
-      this.setFirstName(name);
+   const name = getName();
+   this.setFirstName(name);
 
-      return true;
-    }
-    ```
+   return true;
+ }
+```
 
 **[⬆ 返回目录](#table-of-contents)**
 
@@ -1018,8 +1014,8 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
     anonymous(); // => TypeError anonymous is not a function
 
-    var anonymous = function() {
-      console.log('anonymous function expression');
+    var anonymous = function () {
+      console.log("anonymous function expression");
     };
   }
   ```
@@ -1035,7 +1031,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
     superPower(); // => ReferenceError superPower is not defined
 
     var named = function superPower() {
-      console.log('Flying');
+      console.log("Flying");
     };
   }
 
@@ -1047,7 +1043,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
     named(); // => TypeError named is not a function
 
     var named = function named() {
-      console.log('named');
+      console.log("named");
     };
   }
   ```
@@ -1059,7 +1055,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
     superPower(); // => Flying
 
     function superPower() {
-      console.log('Flying');
+      console.log("Flying");
     }
   }
   ```
@@ -1093,7 +1089,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  if (name !== '') {
+  if (name !== "") {
     // ...stuff...
   }
 
@@ -1213,19 +1209,19 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   // bad
   function getType() {
-    console.log('fetching type...');
+    console.log("fetching type...");
     // set the default type to 'no type'
-    const type = this._type || 'no type';
+    const type = this._type || "no type";
 
     return type;
   }
 
   // good
   function getType() {
-    console.log('fetching type...');
+    console.log("fetching type...");
 
     // set the default type to 'no type'
-    const type = this._type || 'no type';
+    const type = this._type || "no type";
 
     return type;
   }
@@ -1285,24 +1281,24 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   ```javascript
   // bad
   function test() {
-    console.log('test');
+    console.log("test");
   }
 
   // good
   function test() {
-    console.log('test');
+    console.log("test");
   }
 
   // bad
-  dog.set('attr', {
-    age: '1 year',
-    breed: 'Bernese Mountain Dog',
+  dog.set("attr", {
+    age: "1 year",
+    breed: "Bernese Mountain Dog",
   });
 
   // good
-  dog.set('attr', {
-    age: '1 year',
-    breed: 'Bernese Mountain Dog',
+  dog.set("attr", {
+    age: "1 year",
+    breed: "Bernese Mountain Dog",
   });
   ```
 
@@ -1321,12 +1317,12 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   // bad
   function fight() {
-    console.log('Swooosh!');
+    console.log("Swooosh!");
   }
 
   // good
   function fight() {
-    console.log('Swooosh!');
+    console.log("Swooosh!");
   }
   ```
 
@@ -1344,7 +1340,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  (function(global) {
+  (function (global) {
     // ...stuff...
   })(this);
   ```
@@ -1368,56 +1364,41 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  $('#items')
-    .find('.selected')
-    .highlight()
-    .end()
-    .find('.open')
-    .updateCount();
+  $("#items").find(".selected").highlight().end().find(".open").updateCount();
 
   // bad
-  $('#items')
-    .find('.selected')
-    .highlight()
-    .end()
-    .find('.open')
-    .updateCount();
+  $("#items").find(".selected").highlight().end().find(".open").updateCount();
 
   // good
-  $('#items')
-    .find('.selected')
-    .highlight()
-    .end()
-    .find('.open')
-    .updateCount();
+  $("#items").find(".selected").highlight().end().find(".open").updateCount();
 
   // bad
   const leds = stage
-    .selectAll('.led')
+    .selectAll(".led")
     .data(data)
     .enter()
-    .append('svg:svg')
-    .class('led', true)
-    .attr('width', (radius + margin) * 2)
-    .append('svg:g')
+    .append("svg:svg")
+    .class("led", true)
+    .attr("width", (radius + margin) * 2)
+    .append("svg:g")
     .attr(
-      'transform',
-      'translate(' + (radius + margin) + ',' + (radius + margin) + ')'
+      "transform",
+      "translate(" + (radius + margin) + "," + (radius + margin) + ")",
     )
     .call(tron.led);
 
   // good
   const leds = stage
-    .selectAll('.led')
+    .selectAll(".led")
     .data(data)
     .enter()
-    .append('svg:svg')
-    .classed('led', true)
-    .attr('width', (radius + margin) * 2)
-    .append('svg:g')
+    .append("svg:svg")
+    .classed("led", true)
+    .attr("width", (radius + margin) * 2)
+    .append("svg:g")
     .attr(
-      'transform',
-      'translate(' + (radius + margin) + ',' + (radius + margin) + ')'
+      "transform",
+      "translate(" + (radius + margin) + "," + (radius + margin) + ")",
     )
     .call(tron.led);
   ```
@@ -1472,18 +1453,18 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   // bad
   const hero = {
-    firstName: 'Ada',
-    lastName: 'Lovelace',
+    firstName: "Ada",
+    lastName: "Lovelace",
     birthYear: 1815,
-    superPower: 'computers',
+    superPower: "computers",
   };
 
   // good
   const hero = {
-    firstName: 'Ada',
-    lastName: 'Lovelace',
+    firstName: "Ada",
+    lastName: "Lovelace",
     birthYear: 1815,
-    superPower: 'computers',
+    superPower: "computers",
   };
   ```
 
@@ -1491,44 +1472,44 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 > 为什么? 这会让 git diffs 更干净。另外，像 babel 这样的转译器会移除结尾多余的逗号，也就是说你不必担心老旧浏览器的[尾逗号问题](es5/README.md#commas)。
 
-    ```javascript
-    // bad - git diff without trailing comma
-    const hero = {
-         firstName: 'Florence',
-    -    lastName: 'Nightingale'
-    +    lastName: 'Nightingale',
-    +    inventorOf: ['coxcomb graph', 'modern nursing']
-    }
+```javascript
+ // bad - git diff without trailing comma
+ const hero = {
+      firstName: 'Florence',
+ -    lastName: 'Nightingale'
+ +    lastName: 'Nightingale',
+ +    inventorOf: ['coxcomb graph', 'modern nursing']
+ }
 
-    // good - git diff with trailing comma
-    const hero = {
-         firstName: 'Florence',
-         lastName: 'Nightingale',
-    +    inventorOf: ['coxcomb chart', 'modern nursing'],
-    }
+ // good - git diff with trailing comma
+ const hero = {
+      firstName: 'Florence',
+      lastName: 'Nightingale',
+ +    inventorOf: ['coxcomb chart', 'modern nursing'],
+ }
 
-    // bad
-    const hero = {
-      firstName: 'Dana',
-      lastName: 'Scully'
-    };
+ // bad
+ const hero = {
+   firstName: 'Dana',
+   lastName: 'Scully'
+ };
 
-    const heroes = [
-      'Batman',
-      'Superman'
-    ];
+ const heroes = [
+   'Batman',
+   'Superman'
+ ];
 
-    // good
-    const hero = {
-      firstName: 'Dana',
-      lastName: 'Scully',
-    };
+ // good
+ const hero = {
+   firstName: 'Dana',
+   lastName: 'Scully',
+ };
 
-    const heroes = [
-      'Batman',
-      'Superman',
-    ];
-    ```
+ const heroes = [
+   'Batman',
+   'Superman',
+ ];
+```
 
 **[⬆ 返回目录](#table-of-contents)**
 
@@ -1540,20 +1521,20 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  (function() {
-    const name = 'Skywalker';
+  (function () {
+    const name = "Skywalker";
     return name;
   })()(
     // good
     () => {
-      const name = 'Skywalker';
+      const name = "Skywalker";
       return name;
-    }
+    },
   )();
 
   // good (防止函数在两个 IIFE 合并时被当成一个参数)
   (() => {
-    const name = 'Skywalker';
+    const name = "Skywalker";
     return name;
   })();
   ```
@@ -1573,7 +1554,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   //  => this.reviewScore = 9;
 
   // bad
-  const totalScore = this.reviewScore + '';
+  const totalScore = this.reviewScore + "";
 
   // good
   const totalScore = String(this.reviewScore);
@@ -1582,7 +1563,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 - [21.3](#21.3) <a name='21.3'></a> 对数字使用 `parseInt` 转换，并带上类型转换的基数。
 
   ```javascript
-  const inputValue = '4';
+  const inputValue = "4";
 
   // bad
   const val = new Number(inputValue);
@@ -1679,7 +1660,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   }
 
   const bad = new user({
-    name: 'nope',
+    name: "nope",
   });
 
   // good
@@ -1690,7 +1671,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   }
 
   const good = new User({
-    name: 'yup',
+    name: "yup",
   });
   ```
 
@@ -1698,12 +1679,12 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  this.__firstName__ = 'Panda';
-  this.firstName_ = 'Panda';
-  this._firstName = 'Panda';
+  this.__firstName__ = "Panda";
+  this.firstName_ = "Panda";
+  this._firstName = "Panda";
 
   // good
-  this.firstName = 'Panda';
+  this.firstName = "Panda";
   ```
 
 - [22.5](#22.5) <a name='22.5'></a> 别保存 `this` 的引用。使用箭头函数或 Function#bind。
@@ -1712,7 +1693,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   // bad
   function foo() {
     const self = this;
-    return function() {
+    return function () {
       console.log(self);
     };
   }
@@ -1720,7 +1701,7 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   // bad
   function foo() {
     const that = this;
-    return function() {
+    return function () {
       console.log(that);
     };
   }
@@ -1744,13 +1725,13 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   // in some other file
   // bad
-  import CheckBox from './checkBox';
+  import CheckBox from "./checkBox";
 
   // bad
-  import CheckBox from './check_box';
+  import CheckBox from "./check_box";
 
   // good
-  import CheckBox from './CheckBox';
+  import CheckBox from "./CheckBox";
   ```
 
 - [22.7](#22.7) <a name='22.7'></a> 当你导出默认的函数时使用驼峰式命名。你的文件名必须和函数名完全保持一致。
@@ -1813,8 +1794,8 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   ```javascript
   class Jedi {
     constructor(options = {}) {
-      const lightsaber = options.lightsaber || 'blue';
-      this.set('lightsaber', lightsaber);
+      const lightsaber = options.lightsaber || "blue";
+      this.set("lightsaber", lightsaber);
     }
 
     set(key, val) {
@@ -1867,10 +1848,10 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  const sidebar = $('.sidebar');
+  const sidebar = $(".sidebar");
 
   // good
-  const $sidebar = $('.sidebar');
+  const $sidebar = $(".sidebar");
   ```
 
 - [25.2](#25.2) <a name='25.2'></a> 缓存 jQuery 查询。
@@ -1878,24 +1859,24 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
   ```javascript
   // bad
   function setSidebar() {
-    $('.sidebar').hide();
+    $(".sidebar").hide();
 
     // ...stuff...
 
-    $('.sidebar').css({
-      'background-color': 'pink',
+    $(".sidebar").css({
+      "background-color": "pink",
     });
   }
 
   // good
   function setSidebar() {
-    const $sidebar = $('.sidebar');
+    const $sidebar = $(".sidebar");
     $sidebar.hide();
 
     // ...stuff...
 
     $sidebar.css({
-      'background-color': 'pink',
+      "background-color": "pink",
     });
   }
   ```
@@ -1905,21 +1886,19 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
   ```javascript
   // bad
-  $('ul', '.sidebar').hide();
+  $("ul", ".sidebar").hide();
 
   // bad
-  $('.sidebar')
-    .find('ul')
-    .hide();
+  $(".sidebar").find("ul").hide();
 
   // good
-  $('.sidebar ul').hide();
+  $(".sidebar ul").hide();
 
   // good
-  $('.sidebar > ul').hide();
+  $(".sidebar > ul").hide();
 
   // good
-  $sidebar.find('ul').hide();
+  $sidebar.find("ul").hide();
   ```
 
 **[⬆ 返回目录](#table-of-contents)**
@@ -1939,18 +1918,18 @@ English: [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 - [27.1](#27.1) <a name='27.1'></a> 以下是链接到 ES6 各个特性的列表。
 
 1. [箭头函数](#arrow-functions)
-1. [类](#constructors)
-1. [对象方法简写](#es6-object-shorthand)
-1. [对象属性简写](#es6-object-concise)
-1. [对象中的可计算属性](#es6-computed-properties)
-1. [模板字符串](#es6-template-literals)
-1. [解构](#destructuring)
-1. [默认参数](#es6-default-parameters)
-1. [Rest](#es6-rest)
-1. [数组 Spreads](#es6-array-spreads)
-1. [Let 及 Const](#references)
-1. [迭代器和生成器](#iterators-and-generators)
-1. [模块](#modules)
+2. [类](#constructors)
+3. [对象方法简写](#es6-object-shorthand)
+4. [对象属性简写](#es6-object-concise)
+5. [对象中的可计算属性](#es6-computed-properties)
+6. [模板字符串](#es6-template-literals)
+7. [解构](#destructuring)
+8. [默认参数](#es6-default-parameters)
+9. [Rest](#es6-rest)
+10. [数组 Spreads](#es6-array-spreads)
+11. [Let 及 Const](#references)
+12. [迭代器和生成器](#iterators-and-generators)
+13. [模块](#modules)
 
 **[⬆ 返回目录](#table-of-contents)**
 

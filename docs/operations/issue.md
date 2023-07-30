@@ -2,7 +2,7 @@
 
 ## npm 发布失败
 
-``` bash
+```bash
 ➜  module-test git:(master) npm publish
 npm ERR! publish Failed PUT 403
 npm ERR! code E403
@@ -13,7 +13,7 @@ ule: module-test
 
 没有权限的原因可能是我们按照了淘宝的`npm`镜像，发布通过镜像代理，就会有权限问题。这时候将权限调整回来即可：
 
-``` bash
+```bash
 ➜  module-test git:(master) npm config set registry http://registry.npmjs.org
 
 ➜  module-test git:(master) npm publish
@@ -48,7 +48,7 @@ npm ERR!     /Users/anran/.npm/_logs/2019-04-27T14_09_30_297Z-debug.log
 
 如果在安装依赖时发现错误中由以下错误, 可以尝试通过[此指南](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)解决问题:
 
-``` log
+```log
 Please try running this command again as root/Administrator. npm
 (node:10370) UnhandledPromiseRejectionWarning: Error: EACCES: permission denied, open '/Users/anran/.zshrc'
 ```

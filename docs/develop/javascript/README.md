@@ -3,6 +3,7 @@ sidebarDepth: 3
 ---
 
 <!-- omit in toc -->
+
 # JavaScript 原生语法
 
 细节和技巧的交汇，本篇笔记主要用于速查。
@@ -80,15 +81,15 @@ console.log(1e9 * 4); // 4000000000
 const age = 16;
 
 // bad
-let hint = '';
+let hint = "";
 if (age >= 18) {
-  hint = '欢迎打开新世界(';
+  hint = "欢迎打开新世界(";
 } else {
-  hint = '嘿, 未成年不得入内!';
+  hint = "嘿, 未成年不得入内!";
 }
 
 // good
-const hint = age >= 18 ? '欢迎打开新世界 (' : '未成年不得入内!';
+const hint = age >= 18 ? "欢迎打开新世界 (" : "未成年不得入内!";
 ```
 
 ### 逻辑运算符
@@ -98,16 +99,16 @@ const hint = age >= 18 ? '欢迎打开新世界 (' : '未成年不得入内!';
 ```javascript
 // 在某些场景下, 使用 && 操作符代替 if 能使使你的代码变得更加的整洁
 let isMoving = false;
-container.addEventListener('mousedown', () => (ismoving = true));
-container.addEventListener('mouseup', () => (ismoving = false));
+container.addEventListener("mousedown", () => (ismoving = true));
+container.addEventListener("mouseup", () => (ismoving = false));
 
 // if 语句
-container.addEventListener('mousemove', () => {
+container.addEventListener("mousemove", () => {
   if (isMoving) handleMove();
 });
 
 // && 操作符. 前者为 true 的话, 就调用函数
-container.addEventListener('mousemove', () => isMoving && handleMove());
+container.addEventListener("mousemove", () => isMoving && handleMove());
 
 // || 操作符则相反，只要前面的值为true，就不继续往后走了
 ```
@@ -131,7 +132,7 @@ console.log(~-1); // 0
 
 // 相当于下面的代码同等的效果
 // names.some(name => linkName.indexOf(name) === -1)
-names.some(name => ~linkName.indexOf(name));
+names.some((name) => ~linkName.indexOf(name));
 ```
 
 **位操作符:**
@@ -168,18 +169,18 @@ console.log((50.1234 | 0) / 10); // 5
 ```javascript
 // 目标是否是对象
 function isObject(obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
+  return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
 // 使用同样的方法进行测试, 结果如下:
 Object.prototype.toString.call([]); // [object Array]
 Object.prototype.toString.call(null); // [object Null]
-Object.prototype.toString.call('12'); // [object String]
+Object.prototype.toString.call("12"); // [object String]
 Object.prototype.toString.call(NaN); // [object Number]. 注意, NaN 是属于数字类型
 Object.prototype.toString.call(345); // [object Number]
 Object.prototype.toString.call(undefined); // [object Undefined]
 Object.prototype.toString.call(Symbol()); // [object Symbol]
-Object.prototype.toString.call(function() {}); // [object Function]
+Object.prototype.toString.call(function () {}); // [object Function]
 
 // 根据上述规则，可以对字符串进行操作
 // 获取基础类型
@@ -200,9 +201,9 @@ function getBaseType(target) {
  * @desc 返回星座名
  */
 function getAstro(month, day) {
-  return '魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯'.substr(
-    month * 2 - (day < '102223444433'.charAt(month - 1) - -19) * 2,
-    2
+  return "魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯".substr(
+    month * 2 - (day < "102223444433".charAt(month - 1) - -19) * 2,
+    2,
   );
 }
 ```
@@ -217,7 +218,7 @@ arr.splice(index, 1);
 ### 【Array】数组去重
 
 ```javascript
-let arr = [1, 2, 3, '1', 5, 2, 4, 5, 3, 4];
+let arr = [1, 2, 3, "1", 5, 2, 4, 5, 3, 4];
 
 /* es6 */
 // 利用 Set 没有重复值的特性去重, 再将其转为数组.
@@ -232,8 +233,8 @@ let newarr = [...new Set(arr)];
 **[IE11+]** [String.prototype.localeCompare](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)，会返回一个数字，配合数组的`sort`方法进行排序。
 
 ```javascript
-['张三', '李四', '王五'].sort((a, b) =>
-  a.localeCompare(b, 'zh-Hans-CN', { sensitivity: 'accent' })
+["张三", "李四", "王五"].sort((a, b) =>
+  a.localeCompare(b, "zh-Hans-CN", { sensitivity: "accent" }),
 );
 ```
 
@@ -245,7 +246,7 @@ let newarr = [...new Set(arr)];
 const arr = [[1, 2, 3], [4, 5], [7, 8, 9], 10, null, undefined, {}];
 const newArr = arr.reduce(
   (p, n) => (Array.isArray(n) ? p.concat(n) : (p.push(n), p)),
-  []
+  [],
 );
 
 console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
@@ -255,7 +256,9 @@ console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
 
 ```javascript
 function flatten(arr) {
-  const newArr = arr.map((item) => (Array.isArray(item) ? flatten(item) : item));
+  const newArr = arr.map((item) =>
+    Array.isArray(item) ? flatten(item) : item,
+  );
   return [].concat(...newArr);
 }
 
@@ -281,9 +284,9 @@ function numberWithCommas(n) {
   // 注意, 后面的 (?=) 那一段代码只是判断的规则, 匹配到后只替换掉 \B
   // 而 \B 元字符匹配的是非单词边界
 
-  let num = n.toString().split('.');
-  num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  return num.join('.');
+  let num = n.toString().split(".");
+  num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return num.join(".");
 }
 
 console.log(numberWithCommas(12345678912.123)); // "12,345,678,912.1234"
@@ -293,7 +296,7 @@ console.log(numberWithCommas(12345678912.123)); // "12,345,678,912.1234"
 
 ```js
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 ```
 
@@ -302,35 +305,35 @@ function numberWithCommas(x) {
 
 ```js
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function test(x, expect) {
   const result = numberWithCommas(x);
   const pass = result === expect;
-  console.log(`${pass ? '✓' : 'ERROR ====>'} ${x} => ${result}`);
+  console.log(`${pass ? "✓" : "ERROR ====>"} ${x} => ${result}`);
   return pass;
 }
 
 let failures = 0;
-failures += !test(0, '0');
-failures += !test(0.123456, '0.123456');
-failures += !test(100, '100');
-failures += !test(100.123456, '100.123456');
-failures += !test(1000, '1,000');
-failures += !test(1000.123456, '1,000.123456');
-failures += !test(10000, '10,000');
-failures += !test(10000.123456, '10,000.123456');
-failures += !test(100000, '100,000');
-failures += !test(100000.123456, '100,000.123456');
-failures += !test(1000000, '1,000,000');
-failures += !test(1000000.123456, '1,000,000.123456');
-failures += !test(10000000, '10,000,000');
-failures += !test(10000000.123456, '10,000,000.123456');
+failures += !test(0, "0");
+failures += !test(0.123456, "0.123456");
+failures += !test(100, "100");
+failures += !test(100.123456, "100.123456");
+failures += !test(1000, "1,000");
+failures += !test(1000.123456, "1,000.123456");
+failures += !test(10000, "10,000");
+failures += !test(10000.123456, "10,000.123456");
+failures += !test(100000, "100,000");
+failures += !test(100000.123456, "100,000.123456");
+failures += !test(1000000, "1,000,000");
+failures += !test(1000000.123456, "1,000,000.123456");
+failures += !test(10000000, "10,000,000");
+failures += !test(10000000.123456, "10,000,000.123456");
 if (failures) {
   console.log(`${failures} test(s) failed`);
 } else {
-  console.log('All tests passed');
+  console.log("All tests passed");
 }
 ```
 
@@ -348,14 +351,17 @@ num.toLocaleString(); // "1,234,567.123"
 new Intl.NumberFormat().format(num);
 
 // 设置格式选项
-var CNY_OPTIOONS = { style: 'currency', currency: 'CNY' };
+var CNY_OPTIOONS = { style: "currency", currency: "CNY" };
 
 // result => "¥1,234,567.12"
-new Intl.NumberFormat('zh-CN', CNY_OPTIOONS).format(num);
+new Intl.NumberFormat("zh-CN", CNY_OPTIOONS).format(num);
 
 // result => "¥1,234,567.123450"
 // 设置小数位
-new Intl.NumberFormat('zh-CN', { ...CNY_OPTIOONS, minimumFractionDigits: 6 }).format(num);
+new Intl.NumberFormat("zh-CN", {
+  ...CNY_OPTIOONS,
+  minimumFractionDigits: 6,
+}).format(num);
 ```
 
 或者使用 [numeral.js](https://github.com/adamwdraper/Numeral-js/blob/master/numeral.js) 进行数字格式化。
@@ -379,8 +385,8 @@ function randomRangeNum(min, max) {
 ### 【Number】字符串转数字
 
 ```javascript
-['1.1', '4566', '3e300'].map(Number); // [1.1, 4566, 3e+300]
-['1.1', '456a', '3e300'].map(Number); // [1.1, NaN, 3e+300]
+["1.1", "4566", "3e300"].map(Number); // [1.1, 4566, 3e+300]
+["1.1", "456a", "3e300"].map(Number); // [1.1, NaN, 3e+300]
 ```
 
 ### 【Number】判断闰年函数
@@ -405,32 +411,32 @@ function leapYear(year) {
 
 新方法可以使用 [URLSearchParams](https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams) API 来处理 URL 的查询字符串，兼容性为 Edge 17+：
 
-``` js
+```js
 const params = new URLSearchParams({
-  name: 'Danny chan',
+  name: "Danny chan",
   age: 18,
-})
+});
 
-console.log('params toString:', params.toString())
+console.log("params toString:", params.toString());
 // params toString: name=Danny+chan&age=18
 ```
 
 老方法可以通过拼接字符串的方式处理：
 
-``` ts
+```ts
 function param(data: object) {
-  let url = ''
+  let url = "";
 
   for (var k in data) {
-    let value = data[k] !== undefined ? data[k] : ''
-    url += `&${k}=${encodeURIComponent(value)}`
+    let value = data[k] !== undefined ? data[k] : "";
+    url += `&${k}=${encodeURIComponent(value)}`;
   }
 
-  return url ? url.substring(1) : ''
+  return url ? url.substring(1) : "";
 }
 
 // 使用示例
-url += (url.indexOf('?') > 0 ? '?' : '&') + param(data)
+url += (url.indexOf("?") > 0 ? "?" : "&") + param(data);
 ```
 
 ### 【String】计算字符串长度
@@ -464,10 +470,10 @@ function getStrLength(str) {
 }
 
 console.log(
-  '[getStrLength result]:',
-  getStrLength('一二三四五六七八九十'),
-  getStrLength('1234567890'),
-  getStrLength('abcdefghij')
+  "[getStrLength result]:",
+  getStrLength("一二三四五六七八九十"),
+  getStrLength("1234567890"),
+  getStrLength("abcdefghij"),
 );
 // [getStrLength result]: 20 10 10
 ```
@@ -476,17 +482,17 @@ console.log(
 
 UUID，即通用唯一识别码（Universally Unique Identifier）用于计算机体系中以识别信息的一个128位标识符。生成 UUID 是有规范约束的，详情可以查看《[通用唯一识别码](https://zh.wikipedia.org/wiki/通用唯一识别码)》。
 
-``` js
+```js
 /**
  * 生成唯一标识符
  */
 function getUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, str => {
-    const r = (Math.random() * 16) | 0
-    const v = str === 'x' ? r : (r & 0x3) | 0x8
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (str) => {
+    const r = (Math.random() * 16) | 0;
+    const v = str === "x" ? r : (r & 0x3) | 0x8;
 
-    return v.toString(16)
-  })
+    return v.toString(16);
+  });
 }
 ```
 
@@ -494,12 +500,12 @@ function getUUID() {
 
 有时候开发时需要将某些驼峰命令规范的操作转为常量形式，因此写一个小函数来处理。
 
-``` js
+```js
 function modifyNamingType(name) {
-  return name.replace(/([A-Z])/g, '_$1').toUpperCase()
+  return name.replace(/([A-Z])/g, "_$1").toUpperCase();
 }
 
-modifyNamingType('spaceNameMapping') // 输出: "SPACE_NAME_MAPPING"
+modifyNamingType("spaceNameMapping"); // 输出: "SPACE_NAME_MAPPING"
 ```
 
 ### 【Date】获取指定天前的时间区间
@@ -562,10 +568,10 @@ document.cookie = 'nickname=anran758;path=/;max-age=31536000'
 
 | cookie 属性 | 作用                                                             | 兼容性    |
 | :---------- | :--------------------------------------------------------------- | :-------- |
-| path        | 指定哪些路径可以接受`cookie`, 不指定则为默认为当前文档的主机     |
-| domain      | 指定哪些主机可以接受`Cookie`, 不指定则为当前页面的根目录`/`      |
-| max-age     | 指定从现在开始`Cookie`可以存在的**秒数**, 超时该`cookie`就会过期 |
-| expires     | 显式指定`cookie`具体的到期时间                                   |
+| path        | 指定哪些路径可以接受`cookie`, 不指定则为默认为当前文档的主机     |           |
+| domain      | 指定哪些主机可以接受`Cookie`, 不指定则为当前页面的根目录`/`      |           |
+| max-age     | 指定从现在开始`Cookie`可以存在的**秒数**, 超时该`cookie`就会过期 |           |
+| expires     | 显式指定`cookie`具体的到期时间                                   |           |
 | secure      | `Cookie`只能通过安全协议传输为`https`                            | Chrome52+ |
 | samesite    | 阻止浏览器发送此`cookie`以及跨站点请求                           | Chrome52+ |
 
@@ -588,8 +594,8 @@ const tools = {
    * @param name - cookie 名，不传拿全部
    */
   cookieGet(name) {
-    const cookies = document.cookie.split(';').map((item) => {
-      const [key, value] = item.trim().split('=');
+    const cookies = document.cookie.split(";").map((item) => {
+      const [key, value] = item.trim().split("=");
       return { key, value };
     });
 
@@ -607,7 +613,7 @@ const tools = {
    * @param domain - 该 cookie 在哪些域名下可用
    * @param path - 指定 cookie 路径
    */
-  cookieSet(name, value, days, domain, path = '/') {
+  cookieSet(name, value, days, domain, path = "/") {
     if (!name || !value) return false;
 
     let cookie = `${name}=${value}`;
@@ -626,15 +632,15 @@ const tools = {
 };
 
 // 查询 cookie
-tools.cookieGet('nickName'); // null
+tools.cookieGet("nickName"); // null
 
 // 设置 cookie
-tools.cookieSet('nickName', 'anran758'); // true
-tools.cookieGet('nickName'); // "anran758"
+tools.cookieSet("nickName", "anran758"); // true
+tools.cookieGet("nickName"); // "anran758"
 
 // 清除 cookie
-tools.cookieSet('nickName', 'anran758', 0); // true
-tools.cookieGet('nickName'); // null
+tools.cookieSet("nickName", "anran758", 0); // true
+tools.cookieGet("nickName"); // null
 ```
 
 具体更多有关`cookies`信息可以戳[MDN - Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
@@ -648,7 +654,7 @@ tools.cookieGet('nickName'); // null
 盒子模型上对应的 DOM API:
 
 - border 上的实线为可视尺寸 -> `clientWidth` (标准 API)
-- margin 上的虚线为占据尺寸 -> `outerWidth`  (非标准 API)
+- margin 上的虚线为占据尺寸 -> `outerWidth` (非标准 API)
 
 ### 批量插入节点
 
@@ -658,12 +664,12 @@ DOM 操作实际上是一个挺耗费渲染性能的操作，我们应该尽可�
 
 ```javascript
 const $fragment = document.createDocumentFragment();
-const $list = document.querySelector('.list');
+const $list = document.querySelector(".list");
 
 for (let i = 0; i < 10; i++) {
-  const $ele = document.createElement('li');
+  const $ele = document.createElement("li");
   $ele.innerText = `item - ${i}`;
-  $ele.setAttribute('class', 'item');
+  $ele.setAttribute("class", "item");
 
   $fragment.appendChild($ele);
 }
@@ -684,10 +690,10 @@ $list.appendChild(fragment);
 在`ES5`之前，`parseInt`在没有传第二个参数的时候，会根据传入字符串的第一个字符来判断使用什么方式进行解析，这个历史遗留的问题可能会导致预期之外的效果。
 
 ```javascript
-parseInt('08'); // 有些旧版本的浏览器可能会解析为 0， 因为浏览器会当做八进制进行解析。
+parseInt("08"); // 有些旧版本的浏览器可能会解析为 0， 因为浏览器会当做八进制进行解析。
 
 // 因此我们用这个方法的时候，一定要显示加上第二个参数，而不要让浏览器去猜
-parseInt('08', 10); // 8
+parseInt("08", 10); // 8
 ```
 
 还有一个常见的问题就是，不能直接将`parseInt`作为数组`map`的回调函数，因为两者所传(接受)的形参的用途不一:
@@ -707,7 +713,7 @@ parseInt('08', 10); // 8
 | `map`     | 同样用于遍历数组 | `map`对每项调用的函数后会取得函数的返回值，并推入新的数组中去(意味着可以链式调用)。<br>但是这个方法只有数组才能使用。      |
 | `forEach` | 同样用于遍历数组 | `forEach`单纯对数组中每一项调用回调函数，不作其他操作。<br>该方法并不是只有数组能用，部分类数组(如 NodeList)也有这个方法。 |
 
-该问题笔者曾在知乎上回答过更详细的回答: [js es6 中如何比较深刻的理解 for 、for  of 、 map？ - anran758的回答 - 知乎](https://www.zhihu.com/question/278332594/answer/886056097)
+该问题笔者曾在知乎上回答过更详细的回答: [js es6 中如何比较深刻的理解 for 、for of 、 map？ - anran758的回答 - 知乎](https://www.zhihu.com/question/278332594/answer/886056097)
 
 > 你知道吗？
 
@@ -733,14 +739,14 @@ parseInt('08', 10); // 8
 
 在抽象函数时建议接收的参数不要超过 3 个。若需要传入多个参数，函数接收的最后一个参数应为对象，通过解构语法来获取参数。
 
-``` js
+```js
 // bad code
 function getUserList(id, query, limit, level = 1, blocked = false) {
   // other code....
 }
 
 // 获取用户列表
-const list = await getUserList(userId, query, 20, 1, true)
+const list = await getUserList(userId, query, 20, 1, true);
 ```
 
 上述代码不看函数的定义是很难理解后面几个参数的作用，额外增加理解成本。
@@ -748,9 +754,9 @@ const list = await getUserList(userId, query, 20, 1, true)
 
 因此不建议一个函数内接受过多的参数，若有需要可以通过对象的方式传值。写上指定选项还能调用函数的可读性:
 
-``` js
+```js
 // good code
-function getUserList(id, query, {limit, level, blocked} = {}) {
+function getUserList(id, query, { limit, level, blocked } = {}) {
   // other code....
 }
 
@@ -758,7 +764,7 @@ function getUserList(id, query, {limit, level, blocked} = {}) {
 const list = await getUserList(userId, query, {
   limit: 20,
   blocked: true,
-})
+});
 ```
 
 此外通过对象解构的语法会使函数调用时
@@ -773,7 +779,7 @@ const list = await getUserList(userId, query, {
 
 **CSS**: 给类名设置 css3 属性
 
-``` css
+```css
 .align-left.slide-in {
   transform: translateX(-30%) scale(0.95);
 }

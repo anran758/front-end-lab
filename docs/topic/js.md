@@ -35,7 +35,7 @@ MVVM 架构的主要优点是实现了视图和模型之间的松耦合和数据
 常见的应用场景是，在一个函数的局部作用域中创建一个内部函数，再将这个内部函数返回出去。
 内部函数总是可以访问创建它的上下文，也就是外部函数中声明的参数和变量，即使创建内部函数的上下文已经销毁。例如:
 
-``` js
+```js
 function createName(name) {
   let prefix = "developer_";
   return function showName() {
@@ -43,7 +43,7 @@ function createName(name) {
   };
 }
 
-var showName = createName('anran758');
+var showName = createName("anran758");
 showName();
 ```
 
@@ -56,17 +56,19 @@ showName();
 
 例如，若传入了给定函数的所定义的参数数量后执行函数:
 
-``` js
-function add(a, b, c) { return a + b + c; }
+```js
+function add(a, b, c) {
+  return a + b + c;
+}
 
 function curry(fn, ...rest) {
   return fn.length !== rest.length
     ? function wrap(...args) {
-      return rest.length + args.length !== fn.length
-        ? (...arg) => wrap(...args, ...arg)
-        : fn(...rest, ...args)
-    }
-    : fn(...rest)
+        return rest.length + args.length !== fn.length
+          ? (...arg) => wrap(...args, ...arg)
+          : fn(...rest, ...args);
+      }
+    : fn(...rest);
 }
 
 curry(add)(1)(2)(3);
@@ -82,9 +84,9 @@ curry(add)(1)(2)(3);
 
 1. 利用 `Set` 结构不可重复的特性
 
-   ``` js
-   var info = { name: 'anran758' };
-   var arr = [0,1,2,2,info,3,info];
+   ```js
+   var info = { name: "anran758" };
+   var arr = [0, 1, 2, 2, info, 3, info];
 
    // 通过扩展运算符将 Set 转为 Array
    var newArr = [...new Set(arr)];
@@ -98,7 +100,7 @@ curry(add)(1)(2)(3);
 
 2. 使用 `indexOf` 判断是否具有相同的项
 
-   ``` js
+   ```js
    var info = { name: "anran758" };
    var arr = [0, 1, 2, 2, info, 3, info];
 
@@ -124,8 +126,8 @@ curry(add)(1)(2)(3);
    > 缺点: 没有实现深比较去重
 
 3. 引入 [lodash](https://www.lodashjs.com/docs/lodash.uniq) 工具库来处理:
-  
-   ``` js
+
+   ```js
    var arr = [0, 2, 4, 3, 3, 2, 6];
 
    _.uniq(arr);
@@ -133,11 +135,11 @@ curry(add)(1)(2)(3);
 
    还可以使用 [uniqWith](https://www.lodashjs.com/docs/lodash.uniqWith) 搭配 [isEqual](https://www.lodashjs.com/docs/lodash.isEqual) 实现深比较去重的效果。
 
-   ``` js
+   ```js
    var objects = [
-     { 'x': 1, 'y': 2 },
-     { 'x': 2, 'y': 1 },
-     { 'x': 1, 'y': 2 }
+     { x: 1, y: 2 },
+     { x: 2, y: 1 },
+     { x: 1, y: 2 },
    ];
 
    _.uniqWith(objects, _.isEqual);
@@ -153,7 +155,7 @@ curry(add)(1)(2)(3);
 
    只扁平化第 1 层:
 
-   ``` js
+   ```js
    var arr = [0, [1, [2], [[3]]], [[], 4]];
    arr.flat(1);
    // [0, 1, [2], [[3]], [], 4]
@@ -161,24 +163,24 @@ curry(add)(1)(2)(3);
 
    全部扁平化:
 
-   ``` js
+   ```js
    arr.flat(Infinity);
    // [0, 1, 2, 3, 4]
    ```
 
 2. 通过递归的方式处理:
 
-   ``` js
+   ```js
    var arr = [0, [1, [2], [[3]]], [[], 4]];
 
    function flatDeep(arr, depth) {
      var d = depth != null ? depth : 1;
      return d > 0
-       ? arr.reduce((acc, val) =>
-         acc.concat(Array.isArray(val)
-           ? flatDeep(val, d - 1)
-           : val),
-         [])
+       ? arr.reduce(
+           (acc, val) =>
+             acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val),
+           [],
+         )
        : arr.slice();
    }
 
@@ -193,10 +195,10 @@ curry(add)(1)(2)(3);
 
 ## 深拷贝数组和对象
 
-1. 可以先通过 `JSON.stringify` 将数据转为 JSON 字符串，再通过 `JSON.parse` 对 JSON 字符串进行解析，可以得到全新的数组/对象。  
+1. 可以先通过 `JSON.stringify` 将数据转为 JSON 字符串，再通过 `JSON.parse` 对 JSON 字符串进行解析，可以得到全新的数组/对象。
 
-   使用该方法进行深拷贝并不算完美，`JSON.stringify` 只能序列化对象的可枚举属性，如果对象是通过构造函数生成的，那么会丢失 `constructor`。也不能对有循环引用的对象进行深拷贝。  
-   除此之外，`Date` 对象会被序列化为字符串。正则表达式、`Error` 对象会被序列化为空对象。若属性中存在 `undefined` 则该属性会被丢弃。`NaN`、`Infinity` 等信息会被转为 `null`。  
+   使用该方法进行深拷贝并不算完美，`JSON.stringify` 只能序列化对象的可枚举属性，如果对象是通过构造函数生成的，那么会丢失 `constructor`。也不能对有循环引用的对象进行深拷贝。
+   除此之外，`Date` 对象会被序列化为字符串。正则表达式、`Error` 对象会被序列化为空对象。若属性中存在 `undefined` 则该属性会被丢弃。`NaN`、`Infinity` 等信息会被转为 `null`。
    由此可见，如果被拷贝的参数中没有 `Date`、正则、函数或对象循环引用的问题，可以考虑使用该方法。
 
 2. 可以自己定义递归函数，参数是传入数组或对象。再遍历形参的属性或下标，如果遍历到的类型也是引用类型那就进行浅拷贝，再进行递归，直至全部属性都遍历完毕。
@@ -235,7 +237,7 @@ call 与 apply 第一个参数也是指定的 this 值，其余的不同是接�
 
 `Object.prototype.toString.call` 可以精准的判断类型的值，主要的问题是写法繁琐，可以基于此函数做一层封装:
 
-``` js
+```js
 function getBaseType(target) {
   const typeStr = Object.prototype.toString.call(target).toLocaleLowerCase();
 
@@ -251,7 +253,7 @@ function getBaseType(target) {
 
 这一个通过 `[[Prototype]]` 链相连的机制被为原型链。
 
-## prototype、__proto__ 和 constructor 的关系
+## prototype、**proto** 和 constructor 的关系
 
 **简单版**:
 
@@ -263,41 +265,41 @@ function getBaseType(target) {
 
 在 js 中，每个函数都有一个 `prototype` 属性, 该属性指向的是调用该构造函数而创建的**实例的原型**:
 
-``` js
+```js
 function Person() {}
 
-console.log('1. Person prototype:', Person.prototype);
+console.log("1. Person prototype:", Person.prototype);
 ```
 
 每个 js 对象中都有个 `__proto__` 属性，这个属性会指向**该对象的原型**。比如将 `Person` 进行实例化赋值给 `person1`, `person1.__proto__` 将指向构造函数的 `prototype`。
 
-``` js
+```js
 // 此处 Person 是构造函数
 const person1 = new Person();
 
 console.log(
   "2. person1.__proto__ equal to Person.prototype:",
-  person1.__proto__ === Person.prototype
+  person1.__proto__ === Person.prototype,
 );
 ```
 
 <details block>
   <summary>扩展: 如果是像 `"This is a string"`、`18`、`true` 这种基本类型也会有 `__proto__` 属性吗？</summary>
 
-  这里就需要引入**封装对象包装**的概念。当我们定义完基本类型字面量后，js 引擎自动会为这些基本类型值包装成一个对象，包装后的对象就拥有了 `__proto__` 属性:
+这里就需要引入**封装对象包装**的概念。当我们定义完基本类型字面量后，js 引擎自动会为这些基本类型值包装成一个对象，包装后的对象就拥有了 `__proto__` 属性:
 
-  ``` js
-  console.log(0.__proto__);
-  // Uncaught SyntaxError: Invalid or unexpected token
-  // 上行代码会抛错，因为字面量没有来得及封装为对象。直接访问是访问失败的
+```js
+console.log(0.__proto__);
+// Uncaught SyntaxError: Invalid or unexpected token
+// 上行代码会抛错，因为字面量没有来得及封装为对象。直接访问是访问失败的
 
-  // 将字面量存入变量中或使用括号提升优先级后就可以正常访问了
-  var n = 0;
-  console.log(n.__proto__);
-  console.log((0).__proto__);
-  ```
+// 将字面量存入变量中或使用括号提升优先级后就可以正常访问了
+var n = 0;
+console.log(n.__proto__);
+console.log((0).__proto__);
+```
 
-  具体细节请参考: **《你不知道的 JavaScript 中卷》 3.2 封装对象包装**
+具体细节请参考: **《你不知道的 JavaScript 中卷》 3.2 封装对象包装**
 
 </details>
 
@@ -305,9 +307,15 @@ console.log(
 
 除此之外，每个原型都有一个 `constructor` 属性默认指向关联的构造函数:
 
-``` js
-console.log('3. Person === Person.prototype.constructor:', Person === Person.prototype.constructor)
-console.log('4. person1.__proto__.constructor === Person.prototype.constructor:', person1.__proto__.constructor === Person.prototype.constructor)
+```js
+console.log(
+  "3. Person === Person.prototype.constructor:",
+  Person === Person.prototype.constructor,
+);
+console.log(
+  "4. person1.__proto__.constructor === Person.prototype.constructor:",
+  person1.__proto__.constructor === Person.prototype.constructor,
+);
 ```
 
 ::: warning
@@ -341,7 +349,7 @@ console.log('4. person1.__proto__.constructor === Person.prototype.constructor:'
 
 衍生问题:
 
-**Q: `try...catch` 可以捕获 Promise.reject 错误吗，具体说说原因？**  
+**Q: `try...catch` 可以捕获 Promise.reject 错误吗，具体说说原因？**
 
 A: `try...catch` 是同步代码，而 `Promise`、`setTimeout` 等语句是异步代码，因此当异步代码发生错误时，`try...catch` 代码块已经执行完毕了，因此被抛出错误。
 
@@ -360,8 +368,8 @@ A: `try...catch` 是同步代码，而 `Promise`、`setTimeout` 等语句是异�
 
 ## Promise 限流并发?
 
-``` js
-function parallelLimit(tasks, {concurrency = 10}) {
+```js
+function parallelLimit(tasks, { concurrency = 10 }) {
   const results = [];
   const executing = new Set();
 
@@ -375,7 +383,7 @@ function parallelLimit(tasks, {concurrency = 10}) {
         const index = currentIndex;
         const task = tasks[index];
 
-        currentIndex += 1
+        currentIndex += 1;
         currentlyRunning += 1;
 
         const resultPromise = task().then((result) => {
@@ -435,22 +443,21 @@ JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务
 
 以下程序依次输出的信息是:
 
-``` js
-(function() {
-  console.log('这是开始');
+```js
+(function () {
+  console.log("这是开始");
 
   setTimeout(function cb() {
-    console.log('这是来自第一个回调的消息');
+    console.log("这是来自第一个回调的消息");
   });
 
-  console.log('这是一条消息');
+  console.log("这是一条消息");
 
   setTimeout(function cb1() {
-    console.log('这是来自第二个回调的消息');
+    console.log("这是来自第二个回调的消息");
   }, 0);
 
-  console.log('这是结束');
-
+  console.log("这是结束");
 })();
 
 // "这是开始"
@@ -471,19 +478,21 @@ JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务
 
    > 考察 this 问题
 
-   ``` js
+   ```js
    var length = 10;
 
-   function fn() { alert(this.length); }
+   function fn() {
+     alert(this.length);
+   }
    var obj = {
      length: 5,
-     callApi: function(fn) {
+     callApi: function (fn) {
        fn();
        arguments[0]();
-     }
-   }
+     },
+   };
 
-   obj.callApi(fn, 3)
+   obj.callApi(fn, 3);
    ```
 
    该段代码依次输出 `10`、`2`。**函数的调用方式决定了 `this` 的值**。第二个函数调用是通过 `arguments` 调用，那么 `this` 自然指向 `arguments`，那 `arguments` 的实参有 `fn` 跟 `3` 两个参数，因此输出 `2`。
@@ -492,21 +501,21 @@ JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务
 
    > 考察事件代理与 nodeList
 
-    ``` js
-    var node = document.querySelectorAll('ul');
-    for (var i = 0;i < node.length; i++) {
-      node[i].addEventListener('click', function() {
-        alert('click' + i);
-      });
-    }
-    ```
+   ```js
+   var node = document.querySelectorAll("ul");
+   for (var i = 0; i < node.length; i++) {
+     node[i].addEventListener("click", function () {
+       alert("click" + i);
+     });
+   }
+   ```
 
 3. 改造下面的代码，使之输出 0 ~ 9，写出你能想到的所有解法。
 
-   ``` js
-   for (var i = 0;i < 10; i++) {
+   ```js
+   for (var i = 0; i < 10; i++) {
      setTimeout(() => {
-       console.log(i)
+       console.log(i);
      }, 1000);
    }
    ```
@@ -514,12 +523,12 @@ JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务
    1. `var` 改为 `let`
    2. 循环体内的代码改为立即执行函数，利用闭包来修复
 
-      ``` js
-      for (var i = 0;i < 10; i++) {
+      ```js
+      for (var i = 0; i < 10; i++) {
         ((j) => {
           setTimeout(() => {
             console.log(j);
-          }, j * 1000 );
+          }, j * 1000);
         })(i);
       }
       ```
@@ -527,41 +536,45 @@ JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务
    3. 将循环体内的代码封装到新函数中，在循环体中调用该函数并传入 `i`
    4. 将 `i` 作为 `setTimeout` 内部函数的额外参数传入
 
-       ``` js
-       for (var i = 0;i < 10; i++) {
-          setTimeout((j) => {
+      ```js
+      for (var i = 0; i < 10; i++) {
+        setTimeout(
+          (j) => {
             console.log(j);
-          }, 1000, i);
-        }
-       ```
+          },
+          1000,
+          i,
+        );
+      }
+      ```
 
 4. 请写出下面代码的运行结果
 
-   ``` js
+   ```js
    async function async1() {
-    console.log("async1 start");
-    await async2();
-    console.log("async1 end");
+     console.log("async1 start");
+     await async2();
+     console.log("async1 end");
    }
 
    async function async2() {
-       console.log("async2");
+     console.log("async2");
    }
 
    console.log("script start");
 
    setTimeout(() => {
-       console.log('setTimeout');
+     console.log("setTimeout");
    }, 0);
 
    async1();
 
    new Promise((reslove) => {
-       console.log("promise1");
-       reslove();
+     console.log("promise1");
+     reslove();
    }).then(() => {
-       console.log("promise2");
-   })
+     console.log("promise2");
+   });
 
    console.log("script end");
    ```
@@ -581,7 +594,7 @@ JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务
 
 5. 下面的代码会进入 `.catch` 吗？解释一下你的答案。
 
-   ``` js
+   ```js
    new Promise(() => {
      setTimeout(() => {
        throw new Error("Whoops!");

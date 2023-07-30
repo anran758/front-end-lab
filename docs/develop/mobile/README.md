@@ -69,9 +69,9 @@ SEO 基础要素:
 
 ### rem 适配
 
-- 字体单位  
+- 字体单位
   值是根据 HTML 根元素大小而定, 同样可以作为宽度, 高度等单位.
-- 适配原理  
+- 适配原理
   将 px 替换成 rem, 动态修改 HTML 的 font-size 适配.
 - ios 6 以上和 android 2.1 以上, 基本覆盖所有流行的手机系统.
 
@@ -91,7 +91,7 @@ SEO 基础要素:
 
 浏览器默认的字体是16px。当字体设置如下时，浏览器将根据该浏览器的用户设置呈现字体：
 
-``` css
+```css
 body {
   font-size: 100%;
 }
@@ -115,30 +115,30 @@ body {
 
 如果我们需要做弹框组件的话，在 `ios` 中可能会遇到滚动穿透的问题。常见的解决方案是打开弹框时将 body 悬浮起来，关闭时将 body 恢复原状。由于悬浮后会改变页面的尺寸，因此同时给 `body` 加上 `width: 100%; height: 100%;` 的样式:
 
-``` js
+```js
 // 开启弹框前调用
 function fixedBody() {
-  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+  const scrollTop =
+    document.body.scrollTop || document.documentElement.scrollTop;
   document.body.style.cssText += `position:fixed;top:-${scrollTop}px`;
 }
 
 // 关闭弹框后调用
 function looseBody() {
   const body = document.body;
-  body.style.position = '';
+  body.style.position = "";
 
   const top = body.style.top;
   document.body.scrollTop = document.documentElement.scrollTop = -parseInt(top);
-  body.style.top = '';
+  body.style.top = "";
 }
-
 ```
 
 ### scroll-behavior
 
 当用户手动导航或者 CssOM scrolling API 触发滚动操作时，CSS 属性 [scroll-behavior](https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-behavior) 为一个滚动框指定滚动行为，其他任何的滚动，例如那些由于用户行为而产生的滚动，不受这个属性的影响。在根元素中指定这个属性时，它反而适用于视窗。
 
-``` css
+```css
 /* 平滑滚动 */
 scroll-behavior: smooth;
 ```

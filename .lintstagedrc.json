@@ -1,0 +1,7 @@
+{
+  "!*.md": "prettier --ignore-unknown --write",
+  "*.md": [
+    "markdownlint-cli2 --fix",
+    "prettier --write"
+  ]
+}
