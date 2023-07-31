@@ -187,6 +187,14 @@ hg diff -r 102 -r 101
 
 ---
 
+## 复合功能
+
+我们可以根据历史记录来筛选出当前版本哪些文件被改动了，然后可以继续该版本进行筛选需要部署的文件。
+
+``` bash
+hg status --change $(hg branch) $(hg root)/packages/faas/src/function/ | awk '{print $2}' | xargs -I {} basename {}
+```
+
 ## on-my-zsh
 
 在 on-my-zsh 中使用 hg 的扩展: [Mercurial plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/mercurial)

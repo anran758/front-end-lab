@@ -159,6 +159,11 @@ git log master..develop
 # 在 Git 中，..（两个连续的点）是一个范围操作符，用于表示两个参考点之间的范围。
 # 以上表明筛选出 v0.0.1 和 v0.0.2 区间内的 commit 记录
 
+# 显示从版本 v0.1.0 到当前最新提交之间的所有提交记录及每次提交改变了哪些文件。
+# --name-status 会在每个提交信息后显示受影响的文件的路径和这些文件的状态
+# tips: 可以结合命令行的其他文本处理的命令来做某些工作
+git log --name-status v0.1.0..HEAD
+
 # 查看上一次 commit 的修改内容
 git show
 
@@ -523,6 +528,14 @@ git shortlog -sn --no-merges
 
 ```bash
 git filter-branch --env-filter 'GIT_COMMITTER_DATE=$GIT_AUTHOR_DATE; export GIT_COMMITTER_DATE'
+```
+
+### gitattributes
+
+若你的储存库中引入了某个第三方库构建出来的 sdk 并放入了储存库中，此时语言统计可能会因为构建出来的文件而导致计算源码语言占比不准确，此时可以编写 `.gitattributes` 文件来[覆盖](https://github.com/github-linguist/linguist/blob/master/docs/overrides.md)默认的匹配规则：
+
+``` yml
+lib/sdk-v*.js linguist-generated=true
 ```
 
 ### 扩展阅读

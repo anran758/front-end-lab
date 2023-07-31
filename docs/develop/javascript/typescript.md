@@ -96,6 +96,20 @@ const todo: Readonly<Todo> = {
 todo.title = "Hello"; // Error: cannot reassign a readonly property
 ```
 
+## 特殊场景
+
+**移除函数首位参数**: 在做闭包或者柯里化时可以考虑以下做法：
+
+``` ts
+export type RemoveFirst<T extends any[]> = T extends [any, ...infer Rest]
+  ? Rest
+  : never;
+
+export type OmitFirstParamFunction<F extends (...args: any) => any> = (
+  ...args: RemoveFirst<Parameters<F>>
+) => ReturnType<F>;
+```
+
 ## 在 js 项目中使用 ts
 
 参考资料：
