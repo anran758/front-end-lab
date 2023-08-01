@@ -41,14 +41,14 @@ export const zh: SidebarConfig = {
         '/REGEXP/README.md',
         {
           text: '版本控制',
-          children: ['/git/README.md', '/hg/README.md'],
+          children: ['/git.md', '/hg.md'],
         },
       ],
     },
     {
       text: '扩展阅读',
       children: [
-        '/jira/README.md',
+        '/jira.md',
         '/further/booklist.md',
         '/further/compatibility.md',
         '/operations/README.md',
