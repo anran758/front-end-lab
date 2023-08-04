@@ -6,7 +6,7 @@ export const zh: NavbarConfig = [
     link: '/develop/',
   },
   {
-    text: '前端面试指南',
+    text: '技术要点',
     link: '/topic/',
   },
   {

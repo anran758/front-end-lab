@@ -1,4 +1,4 @@
-# CSS 运行原理
+# CSS 原理
 
 一些值得注意的 rule 或 defect:
 

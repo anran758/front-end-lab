@@ -3,7 +3,7 @@ import type { SidebarConfig } from '@vuepress/theme-default';
 export const zh: SidebarConfig = {
   '/topic/': [
     {
-      text: '前端面试指南',
+      text: '技术要点',
       children: [
         '/topic/js.md',
         '/topic/react.md',
@@ -20,13 +20,13 @@ export const zh: SidebarConfig = {
 
   '/': [
     {
-      text: 'JavaScript',
+      text: 'JavaScript 生态',
       children: [
         '/develop/javascript/README.md',
+        '/develop/javascript/typescript.md',
         '/develop/javascript/vue.md',
         '/develop/javascript/react.md',
         '/develop/javascript/nodejs.md',
-        '/develop/javascript/typescript.md',
         '/develop/javascript/mini-program.md',
         '/develop/javascript/libs.md',
       ],
@@ -34,27 +34,20 @@ export const zh: SidebarConfig = {
     {
       text: 'Web 开发',
       children: [
+        '/develop/html/README.md',
         '/develop/css/README.md',
         '/develop/css/theory.md',
-        '/develop/html/README.md',
-        '/develop/mobile/README.md',
         '/REGEXP/README.md',
-        {
-          text: '版本控制',
-          children: ['/git.md', '/hg.md'],
-        },
+        '/develop/solution.md',
       ],
     },
     {
-      text: '扩展阅读',
-      children: [
-        '/jira.md',
-        '/further/booklist.md',
-        '/further/compatibility.md',
-        '/operations/README.md',
-        '/operations/issue.md',
-        '/further/README.md',
-      ],
+      text: '项目管理',
+      children: ['/git.md', '/hg.md', '/jira.md', '/dev-ops.md'],
+    },
+    {
+      text: '更多',
+      children: ['/further/glossary.md','/further/books.md', '/further/README.md'],
     },
   ],
 };

@@ -1,5 +1,7 @@
 # Typescript
 
+着重记录 Typescript 类型相关的笔记。
+
 ## 常见内置工具泛型
 
 ### Partial\<T>
@@ -110,9 +112,9 @@ export type OmitFirstParamFunction<F extends (...args: any) => any> = (
 ) => ReturnType<F>;
 ```
 
-## 在 js 项目中使用 ts
+## 在 JavaScript 项目中使用 TypeScript
 
 参考资料：
 
-1. [jsdoc-support](https://www.typescriptlang.org/zh/play#example/jsdoc-support)
-2. [vscode](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_global-variables-and-type-checking)
+1. [jsdoc-support guide](https://www.typescriptlang.org/zh/play#example/jsdoc-support)
+2. [vscode guide](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_global-variables-and-type-checking)

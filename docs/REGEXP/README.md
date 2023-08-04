@@ -4,7 +4,7 @@ sidebarDepth: 3
 
 <!-- omit in toc -->
 
-# REGEXP
+# REGEXP (正则表达式)
 
 ![banner](./images/regex.jpg)
 

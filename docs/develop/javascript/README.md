@@ -4,7 +4,7 @@ sidebarDepth: 3
 
 <!-- omit in toc -->
 
-# JavaScript 原生语法
+# JavaScript
 
 细节和技巧的交汇，本篇笔记主要用于速查。
 
@@ -40,11 +40,12 @@ sidebarDepth: 3
   - [parseInt](#parseint)
   - [map 与 forEach 的区别](#map-与-foreach-的区别)
   - [Symbol](#symbol)
-  - [class](#class)
+  - [Class](#class)
 - [编码设计思路](#编码设计思路)
   - [限制函数参数的数量](#限制函数参数的数量)
-- [业务逻辑实现思路](#业务逻辑实现思路)
+- [业务实现思路](#业务实现思路)
   - [页面滚到指定位置显示图片(内容)](#页面滚到指定位置显示图片内容)
+  - [下载文件](#下载文件)
 
 ## 练手组件
 
@@ -724,12 +725,12 @@ parseInt("08", 10); // 8
 1. 我们使用 Symbol 主要是因为它独一无二的特性(避免覆盖)。
 2. 对于一些私有的方法，最好使用 Symbol 作为 key。但值得注意的是，用 Symbol 作为 key的话还有一个问题就是，不会被 `for` 循环、`Object.keys`等遍历返回。
 
-### class
+### Class
 
-1. class 和传统的 `prototype` 在可枚举性是不一样的，class 不通过 `this.__protp__` 上获取原型方法
-2. class 内部默认采用严格模式(意味着不能使用非严格性语法了)
-3. class 必须使用 new 来调用, 但可以直接使用类的静态方法
-4. ES6的 class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
+1. Class 和传统的 `prototype` 在可枚举性是不一样的，Class 不通过 `this.__protp__` 上获取原型方法
+2. Class 内部默认采用严格模式(意味着不能使用非严格性语法了)
+3. Class 必须使用 new 来调用, 但可以直接使用类的静态方法
+4. ES6的 Class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 `constructor` 中硬绑定(bind) this。
 
 ## 编码设计思路
 
@@ -769,7 +770,7 @@ const list = await getUserList(userId, query, {
 
 此外通过对象解构的语法会使函数调用时
 
-## 业务逻辑实现思路
+## 业务实现思路
 
 一些常见的业务逻辑的处理思路。
 
@@ -799,3 +800,9 @@ const list = await getUserList(userId, query, {
 1. 获取目标类名, 监听 window 滚动, 计算滚动的距离
 2. 计算滚动的位置 (slideInAt): window.scrollY(浏览器滚动Y轴位置) + window.innerHeight(窗口高度) - 内容(图片)宽度的一半。(也就是说当滚到指定内容一半位置的时候就添加类名)
 3. 判断滚动距离，若滚动距离 (slideInAt) 大于 内容的 offsetTop，添加类名反之移除类名
+
+### 下载文件
+
+
+
+@[code{1-23}](./utlis.js)

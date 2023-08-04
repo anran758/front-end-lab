@@ -1,4 +1,4 @@
-# HG
+# Hg
 
 Mercurial 是一种版本管理工具。将 Mercurial 安装完毕后可在命令行输入 hg (即为元素周期表中汞（Hydrargyrum）的元素符号 `Hg`) 作为调用程序的关键字。
 
