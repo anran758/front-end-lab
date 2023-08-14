@@ -8,9 +8,9 @@
 
 纯函数由三大原则构成：
 
-1. 给定相同输入，它总是返回相同的输出
-2. 过程没有副作用(side effect)
-3. 没有额外的状态依赖
+1. 给定相同输入，它总是返回相同的输出。
+2. 过程没有副作用 (side effect)。
+3. 没有额外的状态依赖。
 
 ## 谈谈对 MVVM 的理解
 
@@ -77,8 +77,70 @@ curry(add)(1)(2)(3);
 
 ## 节流与防抖
 
-- 函数节流(Throttle)是：在固定的时间内触发事件，每隔 n 秒只触发一次 (例子: 移动端下拉页面)
-- 函数防抖是：当你频繁触发后，n 秒内只执行一次 (例子: window.resize 触发事件，通过防抖只更新最后一次事件)
+**节流与防抖**都是用于性能优化的技术，用于控制某些代码执行的频率。
+
+**节流(Throttling)**
+
+确保函数**在指定的时间段**内**最多只执行一次**。
+
+这适用于需要频繁触发但又要求限制执行次数的场景。例如，调整窗口大小（resize）或滚动（scroll）时，可能只需要每 100 毫秒更新一次布局或执行检查，避免过多的计算和 DOM 操作。
+
+``` js
+function throttle(func, wait) {
+  let timerId;
+  let lastCallTime;
+
+  return (...args) => {
+    const now = Date.now();
+    if (!lastCallTime) {
+      // 初次调用，立即执行
+      func(...args);
+      lastCallTime = now;
+    } else {
+      // 清除上一个计划的调用
+      clearTimeout(timerId);
+
+      // 计算距离上次调用的时间
+      const timeSinceLastCall = now - lastCallTime;
+
+      // 设置一个新的定时器，延迟执行直到达到等待时间
+      timerId = setTimeout(() => {
+        func(...args);
+        lastCallTime = now;
+      }, wait - timeSinceLastCall);
+    }
+  }
+}
+
+
+window.addEventListener('resize', throttle(function() {
+  console.log('Resizing...');
+}, 1000));
+```
+
+**防抖(Debouncing)**
+
+确保函数只在**最后一次事件触发后**的**一定延迟内**执行。
+
+这适用于诸如搜索框输入这类事件：用户停止输入后才实际执行搜索，减少不必要的查询请求或处理。
+
+``` js
+function debounce(func, delay) {
+  let debounceTimer;
+  return function() {
+    const context = this;
+    const args = arguments;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  }
+}
+
+// 使用例子
+const input = document.querySelector('input');
+input.addEventListener('keyup', debounce(function() {
+  console.log('Input value:', this.value);
+}, 500));
+```
 
 ## 数组去重
 
@@ -366,7 +428,9 @@ A: `try...catch` 是同步代码，而 `Promise`、`setTimeout` 等语句是异�
 
 若数组中有 `Promise` 类型，当所有 `Promise` 的状态都变为成功后，就会进入 `Promise.all` 的 then 方法中，若有一项 `Promise` 状态变为 `reject`，则 `Promise.all` 的状态变为 `reject`。
 
-## Promise 限流并发?
+## ⭐️ Promise 限制并发
+
+实现一个批量请求函数, 能够限制并发量：
 
 ```js
 function parallelLimit(tasks, { concurrency = 10 }) {
@@ -471,6 +535,8 @@ JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务
 
 - [深入：微任务与 Javascript 运行时环境](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88event_loops%EF%BC%89)
 - [并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
+
+---
 
 ## 计算题
 
@@ -613,3 +679,13 @@ TypeScript 是 JavaScript 的超集，在 JavaScript 的基础上引入了类型
 - 提供类型系统：增强了代码的可读性和可维护性，在编译阶段就能发现大部分错误
 - 支持 ES6
 - 强大的 IDE 支持: 类型检测、语法提示
+
+## sleep 函数如何实现？
+
+通过 `Promise` 和 `setTimeout` 实现延迟执行。
+
+``` js
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+```
