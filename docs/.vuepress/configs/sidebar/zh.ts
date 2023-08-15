@@ -5,11 +5,12 @@ export const zh: SidebarConfig = {
     {
       text: '技术要点',
       children: [
+        '/topic/html.md',
+        '/topic/css.md',
         '/topic/js.md',
         '/topic/react.md',
         '/topic/vue.md',
-        '/topic/css.md',
-        '/topic/html.md',
+        '/topic/browser.md',
         '/topic/webpack.md',
         '/topic/performance.md',
         '/topic/network.md',

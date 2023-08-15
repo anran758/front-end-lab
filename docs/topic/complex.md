@@ -1,6 +1,6 @@
 # 综合篇
 
-### npm install
+### npm install 做了什么
 
 `npm install` 命令是用于安装项目中的所有依赖，其主要工作步骤如下：
 
