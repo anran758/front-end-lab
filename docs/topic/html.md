@@ -12,15 +12,21 @@ SEO 需要使用具有语义化的标签，避免使用 div 与 span 这种无�
 6. aside
 7. footer
 
+---
+
 ### HTML 的 img 标签为什么要添加 alt 属性呢？
 
 `<img>` 标签的 `alt` 元素用于在图像无法显示、网络错误或用户禁用图像显示时，代替图像显示在浏览器中的文本内容。添加该属性能增强网站的可访问性。
+
+---
 
 ### 元素的 alt 和 title 有什么区别？
 
 `alt` 元素常用于图片显示失败后作为备用的文本内容，而 `title` 的值一般作为提示条 (tooltip) 呈现给用户，在光标于图片上停下后显示出来。
 
 `title` 属性不是 `alt` 属性可接受的替代品。并且，避免将 `alt` 属性的值直接复制到同一幅图片的 `title` 属性上。这样可能会让一些屏幕阅读器把同一段描述读两遍，造成一定程度上的困扰。
+
+---
 
 ### HTML 的 a 标签属性 rel='nofollow' 有什么作用？
 
@@ -32,6 +38,8 @@ SEO 需要使用具有语义化的标签，避免使用 div 与 span 这种无�
 2. 为了防止付费链接影响 Google 的搜索结果排名。
 3. 引导爬虫抓取有效的页面，避免爬虫抓取一些无意义的页面，影响爬虫抓取的效率。
 
+---
+
 ### 简述超链接 target 属性的取值和作用
 
 该属性指定在何处显示链接的资源。 取值为标签（tab），窗口（window），或框架（iframe）等浏览上下文的名称或其他关键词。以下关键字具有特殊的意义：
@@ -40,6 +48,8 @@ SEO 需要使用具有语义化的标签，避免使用 div 与 span 这种无�
 - `_blank`: 在新窗口打开
 - `_parent`: 加载响应到当前框架的 `HTML4` 父框架或当前的 `HTML5` 浏览上下文的父浏览上下文。如果没有 `parent` 框架或者浏览上下文，此选项的行为方式与 `_self` 相同。
 - `_top`: 加载响应进入顶层浏览上下文（即，浏览上下文，它是当前的一个的祖先，并且没有 parent）。如果没有 parent 框架或者浏览上下文，此选项的行为方式相同 `_self`
+
+---
 
 ### 说说你对 target="\_blank" 的理解？有啥安全性问题？如何防范？
 
@@ -59,6 +69,8 @@ SEO 需要使用具有语义化的标签，避免使用 div 与 span 这种无�
 - [Target="\_blank" - the most underestimated vulnerability ever](https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/)
 - [Link with target="\_blank" and rel="noopener noreferrer" still vulnerable?](https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable)
 
+---
+
 ### 把带 css 链接的 link 标签放在 head 标签内，而带 js 链接的 script 标签尽量靠近 body, 为什么会有这种提议？如果必须不这样做，该如何处理？
 
 HTML 解析是自上向下解析的。若在 `<head>` 中解析到 `<link>` 标签的话，可以一边加载样式表渲染样式，一边继续向下解析。
@@ -66,6 +78,8 @@ HTML 解析是自上向下解析的。若在 `<head>` 中解析到 `<link>` 标�
 若解析到 `<script>` 标签的话，由于 `<script>` 有可能会修改 DOM 的结构(比如 `document.write()`)，因此会停止渲染，先将 `<script>` 加载完毕并执行后，才继续向下解析。在这阻塞的过程中，用户所看到的页面将是一片空白，会影响用户体验。所以早期最佳实践就是将 `<script>` 放到 `</body>` 之前，这样就不会影响页面的渲染了。
 
 HTML5 为 `<script>` 引入了 `async` 属性，添加该属性后可使脚本请求并行加载，让尽快解析和执行而不阻塞渲染。常见的应用场景就是没有 `DOM` 依赖关系或是没有跟其他脚本有依赖关系的脚本，如页面统计等。
+
+---
 
 ### label 标签有什么用？
 

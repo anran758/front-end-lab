@@ -22,27 +22,29 @@ footer: GPL Licensed | Copyright © 2019-present anran758
 
 **开发语言相关的笔记**
 
-- [:memo: HTML](./develop/html/README.md)
-- [:truck: CSS 实践笔记](./develop/css/README.md)
-- [:construction: CSS 理论笔记](./develop/css/theory.md)
+- [HTML](./develop/html/README.md)
+- [CSS 实践笔记](./develop/css/README.md)
+- [CSS 理论笔记](./develop/css/theory.md)
 - [JavaScript](./develop/javascript/README.md)
 - [TypeScript](./develop/javascript/typescript.md)
-- [RegExp](./REGEXP)
+- [React](./develop/javascript/react.md)
+- [Vuejs](./develop/javascript/vue.md)
+- [RegExp (正则表达式)](./REGEXP)
 
-**版本控制**
+**项目管理**
 
 - [Git 使用指南](./git)
 - [Hg 使用指南](./hg)
+- [Jira 项目管理](./jira)
 
 **解决方案**
 
 - [Mobile 开发](./develop/mobile/README.md)
-- [开发环境与运维](./operations/README.md)
+- [DevOps](./operations/README.md)
 
 **其他**
 
-- [:art: Jira 项目管理](./jira)
-- [:art: 前端老生常谈的话题](./topic/README.md)
+- [前端技术要点](./topic/README.md)
 - [扩展阅读](./further)
   - [术语表](./further/glossary.md)
   - [web 书单](./further/booklist.md)
