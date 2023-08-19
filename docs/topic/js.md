@@ -4,7 +4,9 @@
 
 [[toc]]
 
-## 什么是纯函数
+## 基础概念
+
+### 什么是纯函数
 
 纯函数由三大原则构成：
 
@@ -12,7 +14,7 @@
 2. 过程没有副作用 (side effect)。
 3. 没有额外的状态依赖。
 
-## 谈谈对 MVVM 的理解
+### 谈谈对 MVVM 的理解
 
 MVVM (Model–view–viewmodel) 是一种软件架构模式。它主要由以下四点组成。
 
@@ -25,7 +27,7 @@ MVVM 架构的主要优点是实现了视图和模型之间的松耦合和数据
 
 ![mvvm design](./images/mvvm-design.png)
 
-## 什么是闭包？列举闭包的应用场景
+### 什么是闭包？列举闭包的应用场景
 
 闭包主要指**一个函数及其周围封闭词法环境中的引用构成闭包**，这也是一种语言特性。从实践的角度来看，满足以下两个条件的才能称为闭包:
 
@@ -50,7 +52,7 @@ showName();
 调用 `createName` 后返回了一个函数并赋值给了 `showName` 变量，同时 `createName` 的上下文被销毁。
 此时再调用 `showName` 函数时，尽管 `createName` 的上下文已经被销毁了，但 `showName` 中还能获取 `createName` 的内部变量与形参，这就是闭包的一种应用。
 
-## 什么是科里化？
+### 什么是科里化？
 
 柯里化是一种将**使用多个参数的函数**转换成一系列**使用一个参数的函数**的技术，本质上也是利用了闭包的特性。科里化可以做到**参数复用**和**延迟执行**的效果。
 
@@ -75,7 +77,7 @@ curry(add)(1)(2)(3);
 // 6
 ```
 
-## 节流与防抖
+### 节流与防抖
 
 **节流与防抖**都是用于性能优化的技术，用于控制某些代码执行的频率。
 
@@ -142,7 +144,92 @@ input.addEventListener('keyup', debounce(function() {
 }, 500));
 ```
 
-## 数组去重
+### 什么是事件循环?
+
+JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务都要排队。但有一些任务耗时很长，js 引擎不想因为这些耗时长的任务而阻塞后面任务的处理。因此将这些任务分为**同步任务**与**异步任务**。
+
+**事件循环 (Event-Loop)** 负责执行代码、收集和处理事件以及执行队列中的子任务，JavaScript 中的并发模型就是基于事件循环的。事件循环中的任务又区分宏任务 (Task) 与微任务 (MicroTask)：
+
+- **宏任务 (Task)**: script(整体代码), DOM 事件触发的回调, setTimeout, setInterval, setImmediate(node独有), I/O, UI rendering
+- **微任务 (MicroTask)**: process.nextTick (node独有), Promises, Object.observe(废弃), MutationObserver
+
+两种任务各有一个任务队列，每当队首的任务被完整的执行完毕后才会执行下一个任务。它的执行顺序为:
+
+当执行栈空闲时，JavaScript 会先执行微任务队列中的任务，直到微任务队列中的所有任务都执行完后才会执行宏任务队列中的任务。换句话说，微任务队列就像一个优先级更高的一等公民；宏任务队列就像一个优先级较低的二等工具。
+
+**参考资料**
+
+- [深入：微任务与 Javascript 运行时环境](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88event_loops%EF%BC%89)
+- [并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
+
+---
+
+### `setTimeout` 是否有误差？若有，产生误差的原因是什么？
+
+零延迟并不意味着回调会立即执行，其等待的时间取决于队列里待处理的消息数量。
+
+以下程序依次输出的信息是:
+
+```js
+(function () {
+  console.log("这是开始");
+
+  setTimeout(function cb() {
+    console.log("这是来自第一个回调的消息");
+  });
+
+  console.log("这是一条消息");
+
+  setTimeout(function cb1() {
+    console.log("这是来自第二个回调的消息");
+  }, 0);
+
+  console.log("这是结束");
+})();
+
+// "这是开始"
+// "这是一条消息"
+// "这是结束"
+// "这是来自第一个回调的消息"
+// "这是来自第二个回调的消息"
+```
+
+### Fetch 与 XHR 的区别?
+
+- `Fetch` 是基于 `Promise` 实现的, 相比 `XHR(XMLHttpRequest)` 的语法更加简洁。
+- `Fetch` 发送请求时默认不带 `cookie` 的, 需要设置 `credentials` 的配置项
+- 当接收到一个代表错误的 `HTTP` 状态码时, 从 `fetch()` 返回的 `Promise` 不会被标记为 `reject`, 即使响应的 `HTTP` 状态码是 `404` 或 `500`。仅当网络故障时或请求被阻止时, 才会标记为 `reject`。
+- `Fetch` 不支持超时控制与检测请求进度
+
+### bind、call、apply 的区别?
+
+调用 bind 方法后返回一个新函数，新函数的 this 将被指向调用 bind 方法时的第一个参数。而其余参数将作为新函数的参数，供调用时使用
+
+call 与 apply 第一个参数也是指定的 this 值，其余的不同是接受参数的不同。call 接受**参数列表**，apply 接收的是**参数数组**。两者相比，call 的性能会更好。
+
+### 如何检测变量的类型(尽可能多，描述可能出现的问题)?
+
+主要使用 `typeof`、`instanceof`、`Object.prototype.toString.call`。还可以使用 `Array.isArray` 方法判断是否是数组，`Number.isNaN` 是否是 `NaN` 等。
+
+`typeof` 可以用于 `String`、`Number`、`Symbol`、`Boolean`、`undefined` 等类型，但用于 `null`、`Array` 类型的话会展示为 `object` 类型。
+
+`instanceof` 则是通过原型链的方式来判断对象类型。但它的局限性在于只要被操作的变量原型有上有该类型的值。它主要缺点是不能检测 `number`, `boolean`, `string` 字面量的类型。
+
+`Object.prototype.toString.call` 可以精准的判断类型的值，主要的问题是写法繁琐，可以基于此函数做一层封装:
+
+```js
+function getBaseType(target) {
+  const typeStr = Object.prototype.toString.call(target).toLocaleLowerCase();
+
+  return typeStr.slice(8, -1);
+}
+```
+
+---
+
+## 数组
+
+### 数组去重
 
 1. 利用 `Set` 结构不可重复的特性
 
@@ -211,7 +298,7 @@ input.addEventListener('keyup', debounce(function() {
    > 优点: 语法简洁，使用方便，能满足所有去重需求
    > 缺点: 需要额外引入第三方库
 
-## 数组多层扁平化
+### 数组多层扁平化
 
 1. `Array.flat`: 数组的 `flat` 方法接受一个数值参数，该参数是指定需要扁平化的层数。若想将数组子项中所有数组进行扁平化，可以传入 `Infinity`。
 
@@ -255,7 +342,7 @@ input.addEventListener('keyup', debounce(function() {
 
    递归实现有很多思路，`reduce` 循环合并是一种，`for` 循环也是一种。它们只是实现细节不同，但递归思想是相通的。
 
-## 深拷贝数组和对象
+### 深拷贝数组和对象
 
 1. 可以先通过 `JSON.stringify` 将数据转为 JSON 字符串，再通过 `JSON.parse` 对 JSON 字符串进行解析，可以得到全新的数组/对象。
 
@@ -266,48 +353,21 @@ input.addEventListener('keyup', debounce(function() {
 2. 可以自己定义递归函数，参数是传入数组或对象。再遍历形参的属性或下标，如果遍历到的类型也是引用类型那就进行浅拷贝，再进行递归，直至全部属性都遍历完毕。
 3. 通过第三方类库实现，如 `lodash` 的 `deepClone` 就可以实现深拷贝。
 
-## 数组里面有 10 万个数据，取第 1 个数据与第 10 万个数据的时间相差多少？
+### 数组里面有 10 万个数据，取第 1 个数据与第 10 万个数据的时间相差多少？
 
 **A:** 取元素的复杂度为 `O(1)`, 消耗时间几乎一致，差异可以忽略不计。
 
-## 数组的 map 和 forEach 有什么区别？
+### 数组的 map 和 forEach 有什么区别？
 
 `map` 将每一个元素传入函数调用后，会将函数的返回值存入新数组中，因此可以对数组做链式处理。而 `forEach` 只是将元素传入给函数调用，不会讲返回值存入新数组中。
 
 可以参考这个回答: [js es6 中如何比较深刻的理解 map、for、for of？](https://www.zhihu.com/question/278332594/answer/886056097)
 
-## Fetch 与 XHR 的区别?
+---
 
-- `Fetch` 是基于 `Promise` 实现的, 相比 `XHR(XMLHttpRequest)` 的语法更加简洁。
-- `Fetch` 发送请求时默认不带 `cookie` 的, 需要设置 `credentials` 的配置项
-- 当接收到一个代表错误的 `HTTP` 状态码时, 从 `fetch()` 返回的 `Promise` 不会被标记为 `reject`, 即使响应的 `HTTP` 状态码是 `404` 或 `500`。仅当网络故障时或请求被阻止时, 才会标记为 `reject`。
-- `Fetch` 不支持超时控制与检测请求进度
+## 原型链
 
-## bind、call、apply 的区别?
-
-调用 bind 方法后返回一个新函数，新函数的 this 将被指向调用 bind 方法时的第一个参数。而其余参数将作为新函数的参数，供调用时使用
-
-call 与 apply 第一个参数也是指定的 this 值，其余的不同是接受参数的不同。call 接受**参数列表**，apply 接收的是**参数数组**。两者相比，call 的性能会更好。
-
-## 如何检测变量的类型(尽可能多，描述可能出现的问题)?
-
-主要使用 `typeof`、`instanceof`、`Object.prototype.toString.call`。还可以使用 `Array.isArray` 方法判断是否是数组，`Number.isNaN` 是否是 `NaN` 等。
-
-`typeof` 可以用于 `String`、`Number`、`Symbol`、`Boolean`、`undefined` 等类型，但用于 `null`、`Array` 类型的话会展示为 `object` 类型。
-
-`instanceof` 则是通过原型链的方式来判断对象类型。但它的局限性在于只要被操作的变量原型有上有该类型的值。它主要缺点是不能检测 `number`, `boolean`, `string` 字面量的类型。
-
-`Object.prototype.toString.call` 可以精准的判断类型的值，主要的问题是写法繁琐，可以基于此函数做一层封装:
-
-```js
-function getBaseType(target) {
-  const typeStr = Object.prototype.toString.call(target).toLocaleLowerCase();
-
-  return typeStr.slice(8, -1);
-}
-```
-
-## 简述一下原型链
+### 简述一下原型链
 
 原型链是实例对象与原型之间的连接，每个对象都有一个特殊的 `[[Prototype]]` 属性，它指向原型对象引用。当访问对象的某个属性时，首先会在对象自身查找这个属性。
 
@@ -315,7 +375,7 @@ function getBaseType(target) {
 
 这一个通过 `[[Prototype]]` 链相连的机制被为原型链。
 
-## prototype、**proto** 和 constructor 的关系
+### prototype、 **proto** 和 constructor 的关系
 
 **简单版**:
 
@@ -386,7 +446,11 @@ console.log(
 
 :::
 
-## 使用过 ES6 吗？你常用的有哪一些？
+---
+
+## ES6
+
+### 使用过 ES6 吗？你常用的有哪一些？
 
 - let/const 自身特性与块级作用域
 - 模板字符串
@@ -396,7 +460,7 @@ console.log(
 - Promise
 - async/await
 
-## 简述一下 Promise 的特点
+### 简述一下 Promise 的特点
 
 - 主要用于异步计算.
 - Promise 对象有三种状态，分别是 pending（进行中）、fulfilled（已成功）和 rejected（已失败），状态一旦改变就不会再变了。
@@ -404,7 +468,7 @@ console.log(
 - 可以在对象之间传递和操作 Promise，帮助我们处理队列。
 - 链式写法更简洁，可以避免回调地狱
 
-## Promise 怎么做异常处理?
+### Promise 怎么做异常处理?
 
 1. Promise 最末尾添加 catch() 是统一 catch 错误
 2. Promise.then 的第二个参数捕获错误
@@ -415,12 +479,12 @@ console.log(
 
 A: `try...catch` 是同步代码，而 `Promise`、`setTimeout` 等语句是异步代码，因此当异步代码发生错误时，`try...catch` 代码块已经执行完毕了，因此被抛出错误。
 
-## Promise 串联加载?
+### Promise 如何串联加载?
 
 1. 通过 async await ，等异步函数执行完毕取出 Promise 中的值
 2. 通过 then 链式传递串联
 
-## Promise 并行加载?
+### Promise 如何并行加载?
 
 可以使用 `Promise.all`。
 
@@ -428,7 +492,7 @@ A: `try...catch` 是同步代码，而 `Promise`、`setTimeout` 等语句是异�
 
 若数组中有 `Promise` 类型，当所有 `Promise` 的状态都变为成功后，就会进入 `Promise.all` 的 then 方法中，若有一项 `Promise` 状态变为 `reject`，则 `Promise.all` 的状态变为 `reject`。
 
-## ⭐️ Promise 限制并发
+### Promise 如何限制并发？⭐️
 
 实现一个批量请求函数, 能够限制并发量：
 
@@ -480,185 +544,217 @@ function parallelLimit(tasks, { concurrency = 10 }) {
 }
 ```
 
-## async/await?
+### async/await 是什么
 
 - async/await 是最直接的同步写法，在也没有回调函数
 - async/await 使用了 Promise，并没有和 Promise 产生冲突
 - 但还是改变不了 js 单线程、异步的本质
 
-## 事件循环 (event-loop)
+---
 
-**什么是事件循环?**
+## 实践
 
-JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务都要排队。但有一些任务耗时很长，js 引擎不想因为这些耗时长的任务而阻塞后面任务的处理。因此将这些任务分为**同步任务**与**异步任务**。
+### sleep 函数如何实现？
 
-事件循环负责执行代码、收集和处理事件以及执行队列中的子任务，JavaScript 中的并发模型就是基于事件循环的。事件循环中的任务又区分宏任务 (Task) 与微任务 (MicroTask)：
+通过 `Promise` 和 `setTimeout` 实现延迟执行。
 
-- **宏任务 (Task)**: script(整体代码), DOM 事件触发的回调, setTimeout, setInterval, setImmediate(node独有), I/O, UI rendering
-- **微任务 (MicroTask)**: process.nextTick (node独有), Promises, Object.observe(废弃), MutationObserver
-
-两种任务各有一个任务队列，每当队首的任务被完整的执行完毕后才会执行下一个任务。它的执行顺序为:
-
-当执行栈空闲时，JavaScript 会先执行微任务队列中的任务，直到微任务队列中的所有任务都执行完后才会执行宏任务队列中的任务。换句话说，微任务队列就像一个优先级更高的一等公民；宏任务队列就像一个优先级较低的二等工具。
-
-**`setTimeout` 是否有误差？若有，产生误差的原因是什么？**
-
-零延迟并不意味着回调会立即执行，其等待的时间取决于队列里待处理的消息数量。
-
-以下程序依次输出的信息是:
-
-```js
-(function () {
-  console.log("这是开始");
-
-  setTimeout(function cb() {
-    console.log("这是来自第一个回调的消息");
-  });
-
-  console.log("这是一条消息");
-
-  setTimeout(function cb1() {
-    console.log("这是来自第二个回调的消息");
-  }, 0);
-
-  console.log("这是结束");
-})();
-
-// "这是开始"
-// "这是一条消息"
-// "这是结束"
-// "这是来自第一个回调的消息"
-// "这是来自第二个回调的消息"
+``` js
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 ```
-
-**参考资料**
-
-- [深入：微任务与 Javascript 运行时环境](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88event_loops%EF%BC%89)
-- [并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
 
 ---
 
+## 综合
+
+### 为什么要引入 TypeScript，引入的好处是什么？
+
+TypeScript 是 JavaScript 的超集，在 JavaScript 的基础上引入了类型约束。
+
+- 提供类型系统：增强了代码的可读性和可维护性，在编译阶段就能发现大部分错误
+- 支持 ES6
+- 强大的 IDE 支持: 类型检测、语法提示
+
+#### WebComponent 是什么
+
+Web Components 是一种能够创建自定义 HTML 元素的技术。这些元素和你平时用的 HTML 标签一样，但是可以包含你自己定义的行为和样式。
+这样做的好处是可以创建一些可重用的组件，比如一个特别的按钮或者一个导航栏，然后在不同的网页或项目中使用它们，而不用每次都重写相同的代码。
+
+使用步骤大致如下：
+
+1. 定义一个类：这个类继承自 HTMLElement，你可以在这里定义组件的功能和行为。
+2. 注册自定义元素：使用 `customElements.define` 方法来注册新元素，此时需要给它定义一个标签名（比如 `<my-button>`）。
+3. 使用组件
+
+``` js
+class WelcomeMessage extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `<p>欢迎访问我们的网站!</p>`;
+  }
+}
+
+customElements.define('welcome-message', WelcomeMessage);
+```
+
 ## 计算题
 
-1. 按顺序写出程序的输出结果:
+**【题 1】按顺序写出程序的输出结果:**
 
-   > 考察 this 问题
+> 考察 this 问题
+
+```js
+var length = 10;
+
+function fn() {
+ alert(this.length);
+}
+var obj = {
+ length: 5,
+ callApi: function (fn) {
+   fn();
+   arguments[0]();
+ },
+};
+
+obj.callApi(fn, 3);
+```
+
+该段代码依次输出 `10`、`2`。**函数的调用方式决定了 `this` 的值**。第二个函数调用是通过 `arguments` 调用，那么 `this` 自然指向 `arguments`，那 `arguments` 的实参有 `fn` 跟 `3` 两个参数，因此输出 `2`。
+
+---
+
+**【题 2】列出下面代码的不足及优化方案**
+
+::: tip
+考察事件代理与 nodeList
+:::
+
+```js
+var node = document.querySelectorAll("ul");
+
+for (var i = 0; i < node.length; i++) {
+  node[i].addEventListener("click", function () {
+    alert("click" + i);
+  });
+}
+```
+
+解：
+
+1. 闭包中的变量引用错误。
+
+   在循环中使用 `var i` 会导致每个事件处理器中的 `i` 都引用同一个变量，该变量在循环结束时的值是 `node.length`。因此，无论点击哪个 `<ul>` 元素，`alert` 显示的都是最后的 `i` 值，而不是在添加监听器时的 `i` 值。
+
+   优化方案：使用 `let` 声明变量以获取块级作用域。这样每次循环 `i` 都是一个新的变量。
+
+2. 当 `ul` 元素较多时，为每个元素添加 `click` 可能会有性能问题。
+
+   优化方案：可以在父元素上添加一个事件监听器来捕获所有 `<ul>` 的点击事件，这样可以减少 DOM 操作和内存消耗。
 
    ```js
-   var length = 10;
-
-   function fn() {
-     alert(this.length);
-   }
-   var obj = {
-     length: 5,
-     callApi: function (fn) {
-       fn();
-       arguments[0]();
-     },
-   };
-
-   obj.callApi(fn, 3);
+   // 假设所有的 ul 元素都是某个父容器的子元素
+   document.getElementById('parent-container').addEventListener('click', function(e) {
+     if (e.target.tagName === 'ul') {
+       let index = Array.prototype.indexOf.call(this.children, e.target);
+       alert("click" + index);
+     }
+   });
    ```
 
-   该段代码依次输出 `10`、`2`。**函数的调用方式决定了 `this` 的值**。第二个函数调用是通过 `arguments` 调用，那么 `this` 自然指向 `arguments`，那 `arguments` 的实参有 `fn` 跟 `3` 两个参数，因此输出 `2`。
+---
 
-2. 列出下面代码的不足及优化方案
+**【题 3】改造下面的代码，使之输出 0 ~ 9，写出你能想到的所有解法。**
 
-   > 考察事件代理与 nodeList
+```js
+for (var i = 0; i < 10; i++) {
+ setTimeout(() => {
+   console.log(i);
+ }, 1000);
+}
+```
 
-   ```js
-   var node = document.querySelectorAll("ul");
-   for (var i = 0; i < node.length; i++) {
-     node[i].addEventListener("click", function () {
-       alert("click" + i);
-     });
-   }
-   ```
+**解法 1：** `var` 改为 `let`。
 
-3. 改造下面的代码，使之输出 0 ~ 9，写出你能想到的所有解法。
+**解法 2：** 循环体内的代码改为立即执行函数，利用闭包来修复。
 
    ```js
    for (var i = 0; i < 10; i++) {
-     setTimeout(() => {
-       console.log(i);
-     }, 1000);
+    ((j) => {
+      setTimeout(() => {
+        console.log(j);
+      }, j * 1000);
+    })(i);
    }
    ```
 
-   1. `var` 改为 `let`
-   2. 循环体内的代码改为立即执行函数，利用闭包来修复
+**解法 3：** 将循环体内的代码封装到新函数中，在循环体中调用该函数并传入 `i`。
 
-      ```js
-      for (var i = 0; i < 10; i++) {
-        ((j) => {
-          setTimeout(() => {
-            console.log(j);
-          }, j * 1000);
-        })(i);
-      }
-      ```
+**解法 4：** 将 `i` 作为 `setTimeout` 内部函数的额外参数传入。
 
-   3. 将循环体内的代码封装到新函数中，在循环体中调用该函数并传入 `i`
-   4. 将 `i` 作为 `setTimeout` 内部函数的额外参数传入
+   ```js
+   for (var i = 0; i < 10; i++) {
+    setTimeout(
+      (j) => {
+        console.log(j);
+      },
+      1000,
+      i,
+    );
+   }
+   ```
 
-      ```js
-      for (var i = 0; i < 10; i++) {
-        setTimeout(
-          (j) => {
-            console.log(j);
-          },
-          1000,
-          i,
-        );
-      }
-      ```
+---
 
-4. 请写出下面代码的运行结果
+**【题 4】请写出下面代码的运行结果**
 
    ```js
    async function async1() {
-     console.log("async1 start");
-     await async2();
-     console.log("async1 end");
+    console.log("async1 start");
+    await async2();
+    console.log("async1 end");
    }
 
    async function async2() {
-     console.log("async2");
+    console.log("async2");
    }
 
    console.log("script start");
 
    setTimeout(() => {
-     console.log("setTimeout");
+    console.log("setTimeout");
    }, 0);
 
    async1();
 
    new Promise((reslove) => {
-     console.log("promise1");
-     reslove();
+    console.log("promise1");
+    reslove();
    }).then(() => {
-     console.log("promise2");
+    console.log("promise2");
    });
 
    console.log("script end");
    ```
 
-   依次输出的是:
+依次输出的是:
 
-   - script start
-   - async1 start
-   - async2
-   - promise1
-   - script end
-   - async1 end
-   - promise2
-   - setTimeout
+``` md
+script start
+async1 start
+async2
+promise1
+script end
+async1 end
+promise2
+setTimeout
+```
 
-   [![event loop](../_images/event_loop.gif)](https://bytefish.medium.com/the-execution-order-of-asynchronous-functions-in-the-event-loop-ff641dae4f09)
+[![event loop](../_images/event_loop.gif)](https://bytefish.medium.com/the-execution-order-of-asynchronous-functions-in-the-event-loop-ff641dae4f09)
 
-5. 下面的代码会进入 `.catch` 吗？解释一下你的答案。
+---
+
+**【题 5】下面的代码会进入 `.catch` 吗？解释一下你的答案。**
 
    ```js
    new Promise(() => {
@@ -668,24 +764,6 @@ JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务
    }).catch(() => console.log("catched!"));
    ```
 
-   A: 不会进入 `.catch`, 因为 `try...catch` 无法捕获异步代码的错误。
+解：
 
----
-
-## 为什么要引入 TypeScript，引入的好处是什么？
-
-TypeScript 是 JavaScript 的超集，在 JavaScript 的基础上引入了类型约束。
-
-- 提供类型系统：增强了代码的可读性和可维护性，在编译阶段就能发现大部分错误
-- 支持 ES6
-- 强大的 IDE 支持: 类型检测、语法提示
-
-## sleep 函数如何实现？
-
-通过 `Promise` 和 `setTimeout` 实现延迟执行。
-
-``` js
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-```
+不会进入 `.catch`, 因为 `try...catch` 无法捕获异步代码的错误。
