@@ -10,7 +10,7 @@
     "prepare": "husky || true",
     "lint:md": "markdownlint-cli2 \"**/*.md\" && prettier -c \"**/*.md\"",
     "fix:md": "markdownlint-cli2 --fix \"**/*.md\" && prettier -w \"**/*.md\"",
-    "start": "vuepress dev docs",
+    "start": "vuepress dev docs --port 3001",
     "build": "vuepress build docs"
   },
   "repository": {
