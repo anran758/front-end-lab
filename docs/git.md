@@ -236,7 +236,7 @@ git push -u origin master
 
 分支合并时提供的 `--ff`, `--no-ff`, `--ff-only` 选项的不同会导致分支线可能会有不同：
 
-![分支线变动](../_images/git-merge-difference.png)
+![分支线变动](./_images/git-merge-difference.png)
 
 其中 `ff` 为 `fast-forward` 的缩写，merge 代码时 git 默认会采用 `--ff` 的选项。
 该选项的意思为：如果 master 没有分歧，git 不会创建新的提交，而是将 master 指向 feature 分支的最新提交，在 fast-forward 合并中不会有任何 "合并提交"。
