@@ -8,6 +8,7 @@ export const zh: SidebarConfig = {
         '/topic/html.md',
         '/topic/css.md',
         '/topic/js.md',
+        '/topic/nodejs.md',
         '/topic/react.md',
         '/topic/vue.md',
         '/topic/browser.md',

@@ -1,5 +1,29 @@
 # Node.js 与服务端
 
+### 简述一下 Nodejs 的异步 IO 模型
+
+1. **事件驱动：** 基于事件循环的模型，通过监听和响应事件实现异步编程。
+2. **非阻塞 I/O：** 采用非阻塞的 I/O 操作方式，使得可以在进行 I/O 操作的同时执行其他代码。
+3. **回调函数：** 大部分异步操作通过回调函数来处理结果，实现了异步编程的主要机制。
+4. **事件触发器：** 提供事件触发器类来处理事件的监听和触发，用于模块之间的解耦和通信。
+5. **单线程：** 尽管是单线程的，但通过事件循环和异步 I/O 模型，能够充分利用多核 CPU，实现高并发和高吞吐量的处理能力。
+
+---
+
+### 什么是 libuv?
+
+libuv 是一个用于抽象非阻塞 I/O 操作的 C 库。他有以下几个特点：
+
+- 集成了事件驱动的异步I/O模型。
+- 它允许同时使用CPU和其他资源，同时仍然执行I/O操作，从而实现资源和网络的高效利用。
+- 它促进了事件驱动的方法，其中使用基于回调的通知来执行 I/O 和其他活动。
+
+**示例：** 假设我们有一个程序正在执行查询数据库的操作，而数据库查询可能需要一些时间来完成。如果程序在等待查询结果的同时被阻塞，那么 CPU 就会处于空闲状态，无法处理其他任务，从而造成系统资源的浪费。
+
+![libuv](../_images/libuv.jpeg)
+
+---
+
 ### 并发量大怎么解决?
 
 **1.从代码层面进行优化**
@@ -41,6 +65,8 @@
 
 比方说，在电商平台的大促销期间，为防止系统崩溃，可以限制每秒处理的用户请求数量，确保所有用户都能获得一致的服务体验。
 
+---
+
 ### 如果你的 node 半夜服务挂了如何启动?
 
 通过守护进程管理 Node.js 应用，在 Node.js 中最常用的守护进程是 `pm2`:
@@ -55,4 +81,82 @@ pm2 start app.js
 
 ``` bash
 pm2 startup
+```
+
+---
+
+### koa 的洋葱模型是怎么实现的
+
+在 Koa 中，中间件就像洋葱的层层皮一样。当一个请求到达时，它首先经过最外层的中间件，然后通过 `next` 函数逐层向里传递，直到达到最内层。
+
+每一层中间件都是独立的功能、可以做一些工作，然后再把请求传递给下一层。当请求处理完成后，Koa 会逆向执行这些中间件，从内层到外层，以便完成一些清理工作。
+
+``` js
+const Koa = require('koa');
+const app = new Koa();
+
+// 第一个中间件
+app.use(async (ctx, next) => {
+    console.log('Middleware 1 - Start');
+    await next(); // 调用下一个中间件
+    console.log('Middleware 1 - End');
+});
+
+// 第二个中间件
+app.use(async (ctx, next) => {
+    console.log('Middleware 2 - Start');
+    await next(); // 调用下一个中间件
+    console.log('Middleware 2 - End');
+});
+
+// 路由处理函数
+app.use(async ctx => {
+    console.log('Route Handler');
+    ctx.body = 'Hello Koa!';
+});
+
+// 启动应用程序
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+```
+
+---
+
+### 在没有async await 的时候, koa是怎么实现的洋葱模型?
+
+Koa 可以基于回调的方式来实现中间件的执行和控制流程：
+
+``` js
+const Koa = require('koa');
+const app = new Koa();
+
+// 第一个中间件
+app.use((ctx, next) => {
+    console.log('Middleware 1 - Start');
+    // 调用下一个中间件函数
+    return next(() => {
+        console.log('Middleware 1 - End');
+    });
+});
+
+// 第二个中间件
+app.use((ctx, next) => {
+    console.log('Middleware 2 - Start');
+    // 调用下一个中间件函数
+    return next(() => {
+        console.log('Middleware 2 - End');
+    });
+});
+
+// 路由处理函数
+app.use(ctx => {
+    console.log('Route Handler');
+    ctx.body = 'Hello Koa!';
+});
+
+// 启动应用程序
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
 ```
