@@ -14,11 +14,11 @@ Vue 的生命周期可以分为**挂载阶段**、**更新阶段**、**销毁阶
 - **更新阶段**: `beforeUpdate`、`updated`。
 - **销毁阶段**: `beforeUnmount`、`unmounted`。
 
-![Vue 生命周期](./images/vue-lifecycle-v3.svg)
+![Vue 生命周期](./images/Vue-lifecycle-v3.svg)
 
 | 生命周期      | 描述                                                                                                                        | 使用场景                                                       |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| beforeCreate  | 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。此处无法修改 vue 实例的 `data` 和 `methods` | 由于触发的时机较早，可以处理 window.title 等外部逻辑。         |
+| beforeCreate  | 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。此处无法修改 Vue 实例的 `data` 和 `methods` | 由于触发的时机较早，可以处理 window.title 等外部逻辑。         |
 | create        | 组件实例已经完全创建，属性也绑定，但真实 dom 还没有生成，`vm.$el` 还不可用                                                  | 可以做一些初始化工作                                           |
 | beforeMount   | 在挂载开始之前被调用：相关的 render 函数首次被调用。                                                                        | 略                                                             |
 | mounted       | 实例被挂载后调用，此时可以访问 `vm.$el`、可以操作 DOM                                                                       | fetch data、DOM 操作等                                         |
@@ -72,7 +72,7 @@ Vue 的生命周期可以分为**挂载阶段**、**更新阶段**、**销毁阶
 
 ### 应该在哪个生命周期中请求数据？
 
-放在 `mounted`。由于 js 是单线程，在 ajax 中异步获取到的数据 vue 并不能立即赋值到 data 中，同时还会使逻辑变得更加混乱。
+放在 `mounted`。由于 js 是单线程，在 ajax 中异步获取到的数据 Vue 并不能立即赋值到 data 中，同时还会使逻辑变得更加混乱。
 
 ### beforeUnmount 一般的用途
 
@@ -80,17 +80,17 @@ Vue 的生命周期可以分为**挂载阶段**、**更新阶段**、**销毁阶
 - 消除定时器
 - 解绑自定义的 DOM 事件监听器
 
-## vue 使用
+## Vue 使用
 
-### vue 组件通信
+### Vue 组件通信
 
 - 父组件给子组件传入 `props`并监听子组件对应的事件，子组件通过 `emit` 触发事件。
 - event-bus
-- vuex 等状态管理器
+- Vuex 等状态管理器
 
 ### computed 的特点是什么？
 
-计算的值会被缓存，若 data 不会重新计算，进而提升 vue 的性能。
+计算的值会被缓存，若 data 不会重新计算，进而提升 Vue 的性能。
 
 ### computed 和 watch 的区别和运用的场景？
 
@@ -207,7 +207,7 @@ Vue.directive('focus', {
 
 它通过钩子函数 `activated` 和 `deactivated` 来管理组件的显示与隐藏。当需要刷新缓存的组件时，可以通过更改组件的 `key` 或直接清理 `keep-alive` 的缓存来实现。
 
-``` vue
+``` Vue
 <keep-alive>
   <component :is="currentComponent" :key="componentKey"></component>
 </keep-alive>
@@ -217,9 +217,29 @@ Vue.directive('focus', {
 
 假设我们有一个电商应用，用户频繁切换查看不同产品的详情页。如果每次切换都重新加载组件，会消耗大量资源并降低用户体验。使用 `keep-alive` 可以保持用户的滚动位置和之前的交互状态，当用户返回之前查看的页面时，页面可以迅速加载且状态一致，从而提高了用户体验和应用的性能。
 
-## vue 原理
+### Vue 的响应式开发比命令式有什么好处
 
-### vue 的双向绑定原理是什么？
+Vue 的响应式编程模型相比于命令式编程的主要好处包括：
+
+1. **代码更简洁**：自动数据绑定减少了手动更新 UI 的代码。
+2. **提高开发效率**：开发者可以专注于业务逻辑，而不是如何操作 DOM。
+3. **维护更容易**：集中的数据管理和自动化的 UI 更新简化了维护工作。
+4. **数据和视图一致性**：确保数据的变化即时反映到 UI 上，减少错误和不一致的情况。
+
+### Vue3 添加了哪些新特性?
+
+主要的新特性包括：
+
+1. **Composition API**：提供了一种新的方式来组织和重用组件逻辑，有助于更好地利用 TypeScript 和提高代码的可维护性。
+2. **性能提升**：通过重写虚拟 DOM 和使用 Proxy 改进响应性系统，Vue 3 在渲染和更新速度上都有显著提升。
+3. **更好的 TypeScript 支持**：Vue 3 从设计之初就更好地支持 TypeScript，为使用 TypeScript 的项目带来了更强大的类型推导和错误检测能力。
+4. **新的内置组件**：如 Teleport 和 Suspense，提供了新的模式来处理模板渲染和异步组件。
+5. **多根组件**：Vue 3 允许组件有多个根节点，简化了组件的设计。
+6. **改进的响应性系统**：使用 ES6 的 Proxy 特性，提供更有效的响应性跟踪和更好的性能。
+
+## Vue 原理
+
+### Vue 的双向绑定原理是什么？
 
 Vue.js 的双向绑定机制在 Vue 2.x 中通过 `Object.defineProperty` 实现，而在 Vue 3.x 中则是通过 `Proxy`（）来对数据对象进行劫持。
 
@@ -269,7 +289,7 @@ Vue 3.x 改进了响应式系统，采用了 ES6 的 `Proxy` 来替代 `Object.d
 
 ---
 
-### vue 是怎么解析 template 的? template 会变成什么?
+### Vue 是怎么解析 template 的? template 会变成什么?
 
 模板解析的步骤简单的来说：
 
@@ -313,7 +333,7 @@ function render() {
 - 使用 `template`: 这是一种声明式语法，使用起来有直接编写 HTML 风格，看上去更简单直观。
 - 使用 `render` 函数: 这种一个纯 JavaScript 函数，它可以让开发者通过编程的方式生成虚拟 DOM，从而控制组件的输出。`render` 函数相比模板语法会更加灵活。
 
-`template` 模板语法只是 `vue` 提供的语法糖，最终也会通过解析器(parser)转换为 `render` 函数。因此实际使用时会根据场景去选择使用。
+`template` 模板语法只是 `Vue` 提供的语法糖，最终也会通过解析器(parser)转换为 `render` 函数。因此实际使用时会根据场景去选择使用。
 
 ---
 
@@ -321,7 +341,7 @@ function render() {
 
 虚拟 DOM 主要是指 `vdom`, 它用 js 生成 DOM 树来模拟 DOM 结构，计算出最小的变更来操作 dom。
 
-由于真实 DOM 的操作会非常耗费性能，因此 vue 引入了虚拟 DOM 来检查对 DOM 的操作。引入虚拟 DOM 后，开发方式也发生了改变。以前需要手动操作 DOM，现在只需要关心数据的变化，由数据驱动视图。
+由于真实 DOM 的操作会非常耗费性能，因此 Vue 引入了虚拟 DOM 来检查对 DOM 的操作。引入虚拟 DOM 后，开发方式也发生了改变。以前需要手动操作 DOM，现在只需要关心数据的变化，由数据驱动视图。
 
 虚拟 DOM 计算最小的变更是通过 `diff` 算法来实现的，它也是 `vdom` 中最核心、最关键的部分。我们常说的 `vdom diff` 其实就是 `diff` 新旧树的变化。
 
@@ -335,7 +355,7 @@ function render() {
 
 在 `O(n^3)` 的基础上使用了同层比较策略，因此优化为 `O(n)`.
 
-### vue 如何监听 data 的每个属性变化？
+### Vue 如何监听 data 的每个属性变化？
 
 Vue.js 提供了 `$watch` 方法来监听数据对象的变化，可以用它来监听每个属性的变化。
 
@@ -361,17 +381,17 @@ Vue.js 实现数据双向绑定的原理是通过 `Object.defineProperty()` 方�
   let childOb = !shallow && observe(val) // observe 功能为监测数据的变化
 ```
 
-在 vue3 中使用了 `Proxy` 代替 `Object.defineProperty`，`Proxy` 可以原生支持监听数组变化。
+在 Vue3 中使用了 `Proxy` 代替 `Object.defineProperty`，`Proxy` 可以原生支持监听数组变化。
 
-### vue 模板引擎如何解析？指令如何处理？如何渲染为 HTML
+### Vue 模板引擎如何解析？指令如何处理？如何渲染为 HTML
 
-- 在开发环境下使用 webpack 的 vue-loader 编译模板
+- 在开发环境下使用 webpack 的 Vue-loader 编译模板
 - 先将模板编译为 `render` 函数，执行 `render` 函数会返回 `vnoe`
 - 基于 `vnode` 再执行 patch 和 diff
 
-## vue-router
+## Vue-router
 
-### vue-router 的 hash 模式和 history 模式有什么区别？
+### Vue-router 的 hash 模式和 history 模式有什么区别？
 
 `hash` 模式: 使用 URL 的 `hash` 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。它的特点如下:
 
@@ -383,20 +403,20 @@ Vue.js 实现数据双向绑定的原理是通过 `Object.defineProperty()` 方�
 - 使用该模式的页面像正常的 URL
 - 需要服务端支持，若服务端没有正确配置，用户一刷新页面就会返回 404
 
-### vue router 的 beforeEach 和 afterEach 一般用法/使用场景?
+### Vue router 的 beforeEach 和 afterEach 一般用法/使用场景?
 
 `beforeEach` 可以从路由 `meta` 中获取元数据来处理一些东西。比如在 `router meta` 中设置 `title` 的信息。还可以用于用户权限校验，当用户没有足够的权限访问目标页面的话，那就阻止页面跳转。
 
 `afterEach` 当页面切换后可以在此钩子将页面的滚动距离滚回顶部。
 
-## vuex
+## Vuex
 
-### vue 中的 action 和 mutation 的区别
+### Vue 中的 action 和 mutation 的区别
 
 1. action 可以处理异步，mutation 不可以
 2. mutation 一般做原子操作，action 则可以整合多个 mutation
 
-## vue 性能优化
+## Vue 性能优化
 
 在使用层面上需要注意以下几点:
 
@@ -410,11 +430,11 @@ Vue.js 实现数据双向绑定的原理是通过 `Object.defineProperty()` 方�
 
 ## Vue 与 React 的区别
 
-> 如果候选者 vue 和 react 都开发过项目的话，面试官可能会问两者的差别，技术选型的理由
+> 如果候选者 Vue 和 react 都开发过项目的话，面试官可能会问两者的差别，技术选型的理由
 
 1. 在语法层面上 React 使用 JSX，Vue 使用模板。
-2. 在编程思想上，React 是函数式编程，vue 是声明式编程
-3. React 相比 vue 会更精简，同时学习成本会更高一些。vue 的语法糖和封装程度比 React 高。比如 vue 原生的 `watch`、`keep-alive` 等功能都需要 React 用户自己去实现，而 `vue` 可以只关注使用。
+2. 在编程思想上，React 是函数式编程，Vue 是声明式编程
+3. React 相比 Vue 会更精简，同时学习成本会更高一些。Vue 的语法糖和封装程度比 React 高。比如 Vue 原生的 `watch`、`keep-alive` 等功能都需要 React 用户自己去实现，而 `Vue` 可以只关注使用。
 
 <!--
 1. react 生态丰富，只提供了基础的架构

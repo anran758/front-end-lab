@@ -313,22 +313,36 @@ const newList = list.map(addId);
 
 ---
 
-### 可以描述一下 React Diffing 算法吗？
+### React Diffing 算法概述
 
-### React 的 Diffing 算法
+React 使用名为 `Reconciliation` 的算法来优化虚拟DOM的更新过程。算法的核心在于比较两个根元素及其子元素的变化，具体流程如下：
 
-React 使用 `Reconciliation` 算法，该算法首先比较两个根元素的变化:
+1. **节点类型变化**：
+   - 当节点类型发生变化时，React 将卸载旧树并构建新树。例如，从 `<div>` 变为 `<section>` 会导致节点及其子节点的重新渲染。
 
-1. **节点类型变化**：当节点类型变化时，React 将卸载旧树并构建新树。例如，如果父节点从 `<div>` 变为 `<section>`，则它及其子节点都会被重新渲染。
-2. **DOM 节点类型相同**：如果 DOM 节点类型未改变，React 会保留该节点并仅更新发生变化的属性。
-3. **组件类型相同**：当组件更新且类型相同时，React 会保持组件实例不变，更新其 props 并调用 `static getDerivedStateFromProps()` 和 `componentDidUpdate()`。然后调用 `render` 方法，如果 `render` 方法中包含子组件，将递归触发 Diff。
-4. **列表节点变化，检查列表项是否有 key**：
-   1. **未设置 key**：Diff 算法会逐个对比节点。
-      - 如果在列表尾部添加元素，仅会添加新元素。
-      - 如果新元素位于列表中间，Diff 到该位置时会判断节点已变化，从此处开始将丢弃所有后续节点并重新渲染。
-   2. **设置了 key**：React 可以通过 key 匹配新旧节点间的关系，快速完成 Diff 过程，避免不必要的节点重渲染。
+2. **DOM 节点类型相同**：
+   - 如果 DOM 节点类型未改变，React 仅更新发生变化的属性，保留原节点。
 
-![react reconciliation](./images/reconciliation.png)
+3. **组件类型相同**：
+   - 对于组件，如果类型相同，React 将保持组件实例不变，更新 props，并调用生命周期方法 `static getDerivedStateFromProps()` 和 `componentDidUpdate()`。之后会调用 `render` 方法，如果包含子组件，则递归触发 Diff。
+
+4. **列表节点变化检查**：
+   - **未设置 key**：逐个对比节点，新元素若在列表中间出现，则从该位置起丢弃所有后续节点并重新渲染。
+   - **设置了 key**：通过 key 快速匹配新旧节点间的关系，有效避免不必要的节点重渲染。
+
+![React Reconciliation](./images/reconciliation.png)
+
+---
+
+### React Diff 算法的时间复杂度和空间复杂度
+
+React 的 Diff 算法设计用于高效比较两棵虚拟DOM树，以最小化更新实际 DOM 的成本。算法的复杂度如下：
+
+- **时间复杂度**：`O(n)`，其中 `n` 是树中的节点数。React 通过限制只在同一层级节点间进行比较，从而实现线性时间复杂度。
+- **空间复杂度**：`O(n)`，主要存储维护旧树和新树的节点信息及比较过程中需要的额外空间。
+
+React 的 Diff 算法通过假设和优化（如同层比较、类型检查）显著提高了界面更新的效率。
+
 
 ---
 
