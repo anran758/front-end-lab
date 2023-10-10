@@ -128,13 +128,6 @@
   "search-replace": {
     "rules": [
       {
-        "name": "curly-double-quotes",
-        "message": "Don't use curly double quotes",
-        "searchPattern": "/“|”/g",
-        "replace": "\"",
-        "searchScope": "text",
-      },
-      {
         "name": "curly-single-quotes",
         "message": "Don't use curly single quotes",
         "searchPattern": "/‘|’/g",

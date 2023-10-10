@@ -146,27 +146,53 @@ input.addEventListener('keyup', debounce(function() {
 
 ### 什么是事件循环?
 
-JavaScript 是一个单线程非阻塞的语言，单线程意味着所有任务都要排队。但有一些任务耗时很长，js 引擎不想因为这些耗时长的任务而阻塞后面任务的处理。因此将这些任务分为**同步任务**与**异步任务**。
+JavaScript 中的事件循环是一个执行模型，它允许 JavaScript 引擎处理多个事件，尽管它是单线程的。这个模型的关键组成部分包括调用栈、任务队列、微任务队列和事件循环本身。
 
-**事件循环 (Event-Loop)** 负责执行代码、收集和处理事件以及执行队列中的子任务，JavaScript 中的并发模型就是基于事件循环的。事件循环中的任务又区分宏任务 (Task) 与微任务 (MicroTask)：
+1. **调用栈**：这是一个用于存储代码执行期间所有函数调用的数据结构。JavaScript 引擎一次处理调用栈中的一个函数。
+2. **任务队列**：异步事件（如用户交互、定时器、网络请求等）的回调函数会被添加到这个队列中。如果调用栈为空，事件循环会从任务队列中取出任务来执行。
+3. **微任务队列**：专门用于处理微任务（如 Promise 回调）。每次执行宏任务后，JavaScript 引擎都会检查并执行微任务队列中的所有微任务，然后再继续下一个宏任务。
 
-- **宏任务 (Task)**: script(整体代码), DOM 事件触发的回调, setTimeout, setInterval, setImmediate(node独有), I/O, UI rendering
-- **微任务 (MicroTask)**: process.nextTick (node独有), Promises, Object.observe(废弃), MutationObserver
+其中 JavaScript 的代码会被区分成**同步任务**和**异步任务**。
 
-两种任务各有一个任务队列，每当队首的任务被完整的执行完毕后才会执行下一个任务。它的执行顺序为:
+- **同步任务**在当前执行环境中立即执行，它们直接在调用栈中按顺序处理。执行栈按照后进先出（LIFO）的原则工作。
+- **异步任务**不会立即执行，它们会被区分为**宏任务**与**微任务**，然后分入不同的队列中，等待事件循环的处理。
 
-当执行栈空闲时，JavaScript 会先执行微任务队列中的任务，直到微任务队列中的所有任务都执行完后才会执行宏任务队列中的任务。换句话说，微任务队列就像一个优先级更高的一等公民；宏任务队列就像一个优先级较低的二等工具。
+**宏任务**
 
-**参考资料**
+宏任务通常是由宿主环境（如浏览器或Node.js）提供的 API 创建的。它们包括：
 
-- [深入：微任务与 Javascript 运行时环境](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88event_loops%EF%BC%89)
-- [并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
+- `setTimeout`, `setInterval` 的回调。
+- `setImmediate`（仅在 Node.js 中）。
+- I/O 操作的回调（如文件读写、网络请求等）。
+- 用户交互事件（如点击、滚动等）。
+- `requestAnimationFrame`（主要用于浏览器的动画）。
 
----
+**微任务**
+
+微任务通常是由 JavaScript 语言特性创建的，它们在当前宏任务完成后立即执行，但在下一个宏任务开始前执行。微任务包括：
+
+- `Promise.then`, `Promise.catch`, `Promise.finally` 的回调。
+- Web Workers 中的 `queueMicrotask()` 方法创建的任务。
+- `MutationObserver` 的回调。
+- Node.js 环境的 `process.nextTick`。
+
+**事件循环的执行步骤如下：**
+
+1. **执行栈处理**：首先执行**当前宏任务**中的所有代码。宏任务可能是初始的全局脚本，或者是由事件、定时器等触发的回调函数。
+2. **微任务处理**：当前宏任务在执行栈中的代码执行完毕后，即使还有其他宏任务在队列中等待，JavaScript 引擎也会优先处理所有微任务。
+3. **宏任务队列检查**：微任务全部执行完毕后，如果执行栈为空，事件循环将会检查宏任务队列。如果宏任务队列中还有任务，事件循环将取出下一个宏任务推入执行栈进行处理，重复上述流程。
+
+![event loop](./images/event-loop.png)
+
+### 宏任务和微任务的区分是为了做什么? 它们的优先级?
+
+**宏任务**和**微任务**之间的区分主要是为了管理异步事件的执行顺序和响应速度，确保关键操作快速且按顺序执行，从而提高应用性能并防止 UI 阻塞。也就是说，微任务用于处理紧急的更新，而宏任务则用于较大的、不那么紧迫的任务。
+
+在每个宏任务执行完后，事件循环会处理所有的微任务，之后才会开始下一个宏任务。这意味着微任务总是在当前宏任务之后和下一个宏任务之前执行。
 
 ### `setTimeout` 是否有误差？若有，产生误差的原因是什么？
 
-零延迟并不意味着回调会立即执行，其等待的时间取决于队列里待处理的消息数量。
+零延迟并不意味着回调会立即执行，其等待的时间取决于微任务队列里待处理的消息数量。
 
 以下程序依次输出的信息是:
 
@@ -448,6 +474,45 @@ console.log(
 
 ---
 
+### 你觉得 js 里 this 的设计怎么样? 有没有什么缺点啥的
+
+JavaScript 中的 `this` 早期设计存在一些缺陷，主要体现在行为不直观和使用复杂的额问题。
+
+1. `this` 的值**取决于函数的调用方式**，而非定义方式。这在多种调用场景（如事件处理器、setTimeout等）中容易导致混淆和错误。
+2. 代码维护困难：在旧的 JavaScript 函数中，尤其是那些作为回调函数使用时，this 可能不指向预期对象，经常需要借助变量（如 `that` 或 `self`）或者 `.bind()` 方法来解决。
+3. 性能问题：频繁使用 `.bind()` 可以确保 `this` 指向正确，但可能会引入性能问题，因为每次 `.bind()` 都会创建一个新的函数实例。
+
+为了解决这些问题，ES6 引入了箭头函数，它提供了对 `this` 行为的改进：
+
+箭头函数不自己绑定 `this`，它们会捕获其所在上下文的 `this` 值作为自己的 `this` 值。这使得箭头函数特别适合用来编写那些需要自身上下文与外围代码相同的函数，例如回调函数和事件处理器。
+
+``` js
+class Logger {
+    constructor() {
+        this.logLevel = "info";
+    }
+
+    display() {
+        setTimeout(() => {
+            console.log(this.logLevel); // 正确引用了构造函数中的 this
+        }, 1000);
+    }
+}
+
+new Logger().display();
+
+```
+
+### 导致 js 里 this 指向混乱的原因是什么?
+
+`this` 在 JavaScript 中的行为是由其调用方式决定的，这是指向混乱的根本原因。
+
+### function 和箭头函数的定义有什么区别? 导致了在 this 指向这块表现不同
+
+传统的 `function` 在 JavaScript 中为 `this` 提供动态绑定，而箭头函数则从其定义时的上下文继承 `this`，提供更一致和可预测的行为。
+
+---
+
 ## ES6
 
 ### 使用过 ES6 吗？你常用的有哪一些？
@@ -552,6 +617,61 @@ function parallelLimit(tasks, { concurrency = 10 }) {
 
 ---
 
+### 装饰器是什么
+
+在JavaScript中，装饰器（Decorators）是一种特殊类型的声明，它们**可以被附加到类声明、方法、访问器、属性或参数上**。装饰器使用 `@expression` 这种形式，其中 `expression` 必须求值为一个函数，这个函数会在运行时被调用，被装饰的声明的信息作为参数传入。
+
+装饰器目前仍是一个提案，并不是正式的ECMAScript标准的一部分。如果要在项目中使用装饰器，通常需要通过Babel这样的转译器来实现。
+
+装饰器的用途包括：
+
+- 拦截和修改类的构造函数。
+- 添加、修改或替换方法和访问器的定义。
+- 修改或替换属性。
+- 参数验证。
+- 增加类、方法、属性的元数据。
+
+Angular 开发中广泛使用了装饰器，可以通过装饰器定义组件、模块、服务与指令等。
+
+### generator 是如何做到中断和恢复的
+
+`generator` 函数的中断和恢复功能主要是通过**状态机**来实现的，即函数封装了多个内部状态。它根据yield表达式来改变函数的执行流程。
+
+当一个 `generator` 函数执行到 `yield` 表达式时，它会暂停执行并返回一个值（`yield` 后表达式的值）。此时，函数的状态（包括变量的值和执行位置）被保留下来。当外部代码再次调用 `generator` 的 `next()` 方法时，函数会从上次暂停的地方恢复执行，直到遇到下一个 `yield`，或者函数结束。
+
+这种机制允许 generator 函数在执行过程中进行“中断”，并在适当的时候“恢复”，非常适合用于需要异步处理或协程的场景。
+
+``` js
+function* numberGenerator() {
+    console.log('开始执行'); // 这里会输出 "开始执行"
+    yield 1;
+    console.log('恢复执行'); // 继续执行时会输出 "恢复执行"
+    yield 2;
+    console.log('完成执行'); // 最终会输出 "完成执行"
+}
+
+// 创建generator对象
+const generator = numberGenerator();
+
+// 直接打印每次调用 next() 的返回值
+console.log('输出: ', generator.next());
+console.log('输出: ', generator.next());
+console.log('输出: ', generator.next());
+
+// 开始执行
+// 输出: { value: 1, done: false }
+// 恢复执行
+// 输出: { value: 2, done: false }
+// 完成执行
+// 输出: { value: undefined, done: true }
+```
+
+Generators 主要用途集中在：
+
+1. **惰性求值**：适合按需处理大数据集或无限序列，避免一次性加载全部数据。
+2. **复杂控制流**：优于管理需要精确暂停和恢复的复杂状态或算法。
+3. **自定义迭代器**：允许精细调整迭代过程，适合特殊迭代需求。
+
 ## 实践
 
 ### sleep 函数如何实现？
@@ -564,6 +684,21 @@ function sleep(ms) {
 }
 ```
 
+### js 超过 Number 最大值的数怎么处理?
+
+在 JavaScript 中处理超过 `Number.MAX_VALUE` 的数值时，传统的 `Number` 类型在达到这一限制（约为`1.7976931348623157e+308`）后无法准确表示更大的数值。这种情况下，可以考虑以下方法：
+
+1. **使用`BigInt`类型**：
+   `BigInt`是一个比较新的JavaScript类型，可以用来安全地处理任意大小的整数。`BigInt`可以通过在整数末尾添加`n`来创建，或者使用`BigInt()`构造函数。例如：
+
+   ```javascript
+   let bigIntNumber = BigInt("1234567890123456789012345678901234567890");
+   ```
+
+   缺点是 `BigInt` 只能用来表示整数，不支持小数。
+
+2. 将 `Number` 类型转为 `String` 类型存储并通过自定义函数控制计算是一种更通用的方案，通常需要结合第三方库一起处理。
+
 ---
 
 ## 综合
@@ -575,6 +710,37 @@ TypeScript 是 JavaScript 的超集，在 JavaScript 的基础上引入了类型
 - 提供类型系统：增强了代码的可读性和可维护性，在编译阶段就能发现大部分错误
 - 支持 ES6
 - 强大的 IDE 支持: 类型检测、语法提示
+
+### TypeScript is 这个关键字是做什么的?
+
+`is` 关键字用于类型谓词，主要用于用户自定义的类型保护函数中，帮助 TypeScript 编译器在编译时确认变量的具体类型。
+
+例如，通过一个函数检查对象是否为某一类型，然后在这个确认的基础上安全地使用该对象的特定属性或方法。
+
+``` ts
+interface Bird {
+  fly: () => void;
+}
+
+interface Fish {
+  swim: () => void;
+}
+
+function isBird(animal: Bird | Fish): animal is Bird {
+  return (animal as Bird).fly !== undefined;
+}
+
+function move(animal: Bird | Fish): void {
+  if (isBird(animal)) {
+    // TypeScript 现在知道 animal 是 Bird 类型
+    animal.fly();
+  } else {
+    // TypeScript 现在知道 animal 是 Fish 类型
+    animal.swim();
+  }
+}
+
+```
 
 #### WebComponent 是什么
 
