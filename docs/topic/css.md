@@ -1,22 +1,46 @@
-# CSS 篇
+# CSS
 
 ## 列举水平垂直居中的实现
 
-[CSS 居中元素实现示例](../develop/css/README.md#layout-%e5%b1%85%e4%b8%ad%e5%85%83%e7%b4%a0)
+当然，这里是几种常见的CSS方法来实现水平和垂直居中：
 
-## BFC
+**1. Flexbox**
 
-### 什么是 BFC？
+```css
+display: flex;
+justify-content: center;
+align-items: center;
+```
+
+**2. Grid**
+
+```css
+display: grid;
+place-items: center;
+```
+
+**3. CSS定位 + transform**
+
+```css
+position: relative;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+```
+
+这些方法分别利用了 Flexbox、Grid 布局以及定位和变换（Transform）技术，都可以有效实现内容的水平和垂直居中。
+
+## 什么是 BFC？BFC 有什么用?
 
 块格式化上下文（Block Formatting Context，BFC）是 Web 页面的可视 CSS 渲染的一部分，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。
 
-### BFC 有什么用?
+**BFC 的作用：**
 
 - 包含内部浮动: 让浮动内容和周围的内容等高
 - 排除外部浮动
 - 阻止外边距重叠: 创建两个 BFC 阻止 margin 重叠
 
-## z-index
+## z-index (层叠等级)
 
 ### 请描述一下网页的层叠等级 (z-index)？
 
@@ -112,7 +136,7 @@ CSS 选择器优先级:
 - 多个选择器则叠加权重，如: `.list > .item {...}` 的权重为 `10 + 0 + 10 = 20`。
 - `style` 内联样式默认覆盖外部样式表的样式。除非内联样式设置了普通样式，而外部样式表的样式使用了 `!important` 规则的情况就无法覆盖。但也可以在 `style` 设置的样式属性中加上 `!important` 规则，叠加后权重就更高了(一般不推荐使用 `!important`)
 
-## 用纯CSS创建一个三角形的原理是什么？
+## 用纯 CSS 创建一个三角形的原理是什么？
 
 采用的是均分原理,把矩形分为4等份,这4等份其实都是边框。核心就是给块级元素设置宽高为 0, 设置边框的宽度, 不需要显示的边框使用透明色; 例如：
 

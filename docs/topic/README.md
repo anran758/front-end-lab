@@ -1,15 +1,19 @@
 # 前端技术要点指南
 
-📚 整理一些在前端领域中常讨论的话题，对基础知识抽查补漏。
+📚 整理一些在前端领域中常讨论的话题，通过问答的形式对开发知识进行巩固。
 
-- [JavaScript](./js)
-- [React](./react.md#React)
-- [Redux](./react.md#Redux)
-- [Vue](./vue.md)
-- [Vuex](./vue.md#vuex)
-- [CSS](./css)
-- [HTML](./html)
-- [Webpack](./webpack.md)
-- [Web 应用优化篇](./performance.md)
-- [网络原理篇](./network.md)
-- [综合篇](./complex.md)
+- **Web 技术栈**
+  - [HTML](./html)
+  - [CSS](./css)
+  - [JavaScript](./js)
+  - [服务端开发与 Node.js](./nodejs.md)
+- **开发框架与工具**
+  - [React](./react.md)
+  - [Vue.js](./vue.md)
+  - [Webpack](./webpack.md)
+- **原理解析**
+  - [数据结构](./DSA.md)
+  - [浏览器原理](./browser.md)
+  - [应用优化](./performance.md)
+  - [网络原理](./network.md)
+- [综合型问题](./complex.md)

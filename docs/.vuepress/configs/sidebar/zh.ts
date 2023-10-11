@@ -3,21 +3,27 @@ import type { SidebarConfig } from '@vuepress/theme-default';
 export const zh: SidebarConfig = {
   '/topic/': [
     {
-      text: '技术要点',
+      text: 'Web 技术栈',
       children: [
         '/topic/html.md',
         '/topic/css.md',
         '/topic/js.md',
         '/topic/nodejs.md',
-        '/topic/react.md',
-        '/topic/vue.md',
-        '/topic/browser.md',
-        '/topic/webpack.md',
-        '/topic/performance.md',
-        '/topic/network.md',
-        '/topic/complex.md',
       ],
     },
+    {
+      text: '开发框架与工具',
+      children: ['/topic/react.md', '/topic/vue.md', '/topic/webpack.md'],
+    },
+    {
+      text: '优化与原理解析',
+      children: [
+        '/topic/browser.md',
+        '/topic/performance.md',
+        '/topic/network.md',
+      ],
+    },
+    '/topic/complex.md',
   ],
 
   '/': [
@@ -49,7 +55,11 @@ export const zh: SidebarConfig = {
     },
     {
       text: '更多',
-      children: ['/further/glossary.md','/further/books.md', '/further/README.md'],
+      children: [
+        '/further/glossary.md',
+        '/further/books.md',
+        '/further/README.md',
+      ],
     },
   ],
 };

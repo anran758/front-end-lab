@@ -1,4 +1,4 @@
-# JavaScript 篇
+# JavaScript
 
 **目录**
 
@@ -740,27 +740,6 @@ function move(animal: Bird | Fish): void {
   }
 }
 
-```
-
-#### WebComponent 是什么
-
-Web Components 是一种能够创建自定义 HTML 元素的技术。这些元素和你平时用的 HTML 标签一样，但是可以包含你自己定义的行为和样式。
-这样做的好处是可以创建一些可重用的组件，比如一个特别的按钮或者一个导航栏，然后在不同的网页或项目中使用它们，而不用每次都重写相同的代码。
-
-使用步骤大致如下：
-
-1. 定义一个类：这个类继承自 HTMLElement，你可以在这里定义组件的功能和行为。
-2. 注册自定义元素：使用 `customElements.define` 方法来注册新元素，此时需要给它定义一个标签名（比如 `<my-button>`）。
-3. 使用组件
-
-``` js
-class WelcomeMessage extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<p>欢迎访问我们的网站!</p>`;
-  }
-}
-
-customElements.define('welcome-message', WelcomeMessage);
 ```
 
 ## 计算题

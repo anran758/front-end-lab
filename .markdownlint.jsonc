@@ -28,9 +28,7 @@
   // Consecutive Notes/Callouts currently don't conform with this rule
   "no-blanks-blockquote": false,
   // Force ordered numbering to catch accidental list ending from indenting
-  "ol-prefix": {
-    "style": "ordered",
-  },
+  "ol-prefix": false,
   "no-inline-html": {
     "allowed_elements": [
       "a",
