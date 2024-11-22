@@ -1,0 +1,1 @@
+import{_ as o,o as t,c as _,v as n}from"./app.7e3542fd.js";const d={},r={class:"hide-outbound-wrap"};function s(e,a){return t(),_("div",r,[n(e.$slots,"default")])}var c=o(d,[["render",s],["__file","hide-outbound.vue"]]);export{c as default};

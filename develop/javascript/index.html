@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.43">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="icon" href="/icons/logo.svg"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3eaf7c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png"><link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c"><meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png"><meta name="msapplication-TileColor" content="#000000"><title>JavaScript | Web 实验室</title><meta name="description" content="Web 开发笔记与解决方案">
+    <link rel="modulepreload" href="/front-end-lab/assets/app.7e3542fd.js"><link rel="modulepreload" href="/front-end-lab/assets/index.html.1e2fa0a1.js"><link rel="modulepreload" href="/front-end-lab/assets/index.html.a02bc52a.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.e7c7dfe3.js"><link rel="prefetch" href="/front-end-lab/assets/dev-ops.html.d9074cc4.js"><link rel="prefetch" href="/front-end-lab/assets/git.html.27d18005.js"><link rel="prefetch" href="/front-end-lab/assets/hg.html.ff79f0d9.js"><link rel="prefetch" href="/front-end-lab/assets/jira.html.0c237662.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.810ddd82.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.6469d7a5.js"><link rel="prefetch" href="/front-end-lab/assets/solution.html.5afd378d.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.c71521b0.js"><link rel="prefetch" href="/front-end-lab/assets/books.html.6327d865.js"><link rel="prefetch" href="/front-end-lab/assets/en.html.e7167ed6.js"><link rel="prefetch" href="/front-end-lab/assets/glossary.html.fd131189.js"><link rel="prefetch" href="/front-end-lab/assets/links.html.8332b8c7.js"><link rel="prefetch" href="/front-end-lab/assets/DSA.html.57440d21.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.02a2d028.js"><link rel="prefetch" href="/front-end-lab/assets/browser.html.84c949f3.js"><link rel="prefetch" href="/front-end-lab/assets/complex.html.570ca66e.js"><link rel="prefetch" href="/front-end-lab/assets/css.html.6b4f2d56.js"><link rel="prefetch" href="/front-end-lab/assets/html.html.57c9ce1f.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.38c63a70.js"><link rel="prefetch" href="/front-end-lab/assets/network.html.da899413.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.51a3b96e.js"><link rel="prefetch" href="/front-end-lab/assets/performance.html.63cc74aa.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.36044864.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.ec50a369.js"><link rel="prefetch" href="/front-end-lab/assets/webpack.html.bb5e5214.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.fd680d38.js"><link rel="prefetch" href="/front-end-lab/assets/theory.html.dbb9f444.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.f8b80dc7.js"><link rel="prefetch" href="/front-end-lab/assets/libs.html.6613741a.js"><link rel="prefetch" href="/front-end-lab/assets/mini-program.html.362a7b5e.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.bced9d1d.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.be089b0c.js"><link rel="prefetch" href="/front-end-lab/assets/typescript.html.b81e302c.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.6c6310d6.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.01b7fc15.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.e6c64a8b.js"><link rel="prefetch" href="/front-end-lab/assets/404.html.93146c89.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.40f4d2a6.js"><link rel="prefetch" href="/front-end-lab/assets/dev-ops.html.c0960052.js"><link rel="prefetch" href="/front-end-lab/assets/git.html.41537809.js"><link rel="prefetch" href="/front-end-lab/assets/hg.html.17f987b4.js"><link rel="prefetch" href="/front-end-lab/assets/jira.html.68640a9e.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.c58a0cd1.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.deec9f06.js"><link rel="prefetch" href="/front-end-lab/assets/solution.html.6a378377.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.5cc031eb.js"><link rel="prefetch" href="/front-end-lab/assets/books.html.e32a031a.js"><link rel="prefetch" href="/front-end-lab/assets/en.html.d325de39.js"><link rel="prefetch" href="/front-end-lab/assets/glossary.html.7ed66620.js"><link rel="prefetch" href="/front-end-lab/assets/links.html.e82dc647.js"><link rel="prefetch" href="/front-end-lab/assets/DSA.html.15989b65.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.603e7e96.js"><link rel="prefetch" href="/front-end-lab/assets/browser.html.55e7d69d.js"><link rel="prefetch" href="/front-end-lab/assets/complex.html.3ed293bc.js"><link rel="prefetch" href="/front-end-lab/assets/css.html.38794eaf.js"><link rel="prefetch" href="/front-end-lab/assets/html.html.5aec342c.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.cc262594.js"><link rel="prefetch" href="/front-end-lab/assets/network.html.8aef4433.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.9f7ed822.js"><link rel="prefetch" href="/front-end-lab/assets/performance.html.690a0c9d.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.14ee0078.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.d61da977.js"><link rel="prefetch" href="/front-end-lab/assets/webpack.html.260b310c.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.75d084b5.js"><link rel="prefetch" href="/front-end-lab/assets/theory.html.22272636.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.f1791b22.js"><link rel="prefetch" href="/front-end-lab/assets/libs.html.f9cc5d37.js"><link rel="prefetch" href="/front-end-lab/assets/mini-program.html.2d329abf.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.d13fa671.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.ac39f89d.js"><link rel="prefetch" href="/front-end-lab/assets/typescript.html.e91b5fe8.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.20ecf664.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.31930719.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.11f7a0c4.js"><link rel="prefetch" href="/front-end-lab/assets/404.html.5307af31.js"><link rel="prefetch" href="/front-end-lab/assets/404.9de9fb53.js"><link rel="prefetch" href="/front-end-lab/assets/Layout.f1d6f6f4.js"><link rel="prefetch" href="/front-end-lab/assets/hide-outbound.d7dc1fa7.js"><link rel="prefetch" href="/front-end-lab/assets/index.0e8935cb.js">
+    <link rel="stylesheet" href="/front-end-lab/assets/style.75a6fca5.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="切换侧边栏" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/front-end-lab/" class=""><!----><span class="site-name">Web 实验室</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/front-end-lab/develop/" class="router-link-active" aria-label="Web 开发"><!--[--><!--]--> Web 开发 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/front-end-lab/topic/" class="" aria-label="技术要点"><!--[--><!--]--> 技术要点 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Homepage"><!--[--><!--]--> Anran758&#39;s Homepage <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/blog/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Blog"><!--[--><!--]--> Anran758&#39;s Blog <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/anran758/front-end-lab" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-dark-button" title="切换夜间模式"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" placeholder="Search" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/front-end-lab/develop/" class="router-link-active" aria-label="Web 开发"><!--[--><!--]--> Web 开发 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/front-end-lab/topic/" class="" aria-label="技术要点"><!--[--><!--]--> 技术要点 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Homepage"><!--[--><!--]--> Anran758&#39;s Homepage <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/blog/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Blog"><!--[--><!--]--> Anran758&#39;s Blog <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/anran758/front-end-lab" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading active">JavaScript 生态 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/" class="router-link-active router-link-exact-active router-link-active sidebar-item active" aria-label="JavaScript"><!--[--><!--]--> JavaScript <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/#练手组件" class="router-link-active router-link-exact-active sidebar-item" aria-label="练手组件"><!--[--><!--]--> 练手组件 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#代码简化" class="router-link-active router-link-exact-active sidebar-item" aria-label="代码简化"><!--[--><!--]--> 代码简化 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/#科学计数法-e" class="router-link-active router-link-exact-active sidebar-item" aria-label="科学计数法 E"><!--[--><!--]--> 科学计数法 E <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#三元操作符" class="router-link-active router-link-exact-active sidebar-item" aria-label="三元操作符"><!--[--><!--]--> 三元操作符 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#逻辑运算符" class="router-link-active router-link-exact-active sidebar-item" aria-label="逻辑运算符"><!--[--><!--]--> 逻辑运算符 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#utils" class="router-link-active router-link-exact-active sidebar-item" aria-label="Utils"><!--[--><!--]--> Utils <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/#判断原始类型" class="router-link-active router-link-exact-active sidebar-item" aria-label="判断原始类型"><!--[--><!--]--> 判断原始类型 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#计算星座" class="router-link-active router-link-exact-active sidebar-item" aria-label="计算星座"><!--[--><!--]--> 计算星座 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【array】删除数组项" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Array】删除数组项"><!--[--><!--]--> 【Array】删除数组项 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【array】数组去重" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Array】数组去重"><!--[--><!--]--> 【Array】数组去重 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【array】中文排序" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Array】中文排序"><!--[--><!--]--> 【Array】中文排序 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【array】数组扁平化" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Array】数组扁平化"><!--[--><!--]--> 【Array】数组扁平化 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【number】金额分隔" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Number】金额分隔"><!--[--><!--]--> 【Number】金额分隔 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【number】生成随机数" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Number】生成随机数"><!--[--><!--]--> 【Number】生成随机数 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【number】字符串转数字" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Number】字符串转数字"><!--[--><!--]--> 【Number】字符串转数字 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【number】判断闰年函数" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Number】判断闰年函数"><!--[--><!--]--> 【Number】判断闰年函数 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【string】url-拼接" class="router-link-active router-link-exact-active sidebar-item" aria-label="【String】URL 拼接"><!--[--><!--]--> 【String】URL 拼接 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【string】计算字符串长度" class="router-link-active router-link-exact-active sidebar-item" aria-label="【String】计算字符串长度"><!--[--><!--]--> 【String】计算字符串长度 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【string】生成-uuid" class="router-link-active router-link-exact-active sidebar-item" aria-label="【String】生成 UUID"><!--[--><!--]--> 【String】生成 UUID <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【string】驼峰命名类型字符串转为常量命名类型" class="router-link-active router-link-exact-active sidebar-item" aria-label="【String】驼峰命名类型字符串转为常量命名类型"><!--[--><!--]--> 【String】驼峰命名类型字符串转为常量命名类型 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#【date】获取指定天前的时间区间" class="router-link-active router-link-exact-active sidebar-item" aria-label="【Date】获取指定天前的时间区间"><!--[--><!--]--> 【Date】获取指定天前的时间区间 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#store" class="router-link-active router-link-exact-active sidebar-item" aria-label="Store"><!--[--><!--]--> Store <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/#localstorage" class="router-link-active router-link-exact-active sidebar-item" aria-label="localStorage"><!--[--><!--]--> localStorage <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#cookie" class="router-link-active router-link-exact-active sidebar-item" aria-label="cookie"><!--[--><!--]--> cookie <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#dom" class="router-link-active router-link-exact-active sidebar-item" aria-label="DOM"><!--[--><!--]--> DOM <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/#盒子模型对应的-dom-api" class="router-link-active router-link-exact-active sidebar-item" aria-label="盒子模型对应的 DOM API"><!--[--><!--]--> 盒子模型对应的 DOM API <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#批量插入节点" class="router-link-active router-link-exact-active sidebar-item" aria-label="批量插入节点"><!--[--><!--]--> 批量插入节点 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#事件冒泡与事件捕获" class="router-link-active router-link-exact-active sidebar-item" aria-label="事件冒泡与事件捕获"><!--[--><!--]--> 事件冒泡与事件捕获 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#技术细节" class="router-link-active router-link-exact-active sidebar-item" aria-label="技术细节"><!--[--><!--]--> 技术细节 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/#parseint" class="router-link-active router-link-exact-active sidebar-item" aria-label="parseInt"><!--[--><!--]--> parseInt <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#map-与-foreach-的区别" class="router-link-active router-link-exact-active sidebar-item" aria-label="map 与 forEach 的区别"><!--[--><!--]--> map 与 forEach 的区别 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#symbol" class="router-link-active router-link-exact-active sidebar-item" aria-label="Symbol"><!--[--><!--]--> Symbol <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#class" class="router-link-active router-link-exact-active sidebar-item" aria-label="Class"><!--[--><!--]--> Class <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#编码设计思路" class="router-link-active router-link-exact-active sidebar-item" aria-label="编码设计思路"><!--[--><!--]--> 编码设计思路 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/#限制函数参数的数量" class="router-link-active router-link-exact-active sidebar-item" aria-label="限制函数参数的数量"><!--[--><!--]--> 限制函数参数的数量 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#业务实现思路" class="router-link-active router-link-exact-active sidebar-item" aria-label="业务实现思路"><!--[--><!--]--> 业务实现思路 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/develop/javascript/#页面滚到指定位置显示图片-内容" class="router-link-active router-link-exact-active sidebar-item" aria-label="页面滚到指定位置显示图片(内容)"><!--[--><!--]--> 页面滚到指定位置显示图片(内容) <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/develop/javascript/#下载文件" class="router-link-active router-link-exact-active sidebar-item" aria-label="下载文件"><!--[--><!--]--> 下载文件 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><li><a href="/front-end-lab/develop/javascript/typescript.html" class="sidebar-item" aria-label="Typescript"><!--[--><!--]--> Typescript <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/vue.html" class="sidebar-item" aria-label="Vue.js"><!--[--><!--]--> Vue.js <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/react.html" class="sidebar-item" aria-label="React"><!--[--><!--]--> React <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/nodejs.html" class="sidebar-item" aria-label="Node.js"><!--[--><!--]--> Node.js <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/mini-program.html" class="sidebar-item" aria-label="小程序"><!--[--><!--]--> 小程序 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/libs.html" class="sidebar-item" aria-label="第三方库"><!--[--><!--]--> 第三方库 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p tabindex="0" class="sidebar-item sidebar-heading">Web 开发 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/develop/html/" class="sidebar-item" aria-label="HTML"><!--[--><!--]--> HTML <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/css/" class="sidebar-item" aria-label="CSS 示例"><!--[--><!--]--> CSS 示例 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/css/theory.html" class="sidebar-item" aria-label="CSS 原理"><!--[--><!--]--> CSS 原理 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/REGEXP/" class="sidebar-item" aria-label="REGEXP (正则表达式)"><!--[--><!--]--> REGEXP (正则表达式) <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/solution.html" class="sidebar-item" aria-label="解决方案"><!--[--><!--]--> 解决方案 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p tabindex="0" class="sidebar-item sidebar-heading">项目管理 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/git.html" class="sidebar-item" aria-label="Git"><!--[--><!--]--> Git <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/hg.html" class="sidebar-item" aria-label="Hg"><!--[--><!--]--> Hg <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/jira.html" class="sidebar-item" aria-label="Jira"><!--[--><!--]--> Jira <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/dev-ops.html" class="sidebar-item" aria-label="DevOps"><!--[--><!--]--> DevOps <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p tabindex="0" class="sidebar-item sidebar-heading">更多 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/further/glossary.html" class="sidebar-item" aria-label="术语表"><!--[--><!--]--> 术语表 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/further/books.html" class="sidebar-item" aria-label="推荐书单"><!--[--><!--]--> 推荐书单 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/further/" class="sidebar-item" aria-label="扩展阅读"><!--[--><!--]--> 扩展阅读 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="javascript" tabindex="-1"><a class="header-anchor" href="#javascript" aria-hidden="true">#</a> JavaScript</h1><p>细节和技巧的交汇，本篇笔记主要用于速查。</p><ul><li><a href="#%E7%BB%83%E6%89%8B%E7%BB%84%E4%BB%B6">练手组件</a></li><li><a href="#%E4%BB%A3%E7%A0%81%E7%AE%80%E5%8C%96">代码简化</a><ul><li><a href="#%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95-e">科学计数法 E</a></li><li><a href="#%E4%B8%89%E5%85%83%E6%93%8D%E4%BD%9C%E7%AC%A6">三元操作符</a></li><li><a href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">逻辑运算符</a></li></ul></li><li><a href="#utils">Utils</a><ul><li><a href="#%E5%88%A4%E6%96%AD%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B">判断原始类型</a></li><li><a href="#%E8%AE%A1%E7%AE%97%E6%98%9F%E5%BA%A7">计算星座</a></li><li><a href="#array%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E9%A1%B9">【Array】删除数组项</a></li><li><a href="#array%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D">【Array】数组去重</a></li><li><a href="#array%E4%B8%AD%E6%96%87%E6%8E%92%E5%BA%8F">【Array】中文排序</a></li><li><a href="#array%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96">【Array】数组扁平化</a></li><li><a href="#number%E9%87%91%E9%A2%9D%E5%88%86%E9%9A%94">【Number】金额分隔</a></li><li><a href="#number%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0">【Number】生成随机数</a></li><li><a href="#number%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97">【Number】字符串转数字</a></li><li><a href="#number%E5%88%A4%E6%96%AD%E9%97%B0%E5%B9%B4%E5%87%BD%E6%95%B0">【Number】判断闰年函数</a></li><li><a href="#stringurl-%E6%8B%BC%E6%8E%A5">【String】URL 拼接</a></li><li><a href="#string%E8%AE%A1%E7%AE%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6">【String】计算字符串长度</a></li><li><a href="#string%E7%94%9F%E6%88%90-uuid">【String】生成 UUID</a></li><li><a href="#string%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E7%B1%BB%E5%9E%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA%E5%B8%B8%E9%87%8F%E5%91%BD%E5%90%8D%E7%B1%BB%E5%9E%8B">【String】驼峰命名类型字符串转为常量命名类型</a></li><li><a href="#date%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E5%A4%A9%E5%89%8D%E7%9A%84%E6%97%B6%E9%97%B4%E5%8C%BA%E9%97%B4">【Date】获取指定天前的时间区间</a></li></ul></li><li><a href="#store">Store</a><ul><li><a href="#localstorage">localStorage</a></li><li><a href="#cookie">cookie</a></li></ul></li><li><a href="#dom">DOM</a><ul><li><a href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%AF%B9%E5%BA%94%E7%9A%84-dom-api">盒子模型对应的 DOM API</a></li><li><a href="#%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9">批量插入节点</a></li><li><a href="#%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7">事件冒泡与事件捕获</a></li></ul></li><li><a href="#%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82">技术细节</a><ul><li><a href="#parseint">parseInt</a></li><li><a href="#map-%E4%B8%8E-foreach-%E7%9A%84%E5%8C%BA%E5%88%AB">map 与 forEach 的区别</a></li><li><a href="#symbol">Symbol</a></li><li><a href="#class">Class</a></li></ul></li><li><a href="#%E7%BC%96%E7%A0%81%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF">编码设计思路</a><ul><li><a href="#%E9%99%90%E5%88%B6%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%95%B0%E9%87%8F">限制函数参数的数量</a></li></ul></li><li><a href="#%E4%B8%9A%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF">业务实现思路</a><ul><li><a href="#%E9%A1%B5%E9%9D%A2%E6%BB%9A%E5%88%B0%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E5%86%85%E5%AE%B9">页面滚到指定位置显示图片(内容)</a></li><li><a href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6">下载文件</a></li></ul></li></ul><h2 id="练手组件" tabindex="-1"><a class="header-anchor" href="#练手组件" aria-hidden="true">#</a> 练手组件</h2><p>如果一些刚入门的朋友学完语法后不知道该做什么，可以自个尝试实现以下的简单组件，将知识学以致用：</p><ul><li><strong>日历</strong>: 考验对 <code>Date</code> 对象的使用。</li><li><strong>四则计算器</strong>: 考验对处理<strong>浮点数溢出</strong>的能力、<code>Math</code> 的使用等。</li><li><strong>轮播图</strong>: 考验对 setTimeout 相关的定时器的处理。</li></ul><p><strong>简单算法</strong></p><ul><li>设任意 N 行列的二维数组，要求螺旋打印出其值</li></ul><h2 id="代码简化" tabindex="-1"><a class="header-anchor" href="#代码简化" aria-hidden="true">#</a> 代码简化</h2><p>在实际工作中，可以在保证语义化的前提使用一些简写方法来提升代码的简洁性</p><h3 id="科学计数法-e" tabindex="-1"><a class="header-anchor" href="#科学计数法-e" aria-hidden="true">#</a> 科学计数法 E</h3><p>似乎很多人都不爱用<code>js</code>的科学计数法，但实际上科学计数法用来表示大数字能使代码显得很简洁易读，如下：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>console.log(1000000000 === 1e9); // true
+console.log(1e9 * 4); // 4000000000
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>两者对比就能看出差异，而且科学计数法也能做同等的运算。</p><h3 id="三元操作符" tabindex="-1"><a class="header-anchor" href="#三元操作符" aria-hidden="true">#</a> 三元操作符</h3><p>用三元操作符代替简单<code>if...else</code>逻辑，除了简洁之外三元操作符还有一个好处就是可以用作条件预加载。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const age = 16;
+
+// bad
+let hint = &quot;&quot;;
+if (age &gt;= 18) {
+  hint = &quot;欢迎打开新世界(&quot;;
+} else {
+  hint = &quot;嘿, 未成年不得入内!&quot;;
+}
+
+// good
+const hint = age &gt;= 18 ? &quot;欢迎打开新世界 (&quot; : &quot;未成年不得入内!&quot;;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="逻辑运算符" tabindex="-1"><a class="header-anchor" href="#逻辑运算符" aria-hidden="true">#</a> 逻辑运算符</h3><p>利用好 <code>&amp;&amp;</code> 和 <code>||</code> 特性的能力</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// 在某些场景下, 使用 &amp;&amp; 操作符代替 if 能使使你的代码变得更加的整洁
+let isMoving = false;
+container.addEventListener(&quot;mousedown&quot;, () =&gt; (ismoving = true));
+container.addEventListener(&quot;mouseup&quot;, () =&gt; (ismoving = false));
+
+// if 语句
+container.addEventListener(&quot;mousemove&quot;, () =&gt; {
+  if (isMoving) handleMove();
+});
+
+// &amp;&amp; 操作符. 前者为 true 的话, 就调用函数
+container.addEventListener(&quot;mousemove&quot;, () =&gt; isMoving &amp;&amp; handleMove());
+
+// || 操作符则相反，只要前面的值为true，就不继续往后走了
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><details><summary>不再建议使用的编程技巧</summary><p>以下是一些写法简洁但可读性不太高的编程技巧。这些技巧一般不会在 web 项目中使用，在 <code>eslint</code> 规则中是被禁止使用的。但可以了解一下用途：</p><p><strong>按位非(按位取反):</strong></p><p>对任一数值<code>x</code>进行按位非操作的结果为<code>-(x + 1)</code>.</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>console.log(~1); // -2
+console.log(~0); // -1
+console.log(~-1); // 0
+
+// 当没有找到内容, 方法返回 -1 时, 进行按位非会加一取反, 则为 0
+// 这个方法是利用隐式转换，在判断中会将 0 隐式转换为false
+
+// 相当于下面的代码同等的效果
+// names.some(name =&gt; linkName.indexOf(name) === -1)
+names.some((name) =&gt; ~linkName.indexOf(name));
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p><strong>位操作符:</strong></p><p>利用按位或 <code>|</code> 向下取整:</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const num = 50.1234 | 0;
+
+console.log(num); // 50
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>除此之外，还可以使用<code>~~</code>截除小数，但它只适用于<code>32</code>位数字。<br> 虽说前者会更简单，但有可能会遇到操作符优先级的问题。因此使用时一定要了解它的规则，同时确保代码的可读性。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// 进行两次反转字位，然后出于10
+console.log(~~50.1234 / 10); // 5
+
+console.log(50.1234 | (0 / 10)); // 50
+console.log((50.1234 | 0) / 10); // 5
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><strong>压缩后的布尔值</strong></p><p>很多编译器在压缩代码的时候，会用 <code>!0</code> 和 <code>!1</code> 来代替布尔值 <code>false</code> 和 <code>true</code>。因为可以有效减少文件体积, 但会破坏代码可读性 (虽然可读性是给人看得，机器只在乎运行效率)。</p></details><h2 id="utils" tabindex="-1"><a class="header-anchor" href="#utils" aria-hidden="true">#</a> Utils</h2><h3 id="判断原始类型" tabindex="-1"><a class="header-anchor" href="#判断原始类型" aria-hidden="true">#</a> 判断原始类型</h3><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// 目标是否是对象
+function isObject(obj) {
+  return Object.prototype.toString.call(obj) === &quot;[object Object]&quot;;
+}
+
+// 使用同样的方法进行测试, 结果如下:
+Object.prototype.toString.call([]); // [object Array]
+Object.prototype.toString.call(null); // [object Null]
+Object.prototype.toString.call(&quot;12&quot;); // [object String]
+Object.prototype.toString.call(NaN); // [object Number]. 注意, NaN 是属于数字类型
+Object.prototype.toString.call(345); // [object Number]
+Object.prototype.toString.call(undefined); // [object Undefined]
+Object.prototype.toString.call(Symbol()); // [object Symbol]
+Object.prototype.toString.call(function () {}); // [object Function]
+
+// 根据上述规则，可以对字符串进行操作
+// 获取基础类型
+function getBaseType(target) {
+  const typeStr = Object.prototype.toString.call(target).toLocaleLowerCase();
+
+  return typeStr.slice(8, -1);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h3 id="计算星座" tabindex="-1"><a class="header-anchor" href="#计算星座" aria-hidden="true">#</a> 计算星座</h3><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>/**
+ * 根据生日的月份和日期，计算星座。
+ * @param {String} month - 月份
+ * @param {String} day - 日期
+ * @desc 返回星座名
+ */
+function getAstro(month, day) {
+  return &quot;魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯&quot;.substr(
+    month * 2 - (day &lt; &quot;102223444433&quot;.charAt(month - 1) - -19) * 2,
+    2,
+  );
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="【array】删除数组项" tabindex="-1"><a class="header-anchor" href="#【array】删除数组项" aria-hidden="true">#</a> 【Array】删除数组项</h3><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// 删除数组元素, index 为数组索性, 只删除一个
+arr.splice(index, 1);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="【array】数组去重" tabindex="-1"><a class="header-anchor" href="#【array】数组去重" aria-hidden="true">#</a> 【Array】数组去重</h3><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>let arr = [1, 2, 3, &quot;1&quot;, 5, 2, 4, 5, 3, 4];
+
+/* es6 */
+// 利用 Set 没有重复值的特性去重, 再将其转为数组.
+let newarr = Array.from(new Set(arr));
+
+// 原理同上, 只不过是通过扩展运算符扩展出来
+let newarr = [...new Set(arr)];
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="【array】中文排序" tabindex="-1"><a class="header-anchor" href="#【array】中文排序" aria-hidden="true">#</a> 【Array】中文排序</h3><p><strong>[IE11+]</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare" target="_blank" rel="noopener noreferrer">String.prototype.localeCompare<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>，会返回一个数字，配合数组的<code>sort</code>方法进行排序。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>[&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;].sort((a, b) =&gt;
+  a.localeCompare(b, &quot;zh-Hans-CN&quot;, { sensitivity: &quot;accent&quot; }),
+);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="【array】数组扁平化" tabindex="-1"><a class="header-anchor" href="#【array】数组扁平化" aria-hidden="true">#</a> 【Array】数组扁平化</h3><p>二维数组扁平化</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const arr = [[1, 2, 3], [4, 5], [7, 8, 9], 10, null, undefined, {}];
+const newArr = arr.reduce(
+  (p, n) =&gt; (Array.isArray(n) ? p.concat(n) : (p.push(n), p)),
+  [],
+);
+
+console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p><strong>[ES6+]</strong> 多维数组扁平化</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function flatten(arr) {
+  const newArr = arr.map((item) =&gt;
+    Array.isArray(item) ? flatten(item) : item,
+  );
+  return [].concat(...newArr);
+}
+
+const arr = [[1, 2, 3], [4, 5], [7, [8, [9]]], 10, null, undefined, {}];
+const newArr = flatten(arr);
+
+console.log(newArr); // [1, 2, 3, 4, 5, 7, 8, 9, 10, null, undefined, {…}]
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="【number】金额分隔" tabindex="-1"><a class="header-anchor" href="#【number】金额分隔" aria-hidden="true">#</a> 【Number】金额分隔</h3><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>/**
+ * 千位分隔符
+ *
+ * @param {Number} num - 金额
+ * @returns 返回格式化后的数字
+ */
+function numberWithCommas(n) {
+  // 正则解释: 匹配到 \B(非单词边界)后, 后面要匹配到 (\d{3})+(?!\d)
+  // (\d{3})+ 至少匹配到一次或多次三个数字
+  // (?!\d) 同时后面不是数字的话, 就匹配.
+  // 注意, 后面的 (?=) 那一段代码只是判断的规则, 匹配到后只替换掉 \B
+  // 而 \B 元字符匹配的是非单词边界
+
+  let num = n.toString().split(&quot;.&quot;);
+  num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g, &quot;,&quot;);
+  return num.join(&quot;.&quot;);
+}
+
+console.log(numberWithCommas(12345678912.123)); // &quot;12,345,678,912.1234&quot;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>以上方法的缺陷是需要额外处理小数位，在 <code>ES2018</code> 中可以使用 <a href="https://es6.ruanyifeng.com/#docs/regex#%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80" target="_blank" rel="noopener noreferrer">后行断言<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 的语法(chrome 62+)，可以完全通过正则来处理，性能也比上一种方式会更高:</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function numberWithCommas(x) {
+  return x.toString().replace(/\B(?&lt;!\.\d*)(?=(\d{3})+(?!\d))/g, &quot;,&quot;);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><details><summary>测试用例</summary><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function numberWithCommas(x) {
+  return x.toString().replace(/\B(?&lt;!\.\d*)(?=(\d{3})+(?!\d))/g, &quot;,&quot;);
+}
+
+function test(x, expect) {
+  const result = numberWithCommas(x);
+  const pass = result === expect;
+  console.log(`${pass ? &quot;✓&quot; : &quot;ERROR ====&gt;&quot;} ${x} =&gt; ${result}`);
+  return pass;
+}
+
+let failures = 0;
+failures += !test(0, &quot;0&quot;);
+failures += !test(0.123456, &quot;0.123456&quot;);
+failures += !test(100, &quot;100&quot;);
+failures += !test(100.123456, &quot;100.123456&quot;);
+failures += !test(1000, &quot;1,000&quot;);
+failures += !test(1000.123456, &quot;1,000.123456&quot;);
+failures += !test(10000, &quot;10,000&quot;);
+failures += !test(10000.123456, &quot;10,000.123456&quot;);
+failures += !test(100000, &quot;100,000&quot;);
+failures += !test(100000.123456, &quot;100,000.123456&quot;);
+failures += !test(1000000, &quot;1,000,000&quot;);
+failures += !test(1000000.123456, &quot;1,000,000.123456&quot;);
+failures += !test(10000000, &quot;10,000,000&quot;);
+failures += !test(10000000.123456, &quot;10,000,000.123456&quot;);
+if (failures) {
+  console.log(`${failures} test(s) failed`);
+} else {
+  console.log(&quot;All tests passed&quot;);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div></details><p>除了正则还可以使用 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString" target="_blank" rel="noopener noreferrer">Number.prototype.toLocaleString<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 或 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat" target="_blank" rel="noopener noreferrer">Intl.NumberFormat<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 来格式数字。该方法的缺点是低版本 IE 及移动端的兼容性支持不够好.</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>var num = 1234567.123456;
+
+// toLocaleString
+num.toLocaleString(); // &quot;1,234,567.123&quot;
+
+// result =&gt; &quot;1,234,567.123&quot;
+new Intl.NumberFormat().format(num);
+
+// 设置格式选项
+var CNY_OPTIOONS = { style: &quot;currency&quot;, currency: &quot;CNY&quot; };
+
+// result =&gt; &quot;¥1,234,567.12&quot;
+new Intl.NumberFormat(&quot;zh-CN&quot;, CNY_OPTIOONS).format(num);
+
+// result =&gt; &quot;¥1,234,567.123450&quot;
+// 设置小数位
+new Intl.NumberFormat(&quot;zh-CN&quot;, {
+  ...CNY_OPTIOONS,
+  minimumFractionDigits: 6,
+}).format(num);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>或者使用 <a href="https://github.com/adamwdraper/Numeral-js/blob/master/numeral.js" target="_blank" rel="noopener noreferrer">numeral.js<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 进行数字格式化。</p><p>参考资料: <a href="https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript" target="_blank" rel="noopener noreferrer">How to print a number with commas as thousands separators in JavaScript<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a></p><h3 id="【number】生成随机数" tabindex="-1"><a class="header-anchor" href="#【number】生成随机数" aria-hidden="true">#</a> 【Number】生成随机数</h3><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>/**
+ * 生成随机数
+ * @param {number} min - 随机数的下限
+ * @param {number} max - 随机数的上限
+ * @returns 返回指定范围内的随机数
+ */
+function randomRangeNum(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="【number】字符串转数字" tabindex="-1"><a class="header-anchor" href="#【number】字符串转数字" aria-hidden="true">#</a> 【Number】字符串转数字</h3><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>[&quot;1.1&quot;, &quot;4566&quot;, &quot;3e300&quot;].map(Number); // [1.1, 4566, 3e+300]
+[&quot;1.1&quot;, &quot;456a&quot;, &quot;3e300&quot;].map(Number); // [1.1, NaN, 3e+300]
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="【number】判断闰年函数" tabindex="-1"><a class="header-anchor" href="#【number】判断闰年函数" aria-hidden="true">#</a> 【Number】判断闰年函数</h3><p>判断闰年其实只要满足下面几个条件即可:</p><ul><li>普通年<strong>能被 4 整除</strong>且<strong>不能被 100 整除</strong>的为闰年。如 2004 年就是闰年,1900 年不是闰年</li><li><strong>世纪年</strong>能被<strong>400 整除</strong>的是闰年。如 2000 年是闰年，1900 年不是闰年</li></ul><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>/**
+ * 判断闰年函数
+ * @param  {number} year 要判断的年份
+ * @return {bool} 返回布尔值
+ */
+function leapYear(year) {
+  return !(year % (year % 100 ? 4 : 400));
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="【string】url-拼接" tabindex="-1"><a class="header-anchor" href="#【string】url-拼接" aria-hidden="true">#</a> 【String】URL 拼接</h3><p>新方法可以使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams" target="_blank" rel="noopener noreferrer">URLSearchParams<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> API 来处理 URL 的查询字符串，兼容性为 Edge 17+：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const params = new URLSearchParams({
+  name: &quot;Danny chan&quot;,
+  age: 18,
+});
+
+console.log(&quot;params toString:&quot;, params.toString());
+// params toString: name=Danny+chan&amp;age=18
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>老方法可以通过拼接字符串的方式处理：</p><div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>function param(data: object) {
+  let url = &quot;&quot;;
+
+  for (var k in data) {
+    let value = data[k] !== undefined ? data[k] : &quot;&quot;;
+    url += `&amp;${k}=${encodeURIComponent(value)}`;
+  }
+
+  return url ? url.substring(1) : &quot;&quot;;
+}
+
+// 使用示例
+url += (url.indexOf(&quot;?&quot;) &gt; 0 ? &quot;?&quot; : &quot;&amp;&quot;) + param(data);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="【string】计算字符串长度" tabindex="-1"><a class="header-anchor" href="#【string】计算字符串长度" aria-hidden="true">#</a> 【String】计算字符串长度</h3><p><code>unicode</code> 编码 <code>0 ~ 128</code> 是单字节编码序列。因此可以利用这个特点来确定字符串的长度(单双字节实际占位)。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>/**
+ * 检查字符串中第几个字符是否为汉字
+ * @param { String } str 字符串
+ * @param { Number } i 第几个字符串，最小为 1
+ */
+function checkCHS(str, i = 1) {
+  const code = str.charCodeAt(Math.min(0, i - 1));
+  return code &gt; 255 || code &lt; 0;
+}
+
+/**
+ * 获取区分单双字节文本长度
+ * @desc 仅用于中英文长度判断，中文占 2 位，英文占 1 位
+ *       注意: emoji 的判断会不精准
+ */
+function getStrLength(str) {
+  let len = 0;
+
+  for (let i = 1; i &lt;= str.length; i++) {
+    len += checkCHS(str, i) ? 2 : 1;
+  }
+
+  return len;
+}
+
+console.log(
+  &quot;[getStrLength result]:&quot;,
+  getStrLength(&quot;一二三四五六七八九十&quot;),
+  getStrLength(&quot;1234567890&quot;),
+  getStrLength(&quot;abcdefghij&quot;),
+);
+// [getStrLength result]: 20 10 10
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><h3 id="【string】生成-uuid" tabindex="-1"><a class="header-anchor" href="#【string】生成-uuid" aria-hidden="true">#</a> 【String】生成 UUID</h3><p>UUID，即通用唯一识别码（Universally Unique Identifier）用于计算机体系中以识别信息的一个128位标识符。生成 UUID 是有规范约束的，详情可以查看《<a href="https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81" target="_blank" rel="noopener noreferrer">通用唯一识别码<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>》。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>/**
+ * 生成唯一标识符
+ */
+function getUUID() {
+  return &quot;xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx&quot;.replace(/[xy]/g, (str) =&gt; {
+    const r = (Math.random() * 16) | 0;
+    const v = str === &quot;x&quot; ? r : (r &amp; 0x3) | 0x8;
+
+    return v.toString(16);
+  });
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="【string】驼峰命名类型字符串转为常量命名类型" tabindex="-1"><a class="header-anchor" href="#【string】驼峰命名类型字符串转为常量命名类型" aria-hidden="true">#</a> 【String】驼峰命名类型字符串转为常量命名类型</h3><p>有时候开发时需要将某些驼峰命令规范的操作转为常量形式，因此写一个小函数来处理。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function modifyNamingType(name) {
+  return name.replace(/([A-Z])/g, &quot;_$1&quot;).toUpperCase();
+}
+
+modifyNamingType(&quot;spaceNameMapping&quot;); // 输出: &quot;SPACE_NAME_MAPPING&quot;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="【date】获取指定天前的时间区间" tabindex="-1"><a class="header-anchor" href="#【date】获取指定天前的时间区间" aria-hidden="true">#</a> 【Date】获取指定天前的时间区间</h3><p>获取 rangeDay 天的时间区间，区间在 <code>00:00:00 - 23:59:59</code>。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function getFullDate(rangeDay) {
+  const start = new Date().setHours(0, 0, 0, 0);
+  const end = new Date().setHours(23, 59, 59, 999);
+  const oneDay = 24 * 60 * 60 * 1000;
+
+  return [start - rangeDay * oneDay, end];
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="store" tabindex="-1"><a class="header-anchor" href="#store" aria-hidden="true">#</a> Store</h2><h3 id="localstorage" tabindex="-1"><a class="header-anchor" href="#localstorage" aria-hidden="true">#</a> localStorage</h3><p>使用<code>localStorage</code>的时候需要对数据进行一些处理：</p><ul><li>存入数据时对目标值转为合法的 JSON 值，<code>localStorage.setItem(&#39;name&#39;, JSON.stringify(name))</code></li><li>读取数据后对 JSON 值进行解析取得目标值，<code>JSON.parse(localStorage.getItem(&#39;name&#39;))</code></li></ul><h3 id="cookie" tabindex="-1"><a class="header-anchor" href="#cookie" aria-hidden="true">#</a> cookie</h3><blockquote><p>浏览器<code>Cookie</code>是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上</p></blockquote><p>cookie 的用途：</p><ul><li>会话管理(用户状态信息等)</li><li>个性化设置(根据<code>cookie</code>信息为用户提供更进一步的功能)</li><li>浏览器行为跟踪(追踪用户行为、统计等)</li></ul><p>创建一个新的 <code>Cookie</code> 的语法格式是:</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>document.cookie = newCookie;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>当对 <code>document.cookie</code> 进行赋值操作时，该属性会调用它底层所绑定的函数来设置 <code>cookie</code>。其中 <code>newCookie</code> 是一个键值对的字符串，其格式如下:</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// 语法格式
+document.cookie = key=value[
+    ;path=path |
+    ;domain=domain |
+    ;max-age=max-age-in-second |
+    ;expires=date-in-GMTString-format |
+    ;secure |
+    ;samesite
+]
+
+// 示例
+document.cookie = &#39;nickname=anran758;path=/;max-age=31536000&#39;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p><code>key/value</code>表示<code>cookie</code>的键与值，其后为<code>cookie</code>的属性，简要概括一下：</p><table><thead><tr><th style="text-align:left;">cookie 属性</th><th style="text-align:left;">作用</th><th style="text-align:left;">兼容性</th></tr></thead><tbody><tr><td style="text-align:left;">path</td><td style="text-align:left;">指定哪些路径可以接受<code>cookie</code>, 不指定则为默认为当前文档的主机</td><td style="text-align:left;"></td></tr><tr><td style="text-align:left;">domain</td><td style="text-align:left;">指定哪些主机可以接受<code>Cookie</code>, 不指定则为当前页面的根目录<code>/</code></td><td style="text-align:left;"></td></tr><tr><td style="text-align:left;">max-age</td><td style="text-align:left;">指定从现在开始<code>Cookie</code>可以存在的<strong>秒数</strong>, 超时该<code>cookie</code>就会过期</td><td style="text-align:left;"></td></tr><tr><td style="text-align:left;">expires</td><td style="text-align:left;">显式指定<code>cookie</code>具体的到期时间</td><td style="text-align:left;"></td></tr><tr><td style="text-align:left;">secure</td><td style="text-align:left;"><code>Cookie</code>只能通过安全协议传输为<code>https</code></td><td style="text-align:left;">Chrome52+</td></tr><tr><td style="text-align:left;">samesite</td><td style="text-align:left;">阻止浏览器发送此<code>cookie</code>以及跨站点请求</td><td style="text-align:left;">Chrome52+</td></tr></tbody></table><p>服务端可以通过<code>HTTP</code>头部<code>set-cookie</code>来给浏览器设置<code>cookie</code>, 格式如上所示。</p><p>如果同时指定了<code>Expires</code>和<code>Max-Age</code>，那么<code>Max-Age</code>的值将优先生效。</p><p><code>Set-Cookie</code>没有指定<code>Expires</code>或<code>Max-Age</code>属性，则为会话信息(<code>Session Cookie</code>), 关闭浏览器后该<code>cookie</code>就会失效。</p><hr><p><code>Cookie</code>信息可以通过读取<code>document.cookie</code>来获取，但是读取出来的是由一个或多个<code>cookie</code>以<code>;</code>分隔的键值对字符串，如<code>key=value;key1=value1</code>。</p><p>了解了<code>cookies</code>的规则之后，我们需要对它进一步的封装以便在实际应用中使用：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const tools = {
+  /**
+   * 读取 cookies
+   * @param name - cookie 名，不传拿全部
+   */
+  cookieGet(name) {
+    const cookies = document.cookie.split(&quot;;&quot;).map((item) =&gt; {
+      const [key, value] = item.trim().split(&quot;=&quot;);
+      return { key, value };
+    });
+
+    if (!name) return cookies;
+
+    const cookie = cookies.find((item) =&gt; item.key === name);
+    return cookie ? cookie.value : null;
+  },
+
+  /**
+   * 设置cookie
+   * @param name - cookie 名
+   * @param value - cookie 值
+   * @param days - 几天后过期
+   * @param domain - 该 cookie 在哪些域名下可用
+   * @param path - 指定 cookie 路径
+   */
+  cookieSet(name, value, days, domain, path = &quot;/&quot;) {
+    if (!name || !value) return false;
+
+    let cookie = `${name}=${value}`;
+    if (days === 0 || days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      cookie += `; expires=${date.toGMTString()}`;
+    }
+
+    if (domain) cookie += `; domain=${domain}`;
+    if (path) cookie += `; path=${path}`;
+    document.cookie = cookie;
+
+    return true;
+  },
+};
+
+// 查询 cookie
+tools.cookieGet(&quot;nickName&quot;); // null
+
+// 设置 cookie
+tools.cookieSet(&quot;nickName&quot;, &quot;anran758&quot;); // true
+tools.cookieGet(&quot;nickName&quot;); // &quot;anran758&quot;
+
+// 清除 cookie
+tools.cookieSet(&quot;nickName&quot;, &quot;anran758&quot;, 0); // true
+tools.cookieGet(&quot;nickName&quot;); // null
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br></div></div><p>具体更多有关<code>cookies</code>信息可以戳<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies" target="_blank" rel="noopener noreferrer">MDN - Cookies<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a></p><h2 id="dom" tabindex="-1"><a class="header-anchor" href="#dom" aria-hidden="true">#</a> DOM</h2><h3 id="盒子模型对应的-dom-api" tabindex="-1"><a class="header-anchor" href="#盒子模型对应的-dom-api" aria-hidden="true">#</a> 盒子模型对应的 DOM API</h3><p><img src="/front-end-lab/assets/box-model-example.ce69ab81.png" alt="box model example"></p><p>盒子模型上对应的 DOM API:</p><ul><li>border 上的实线为可视尺寸 -&gt; <code>clientWidth</code> (标准 API)</li><li>margin 上的虚线为占据尺寸 -&gt; <code>outerWidth</code> (非标准 API)</li></ul><h3 id="批量插入节点" tabindex="-1"><a class="header-anchor" href="#批量插入节点" aria-hidden="true">#</a> 批量插入节点</h3><p>DOM 操作实际上是一个挺耗费渲染性能的操作，我们应该尽可能的减少对 DOM 的操作。</p><p>比如批量插入节点时可以先在 js 中将新创建的节点插入到 <code>Fragment</code> 节点中，再将该节点插入到页面中，这样就仅触发一次渲染。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const $fragment = document.createDocumentFragment();
+const $list = document.querySelector(&quot;.list&quot;);
+
+for (let i = 0; i &lt; 10; i++) {
+  const $ele = document.createElement(&quot;li&quot;);
+  $ele.innerText = `item - ${i}`;
+  $ele.setAttribute(&quot;class&quot;, &quot;item&quot;);
+
+  $fragment.appendChild($ele);
+}
+
+$list.appendChild(fragment);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="事件冒泡与事件捕获" tabindex="-1"><a class="header-anchor" href="#事件冒泡与事件捕获" aria-hidden="true">#</a> 事件冒泡与事件捕获</h3><p>事件捕获是从上到下(click p, document -&gt; body -&gt; p)，事件冒泡则是从下到上(click p, p -&gt; body -&gt; html)。使用 <code>addEventListener</code> 监听事件时默认是事件冒泡，但有一些场景使用事件捕获会有奇效。</p><p>比如我们正在使用第三方的组件，这个组件内置了 click 事件，并且没有对外暴露。组件内的 click 事件总是比我们后绑定的事件监听器先触发，这时我们的一些需求就没法实现。此时可以将事件监听器的模式切为<strong>事件捕获</strong>，这时事件捕获会先于事件冒泡触发，这样就能达到预期的效果。</p><h2 id="技术细节" tabindex="-1"><a class="header-anchor" href="#技术细节" aria-hidden="true">#</a> 技术细节</h2><h3 id="parseint" tabindex="-1"><a class="header-anchor" href="#parseint" aria-hidden="true">#</a> parseInt</h3><p>在<code>ES5</code>之前，<code>parseInt</code>在没有传第二个参数的时候，会根据传入字符串的第一个字符来判断使用什么方式进行解析，这个历史遗留的问题可能会导致预期之外的效果。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>parseInt(&quot;08&quot;); // 有些旧版本的浏览器可能会解析为 0， 因为浏览器会当做八进制进行解析。
+
+// 因此我们用这个方法的时候，一定要显示加上第二个参数，而不要让浏览器去猜
+parseInt(&quot;08&quot;, 10); // 8
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>还有一个常见的问题就是，不能直接将<code>parseInt</code>作为数组<code>map</code>的回调函数，因为两者所传(接受)的形参的用途不一:</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>[1, 2, 3].map(parseInt); // [1, NaN, NaN]
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener noreferrer">parseInt(string, radix)<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 函数解析一个字符串参数，并返回一个指定基数的整数;</p><p>上面的例子就是因为<code>map</code>函数传入的第二个参数为数组的索引(<code>index</code>)。<code>parseInt</code>在处理到<code>2</code>时，传入了索引<code>2</code>作为基数，然而二进制并没有<code>2</code>这个数字，处理后自然会返回<code>NaN</code>。</p><h3 id="map-与-foreach-的区别" tabindex="-1"><a class="header-anchor" href="#map-与-foreach-的区别" aria-hidden="true">#</a> map 与 forEach 的区别</h3><table><thead><tr><th>方法</th><th>相同之处</th><th>不同之处</th></tr></thead><tbody><tr><td><code>map</code></td><td>同样用于遍历数组</td><td><code>map</code>对每项调用的函数后会取得函数的返回值，并推入新的数组中去(意味着可以链式调用)。<br>但是这个方法只有数组才能使用。</td></tr><tr><td><code>forEach</code></td><td>同样用于遍历数组</td><td><code>forEach</code>单纯对数组中每一项调用回调函数，不作其他操作。<br>该方法并不是只有数组能用，部分类数组(如 NodeList)也有这个方法。</td></tr></tbody></table><p>该问题笔者曾在知乎上回答过更详细的回答: <a href="https://www.zhihu.com/question/278332594/answer/886056097" target="_blank" rel="noopener noreferrer">js es6 中如何比较深刻的理解 for 、for of 、 map？ - anran758的回答 - 知乎<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a></p><blockquote><p>你知道吗？</p></blockquote><p>数组实际上是一个类列表对象，这意味着我们可以在数组上添加属性，虽然一般不常这样做。</p><h3 id="symbol" tabindex="-1"><a class="header-anchor" href="#symbol" aria-hidden="true">#</a> Symbol</h3><ol><li>我们使用 Symbol 主要是因为它独一无二的特性(避免覆盖)。</li><li>对于一些私有的方法，最好使用 Symbol 作为 key。但值得注意的是，用 Symbol 作为 key的话还有一个问题就是，不会被 <code>for</code> 循环、<code>Object.keys</code>等遍历返回。</li></ol><h3 id="class" tabindex="-1"><a class="header-anchor" href="#class" aria-hidden="true">#</a> Class</h3><ol><li>Class 和传统的 <code>prototype</code> 在可枚举性是不一样的，Class 不通过 <code>this.__protp__</code> 上获取原型方法</li><li>Class 内部默认采用严格模式(意味着不能使用非严格性语法了)</li><li>Class 必须使用 new 来调用, 但可以直接使用类的静态方法</li><li>ES6的 Class 在重新赋值给一个变量的时候，this 指向会丢失。解决的方法是在 <code>constructor</code> 中硬绑定(bind) this。</li></ol><h2 id="编码设计思路" tabindex="-1"><a class="header-anchor" href="#编码设计思路" aria-hidden="true">#</a> 编码设计思路</h2><blockquote><p>记录在开发时笔者个人比较推崇的编码习惯</p></blockquote><h3 id="限制函数参数的数量" tabindex="-1"><a class="header-anchor" href="#限制函数参数的数量" aria-hidden="true">#</a> 限制函数参数的数量</h3><p>在抽象函数时建议接收的参数不要超过 3 个。若需要传入多个参数，函数接收的最后一个参数应为对象，通过解构语法来获取参数。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad code
+function getUserList(id, query, limit, level = 1, blocked = false) {
+  // other code....
+}
+
+// 获取用户列表
+const list = await getUserList(userId, query, 20, 1, true);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>上述代码不看函数的定义是很难理解后面几个参数的作用，额外增加理解成本。 此外若参数 <code>level</code> 想使用默认值但后面的 <code>blocked</code> 想要指定值的话只能通过 <code>getUserList(userId, query, 20, undefined, true)</code> 方式调用，代码会显得很丑陋。</p><p>因此不建议一个函数内接受过多的参数，若有需要可以通过对象的方式传值。写上指定选项还能调用函数的可读性:</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// good code
+function getUserList(id, query, { limit, level, blocked } = {}) {
+  // other code....
+}
+
+// 获取用户列表
+const list = await getUserList(userId, query, {
+  limit: 20,
+  blocked: true,
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>此外通过对象解构的语法会使函数调用时</p><h2 id="业务实现思路" tabindex="-1"><a class="header-anchor" href="#业务实现思路" aria-hidden="true">#</a> 业务实现思路</h2><p>一些常见的业务逻辑的处理思路。</p><h3 id="页面滚到指定位置显示图片-内容" tabindex="-1"><a class="header-anchor" href="#页面滚到指定位置显示图片-内容" aria-hidden="true">#</a> 页面滚到指定位置显示图片(内容)</h3><p><strong>HTML</strong>: 给目标 DOM 设置指定类名</p><p><strong>CSS</strong>: 给类名设置 css3 属性</p><div class="language-css ext-css line-numbers-mode"><pre class="language-css"><code>.align-left.slide-in {
+  transform: translateX(-30%) scale(0.95);
+}
+
+.align-right.slide-in {
+  transform: translateX(30%) scale(0.95);
+}
+
+.slide-in.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p><strong>JavaScript</strong>:</p><ol><li>获取目标类名, 监听 window 滚动, 计算滚动的距离</li><li>计算滚动的位置 (slideInAt): window.scrollY(浏览器滚动Y轴位置) + window.innerHeight(窗口高度) - 内容(图片)宽度的一半。(也就是说当滚到指定内容一半位置的时候就添加类名)</li><li>判断滚动距离，若滚动距离 (slideInAt) 大于 内容的 offsetTop，添加类名反之移除类名</li></ol><h3 id="下载文件" tabindex="-1"><a class="header-anchor" href="#下载文件" aria-hidden="true">#</a> 下载文件</h3><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>/**
+ * download file
+ * @param { String } url 请求的链接
+ * @param { String } filename 保存的文件名
+ * @param { String } onProgress 处理下载进度
+ */
+function downloadFile(url, filename, onProgress) {
+  const req = new XMLHttpRequest();
+
+  req.onprogress = onProgress;
+  req.open(&quot;GET&quot;, url, true);
+  req.responseType = &quot;blob&quot;;
+
+  req.onload = function (event) {
+    var blob = req.response;
+    var link = document.createElement(&#39;a&#39;);
+    link.href = window.URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+  }
+
+  req.send();
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><!--]--></div><footer class="page-meta"><div class="meta-item edit-link"><a class="external-link meta-item-label" href="https://github.com/anran758/front-end-lab/edit/main/docs/develop/javascript/README.md" rel="noopener noreferrer" target="_blank" aria-label="在 GitHub 上编辑此页"><!--[--><!--]--> 在 GitHub 上编辑此页 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><div class="meta-item last-updated"><span class="meta-item-label">上次更新: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">贡献者: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: anran758@gmail.com">anran758</span><!----><!--]--><!--]--></span></div></footer><nav class="page-nav"><p class="inner"><!----><span class="next"><a href="/front-end-lab/develop/javascript/typescript.html" class="" aria-label="Typescript"><!--[--><!--]--> Typescript <!--[--><!--]--></a></span></p></nav><!--[--><!--]--></main><!--]--></div><!----><!----><!--]--></div>
+    <script type="module" src="/front-end-lab/assets/app.7e3542fd.js" defer></script>
+  </body>
+</html>

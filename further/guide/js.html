@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.43">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="icon" href="/icons/logo.svg"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3eaf7c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png"><link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c"><meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png"><meta name="msapplication-TileColor" content="#000000"><title>Airbnb JavaScript Style Guide - ES6 | Web 实验室</title><meta name="description" content="Web 开发笔记与解决方案">
+    <link rel="modulepreload" href="/front-end-lab/assets/app.7e3542fd.js"><link rel="modulepreload" href="/front-end-lab/assets/js.html.11f7a0c4.js"><link rel="modulepreload" href="/front-end-lab/assets/js.html.e6c64a8b.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.e7c7dfe3.js"><link rel="prefetch" href="/front-end-lab/assets/dev-ops.html.d9074cc4.js"><link rel="prefetch" href="/front-end-lab/assets/git.html.27d18005.js"><link rel="prefetch" href="/front-end-lab/assets/hg.html.ff79f0d9.js"><link rel="prefetch" href="/front-end-lab/assets/jira.html.0c237662.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.810ddd82.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.6469d7a5.js"><link rel="prefetch" href="/front-end-lab/assets/solution.html.5afd378d.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.c71521b0.js"><link rel="prefetch" href="/front-end-lab/assets/books.html.6327d865.js"><link rel="prefetch" href="/front-end-lab/assets/en.html.e7167ed6.js"><link rel="prefetch" href="/front-end-lab/assets/glossary.html.fd131189.js"><link rel="prefetch" href="/front-end-lab/assets/links.html.8332b8c7.js"><link rel="prefetch" href="/front-end-lab/assets/DSA.html.57440d21.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.02a2d028.js"><link rel="prefetch" href="/front-end-lab/assets/browser.html.84c949f3.js"><link rel="prefetch" href="/front-end-lab/assets/complex.html.570ca66e.js"><link rel="prefetch" href="/front-end-lab/assets/css.html.6b4f2d56.js"><link rel="prefetch" href="/front-end-lab/assets/html.html.57c9ce1f.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.38c63a70.js"><link rel="prefetch" href="/front-end-lab/assets/network.html.da899413.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.51a3b96e.js"><link rel="prefetch" href="/front-end-lab/assets/performance.html.63cc74aa.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.36044864.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.ec50a369.js"><link rel="prefetch" href="/front-end-lab/assets/webpack.html.bb5e5214.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.fd680d38.js"><link rel="prefetch" href="/front-end-lab/assets/theory.html.dbb9f444.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.f8b80dc7.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.a02bc52a.js"><link rel="prefetch" href="/front-end-lab/assets/libs.html.6613741a.js"><link rel="prefetch" href="/front-end-lab/assets/mini-program.html.362a7b5e.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.bced9d1d.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.be089b0c.js"><link rel="prefetch" href="/front-end-lab/assets/typescript.html.b81e302c.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.6c6310d6.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.01b7fc15.js"><link rel="prefetch" href="/front-end-lab/assets/404.html.93146c89.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.40f4d2a6.js"><link rel="prefetch" href="/front-end-lab/assets/dev-ops.html.c0960052.js"><link rel="prefetch" href="/front-end-lab/assets/git.html.41537809.js"><link rel="prefetch" href="/front-end-lab/assets/hg.html.17f987b4.js"><link rel="prefetch" href="/front-end-lab/assets/jira.html.68640a9e.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.c58a0cd1.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.deec9f06.js"><link rel="prefetch" href="/front-end-lab/assets/solution.html.6a378377.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.5cc031eb.js"><link rel="prefetch" href="/front-end-lab/assets/books.html.e32a031a.js"><link rel="prefetch" href="/front-end-lab/assets/en.html.d325de39.js"><link rel="prefetch" href="/front-end-lab/assets/glossary.html.7ed66620.js"><link rel="prefetch" href="/front-end-lab/assets/links.html.e82dc647.js"><link rel="prefetch" href="/front-end-lab/assets/DSA.html.15989b65.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.603e7e96.js"><link rel="prefetch" href="/front-end-lab/assets/browser.html.55e7d69d.js"><link rel="prefetch" href="/front-end-lab/assets/complex.html.3ed293bc.js"><link rel="prefetch" href="/front-end-lab/assets/css.html.38794eaf.js"><link rel="prefetch" href="/front-end-lab/assets/html.html.5aec342c.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.cc262594.js"><link rel="prefetch" href="/front-end-lab/assets/network.html.8aef4433.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.9f7ed822.js"><link rel="prefetch" href="/front-end-lab/assets/performance.html.690a0c9d.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.14ee0078.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.d61da977.js"><link rel="prefetch" href="/front-end-lab/assets/webpack.html.260b310c.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.75d084b5.js"><link rel="prefetch" href="/front-end-lab/assets/theory.html.22272636.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.f1791b22.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.1e2fa0a1.js"><link rel="prefetch" href="/front-end-lab/assets/libs.html.f9cc5d37.js"><link rel="prefetch" href="/front-end-lab/assets/mini-program.html.2d329abf.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.d13fa671.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.ac39f89d.js"><link rel="prefetch" href="/front-end-lab/assets/typescript.html.e91b5fe8.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.20ecf664.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.31930719.js"><link rel="prefetch" href="/front-end-lab/assets/404.html.5307af31.js"><link rel="prefetch" href="/front-end-lab/assets/404.9de9fb53.js"><link rel="prefetch" href="/front-end-lab/assets/Layout.f1d6f6f4.js"><link rel="prefetch" href="/front-end-lab/assets/hide-outbound.d7dc1fa7.js"><link rel="prefetch" href="/front-end-lab/assets/index.0e8935cb.js">
+    <link rel="stylesheet" href="/front-end-lab/assets/style.75a6fca5.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="切换侧边栏" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/front-end-lab/" class=""><!----><span class="site-name">Web 实验室</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/front-end-lab/develop/" class="" aria-label="Web 开发"><!--[--><!--]--> Web 开发 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/front-end-lab/topic/" class="" aria-label="技术要点"><!--[--><!--]--> 技术要点 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Homepage"><!--[--><!--]--> Anran758&#39;s Homepage <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/blog/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Blog"><!--[--><!--]--> Anran758&#39;s Blog <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/anran758/front-end-lab" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-dark-button" title="切换夜间模式"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" placeholder="Search" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/front-end-lab/develop/" class="" aria-label="Web 开发"><!--[--><!--]--> Web 开发 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/front-end-lab/topic/" class="" aria-label="技术要点"><!--[--><!--]--> 技术要点 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Homepage"><!--[--><!--]--> Anran758&#39;s Homepage <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/blog/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Blog"><!--[--><!--]--> Anran758&#39;s Blog <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/anran758/front-end-lab" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading">JavaScript 生态 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/develop/javascript/" class="sidebar-item" aria-label="JavaScript"><!--[--><!--]--> JavaScript <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/typescript.html" class="sidebar-item" aria-label="Typescript"><!--[--><!--]--> Typescript <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/vue.html" class="sidebar-item" aria-label="Vue.js"><!--[--><!--]--> Vue.js <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/react.html" class="sidebar-item" aria-label="React"><!--[--><!--]--> React <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/nodejs.html" class="sidebar-item" aria-label="Node.js"><!--[--><!--]--> Node.js <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/mini-program.html" class="sidebar-item" aria-label="小程序"><!--[--><!--]--> 小程序 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/javascript/libs.html" class="sidebar-item" aria-label="第三方库"><!--[--><!--]--> 第三方库 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p tabindex="0" class="sidebar-item sidebar-heading">Web 开发 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/develop/html/" class="sidebar-item" aria-label="HTML"><!--[--><!--]--> HTML <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/css/" class="sidebar-item" aria-label="CSS 示例"><!--[--><!--]--> CSS 示例 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/css/theory.html" class="sidebar-item" aria-label="CSS 原理"><!--[--><!--]--> CSS 原理 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/REGEXP/" class="sidebar-item" aria-label="REGEXP (正则表达式)"><!--[--><!--]--> REGEXP (正则表达式) <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/develop/solution.html" class="sidebar-item" aria-label="解决方案"><!--[--><!--]--> 解决方案 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p tabindex="0" class="sidebar-item sidebar-heading">项目管理 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/git.html" class="sidebar-item" aria-label="Git"><!--[--><!--]--> Git <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/hg.html" class="sidebar-item" aria-label="Hg"><!--[--><!--]--> Hg <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/jira.html" class="sidebar-item" aria-label="Jira"><!--[--><!--]--> Jira <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/dev-ops.html" class="sidebar-item" aria-label="DevOps"><!--[--><!--]--> DevOps <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p tabindex="0" class="sidebar-item sidebar-heading">更多 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/further/glossary.html" class="sidebar-item" aria-label="术语表"><!--[--><!--]--> 术语表 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/further/books.html" class="sidebar-item" aria-label="推荐书单"><!--[--><!--]--> 推荐书单 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/further/" class="router-link-active sidebar-item" aria-label="扩展阅读"><!--[--><!--]--> 扩展阅读 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="airbnb-javascript-style-guide-es6" tabindex="-1"><a class="header-anchor" href="#airbnb-javascript-style-guide-es6" aria-hidden="true">#</a> Airbnb JavaScript Style Guide - ES6</h1><p><strong>用更合理的方式写 JavaScript</strong></p><p><code>ES5</code>的编码规范请查看<a href="https://github.com/anran758/Front-End-Lab/Code-Guide/ECMA-5" target="_blank" rel="noopener noreferrer">ECMA-5<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>, <code>ES6</code>规范是在其基础的升级. 本文是在原文的基础上, 根据自己/团队的代码规范中进行修改. 最后感谢<a href="#contributors">贡献者们</a>的无私奉献.</p><p>English: <a href="https://github.com/airbnb/javascript" target="_blank" rel="noopener noreferrer">Airbnb JavaScript Style Guide<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a></p><p><a name="table-of-contents"></a></p><h2 id="目录" tabindex="-1"><a class="header-anchor" href="#目录" aria-hidden="true">#</a> 目录</h2><ol><li><a href="#types">类型</a></li><li><a href="#references">引用</a></li><li><a href="#objects">对象</a></li><li><a href="#arrays">数组</a></li><li><a href="#destructuring">解构</a></li><li><a href="#strings">字符串</a></li><li><a href="#functions">函数</a></li><li><a href="#arrow-functions">箭头函数</a></li><li><a href="#constructors">构造函数</a></li><li><a href="#modules">模块</a></li><li><a href="#iterators-and-generators">迭代器和生成器</a></li><li><a href="#properties">属性</a></li><li><a href="#variables">变量</a></li><li><a href="#hoisting">提升</a></li><li><a href="#comparison-operators--equality">比较运算符和等号</a></li><li><a href="#blocks">代码块</a></li><li><a href="#comments">注释</a></li><li><a href="#whitespace">空白</a></li><li><a href="#commas">逗号</a></li><li><a href="#semicolons">分号</a></li><li><a href="#type-casting--coercion">类型转换</a></li><li><a href="#naming-conventions">命名规则</a></li><li><a href="#accessors">存取器</a></li><li><a href="#events">事件</a></li><li><a href="#jquery">jQuery</a></li><li><a href="#ecmascript-5-compatibility">ECMAScript 5 兼容性</a></li><li><a href="#ecmascript-6-styles">ECMAScript 6 编码规范</a></li><li><a href="#contributors">贡献者</a></li><li><a href="#license">许可协议</a></li></ol><p><a name="types"></a></p><h2 id="类型" tabindex="-1"><a class="header-anchor" href="#类型" aria-hidden="true">#</a> 类型</h2><ul><li><p><a href="#1.1">1.1</a> <a name="1.1"></a> <strong>基本类型</strong>: 直接存取基本类型。</p><ul><li><code>字符串</code></li><li><code>数值</code></li><li><code>布尔类型</code></li><li><code>null</code></li><li><code>undefined</code></li></ul><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const foo = 1;
+let bar = foo;
+
+bar = 9;
+
+console.log(foo, bar); // =&gt; 1, 9
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li><li><p><a href="#1.2">1.2</a> <a name="1.2"></a> <strong>复杂类型</strong>: 通过引用的方式存取复杂类型。</p><ul><li><code>对象</code></li><li><code>数组</code></li><li><code>函数</code></li></ul><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const foo = [1, 2];
+const bar = foo;
+
+bar[0] = 9;
+
+console.log(foo[0], bar[0]); // =&gt; 9, 9
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="references"></a></p><h2 id="引用" tabindex="-1"><a class="header-anchor" href="#引用" aria-hidden="true">#</a> 引用</h2><ul><li><p><a href="#2.1">2.1</a> <a name="2.1"></a> 对所有的引用使用 <code>const</code> ；不要使用 <code>var</code>。</p><blockquote><p>为什么？这能确保你无法对引用重新赋值，也不会导致出现 bug 或难以理解。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+var a = 1;
+var b = 2;
+
+// good
+const a = 1;
+const b = 2;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></li><li><p><a href="#2.2">2.2</a> <a name="2.2"></a> 如果你一定需要可变动的引用，使用 <code>let</code> 代替 <code>var</code>。</p><blockquote><p>为什么？因为 <code>let</code> 是块级作用域，而 <code>var</code> 是函数作用域。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+var count = 1;
+if (true) {
+  count += 1;
+}
+
+// good, use the let.
+let count = 1;
+if (true) {
+  count += 1;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div></li><li><p><a href="#2.3">2.3</a> <a name="2.3"></a> 注意 <code>let</code> 和 <code>const</code> 都是块级作用域。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// const 和 let 只存在于它们被定义的区块内。
+{
+  let a = 1;
+  const b = 1;
+}
+console.log(a); // ReferenceError
+console.log(b); // ReferenceError
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="objects"></a></p><h2 id="对象" tabindex="-1"><a class="header-anchor" href="#对象" aria-hidden="true">#</a> 对象</h2><ul><li><p><a href="#3.1">3.1</a> <a name="3.1"></a> 使用字面值创建对象。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const item = new Object();
+
+// good
+const item = {};
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li><li><p><a href="#3.2">3.2</a> <a name="3.2"></a> 如果你的代码在浏览器环境下执行，别使用 <a href="http://es5.github.io/#x7.6.1" target="_blank" rel="noopener noreferrer">保留字<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 作为键值。这样的话在 IE8 不会运行。 <a href="https://github.com/airbnb/javascript/issues/61" target="_blank" rel="noopener noreferrer">更多信息<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>。 但在 ES6 模块和服务器端中使用没有问题。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const superman = {
+  default: { clark: &quot;kent&quot; },
+  private: true,
+};
+
+// good
+const superman = {
+  defaults: { clark: &quot;kent&quot; },
+  hidden: true,
+};
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div></li><li><p><a href="#3.3">3.3</a> <a name="3.3"></a> 使用同义词替换需要使用的保留字。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const superman = {
+  class: &quot;alien&quot;,
+};
+
+// bad
+const superman = {
+  klass: &quot;alien&quot;,
+};
+
+// good
+const superman = {
+  type: &quot;alien&quot;,
+};
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></li></ul><p><a name="es6-computed-properties"></a></p><ul><li><p><a href="#3.4">3.4</a> <a name="3.4"></a> 创建有动态属性名的对象时，使用可被计算的属性名称。</p><blockquote><p>为什么？因为这样可以让你在一个地方定义所有的对象属性。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function getKey(k) {
+  return `a key named ${k}`;
+}
+
+// bad
+const obj = {
+  id: 5,
+  name: &quot;San Francisco&quot;,
+};
+obj[getKey(&quot;enabled&quot;)] = true;
+
+// good
+const obj = {
+  id: 5,
+  name: &quot;San Francisco&quot;,
+  [getKey(&quot;enabled&quot;)]: true,
+};
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div></li></ul><p><a name="es6-object-shorthand"></a></p><ul><li><p><a href="#3.5">3.5</a> <a name="3.5"></a> 使用对象方法的简写。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const atom = {
+  value: 1,
+
+  addValue: function (value) {
+    return atom.value + value;
+  },
+};
+
+// good
+const atom = {
+  value: 1,
+
+  addValue(value) {
+    return atom.value + value;
+  },
+};
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div></li></ul><p><a name="es6-object-concise"></a></p><ul><li><p><a href="#3.6">3.6</a> <a name="3.6"></a> 使用对象属性值的简写。</p><blockquote><p>为什么？因为这样更短更有描述性。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const lukeSkywalker = &quot;Luke Skywalker&quot;;
+
+// bad
+const obj = {
+  lukeSkywalker: lukeSkywalker,
+};
+
+// good
+const obj = {
+  lukeSkywalker,
+};
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div></li><li><p><a href="#3.7">3.7</a> <a name="3.7"></a> 在对象属性声明前把简写的属性分组。</p><blockquote><p>为什么？因为这样能清楚地看出哪些属性使用了简写。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const anakinSkywalker = &quot;Anakin Skywalker&quot;;
+const lukeSkywalker = &quot;Luke Skywalker&quot;;
+
+// bad
+const obj = {
+  episodeOne: 1,
+  twoJedisWalkIntoACantina: 2,
+  lukeSkywalker,
+  episodeThree: 3,
+  mayTheFourth: 4,
+  anakinSkywalker,
+};
+
+// good
+const obj = {
+  lukeSkywalker,
+  anakinSkywalker,
+  episodeOne: 1,
+  twoJedisWalkIntoACantina: 2,
+  episodeThree: 3,
+  mayTheFourth: 4,
+};
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="arrays"></a></p><h2 id="数组" tabindex="-1"><a class="header-anchor" href="#数组" aria-hidden="true">#</a> 数组</h2><ul><li><p><a href="#4.1">4.1</a> <a name="4.1"></a> 使用字面值创建数组。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const items = new Array();
+
+// good
+const items = [];
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li><li><p><a href="#4.2">4.2</a> <a name="4.2"></a> 向数组添加元素时使用 Arrary#push 替代直接赋值。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const someStack = [];
+// bad
+someStack[someStack.length] = &quot;abracadabra&quot;;
+
+// good
+someStack.push(&quot;abracadabra&quot;);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li></ul><p><a name="es6-array-spreads"></a></p><ul><li><p><a href="#4.3">4.3</a> <a name="4.3"></a> 使用拓展运算符 <code>...</code> 复制数组。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const len = items.length;
+const itemsCopy = [];
+let i;
+
+for (i = 0; i &lt; len; i++) {
+  itemsCopy[i] = items[i];
+}
+
+// good
+const itemsCopy = [...items];
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div></li><li><p><a href="#4.4">4.4</a> <a name="4.4"></a> 使用 Array#from 把一个类数组对象转换成数组。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const foo = document.querySelectorAll(&quot;.foo&quot;);
+const nodes = Array.from(foo);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="destructuring"></a></p><h2 id="解构" tabindex="-1"><a class="header-anchor" href="#解构" aria-hidden="true">#</a> 解构</h2><ul><li><p><a href="#5.1">5.1</a> <a name="5.1"></a> 使用解构存取和使用多属性对象。</p><blockquote><p>为什么？因为解构能减少临时引用属性。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function getFullName(user) {
+  const firstName = user.firstName;
+  const lastName = user.lastName;
+
+  return `${firstName} ${lastName}`;
+}
+
+// good
+function getFullName(obj) {
+  const { firstName, lastName } = obj;
+  return `${firstName} ${lastName}`;
+}
+
+// best
+function getFullName({ firstName, lastName }) {
+  return `${firstName} ${lastName}`;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div></li><li><p><a href="#5.2">5.2</a> <a name="5.2"></a> 对数组使用解构赋值。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const arr = [1, 2, 3, 4];
+
+// bad
+const first = arr[0];
+const second = arr[1];
+
+// good
+const [first, second] = arr;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div></li><li><p><a href="#5.3">5.3</a> <a name="5.3"></a> 需要回传多个值时，使用对象解构，而不是数组解构。</p><blockquote><p>为什么？增加属性或者改变排序不会改变调用时的位置。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function processInput(input) {
+  // then a miracle occurs
+  return [left, right, top, bottom];
+}
+
+// 调用时需要考虑回调数据的顺序。
+const [left, __, top] = processInput(input);
+
+// good
+function processInput(input) {
+  // then a miracle occurs
+  return { left, right, top, bottom };
+}
+
+// 调用时只选择需要的数据
+const { left, right } = processInput(input);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="strings"></a></p><h2 id="strings" tabindex="-1"><a class="header-anchor" href="#strings" aria-hidden="true">#</a> Strings</h2><ul><li><p><a href="#6.1">6.1</a> <a name="6.1"></a> 字符串使用单引号 <code>&#39;&#39;</code> 。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const name = &quot;Capt. Janeway&quot;;
+
+// good
+const name = &quot;Capt. Janeway&quot;;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li><li><p><a href="#6.2">6.2</a> <a name="6.2"></a> 字符串超过 80 个字节应该使用字符串连接号换行。</p></li><li><p><a href="#6.3">6.3</a> <a name="6.3"></a> 注：过度使用字串连接符号可能会对性能造成影响。<a href="http://jsperf.com/ya-string-concat" target="_blank" rel="noopener noreferrer">jsPerf<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 和 <a href="https://github.com/airbnb/javascript/issues/40" target="_blank" rel="noopener noreferrer">讨论<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>.</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const errorMessage =
+  &quot;This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.&quot;;
+
+// bad
+const errorMessage =
+  &quot;This is a super long error that was thrown because \
+of Batman. When you stop to think about how Batman had anything to do \
+with this, you would get nowhere \
+fast.&quot;;
+
+// good
+const errorMessage =
+  &quot;This is a super long error that was thrown because &quot; +
+  &quot;of Batman. When you stop to think about how Batman had anything to do &quot; +
+  &quot;with this, you would get nowhere fast.&quot;;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div></li></ul><p><a name="es6-template-literals"></a></p><ul><li><p><a href="#6.4">6.4</a> <a name="6.4"></a> 程序化生成字符串时，使用模板字符串代替字符串连接。</p><blockquote><p>为什么？模板字符串更为简洁，更具可读性。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function sayHi(name) {
+  return &quot;How are you, &quot; + name + &quot;?&quot;;
+}
+
+// bad
+function sayHi(name) {
+  return [&quot;How are you, &quot;, name, &quot;?&quot;].join();
+}
+
+// good
+function sayHi(name) {
+  return `How are you, ${name}?`;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="functions"></a></p><h2 id="函数" tabindex="-1"><a class="header-anchor" href="#函数" aria-hidden="true">#</a> 函数</h2><ul><li><p><a href="#7.1">7.1</a> <a name="7.1"></a> 使用函数声明代替函数表达式。</p><blockquote><p>为什么？因为函数声明是可命名的，所以他们在调用栈中更容易被识别。此外，函数声明会把整个函数提升（hoisted），而函数表达式只会把函数的引用变量名提升。这条规则使得<a href="#arrow-functions">箭头函数</a>可以取代函数表达式。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const foo = function () {};
+
+// good
+function foo() {}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li><li><p><a href="#7.2">7.2</a> <a name="7.2"></a> 函数表达式:</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// 立即调用的函数表达式 (IIFE)
+(() =&gt; {
+  console.log(&quot;Welcome to the Internet. Please follow me.&quot;);
+})();
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></li><li><p><a href="#7.3">7.3</a> <a name="7.3"></a> 永远不要在一个非函数代码块（<code>if</code>、<code>while</code> 等）中声明一个函数，把那个函数赋给一个变量。浏览器允许你这么做，但它们的解析表现不一致。</p></li><li><p><a href="#7.4">7.4</a> <a name="7.4"></a> <strong>注意:</strong> ECMA-262 把 <code>block</code> 定义为一组语句。函数声明不是语句。<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97" target="_blank" rel="noopener noreferrer">阅读 ECMA-262 关于这个问题的说明<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+if (currentUser) {
+  function test() {
+    console.log(&quot;Nope.&quot;);
+  }
+}
+
+// good
+let test;
+if (currentUser) {
+  test = () =&gt; {
+    console.log(&quot;Yup.&quot;);
+  };
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></li><li><p><a href="#7.5">7.5</a> <a name="7.5"></a> 永远不要把参数命名为 <code>arguments</code>。这将取代原来函数作用域内的 <code>arguments</code> 对象。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function nope(name, options, arguments) {
+  // ...stuff...
+}
+
+// good
+function yup(name, options, args) {
+  // ...stuff...
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></li></ul><p><a name="es6-rest"></a></p><ul><li><p><a href="#7.6">7.6</a> <a name="7.6"></a> 不要使用 <code>arguments</code>。可以选择 rest 语法 <code>...</code> 替代。</p><blockquote><p>为什么？使用 <code>...</code> 能明确你要传入的参数。另外 rest 参数是一个真正的数组，而 <code>arguments</code> 是一个类数组。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function concatenateAll() {
+  const args = Array.prototype.slice.call(arguments);
+  return args.join(&quot;&quot;);
+}
+
+// good
+function concatenateAll(...args) {
+  return args.join(&quot;&quot;);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div></li></ul><p><a name="es6-default-parameters"></a></p><ul><li><p><a href="#7.7">7.7</a> <a name="7.7"></a> 直接给函数的参数指定默认值，不要使用一个变化的函数参数。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// really bad
+function handleThings(opts) {
+  // 不！我们不应该改变函数参数。
+  // 更加糟糕: 如果参数 opts 是 false 的话，它就会被设定为一个对象。
+  // 但这样的写法会造成一些 Bugs。
+  //（译注：例如当 opts 被赋值为空字符串，opts 仍然会被下一行代码设定为一个空对象。）
+  opts = opts || {};
+  // ...
+}
+
+// still bad
+function handleThings(opts) {
+  if (opts === void 0) {
+    opts = {};
+  }
+  // ...
+}
+
+// good
+function handleThings(opts = {}) {
+  // ...
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div></li><li><p><a href="#7.8">7.8</a> <a name="7.8"></a> 直接给函数参数赋值时需要避免副作用。</p><blockquote><p>为什么？因为这样的写法让人感到很困惑。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>var b = 1;
+// bad
+function count(a = b++) {
+  console.log(a);
+}
+count(); // 1
+count(); // 2
+count(3); // 3
+count(); // 3
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="arrow-functions"></a></p><h2 id="箭头函数" tabindex="-1"><a class="header-anchor" href="#箭头函数" aria-hidden="true">#</a> 箭头函数</h2><ul><li><p><a href="#8.1">8.1</a> <a name="8.1"></a> 当你必须使用函数表达式（或传递一个匿名函数）时，使用箭头函数符号。</p><blockquote><p>为什么?因为箭头函数创造了新的一个 <code>this</code> 执行环境（译注：参考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener noreferrer">Arrow functions - JavaScript | MDN<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 和 <a href="http://toddmotto.com/es6-arrow-functions-syntaxes-and-lexical-scoping/" target="_blank" rel="noopener noreferrer">ES6 arrow functions, syntax and lexical scoping<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>），通常情况下都能满足你的需求，而且这样的写法更为简洁。</p></blockquote><blockquote><p>为什么不？如果你有一个相当复杂的函数，你或许可以把逻辑部分转移到一个函数声明上。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+[1, 2, 3].map(function (x) {
+  return x * x;
+});
+
+// good
+[1, 2, 3].map((x) =&gt; {
+  return x * x;
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></li><li><p><a href="#8.2">8.2</a> <a name="8.2"></a> 如果一个函数适合用一行写出并且只有一个参数，那就把花括号、圆括号和 <code>return</code> 都省略掉。如果不是，那就不要省略。</p><blockquote><p>为什么？语法糖。在链式调用中可读性很高。</p></blockquote><blockquote><p>为什么不？当你打算回传一个对象的时候。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// good
+[1, 2, 3].map((x) =&gt; x * x);
+
+// good
+[1, 2, 3].reduce((total, n) =&gt; {
+  return total + n;
+}, 0);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="constructors"></a></p><h2 id="构造器" tabindex="-1"><a class="header-anchor" href="#构造器" aria-hidden="true">#</a> 构造器</h2><ul><li><a href="#9.1">9.1</a> <a name="9.1"></a> 总是使用 <code>class</code>。避免直接操作 <code>prototype</code> 。</li></ul><blockquote><p>为什么? 因为 <code>class</code> 语法更为简洁更易读。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function Queue(contents = []) {
+  this._queue = [...contents];
+}
+Queue.prototype.pop = function () {
+  const value = this._queue[0];
+  this._queue.splice(0, 1);
+  return value;
+};
+
+// good
+class Queue {
+  constructor(contents = []) {
+    this._queue = [...contents];
+  }
+  pop() {
+    const value = this._queue[0];
+    this._queue.splice(0, 1);
+    return value;
+  }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li><p><a href="#9.2">9.2</a> <a name="9.2"></a> 使用 <code>extends</code> 继承。</p><blockquote><p>为什么？因为 <code>extends</code> 是一个内建的原型继承方法并且不会破坏 <code>instanceof</code>。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const inherits = require(&quot;inherits&quot;);
+
+function PeekableQueue(contents) {
+  Queue.apply(this, contents);
+}
+inherits(PeekableQueue, Queue);
+PeekableQueue.prototype.peek = function () {
+  return this._queue[0];
+};
+
+// good
+class PeekableQueue extends Queue {
+  peek() {
+    return this._queue[0];
+  }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div></li><li><p><a href="#9.3">9.3</a> <a name="9.3"></a> 方法可以返回 <code>this</code> 来帮助链式调用。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+Jedi.prototype.jump = function () {
+  this.jumping = true;
+  return true;
+};
+
+Jedi.prototype.setHeight = function (height) {
+  this.height = height;
+};
+
+const luke = new Jedi();
+luke.jump(); // =&gt; true
+luke.setHeight(20); // =&gt; undefined
+
+// good
+class Jedi {
+  jump() {
+    this.jumping = true;
+    return this;
+  }
+
+  setHeight(height) {
+    this.height = height;
+    return this;
+  }
+}
+
+const luke = new Jedi();
+
+luke.jump().setHeight(20);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div></li><li><p><a href="#9.4">9.4</a> <a name="9.4"></a> 可以写一个自定义的 <code>toString()</code> 方法，但要确保它能正常运行并且不会引起副作用。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>class Jedi {
+  constructor(options = {}) {
+    this.name = options.name || &quot;no name&quot;;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  toString() {
+    return `Jedi - ${this.getName()}`;
+  }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="modules"></a></p><h2 id="模块" tabindex="-1"><a class="header-anchor" href="#模块" aria-hidden="true">#</a> 模块</h2><ul><li><p><a href="#10.1">10.1</a> <a name="10.1"></a> 总是使用模组 (<code>import</code>/<code>export</code>) 而不是其他非标准模块系统。你可以编译为你喜欢的模块系统。</p><blockquote><p>为什么？模块就是未来，让我们开始迈向未来吧。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const AirbnbStyleGuide = require(&#39;./AirbnbStyleGuide&#39;);
+module.exports = AirbnbStyleGuide.es6;
+
+// ok
+import AirbnbStyleGuide from &#39;./AirbnbStyleGuide&#39;;
+export default AirbnbStyleGuide.es6;
+
+// best
+import { es6 } from &#39;./AirbnbStyleGuide&#39;;
+export default es6;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div></li><li><p><a href="#10.2">10.2</a> <a name="10.2"></a> 不要使用通配符 import。</p><blockquote><p>为什么？这样能确保你只有一个默认 export。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+import * as AirbnbStyleGuide from &quot;./AirbnbStyleGuide&quot;;
+
+// good
+import AirbnbStyleGuide from &quot;./AirbnbStyleGuide&quot;;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li><li><p><a href="#10.3">10.3</a> <a name="10.3"></a>不要从 import 中直接 export。</p></li></ul><blockquote><p>为什么？虽然一行代码简洁明了，但让 import 和 export 各司其职让事情能保持一致。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code> // bad
+ // filename es6.js
+ export { es6 as default } from &#39;./airbnbStyleGuide&#39;;
+
+ // good
+ // filename es6.js
+ import { es6 } from &#39;./AirbnbStyleGuide&#39;;
+ export default es6;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="iterators-and-generators"></a></p><h2 id="iterators-and-generators" tabindex="-1"><a class="header-anchor" href="#iterators-and-generators" aria-hidden="true">#</a> Iterators and Generators</h2><ul><li><p><a href="#11.1">11.1</a> <a name="11.1"></a> 不要使用 iterators。使用高阶函数例如 <code>map()</code> 和 <code>reduce()</code> 替代 <code>for-of</code>。</p><blockquote><p>为什么？这加强了我们不变的规则。处理纯函数的回调值更易读，这比它带来的副作用更重要。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const numbers = [1, 2, 3, 4, 5];
+
+// bad
+let sum = 0;
+for (let num of numbers) {
+  sum += num;
+}
+
+sum === 15;
+
+// good
+let sum = 0;
+numbers.forEach((num) =&gt; (sum += num));
+sum === 15;
+
+// best (use the functional force)
+const sum = numbers.reduce((total, num) =&gt; total + num, 0);
+sum === 15;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div></li><li><p><a href="#11.2">11.2</a> <a name="11.2"></a> 现在还不要使用 generators。</p><blockquote><p>为什么？因为它们现在还没法很好地编译到 ES5。 (译者注：目前(2016/03) Chrome 和 Node.js 的稳定版本都已支持 generators)</p></blockquote></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="properties"></a></p><h2 id="属性" tabindex="-1"><a class="header-anchor" href="#属性" aria-hidden="true">#</a> 属性</h2><ul><li><p><a href="#12.1">12.1</a> <a name="12.1"></a> 使用 <code>.</code> 来访问对象的属性。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const luke = {
+  jedi: true,
+  age: 28,
+};
+
+// bad
+const isJedi = luke[&quot;jedi&quot;];
+
+// good
+const isJedi = luke.jedi;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div></li><li><p><a href="#12.2">12.2</a> <a name="12.2"></a> 当通过变量访问属性时使用中括号 <code>[]</code>。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const luke = {
+  jedi: true,
+  age: 28,
+};
+
+function getProp(prop) {
+  return luke[prop];
+}
+
+const isJedi = getProp(&quot;jedi&quot;);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="variables"></a></p><h2 id="变量" tabindex="-1"><a class="header-anchor" href="#变量" aria-hidden="true">#</a> 变量</h2><ul><li><p><a href="#13.1">13.1</a> <a name="13.1"></a> 一直使用 <code>const</code> 来声明变量，如果不这样做就会产生全局变量。我们需要避免全局命名空间的污染。<a href="http://www.wikiwand.com/en/Captain_Planet" target="_blank" rel="noopener noreferrer">地球队长<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>已经警告过我们了。（译注：全局，global 亦有全球的意思。地球队长的责任是保卫地球环境，所以他警告我们不要造成「全球」污染。）</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+superPower = new SuperPower();
+
+// good
+const superPower = new SuperPower();
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li><li><p><a href="#13.2">13.2</a> <a name="13.2"></a> 使用 <code>const</code> 声明每一个变量。</p><blockquote><p>为什么？增加新变量将变的更加容易，而且你永远不用再担心调换错 <code>;</code> 跟 <code>,</code>。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const items = getItems(),
+  goSportsTeam = true,
+  dragonball = &quot;z&quot;;
+
+// bad
+// (compare to above, and try to spot the mistake)
+const items = getItems(),
+  goSportsTeam = true;
+dragonball = &quot;z&quot;;
+
+// good
+const items = getItems();
+const goSportsTeam = true;
+const dragonball = &quot;z&quot;;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div></li><li><p><a href="#13.3">13.3</a> <a name="13.3"></a> 将所有的 <code>const</code> 和 <code>let</code> 分组</p><blockquote><p>为什么？当你需要把已赋值变量赋值给未赋值变量时非常有用。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+let i,
+  len,
+  dragonball,
+  items = getItems(),
+  goSportsTeam = true;
+
+// bad
+let i;
+const items = getItems();
+let dragonball;
+const goSportsTeam = true;
+let len;
+
+// good
+const goSportsTeam = true;
+const items = getItems();
+let dragonball;
+let i;
+let length;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div></li><li><p><a href="#13.4">13.4</a> <a name="13.4"></a> 在你需要的地方给变量赋值，但请把它们放在一个合理的位置。</p></li></ul><blockquote><p>为什么？<code>let</code> 和 <code>const</code> 是块级作用域而不是函数作用域。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code> // good
+ function() {
+   test();
+   console.log(&#39;doing stuff..&#39;);
+
+   //..other stuff..
+
+   const name = getName();
+
+   if (name === &#39;test&#39;) {
+     return false;
+   }
+
+   return name;
+ }
+
+ // bad - unnecessary function call
+ function(hasName) {
+   const name = getName();
+
+   if (!hasName) {
+     return false;
+   }
+
+   this.setFirstName(name);
+
+   return true;
+ }
+
+ // good
+ function(hasName) {
+   if (!hasName) {
+     return false;
+   }
+
+   const name = getName();
+   this.setFirstName(name);
+
+   return true;
+ }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="hoisting"></a></p><h2 id="hoisting" tabindex="-1"><a class="header-anchor" href="#hoisting" aria-hidden="true">#</a> Hoisting</h2><ul><li><p><a href="#14.1">14.1</a> <a name="14.1"></a> <code>var</code> 声明会被提升至该作用域的顶部，但它们赋值不会提升。<code>let</code> 和 <code>const</code> 被赋予了一种称为「<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let" target="_blank" rel="noopener noreferrer">暂时性死区（Temporal Dead Zones, TDZ）<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>」的概念。这对于了解为什么 <a href="http://es-discourse.com/t/why-typeof-is-no-longer-safe/15" target="_blank" rel="noopener noreferrer">type of 不再安全<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>相当重要。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// 我们知道这样运行不了
+// （假设 notDefined 不是全局变量）
+function example() {
+  console.log(notDefined); // =&gt; throws a ReferenceError
+}
+
+// 由于变量提升的原因，
+// 在引用变量后再声明变量是可以运行的。
+// 注：变量的赋值 `true` 不会被提升。
+function example() {
+  console.log(declaredButNotAssigned); // =&gt; undefined
+  var declaredButNotAssigned = true;
+}
+
+// 编译器会把函数声明提升到作用域的顶层，
+// 这意味着我们的例子可以改写成这样：
+function example() {
+  let declaredButNotAssigned;
+  console.log(declaredButNotAssigned); // =&gt; undefined
+  declaredButNotAssigned = true;
+}
+
+// 使用 const 和 let
+function example() {
+  console.log(declaredButNotAssigned); // =&gt; throws a ReferenceError
+  console.log(typeof declaredButNotAssigned); // =&gt; throws a ReferenceError
+  const declaredButNotAssigned = true;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div></li><li><p><a href="#14.2">14.2</a> <a name="14.2"></a> 匿名函数表达式的变量名会被提升，但函数内容并不会。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function example() {
+  console.log(anonymous); // =&gt; undefined
+
+  anonymous(); // =&gt; TypeError anonymous is not a function
+
+  var anonymous = function () {
+    console.log(&quot;anonymous function expression&quot;);
+  };
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></li><li><p><a href="#14.3">14.3</a> <a name="14.3"></a> 命名的函数表达式的变量名会被提升，但函数名和函数函数内容并不会。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function example() {
+  console.log(named); // =&gt; undefined
+
+  named(); // =&gt; TypeError named is not a function
+
+  superPower(); // =&gt; ReferenceError superPower is not defined
+
+  var named = function superPower() {
+    console.log(&quot;Flying&quot;);
+  };
+}
+
+// the same is true when the function name
+// is the same as the variable name.
+function example() {
+  console.log(named); // =&gt; undefined
+
+  named(); // =&gt; TypeError named is not a function
+
+  var named = function named() {
+    console.log(&quot;named&quot;);
+  };
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div></li><li><p><a href="#14.4">14.4</a> <a name="14.4"></a> 函数声明的名称和函数体都会被提升。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function example() {
+  superPower(); // =&gt; Flying
+
+  function superPower() {
+    console.log(&quot;Flying&quot;);
+  }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></li><li><p>想了解更多信息，参考 <a href="http://www.adequatelygood.com/" target="_blank" rel="noopener noreferrer">Ben Cherry<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 的 <a href="http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting" target="_blank" rel="noopener noreferrer">JavaScript Scoping &amp; Hoisting<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>。</p></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="comparison-operators--equality"></a></p><h2 id="比较运算符和等号" tabindex="-1"><a class="header-anchor" href="#比较运算符和等号" aria-hidden="true">#</a> 比较运算符和等号</h2><ul><li><p><a href="#15.1">15.1</a> <a name="15.1"></a> 优先使用 <code>===</code> 和 <code>!==</code> 而不是 <code>==</code> 和 <code>!=</code>.</p></li><li><p><a href="#15.2">15.2</a> <a name="15.2"></a> 条件表达式例如 <code>if</code> 语句通过抽象方法 <code>ToBoolean</code> 强制计算它们的表达式并且总是遵守下面的规则：</p><ul><li><strong>对象</strong> 被计算为 <strong>true</strong></li><li><strong>Undefined</strong> 被计算为 <strong>false</strong></li><li><strong>Null</strong> 被计算为 <strong>false</strong></li><li><strong>布尔值</strong> 被计算为 <strong>布尔的值</strong></li><li><strong>数字</strong> 如果是 <strong>+0、-0、或 NaN</strong> 被计算为 <strong>false</strong>, 否则为 <strong>true</strong></li><li><strong>字符串</strong> 如果是空字符串 <code>&#39;&#39;</code> 被计算为 <strong>false</strong>，否则为 <strong>true</strong></li></ul><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>if ([0]) {
+  // true
+  // An array is an object, objects evaluate to true
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></li><li><p><a href="#15.3">15.3</a> <a name="15.3"></a> 使用简写。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+if (name !== &quot;&quot;) {
+  // ...stuff...
+}
+
+// good
+if (name) {
+  // ...stuff...
+}
+
+// bad
+if (collection.length &gt; 0) {
+  // ...stuff...
+}
+
+// good
+if (collection.length) {
+  // ...stuff...
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div></li><li><p><a href="#15.4">15.4</a> <a name="15.4"></a> 想了解更多信息，参考 Angus Croll 的 <a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108" target="_blank" rel="noopener noreferrer">Truth Equality and JavaScript<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>。</p></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="blocks"></a></p><h2 id="代码块" tabindex="-1"><a class="header-anchor" href="#代码块" aria-hidden="true">#</a> 代码块</h2><ul><li><p><a href="#16.1">16.1</a> <a name="16.1"></a> 使用大括号包裹所有的多行代码块。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+if (test)
+  return false;
+
+// good
+if (test) return false;
+
+// good
+if (test) {
+  return false;
+}
+
+// bad
+function() { return false; }
+
+// good
+function() {
+  return false;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div></li><li><p><a href="#16.2">16.2</a> <a name="16.2"></a> 如果通过 <code>if</code> 和 <code>else</code> 使用多行代码块，把 <code>else</code> 放在 <code>if</code> 代码块关闭括号的同一行。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+if (test) {
+  thing1();
+  thing2();
+} else {
+  thing3();
+}
+
+// good
+if (test) {
+  thing1();
+  thing2();
+} else {
+  thing3();
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="comments"></a></p><h2 id="注释" tabindex="-1"><a class="header-anchor" href="#注释" aria-hidden="true">#</a> 注释</h2><ul><li><p><a href="#17.1">17.1</a> <a name="17.1"></a> 使用 <code>/** ... */</code> 作为多行注释。包含描述、指定所有参数和返回值的类型和值。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+// make() returns a new element
+// based on the passed in tag name
+//
+// @param {String} tag
+// @return {Element} element
+function make(tag) {
+  // ...stuff...
+
+  return element;
+}
+
+// good
+/**
+ * make() returns a new element
+ * based on the passed in tag name
+ *
+ * @param {String} tag
+ * @return {Element} element
+ */
+function make(tag) {
+  // ...stuff...
+
+  return element;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div></li><li><p><a href="#17.2">17.2</a> <a name="17.2"></a> 使用 <code>//</code> 作为单行注释。在评论对象上面另起一行使用单行注释。在注释前插入空行。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const active = true; // is current tab
+
+// good
+// is current tab
+const active = true;
+
+// bad
+function getType() {
+  console.log(&quot;fetching type...&quot;);
+  // set the default type to &#39;no type&#39;
+  const type = this._type || &quot;no type&quot;;
+
+  return type;
+}
+
+// good
+function getType() {
+  console.log(&quot;fetching type...&quot;);
+
+  // set the default type to &#39;no type&#39;
+  const type = this._type || &quot;no type&quot;;
+
+  return type;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div></li><li><p><a href="#17.3">17.3</a> <a name="17.3"></a> 给注释增加 <code>FIXME</code> 或 <code>TODO</code> 的前缀可以帮助其他开发者快速了解这是一个需要复查的问题，或是给需要实现的功能提供一个解决方式。这将有别于常见的注释，因为它们是可操作的。使用 <code>FIXME -- need to figure this out</code> 或者 <code>TODO -- need to implement</code>。</p></li><li><p><a href="#17.4">17.4</a> <a name="17.4"></a> 使用 <code>// FIXME</code>: 标注问题。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>class Calculator {
+  constructor() {
+    // FIXME: shouldn&#39;t use a global here
+    total = 0;
+  }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li><li><p><a href="#17.5">17.5</a> <a name="17.5"></a> 使用 <code>// TODO</code>: 标注问题的解决方式。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>class Calculator {
+  constructor() {
+    // TODO: total should be configurable by an options param
+    this.total = 0;
+  }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="whitespace"></a></p><h2 id="空白" tabindex="-1"><a class="header-anchor" href="#空白" aria-hidden="true">#</a> 空白</h2><ul><li><p><a href="#18.1">18.1</a> <a name="18.1"></a> 使用 2 个空格作为缩进。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function() {
+∙∙∙∙const name;
+}
+
+// bad
+function() {
+∙const name;
+}
+
+// good
+function() {
+∙∙const name;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></li><li><p><a href="#18.2">18.2</a> <a name="18.2"></a> 在花括号前放一个空格。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function test() {
+  console.log(&quot;test&quot;);
+}
+
+// good
+function test() {
+  console.log(&quot;test&quot;);
+}
+
+// bad
+dog.set(&quot;attr&quot;, {
+  age: &quot;1 year&quot;,
+  breed: &quot;Bernese Mountain Dog&quot;,
+});
+
+// good
+dog.set(&quot;attr&quot;, {
+  age: &quot;1 year&quot;,
+  breed: &quot;Bernese Mountain Dog&quot;,
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div></li><li><p><a href="#18.3">18.3</a> <a name="18.3"></a> 在控制语句（<code>if</code>、<code>while</code> 等）的小括号前放一个空格。在函数调用及声明中，不在函数的参数列表前加空格。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+if (isJedi) {
+  fight();
+}
+
+// good
+if (isJedi) {
+  fight();
+}
+
+// bad
+function fight() {
+  console.log(&quot;Swooosh!&quot;);
+}
+
+// good
+function fight() {
+  console.log(&quot;Swooosh!&quot;);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div></li><li><p><a href="#18.4">18.4</a> <a name="18.4"></a> 使用空格把运算符隔开。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const x = y + 5;
+
+// good
+const x = y + 5;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li><li><p><a href="#18.5">18.5</a> <a name="18.5"></a> 在文件末尾插入一个空行。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+(function (global) {
+  // ...stuff...
+})(this);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+(function(global) {
+  // ...stuff...
+})(this);↵
+↵
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// good
+(function(global) {
+  // ...stuff...
+})(this);↵
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></li><li><p><a href="#18.5">18.5</a> <a name="18.5"></a> 在使用长方法链时进行缩进。使用前面的点 <code>.</code> 强调这是方法调用而不是新语句。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+$(&quot;#items&quot;).find(&quot;.selected&quot;).highlight().end().find(&quot;.open&quot;).updateCount();
+
+// bad
+$(&quot;#items&quot;).find(&quot;.selected&quot;).highlight().end().find(&quot;.open&quot;).updateCount();
+
+// good
+$(&quot;#items&quot;).find(&quot;.selected&quot;).highlight().end().find(&quot;.open&quot;).updateCount();
+
+// bad
+const leds = stage
+  .selectAll(&quot;.led&quot;)
+  .data(data)
+  .enter()
+  .append(&quot;svg:svg&quot;)
+  .class(&quot;led&quot;, true)
+  .attr(&quot;width&quot;, (radius + margin) * 2)
+  .append(&quot;svg:g&quot;)
+  .attr(
+    &quot;transform&quot;,
+    &quot;translate(&quot; + (radius + margin) + &quot;,&quot; + (radius + margin) + &quot;)&quot;,
+  )
+  .call(tron.led);
+
+// good
+const leds = stage
+  .selectAll(&quot;.led&quot;)
+  .data(data)
+  .enter()
+  .append(&quot;svg:svg&quot;)
+  .classed(&quot;led&quot;, true)
+  .attr(&quot;width&quot;, (radius + margin) * 2)
+  .append(&quot;svg:g&quot;)
+  .attr(
+    &quot;transform&quot;,
+    &quot;translate(&quot; + (radius + margin) + &quot;,&quot; + (radius + margin) + &quot;)&quot;,
+  )
+  .call(tron.led);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div></li><li><p><a href="#18.6">18.6</a> <a name="18.6"></a> 在块末和新语句前插入空行。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+if (foo) {
+  return bar;
+}
+return baz;
+
+// good
+if (foo) {
+  return bar;
+}
+
+return baz;
+
+// bad
+const obj = {
+  foo() {},
+  bar() {},
+};
+return obj;
+
+// good
+const obj = {
+  foo() {},
+
+  bar() {},
+};
+
+return obj;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="commas"></a></p><h2 id="逗号" tabindex="-1"><a class="header-anchor" href="#逗号" aria-hidden="true">#</a> 逗号</h2><ul><li><p><a href="#19.1">19.1</a> <a name="19.1"></a> 行首逗号：<strong>不需要</strong>。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const story = [once, upon, aTime];
+
+// good
+const story = [once, upon, aTime];
+
+// bad
+const hero = {
+  firstName: &quot;Ada&quot;,
+  lastName: &quot;Lovelace&quot;,
+  birthYear: 1815,
+  superPower: &quot;computers&quot;,
+};
+
+// good
+const hero = {
+  firstName: &quot;Ada&quot;,
+  lastName: &quot;Lovelace&quot;,
+  birthYear: 1815,
+  superPower: &quot;computers&quot;,
+};
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div></li><li><p><a href="#19.2">19.2</a> <a name="19.2"></a> 增加结尾的逗号: <strong>需要</strong>。</p></li></ul><blockquote><p>为什么? 这会让 git diffs 更干净。另外，像 babel 这样的转译器会移除结尾多余的逗号，也就是说你不必担心老旧浏览器的<a href="/front-end-lab/further/guide/es5/#commas" class="">尾逗号问题</a>。</p></blockquote><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code> // bad - git diff without trailing comma
+ const hero = {
+      firstName: &#39;Florence&#39;,
+ -    lastName: &#39;Nightingale&#39;
+ +    lastName: &#39;Nightingale&#39;,
+ +    inventorOf: [&#39;coxcomb graph&#39;, &#39;modern nursing&#39;]
+ }
+
+ // good - git diff with trailing comma
+ const hero = {
+      firstName: &#39;Florence&#39;,
+      lastName: &#39;Nightingale&#39;,
+ +    inventorOf: [&#39;coxcomb chart&#39;, &#39;modern nursing&#39;],
+ }
+
+ // bad
+ const hero = {
+   firstName: &#39;Dana&#39;,
+   lastName: &#39;Scully&#39;
+ };
+
+ const heroes = [
+   &#39;Batman&#39;,
+   &#39;Superman&#39;
+ ];
+
+ // good
+ const hero = {
+   firstName: &#39;Dana&#39;,
+   lastName: &#39;Scully&#39;,
+ };
+
+ const heroes = [
+   &#39;Batman&#39;,
+   &#39;Superman&#39;,
+ ];
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="semicolons"></a></p><h2 id="分号" tabindex="-1"><a class="header-anchor" href="#分号" aria-hidden="true">#</a> 分号</h2><ul><li><p><a href="#20.1">20.1</a> <a name="20.1"></a> <strong>使用分号</strong></p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+(function () {
+  const name = &quot;Skywalker&quot;;
+  return name;
+})()(
+  // good
+  () =&gt; {
+    const name = &quot;Skywalker&quot;;
+    return name;
+  },
+)();
+
+// good (防止函数在两个 IIFE 合并时被当成一个参数)
+(() =&gt; {
+  const name = &quot;Skywalker&quot;;
+  return name;
+})();
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><a href="http://stackoverflow.com/a/7365214/1712802" target="_blank" rel="noopener noreferrer">Read more<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>.</p></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="type-casting--coercion"></a></p><h2 id="类型转换" tabindex="-1"><a class="header-anchor" href="#类型转换" aria-hidden="true">#</a> 类型转换</h2><ul><li><p><a href="#21.1">21.1</a> <a name="21.1"></a> 在语句开始时执行类型转换。</p></li><li><p><a href="#21.2">21.2</a> <a name="21.2"></a> 字符串：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>//  =&gt; this.reviewScore = 9;
+
+// bad
+const totalScore = this.reviewScore + &quot;&quot;;
+
+// good
+const totalScore = String(this.reviewScore);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></li><li><p><a href="#21.3">21.3</a> <a name="21.3"></a> 对数字使用 <code>parseInt</code> 转换，并带上类型转换的基数。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const inputValue = &quot;4&quot;;
+
+// bad
+const val = new Number(inputValue);
+
+// bad
+const val = +inputValue;
+
+// bad
+const val = inputValue &gt;&gt; 0;
+
+// bad
+const val = parseInt(inputValue);
+
+// good
+const val = Number(inputValue);
+
+// good
+const val = parseInt(inputValue, 10);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div></li><li><p><a href="#21.4">21.4</a> <a name="21.4"></a> 如果因为某些原因 parseInt 成为你所做的事的瓶颈而需要使用位操作解决<a href="http://jsperf.com/coercion-vs-casting/3" target="_blank" rel="noopener noreferrer">性能问题<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>时，留个注释说清楚原因和你的目的。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// good
+/**
+ * 使用 parseInt 导致我的程序变慢，
+ * 改成使用位操作转换数字快多了。
+ */
+const val = inputValue &gt;&gt; 0;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li><li><p><a href="#21.5">21.5</a> <a name="21.5"></a> <strong>注:</strong> 小心使用位操作运算符。数字会被当成 <a href="http://es5.github.io/#x4.3.19" target="_blank" rel="noopener noreferrer">64 位值<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>，但是位操作运算符总是返回 32 位的整数（<a href="http://es5.github.io/#x11.7" target="_blank" rel="noopener noreferrer">参考<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>）。位操作处理大于 32 位的整数值时还会导致意料之外的行为。<a href="https://github.com/airbnb/javascript/issues/109" target="_blank" rel="noopener noreferrer">关于这个问题的讨论<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>。最大的 32 位整数是 2,147,483,647：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>2147483647 &gt;&gt; 0; //=&gt; 2147483647
+2147483648 &gt;&gt; 0; //=&gt; -2147483648
+2147483649 &gt;&gt; 0; //=&gt; -2147483647
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></li><li><p><a href="#21.6">21.6</a> <a name="21.6"></a> 布尔:</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const age = 0;
+
+// bad
+const hasAge = new Boolean(age);
+
+// good
+const hasAge = Boolean(age);
+
+// good
+const hasAge = !!age;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="naming-conventions"></a></p><h2 id="命名规则" tabindex="-1"><a class="header-anchor" href="#命名规则" aria-hidden="true">#</a> 命名规则</h2><ul><li><p><a href="#22.1">22.1</a> <a name="22.1"></a> 避免单字母命名。命名应具备描述性。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function q() {
+  // ...stuff...
+}
+
+// good
+function query() {
+  // ..stuff..
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></li><li><p><a href="#22.2">22.2</a> <a name="22.2"></a> 使用驼峰式命名对象、函数和实例。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const OBJEcttsssss = {};
+const this_is_my_object = {};
+function c() {}
+
+// good
+const thisIsMyObject = {};
+function thisIsMyFunction() {}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div></li><li><p><a href="#22.3">22.3</a> <a name="22.3"></a> 使用帕斯卡式命名构造函数或类。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function user(options) {
+  this.name = options.name;
+}
+
+const bad = new user({
+  name: &quot;nope&quot;,
+});
+
+// good
+class User {
+  constructor(options) {
+    this.name = options.name;
+  }
+}
+
+const good = new User({
+  name: &quot;yup&quot;,
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div></li><li><p><a href="#22.4">22.4</a> <a name="22.4"></a> 不要使用下划线 <code>_</code> 结尾或开头来命名属性和方法。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+this.__firstName__ = &quot;Panda&quot;;
+this.firstName_ = &quot;Panda&quot;;
+this._firstName = &quot;Panda&quot;;
+
+// good
+this.firstName = &quot;Panda&quot;;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></li><li><p><a href="#22.5">22.5</a> <a name="22.5"></a> 别保存 <code>this</code> 的引用。使用箭头函数或 Function#bind。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function foo() {
+  const self = this;
+  return function () {
+    console.log(self);
+  };
+}
+
+// bad
+function foo() {
+  const that = this;
+  return function () {
+    console.log(that);
+  };
+}
+
+// good
+function foo() {
+  return () =&gt; {
+    console.log(this);
+  };
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div></li><li><p><a href="#22.6">22.6</a> <a name="22.6"></a> 如果你的文件只输出一个类，那你的文件名必须和类名完全保持一致。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// file contents
+class CheckBox {
+  // ...
+}
+export default CheckBox;
+
+// in some other file
+// bad
+import CheckBox from &quot;./checkBox&quot;;
+
+// bad
+import CheckBox from &quot;./check_box&quot;;
+
+// good
+import CheckBox from &quot;./CheckBox&quot;;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div></li><li><p><a href="#22.7">22.7</a> <a name="22.7"></a> 当你导出默认的函数时使用驼峰式命名。你的文件名必须和函数名完全保持一致。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>function makeStyleGuide() {}
+
+export default makeStyleGuide;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></li><li><p><a href="#22.8">22.8</a> <a name="22.8"></a> 当你导出单例、函数库、空对象时使用帕斯卡式命名。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const AirbnbStyleGuide = {
+  es6: {},
+};
+
+export default AirbnbStyleGuide;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="accessors"></a></p><h2 id="存取器" tabindex="-1"><a class="header-anchor" href="#存取器" aria-hidden="true">#</a> 存取器</h2><ul><li><p><a href="#23.1">23.1</a> <a name="23.1"></a> 属性的存取函数不是必须的。</p></li><li><p><a href="#23.2">23.2</a> <a name="23.2"></a> 如果你需要存取函数时使用 <code>getVal()</code> 和 <code>setVal(&#39;hello&#39;)</code>。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+dragon.age();
+
+// good
+dragon.getAge();
+
+// bad
+dragon.age(25);
+
+// good
+dragon.setAge(25);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div></li><li><p><a href="#23.3">23.3</a> <a name="23.3"></a> 如果属性是布尔值，使用 <code>isVal()</code> 或 <code>hasVal()</code>。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+if (!dragon.age()) {
+  return false;
+}
+
+// good
+if (!dragon.hasAge()) {
+  return false;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></li><li><p><a href="#23.4">23.4</a> <a name="23.4"></a> 创建 <code>get()</code> 和 <code>set()</code> 函数是可以的，但要保持一致。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>class Jedi {
+  constructor(options = {}) {
+    const lightsaber = options.lightsaber || &quot;blue&quot;;
+    this.set(&quot;lightsaber&quot;, lightsaber);
+  }
+
+  set(key, val) {
+    this[key] = val;
+  }
+
+  get(key) {
+    return this[key];
+  }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="events"></a></p><h2 id="事件" tabindex="-1"><a class="header-anchor" href="#事件" aria-hidden="true">#</a> 事件</h2><ul><li><p><a href="#24.1">24.1</a> <a name="24.1"></a> 当给事件附加数据时（无论是 DOM 事件还是私有事件），传入一个哈希而不是原始值。这样可以让后面的贡献者增加更多数据到事件数据而无需找出并更新事件的每一个处理器。例如，不好的写法：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+$(this).trigger(&#39;listingUpdated&#39;, listing.id);
+
+...
+
+$(this).on(&#39;listingUpdated&#39;, function(e, listingId) {
+  // do something with listingId
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>更好的写法：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// good
+$(this).trigger(&#39;listingUpdated&#39;, { listingId : listing.id });
+
+...
+
+$(this).on(&#39;listingUpdated&#39;, function(e, data) {
+  // do something with data.listingId
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><h2 id="jquery" tabindex="-1"><a class="header-anchor" href="#jquery" aria-hidden="true">#</a> jQuery</h2><ul><li><p><a href="#25.1">25.1</a> <a name="25.1"></a> 使用 <code>$</code> 作为存储 jQuery 对象的变量名前缀。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+const sidebar = $(&quot;.sidebar&quot;);
+
+// good
+const $sidebar = $(&quot;.sidebar&quot;);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li><li><p><a href="#25.2">25.2</a> <a name="25.2"></a> 缓存 jQuery 查询。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+function setSidebar() {
+  $(&quot;.sidebar&quot;).hide();
+
+  // ...stuff...
+
+  $(&quot;.sidebar&quot;).css({
+    &quot;background-color&quot;: &quot;pink&quot;,
+  });
+}
+
+// good
+function setSidebar() {
+  const $sidebar = $(&quot;.sidebar&quot;);
+  $sidebar.hide();
+
+  // ...stuff...
+
+  $sidebar.css({
+    &quot;background-color&quot;: &quot;pink&quot;,
+  });
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div></li><li><p><a href="#25.3">25.3</a> <a name="25.3"></a> 对 DOM 查询使用层叠 <code>$(&#39;.sidebar ul&#39;)</code> 或 父元素 &gt; 子元素 <code>$(&#39;.sidebar &gt; ul&#39;)</code>。 <a href="http://jsperf.com/jquery-find-vs-context-sel/16" target="_blank" rel="noopener noreferrer">jsPerf<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a></p></li><li><p><a href="#25.4">25.4</a> <a name="25.4"></a> 对有作用域的 jQuery 对象查询使用 <code>find</code>。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>// bad
+$(&quot;ul&quot;, &quot;.sidebar&quot;).hide();
+
+// bad
+$(&quot;.sidebar&quot;).find(&quot;ul&quot;).hide();
+
+// good
+$(&quot;.sidebar ul&quot;).hide();
+
+// good
+$(&quot;.sidebar &gt; ul&quot;).hide();
+
+// good
+$sidebar.find(&quot;ul&quot;).hide();
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="ecmascript-5-compatibility"></a></p><h2 id="ecmascript-5-兼容性" tabindex="-1"><a class="header-anchor" href="#ecmascript-5-兼容性" aria-hidden="true">#</a> ECMAScript 5 兼容性</h2><ul><li><a href="#26.1">26.1</a> <a name="26.1"></a> 参考 <a href="https://twitter.com/kangax/" target="_blank" rel="noopener noreferrer">Kangax<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a> 的 ES5 <a href="http://kangax.github.com/es5-compat-table/" target="_blank" rel="noopener noreferrer">兼容性<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a>。</li></ul><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><p><a name="ecmascript-6-styles"></a></p><h2 id="ecmascript-6-规范" tabindex="-1"><a class="header-anchor" href="#ecmascript-6-规范" aria-hidden="true">#</a> ECMAScript 6 规范</h2><ul><li><a href="#27.1">27.1</a> <a name="27.1"></a> 以下是链接到 ES6 各个特性的列表。</li></ul><ol><li><a href="#arrow-functions">箭头函数</a></li><li><a href="#constructors">类</a></li><li><a href="#es6-object-shorthand">对象方法简写</a></li><li><a href="#es6-object-concise">对象属性简写</a></li><li><a href="#es6-computed-properties">对象中的可计算属性</a></li><li><a href="#es6-template-literals">模板字符串</a></li><li><a href="#destructuring">解构</a></li><li><a href="#es6-default-parameters">默认参数</a></li><li><a href="#es6-rest">Rest</a></li><li><a href="#es6-array-spreads">数组 Spreads</a></li><li><a href="#references">Let 及 Const</a></li><li><a href="#iterators-and-generators">迭代器和生成器</a></li><li><a href="#modules">模块</a></li></ol><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><h2 id="贡献者" tabindex="-1"><a class="header-anchor" href="#贡献者" aria-hidden="true">#</a> 贡献者</h2><ul><li><a href="https://github.com/airbnb/javascript/graphs/contributors" target="_blank" rel="noopener noreferrer">查看原始项目贡献者<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a></li><li><a href="https://github.com/yuche/javascript/graphs/contributors" target="_blank" rel="noopener noreferrer">查看简中翻译贡献者<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span></a></li></ul><h2 id="许可协议" tabindex="-1"><a class="header-anchor" href="#许可协议" aria-hidden="true">#</a> 许可协议</h2><p>(The MIT License)</p><p>Copyright (c) 2014 Airbnb</p><p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &#39;Software&#39;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p><p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p><p>THE SOFTWARE IS PROVIDED &#39;AS IS&#39;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p><p><strong><a href="#table-of-contents">⬆ 返回目录</a></strong></p><!--]--></div><footer class="page-meta"><div class="meta-item edit-link"><a class="external-link meta-item-label" href="https://github.com/anran758/front-end-lab/edit/main/docs/further/guide/js.md" rel="noopener noreferrer" target="_blank" aria-label="在 GitHub 上编辑此页"><!--[--><!--]--> 在 GitHub 上编辑此页 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><div class="meta-item last-updated"><span class="meta-item-label">上次更新: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">贡献者: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: anran758@gmail.com">anran758</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!----><!--]--></div>
+    <script type="module" src="/front-end-lab/assets/app.7e3542fd.js" defer></script>
+  </body>
+</html>

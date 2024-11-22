@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.43">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="icon" href="/icons/logo.svg"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3eaf7c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png"><link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c"><meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png"><meta name="msapplication-TileColor" content="#000000"><title>Node.js (服务端开发) | Web 实验室</title><meta name="description" content="Web 开发笔记与解决方案">
+    <link rel="modulepreload" href="/front-end-lab/assets/app.7e3542fd.js"><link rel="modulepreload" href="/front-end-lab/assets/nodejs.html.9f7ed822.js"><link rel="modulepreload" href="/front-end-lab/assets/nodejs.html.51a3b96e.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.e7c7dfe3.js"><link rel="prefetch" href="/front-end-lab/assets/dev-ops.html.d9074cc4.js"><link rel="prefetch" href="/front-end-lab/assets/git.html.27d18005.js"><link rel="prefetch" href="/front-end-lab/assets/hg.html.ff79f0d9.js"><link rel="prefetch" href="/front-end-lab/assets/jira.html.0c237662.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.810ddd82.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.6469d7a5.js"><link rel="prefetch" href="/front-end-lab/assets/solution.html.5afd378d.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.c71521b0.js"><link rel="prefetch" href="/front-end-lab/assets/books.html.6327d865.js"><link rel="prefetch" href="/front-end-lab/assets/en.html.e7167ed6.js"><link rel="prefetch" href="/front-end-lab/assets/glossary.html.fd131189.js"><link rel="prefetch" href="/front-end-lab/assets/links.html.8332b8c7.js"><link rel="prefetch" href="/front-end-lab/assets/DSA.html.57440d21.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.02a2d028.js"><link rel="prefetch" href="/front-end-lab/assets/browser.html.84c949f3.js"><link rel="prefetch" href="/front-end-lab/assets/complex.html.570ca66e.js"><link rel="prefetch" href="/front-end-lab/assets/css.html.6b4f2d56.js"><link rel="prefetch" href="/front-end-lab/assets/html.html.57c9ce1f.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.38c63a70.js"><link rel="prefetch" href="/front-end-lab/assets/network.html.da899413.js"><link rel="prefetch" href="/front-end-lab/assets/performance.html.63cc74aa.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.36044864.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.ec50a369.js"><link rel="prefetch" href="/front-end-lab/assets/webpack.html.bb5e5214.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.fd680d38.js"><link rel="prefetch" href="/front-end-lab/assets/theory.html.dbb9f444.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.f8b80dc7.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.a02bc52a.js"><link rel="prefetch" href="/front-end-lab/assets/libs.html.6613741a.js"><link rel="prefetch" href="/front-end-lab/assets/mini-program.html.362a7b5e.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.bced9d1d.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.be089b0c.js"><link rel="prefetch" href="/front-end-lab/assets/typescript.html.b81e302c.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.6c6310d6.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.01b7fc15.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.e6c64a8b.js"><link rel="prefetch" href="/front-end-lab/assets/404.html.93146c89.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.40f4d2a6.js"><link rel="prefetch" href="/front-end-lab/assets/dev-ops.html.c0960052.js"><link rel="prefetch" href="/front-end-lab/assets/git.html.41537809.js"><link rel="prefetch" href="/front-end-lab/assets/hg.html.17f987b4.js"><link rel="prefetch" href="/front-end-lab/assets/jira.html.68640a9e.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.c58a0cd1.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.deec9f06.js"><link rel="prefetch" href="/front-end-lab/assets/solution.html.6a378377.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.5cc031eb.js"><link rel="prefetch" href="/front-end-lab/assets/books.html.e32a031a.js"><link rel="prefetch" href="/front-end-lab/assets/en.html.d325de39.js"><link rel="prefetch" href="/front-end-lab/assets/glossary.html.7ed66620.js"><link rel="prefetch" href="/front-end-lab/assets/links.html.e82dc647.js"><link rel="prefetch" href="/front-end-lab/assets/DSA.html.15989b65.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.603e7e96.js"><link rel="prefetch" href="/front-end-lab/assets/browser.html.55e7d69d.js"><link rel="prefetch" href="/front-end-lab/assets/complex.html.3ed293bc.js"><link rel="prefetch" href="/front-end-lab/assets/css.html.38794eaf.js"><link rel="prefetch" href="/front-end-lab/assets/html.html.5aec342c.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.cc262594.js"><link rel="prefetch" href="/front-end-lab/assets/network.html.8aef4433.js"><link rel="prefetch" href="/front-end-lab/assets/performance.html.690a0c9d.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.14ee0078.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.d61da977.js"><link rel="prefetch" href="/front-end-lab/assets/webpack.html.260b310c.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.75d084b5.js"><link rel="prefetch" href="/front-end-lab/assets/theory.html.22272636.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.f1791b22.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.1e2fa0a1.js"><link rel="prefetch" href="/front-end-lab/assets/libs.html.f9cc5d37.js"><link rel="prefetch" href="/front-end-lab/assets/mini-program.html.2d329abf.js"><link rel="prefetch" href="/front-end-lab/assets/nodejs.html.d13fa671.js"><link rel="prefetch" href="/front-end-lab/assets/react.html.ac39f89d.js"><link rel="prefetch" href="/front-end-lab/assets/typescript.html.e91b5fe8.js"><link rel="prefetch" href="/front-end-lab/assets/vue.html.20ecf664.js"><link rel="prefetch" href="/front-end-lab/assets/index.html.31930719.js"><link rel="prefetch" href="/front-end-lab/assets/js.html.11f7a0c4.js"><link rel="prefetch" href="/front-end-lab/assets/404.html.5307af31.js"><link rel="prefetch" href="/front-end-lab/assets/404.9de9fb53.js"><link rel="prefetch" href="/front-end-lab/assets/Layout.f1d6f6f4.js"><link rel="prefetch" href="/front-end-lab/assets/hide-outbound.d7dc1fa7.js"><link rel="prefetch" href="/front-end-lab/assets/index.0e8935cb.js">
+    <link rel="stylesheet" href="/front-end-lab/assets/style.75a6fca5.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="切换侧边栏" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/front-end-lab/" class=""><!----><span class="site-name">Web 实验室</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/front-end-lab/develop/" class="" aria-label="Web 开发"><!--[--><!--]--> Web 开发 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/front-end-lab/topic/" class="router-link-active" aria-label="技术要点"><!--[--><!--]--> 技术要点 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Homepage"><!--[--><!--]--> Anran758&#39;s Homepage <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/blog/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Blog"><!--[--><!--]--> Anran758&#39;s Blog <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/anran758/front-end-lab" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-dark-button" title="切换夜间模式"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" placeholder="Search" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/front-end-lab/develop/" class="" aria-label="Web 开发"><!--[--><!--]--> Web 开发 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/front-end-lab/topic/" class="router-link-active" aria-label="技术要点"><!--[--><!--]--> 技术要点 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="扩展阅读"><span class="title">扩展阅读</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Homepage"><!--[--><!--]--> Anran758&#39;s Homepage <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://anran758.github.io/blog/" rel="noopener noreferrer" target="_blank" aria-label="Anran758&#39;s Blog"><!--[--><!--]--> Anran758&#39;s Blog <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/anran758/front-end-lab" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading active">Web 技术栈 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/topic/html.html" class="sidebar-item" aria-label="HTML"><!--[--><!--]--> HTML <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/topic/css.html" class="sidebar-item" aria-label="CSS"><!--[--><!--]--> CSS <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/topic/js.html" class="sidebar-item" aria-label="JavaScript"><!--[--><!--]--> JavaScript <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html" class="router-link-active router-link-exact-active router-link-active sidebar-item active" aria-label="Node.js (服务端开发)"><!--[--><!--]--> Node.js (服务端开发) <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#简述一下-nodejs-的异步-io-模型" class="router-link-active router-link-exact-active sidebar-item" aria-label="简述一下 Nodejs 的异步 IO 模型"><!--[--><!--]--> 简述一下 Nodejs 的异步 IO 模型 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#什么是-libuv" class="router-link-active router-link-exact-active sidebar-item" aria-label="什么是 libuv?"><!--[--><!--]--> 什么是 libuv? <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#并发量大怎么解决" class="router-link-active router-link-exact-active sidebar-item" aria-label="并发量大怎么解决?"><!--[--><!--]--> 并发量大怎么解决? <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#如果你的-node-半夜服务挂了如何启动" class="router-link-active router-link-exact-active sidebar-item" aria-label="如果你的 node 半夜服务挂了如何启动?"><!--[--><!--]--> 如果你的 node 半夜服务挂了如何启动? <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#koa-的洋葱模型是怎么实现的" class="router-link-active router-link-exact-active sidebar-item" aria-label="koa 的洋葱模型是怎么实现的"><!--[--><!--]--> koa 的洋葱模型是怎么实现的 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#在没有async-await-的时候-koa是怎么实现的洋葱模型" class="router-link-active router-link-exact-active sidebar-item" aria-label="在没有async await 的时候, koa是怎么实现的洋葱模型?"><!--[--><!--]--> 在没有async await 的时候, koa是怎么实现的洋葱模型? <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#中间件的异常处理是怎么做的" class="router-link-active router-link-exact-active sidebar-item" aria-label="中间件的异常处理是怎么做的？"><!--[--><!--]--> 中间件的异常处理是怎么做的？ <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#body-parser-中间件了解过吗" class="router-link-active router-link-exact-active sidebar-item" aria-label="body-parser 中间件了解过吗"><!--[--><!--]--> body-parser 中间件了解过吗 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#如果浏览器端用-post-接口上传图片和一些其他字段-header-里会有什么-koa-里如果不用-body-parser-应该怎么解析" class="router-link-active router-link-exact-active sidebar-item" aria-label="如果浏览器端用 post 接口上传图片和一些其他字段, header 里会有什么? koa 里如果不用 body-parser，应该怎么解析?"><!--[--><!--]--> 如果浏览器端用 post 接口上传图片和一些其他字段, header 里会有什么? koa 里如果不用 body-parser，应该怎么解析? <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#node-的日志怎么做" class="router-link-active router-link-exact-active sidebar-item" aria-label="Node 的日志怎么做？"><!--[--><!--]--> Node 的日志怎么做？ <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#node-的负载均衡怎么做" class="router-link-active router-link-exact-active sidebar-item" aria-label="Node 的负载均衡怎么做？"><!--[--><!--]--> Node 的负载均衡怎么做？ <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/front-end-lab/topic/nodejs.html#讲讲-charles-的-map-local-和-map-remote" class="router-link-active router-link-exact-active sidebar-item" aria-label="讲讲 Charles 的 map local 和 map remote"><!--[--><!--]--> 讲讲 Charles 的 map local 和 map remote <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><li><p tabindex="0" class="sidebar-item sidebar-heading">开发框架与工具 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/topic/react.html" class="sidebar-item" aria-label="React"><!--[--><!--]--> React <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/topic/vue.html" class="sidebar-item" aria-label="Vue.js"><!--[--><!--]--> Vue.js <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/topic/webpack.html" class="sidebar-item" aria-label="Webpack"><!--[--><!--]--> Webpack <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p tabindex="0" class="sidebar-item sidebar-heading">优化与原理解析 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/front-end-lab/topic/browser.html" class="sidebar-item" aria-label="浏览器工作原理"><!--[--><!--]--> 浏览器工作原理 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/topic/performance.html" class="sidebar-item" aria-label="应用优化"><!--[--><!--]--> 应用优化 <!--[--><!--]--></a><!----></li><li><a href="/front-end-lab/topic/network.html" class="sidebar-item" aria-label="网络原理"><!--[--><!--]--> 网络原理 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a href="/front-end-lab/topic/complex.html" class="sidebar-item sidebar-heading" aria-label="综合"><!--[--><!--]--> 综合 <!--[--><!--]--></a><!----></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="node-js-服务端开发" tabindex="-1"><a class="header-anchor" href="#node-js-服务端开发" aria-hidden="true">#</a> Node.js (服务端开发)</h1><h3 id="简述一下-nodejs-的异步-io-模型" tabindex="-1"><a class="header-anchor" href="#简述一下-nodejs-的异步-io-模型" aria-hidden="true">#</a> 简述一下 Nodejs 的异步 IO 模型</h3><ol><li><strong>事件驱动：</strong> 基于事件循环的模型，通过监听和响应事件实现异步编程。</li><li><strong>非阻塞 I/O：</strong> 采用非阻塞的 I/O 操作方式，使得可以在进行 I/O 操作的同时执行其他代码。</li><li><strong>回调函数：</strong> 大部分异步操作通过回调函数来处理结果，实现了异步编程的主要机制。</li><li><strong>事件触发器：</strong> 提供事件触发器类来处理事件的监听和触发，用于模块之间的解耦和通信。</li><li><strong>单线程：</strong> 尽管是单线程的，但通过事件循环和异步 I/O 模型，能够充分利用多核 CPU，实现高并发和高吞吐量的处理能力。</li></ol><hr><h3 id="什么是-libuv" tabindex="-1"><a class="header-anchor" href="#什么是-libuv" aria-hidden="true">#</a> 什么是 libuv?</h3><p>libuv 是一个用于抽象非阻塞 I/O 操作的 C 库。他有以下几个特点：</p><ul><li>集成了事件驱动的异步I/O模型。</li><li>它允许同时使用CPU和其他资源，同时仍然执行I/O操作，从而实现资源和网络的高效利用。</li><li>它促进了事件驱动的方法，其中使用基于回调的通知来执行 I/O 和其他活动。</li></ul><p><strong>示例：</strong> 假设我们有一个程序正在执行查询数据库的操作，而数据库查询可能需要一些时间来完成。如果程序在等待查询结果的同时被阻塞，那么 CPU 就会处于空闲状态，无法处理其他任务，从而造成系统资源的浪费。</p><p><img src="/front-end-lab/assets/libuv.1a7894f0.jpeg" alt="libuv"></p><hr><h3 id="并发量大怎么解决" tabindex="-1"><a class="header-anchor" href="#并发量大怎么解决" aria-hidden="true">#</a> 并发量大怎么解决?</h3><p><strong>1.从代码层面进行优化</strong></p><ul><li><strong>异步编程</strong>：利用Node.js的非阻塞I/O模型，确保应用使用异步API调用，避免阻塞主事件循环。</li><li><strong>避免重计算</strong>：使用缓存策略，如内存缓存或分布式缓存系统（如Redis），来存储重复计算的结果或常用数据。</li></ul><p><strong>2.在应用架构层面调整</strong></p><ul><li><strong>微服务架构</strong>：将大型应用拆分为小的、独立的服务，可以分别扩展，降低整体系统的复杂性。</li><li><strong>无状态设计</strong>：确保服务间的通信无状态，这样每个服务都可以独立扩展。</li></ul><p>其中一个典型的例子就是云函数架构 (FaaS)，每个云函数都独立执行。如果一个云函数发生崩溃或遇到阻塞，它不会影响应用程序的其他部分正常运行。</p><p><strong>3.负载均衡</strong></p><ul><li><strong>使用反向代理</strong>：通过 Nginx 或 HAProxy 等工具可以帮助分发入站请求到多个 Node.js 实例或服务器。</li><li><strong>DNS轮询</strong>：配置DNS以轮询方式分发请求到多个服务器，从而平衡负载。</li></ul><p><strong>4.水平扩展</strong>，即日常工作中常说 &quot;扩容&quot;。</p><ul><li><strong>增加实例</strong>：通过增加更多的 Node.js 实例来分散负载。这可以在单台机器上实现，也可以跨多台机器实现。</li><li><strong>容器化与编排</strong>：使用 Docker 和 Kubernetes 等技术可以帮助自动管理和扩展应用程序的多个实例。</li></ul><p><strong>5.优化数据库访问</strong></p><ul><li><strong>数据库索引</strong>：根据业务需求，在合适的地方添加索引，以提高数据库查询的速度和效率。确保关键查询字段都建立了索引。</li><li><strong>读写分离</strong>：对于访问量大的数据库应用，通过实现主从复制及读写分离策略，可以有效分散读操作和写操作的压力，从而提升整体性能。</li></ul><p><strong>6.设置缓存</strong></p><ul><li><strong>前端缓存</strong>：使用 CDN 来缓存静态资源，减轻服务器压力。</li><li><strong>后端缓存</strong>：应用程序级别的缓存（例如Redis）可以存储常用数据或会话信息，减少数据库访问次数。</li></ul><p><strong>7.限流和服务降级</strong></p><ul><li><strong>限流</strong>：限制访问速率，防止系统过载。</li><li><strong>服务降级</strong>：在系统负载极高时，暂时关闭或降低某些非核心功能的服务质量。</li></ul><p>比方说，在电商平台的大促销期间，为防止系统崩溃，可以限制每秒处理的用户请求数量，确保所有用户都能获得一致的服务体验。</p><hr><h3 id="如果你的-node-半夜服务挂了如何启动" tabindex="-1"><a class="header-anchor" href="#如果你的-node-半夜服务挂了如何启动" aria-hidden="true">#</a> 如果你的 node 半夜服务挂了如何启动?</h3><p>通过守护进程管理 Node.js 应用，在 Node.js 中最常用的守护进程是 <code>pm2</code>:</p><p>使用 pm2 启动应用:</p><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>pm2 start app.js
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>设置开机自启，确保服务器重启后能自动启动：</p><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>pm2 startup
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><hr><h3 id="koa-的洋葱模型是怎么实现的" tabindex="-1"><a class="header-anchor" href="#koa-的洋葱模型是怎么实现的" aria-hidden="true">#</a> koa 的洋葱模型是怎么实现的</h3><p>在 Koa 中，中间件就像洋葱的层层皮一样。当一个请求到达时，它首先经过最外层的中间件，然后通过 <code>next</code> 函数逐层向里传递，直到达到最内层。</p><p>每一层中间件都是独立的功能、可以做一些工作，然后再把请求传递给下一层。当请求处理完成后，Koa 会逆向执行这些中间件，从内层到外层，以便完成一些清理工作。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+// 第一个中间件
+app.use(async (ctx, next) =&gt; {
+    console.log(&#39;Middleware 1 - Start&#39;);
+    await next(); // 调用下一个中间件
+    console.log(&#39;Middleware 1 - End&#39;);
+});
+
+// 第二个中间件
+app.use(async (ctx, next) =&gt; {
+    console.log(&#39;Middleware 2 - Start&#39;);
+    await next(); // 调用下一个中间件
+    console.log(&#39;Middleware 2 - End&#39;);
+});
+
+// 路由处理函数
+app.use(async ctx =&gt; {
+    console.log(&#39;Route Handler&#39;);
+    ctx.body = &#39;Hello Koa!&#39;;
+});
+
+// 启动应用程序
+app.listen(3000, () =&gt; {
+    console.log(&#39;Server is running on port 3000&#39;);
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p><img src="/front-end-lab/assets/koa-middleware.d8d6bdca.png" alt="koa middleware"></p><hr><h3 id="在没有async-await-的时候-koa是怎么实现的洋葱模型" tabindex="-1"><a class="header-anchor" href="#在没有async-await-的时候-koa是怎么实现的洋葱模型" aria-hidden="true">#</a> 在没有async await 的时候, koa是怎么实现的洋葱模型?</h3><p>Koa 可以基于回调的方式来实现中间件的执行和控制流程：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+// 第一个中间件
+app.use((ctx, next) =&gt; {
+    console.log(&#39;Middleware 1 - Start&#39;);
+    // 调用下一个中间件函数
+    return next(() =&gt; {
+        console.log(&#39;Middleware 1 - End&#39;);
+    });
+});
+
+// 第二个中间件
+app.use((ctx, next) =&gt; {
+    console.log(&#39;Middleware 2 - Start&#39;);
+    // 调用下一个中间件函数
+    return next(() =&gt; {
+        console.log(&#39;Middleware 2 - End&#39;);
+    });
+});
+
+// 路由处理函数
+app.use(ctx =&gt; {
+    console.log(&#39;Route Handler&#39;);
+    ctx.body = &#39;Hello Koa!&#39;;
+});
+
+// 启动应用程序
+app.listen(3000, () =&gt; {
+    console.log(&#39;Server is running on port 3000&#39;);
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><hr><h3 id="中间件的异常处理是怎么做的" tabindex="-1"><a class="header-anchor" href="#中间件的异常处理是怎么做的" aria-hidden="true">#</a> 中间件的异常处理是怎么做的？</h3><p>中间件的异常处理通常通过 try...catch 块来实现。当一个中间件函数抛出异常时，Koa 会捕获这个异常，并将控制传递给一个专门用于处理错误的中间件函数。这个错误处理中间件函数通常会被放置在其他中间件函数的后面，以确保它能够捕获所有其他中间件函数抛出的异常。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+// 中间件1
+app.use(async (ctx, next) =&gt; {
+    console.log(&#39;Middleware 1&#39;);
+    throw new Error(&#39;Something went wrong&#39;); // 抛出一个异常
+});
+
+// 中间件2
+app.use(async (ctx, next) =&gt; {
+    console.log(&#39;Middleware 2&#39;);
+    // 正常情况
+    await next(); // 调用下一个中间件函数
+});
+
+// 错误处理中间件
+app.use(async (ctx, next) =&gt; {
+    try {
+        await next(); // 调用下一个中间件函数
+    } catch (err) {
+        console.error(&#39;Error caught by error handling middleware:&#39;, err);
+        ctx.status = err.status || 500;
+        ctx.body = {
+            error: {
+                message: err.message || &#39;Internal Server Error&#39;
+            }
+        };
+    }
+});
+
+// 路由处理函数
+app.use(ctx =&gt; {
+    console.log(&#39;Route Handler&#39;);
+    ctx.body = &#39;Hello Koa!&#39;;
+});
+
+// 启动应用程序
+app.listen(3000, () =&gt; {
+    console.log(&#39;Server is running on port 3000&#39;);
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><hr><h3 id="body-parser-中间件了解过吗" tabindex="-1"><a class="header-anchor" href="#body-parser-中间件了解过吗" aria-hidden="true">#</a> body-parser 中间件了解过吗</h3><p><code>body-parser</code> 是 Node.js 的一个中间件，用于解析请求体中的数据，例如 JSON、URL 编码和表单数据等。</p><p><code>body-parser</code> 的主要作用是将请求体中的数据解析为 JavaScript 对象，并将解析后的数据附加到请求对象的 body 属性中，以便后续中间件或路由处理函数使用。</p><p><code>body-parser</code> 常搭配 <code>express</code> 框架一起使用：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const express = require(&#39;express&#39;);
+const bodyParser = require(&#39;body-parser&#39;);
+
+const app = express();
+
+// 使用 body-parser 中间件解析 application/json 格式的请求体
+app.use(bodyParser.json());
+
+// 使用 body-parser 中间件解析 application/x-www-form-urlencoded 格式的请求体
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// 使用 body-parser 中间件解析 text/plain 格式的请求体
+app.use(bodyParser.text());
+
+// 路由处理函数
+app.post(&#39;/api/data&#39;, (req, res) =&gt; {
+    console.log(req.body); // 输出解析后的请求体数据
+    res.send(&#39;Data received&#39;);
+});
+
+app.listen(3000, () =&gt; {
+    console.log(&#39;Server is running on port 3000&#39;);
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><hr><h3 id="如果浏览器端用-post-接口上传图片和一些其他字段-header-里会有什么-koa-里如果不用-body-parser-应该怎么解析" tabindex="-1"><a class="header-anchor" href="#如果浏览器端用-post-接口上传图片和一些其他字段-header-里会有什么-koa-里如果不用-body-parser-应该怎么解析" aria-hidden="true">#</a> 如果浏览器端用 post 接口上传图片和一些其他字段, header 里会有什么? koa 里如果不用 body-parser，应该怎么解析?</h3><p>若接口需要授权，则可以通过 Authorization 传递授权信息。</p><p>上传文件时的 Content-Type 一般被设置为 <code>multipart/form-data</code> 类型，其中 <code>boundary</code> 是分隔符，由浏览器随机生成的唯一字符串：</p><div class="language-http ext-http line-numbers-mode"><pre class="language-http"><code>Content-Type: multipart/form-data; boundary=something
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>以下例 curl 为例，<code>----WebKitFormBoundaryEU440tTuKtxsINLf</code> 就是作为分隔 <code>data</code> 的作用：</p><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>curl &#39;https://api.upyun.com/cloud-example&#39; \
+  -H &#39;accept: application/json, text/plain, */*&#39; \
+  -H &#39;accept-language: en,zh-CN;q=0.9,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.6&#39; \
+  -H &#39;cache-control: no-cache&#39; \
+  -H &#39;content-type: multipart/form-data; boundary=----WebKitFormBoundaryEU440tTuKtxsINLf&#39; \
+  -H &#39;origin: https://v5204.eng.szx.ifanrx.com&#39; \
+  -H &#39;pragma: no-cache&#39; \
+  -H &#39;priority: u=1, i&#39; \
+  -H &#39;referer: https://v5204.eng.szx.ifanrx.com/&#39; \
+  -H &#39;sec-ch-ua: &quot;Chromium&quot;;v=&quot;124&quot;, &quot;Google Chrome&quot;;v=&quot;124&quot;, &quot;Not-A.Brand&quot;;v=&quot;99&quot;&#39; \
+  -H &#39;sec-ch-ua-mobile: ?0&#39; \
+  -H &#39;sec-ch-ua-platform: &quot;macOS&quot;&#39; \
+  -H &#39;sec-fetch-dest: empty&#39; \
+  -H &#39;sec-fetch-mode: cors&#39; \
+  -H &#39;sec-fetch-site: cross-site&#39; \
+  -H &#39;user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&#39; \
+  --data-raw $&#39;------WebKitFormBoundaryEU440tTuKtxsINLf\r\nContent-Disposition: form-data; name=&quot;policy&quot;\r\n\r\neyJidWNrZXQiOiAiY2xvdWQtbWluYXBwLTQ3MTUxIiwgInNhdmUta2V5IjogIjFzNU4xTmVHdHdOQ3FPWHYucG5nIiwgImRhdGUiOiAiRnJpLCAxMCBNYXkgMjAyNCAwOTo1ODozMyBHTVQiLCAiZXhwaXJhdGlvbiI6IDE3MTUzMzU0MTMsICJub3RpZnktdXJsIjogImh0dHBzOi8vdjUyMDQuZW5nLnN6eC5pZmFucnguY29tL2V4dGFwaS9oeWRyb2dlbi91cHl1bi9jYWxsYmFjay85MzAvNjYzZGVmYzljYjc0N2RiYzlkNWRiMmJlLyJ9\r\n------WebKitFormBoundaryEU440tTuKtxsINLf\r\nContent-Disposition: form-data; name=&quot;authorization&quot;\r\n\r\nmyauth=\r\n------WebKitFormBoundaryEU440tTuKtxsINLf\r\nContent-Disposition: form-data; name=&quot;file&quot;; filename=&quot;img_product.png&quot;\r\nContent-Type: image/png\r\n\r\n\r\n------WebKitFormBoundaryEU440tTuKtxsINLf--\r\n&#39;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><strong>koa 里如果不用 body-parser，应该怎么解析?</strong></p><p><code>multipart/form-data</code> 请求中，每个表单字段或上传的文件都被封装在一个由边界字符串（boundary）分隔的部分里。每个部分的开头通常包含一个 <code>Content-Disposition</code> 头，该头描述了字段的名称（以及文件的名称，如果该部分是一个文件）。</p><p>不通过中间件来解析 <code>multipart/form-data</code> 类型的数据，则原生的实现方式为：</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+app.use(async (ctx, next) =&gt; {
+    if (ctx.method === &#39;POST&#39; &amp;&amp; ctx.is(&#39;multipart/form-data&#39;)) {
+        let data = &#39;&#39;;
+        let boundary = ctx.get(&#39;content-type&#39;).split(&#39;=&#39;)[1];
+        let parts = [];
+
+        await new Promise((resolve, reject) =&gt; {
+            ctx.req.on(&#39;data&#39;, chunk =&gt; {
+                data += chunk.toString();
+            });
+
+            ctx.req.on(&#39;end&#39;, () =&gt; {
+                // 分割字符串，使用boundary
+                data.split(boundary).forEach(part =&gt; {
+                    if (part.includes(&#39;Content-Disposition: form-data;&#39;)) {
+                        parts.push(part); // 将每个部分存储到数组中
+                    }
+                });
+
+                resolve();
+            });
+        });
+
+        // 处理每个部分，解析出字段名和值
+        parts.forEach(part =&gt; {
+            let matchResult = part.match(/name=&quot;([^&quot;]+)&quot;\r\n\r\n([\s\S]+)\r\n$/);
+            if (matchResult) {
+                let key = matchResult[1];
+                let value = matchResult[2].trim();
+                ctx.request.body = ctx.request.body || {};
+                ctx.request.body[key] = value;
+            }
+        });
+
+        await next();
+    }
+});
+
+app.use(async ctx =&gt; {
+    ctx.body = ctx.request.body; // 输出解析的结果
+});
+
+app.listen(3000, () =&gt; console.log(&#39;Server running on http://localhost:3000&#39;));
+
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br></div></div><hr><h3 id="node-的日志怎么做" tabindex="-1"><a class="header-anchor" href="#node-的日志怎么做" aria-hidden="true">#</a> Node 的日志怎么做？</h3><p><strong>日志系统</strong></p><p>常使用如 Winston 或 Morgan 等库进行日志管理。Winston 支持多种存储选项和日志级别，而 Morgan 特别适用于 HTTP 请求日志。</p><hr><h3 id="node-的负载均衡怎么做" tabindex="-1"><a class="header-anchor" href="#node-的负载均衡怎么做" aria-hidden="true">#</a> Node 的负载均衡怎么做？</h3><p><strong>1.Node.js Cluster模块</strong></p><p>Node.js 的 Cluster 模块允许应用程序利用多核系统的多个核心。通过创建多个子进程（workers），每个子进程都有自己的事件循环和内存空间，可以有效地分散请求负载。</p><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>const cluster = require(&#39;cluster&#39;);
+const http = require(&#39;http&#39;);
+const numCPUs = require(&#39;os&#39;).cpus().length; // 获取CPU核心数
+
+if (cluster.isMaster) {
+  console.log(`主进程 ${process.pid} 正在运行`);
+
+  // 衍生工作进程。
+  for (let i = 0; i &lt; numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on(&#39;exit&#39;, (worker, code, signal) =&gt; {
+    console.log(`工作进程 ${worker.process.pid} 已退出`);
+  });
+} else {
+  // 工作进程可以共享任何TCP连接。
+  // 在本例中，它是一个HTTP服务器
+  http.createServer((req, res) =&gt; {
+    res.writeHead(200);
+    res.end(&#39;你好世界\n&#39;);
+  }).listen(8000);
+
+  console.log(`工作进程 ${process.pid} 已启动`);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><p><strong>2.反向代理</strong></p><p>使用反向代理服务器是 Node.js 应用最常见的负载均衡方法之一，它的实现原理是：</p><p>当用户访问例如 <code>example.com</code> 这样的网站时，用户的请求首先到达部署了反向代理的服务器。这个反向代理服务器不会直接处理请求内容，而是根据一定的规则（如负载均衡策略、服务器健康状态等）将请求转发到一组后端服务器之一。</p><p>这个过程中，反向代理可以采取多种策略来决定如何分发请求：</p><ul><li><strong>轮询（Round Robin）</strong>：按顺序将每个新请求发送到下一个服务器，循环进行。</li><li><strong>最少连接（Least Connections）</strong>：将请求发送到当前连接数最少的服务器。</li><li><strong>IP哈希（IP Hashing）</strong>：根据用户的 IP 地址决定将请求发送到哪个服务器，这样来自同一IP地址的请求总是被发送到同一台服务器，可以维持用户的会话状态。</li></ul><p>以下常为常见的反向代理服务器：</p><ul><li><strong>Nginx</strong>: 作为反向代理使用，可以将进入的请求分发到后端的多个 Node.js实例。</li><li><strong>Apache HTTP Server</strong>: 虽然不如 Nginx 流行，但也可以配置为Node.js的负载均衡器。</li></ul><p><strong>3.DNS负载均衡</strong></p><p>云解析 DNS 权重配置，即在 DNS 服务器中为同一个主机记录配置多个 IP 地址，在应答 DNS 查询时，所有 IP 地址按照预先设置的权重进行返回不同的解析结果，将解析流量分配到不同的服务器上，从而达到负载均衡的目的。</p><p>以阿里云的 DNS 云解析为例：假设您我们有 3 台服务器 (IP 地址分别为 <code>1.1.XX.XX</code>、<code>2.2.XX.XX</code>、<code>3.3.XX.XX</code>) 提供同一服务（1 个域名）。</p><p>当权重配置开启后，进行权重设置，在 DNS 请求应答中，IP 地址按照预先设置的权重进行返回，可以实现将解析流量按照权重进行分配。例如，将上述 3 条解析记录的权重比设置为 <strong>2:1:1</strong> 时，则 DNS 解析结果如下所示：</p><div class="language-log ext-log line-numbers-mode"><pre class="language-log"><code>Region1 访问，返回 1.1.XX.XX
+Region2 访问，返回 2.2.XX.XX
+Region3 访问，返回 3.3.XX.XX
+Region4 访问，返回 1.1.XX.XX
+Region5 访问，返回 1.1.XX.XX
+Region6 访问，返回 2.2.XX.XX
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p><strong>4.容器服务与编排工具</strong></p><p>容器化技术允许将应用和其依赖环境封装在一个轻量级的、可移植的容器中。每个容器都是独立运行的，并且与其他容器隔离。这种隔离和封装确保了应用的一致性和安全性，使得容器非常适合在不同环境中部署和扩展。常见的容器服务有 docker。</p><p>容器编排工具，如 Kubernetes，能够监控容器的状态和性能指标。根据预定义的规则，如 CPU 使用率或内存消耗，编排工具可以自动增加或减少容器实例的数量。这种自动扩展功能是实现负载均衡的关键，它确保应用可以根据需求动态调整资源，避免过载。</p><p>例如，在 Kubernetes 中，一个 Service 对象定义了一个逻辑应用服务，它背后可以有多个 Pod 实例。当服务接收到请求时，Kubernetes 的内部负载均衡机制（如 iptables 或 IPVS）将请求均匀地分配到后端的 Pod 上。</p><hr><h3 id="讲讲-charles-的-map-local-和-map-remote" tabindex="-1"><a class="header-anchor" href="#讲讲-charles-的-map-local-和-map-remote" aria-hidden="true">#</a> 讲讲 Charles 的 map local 和 map remote</h3><p>Charles 中的 <code>Map Local</code> 和 <code>Map Remote</code> 功能都用于重定向网络请求，以便在不修改实际服务器响应的情况下测试和调试网络应用。</p><ul><li><strong>Map Local</strong>: 主要用于将网络请求重定向到本地文件。这适用于需要使用静态响应数据进行开发和测试的场景，如离线开发或固定输出的测试。</li><li><strong>Map Remote</strong>: 用于将请求重定向到另一个远程服务器的地址。这可以用于测试应用在不同后端环境下的行为，或者在访问某些因策略限制而无法直接访问的服务器时使用。</li></ul><!--]--></div><footer class="page-meta"><div class="meta-item edit-link"><a class="external-link meta-item-label" href="https://github.com/anran758/front-end-lab/edit/main/docs/topic/nodejs.md" rel="noopener noreferrer" target="_blank" aria-label="在 GitHub 上编辑此页"><!--[--><!--]--> 在 GitHub 上编辑此页 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">在新窗口打开</span></span><!--[--><!--]--></a></div><div class="meta-item last-updated"><span class="meta-item-label">上次更新: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">贡献者: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: anran758@gmail.com">anran758</span><!----><!--]--><!--]--></span></div></footer><nav class="page-nav"><p class="inner"><span class="prev"><a href="/front-end-lab/topic/js.html" class="" aria-label="JavaScript"><!--[--><!--]--> JavaScript <!--[--><!--]--></a></span><!----></p></nav><!--[--><!--]--></main><!--]--></div><!----><!----><!--]--></div>
+    <script type="module" src="/front-end-lab/assets/app.7e3542fd.js" defer></script>
+  </body>
+</html>
