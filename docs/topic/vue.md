@@ -387,6 +387,284 @@ Vue.js 实现数据双向绑定的原理是通过 `Object.defineProperty()` 方�
 - 先将模板编译为 `render` 函数，执行 `render` 函数会返回 `vnoe`
 - 基于 `vnode` 再执行 patch 和 diff
 
+## Vue3
+
+### vue2 和 vue3 有什么区别
+
+Vue 2 和 Vue 3 的区别在于：
+
+- 性能优化（Proxy 替代 Object.defineProperty）
+- 引入 Composition API 提升逻辑复用性
+- 增强模板功能（支持 Fragment 和 Teleport）
+- 原生支持 TypeScript。
+- 通过 Tree-Shaking 使得未使用的功能不会打包，提高了性能，得到了更小的打包体积。
+
+### Vue 3 中响应式系统的原理是什么？与 Vue 2 的区别？
+
+- Vue 3 使用 `Proxy` 替代 `Object.defineProperty` 实现响应式，解决了以下问题：
+  - 支持数组和对象的动态属性。
+  - 性能更高，避免深度遍历。
+  - 更方便实现只读（`readonly`）和浅层响应（`shallowReactive`）。
+
+---
+
+### Composition API 的优势是什么？
+
+- 灵活性高，逻辑更清晰。
+- 逻辑复用更简单，适合提取通用功能为自定义 Hook。
+- 解决 Options API 中逻辑分散、复杂组件难以维护的问题。
+
+---
+
+### Vue 3 的 `setup` 方法中可以做哪些事情？
+
+- 定义响应式数据（`ref`、`reactive`）。
+- 使用生命周期钩子（`onMounted`、`onUpdated` 等）。
+- 引入并使用 `props` 和 `context`（包含 `slots`、`emit`）。
+- 返回绑定到模板的数据和方法。
+
+---
+
+### 如何用 Vue 3 实现依赖注入？
+
+- 使用 `provide` 和 `inject`：
+  ```javascript
+  // 父组件
+  import { provide } from 'vue';
+  provide('key', value);
+
+  // 子组件
+  import { inject } from 'vue';
+  const value = inject('key');
+  ```
+- 常用于跨层级组件通信。
+
+---
+
+### Vue 3 中如何使用 Teleport？适合哪些场景？
+
+- Teleport 允许将组件渲染到 DOM 树的其他位置：
+  ```html
+  <Teleport to="#target">
+    <div>渲染到目标节点</div>
+  </Teleport>
+  ```
+- 常用于模态框、通知等全局组件。
+
+---
+
+### Vue 3 如何优化大列表渲染性能？
+
+- 虚拟滚动（如 `vue-virtual-scroller`）。
+- 使用 `v-once` 渲染静态内容。
+- 动态组件懒加载。
+
+---
+
+### 什么是 `script setup`？与普通 `setup` 有何不同？
+
+- `script setup` 是 Composition API 的语法糖：
+  - 代码更简洁，无需手动返回绑定数据。
+  - 自动将所有顶层变量暴露到模板中。
+  ```vue
+  <script setup>
+  import { ref } from 'vue';
+  const count = ref(0);
+  const increment = () => count.value++;
+  </script>
+  ```
+
+---
+
+### Vue 3 如何实现自定义指令？
+
+- 创建指令：
+  ```javascript
+  app.directive('focus', {
+    mounted(el) {
+      el.focus();
+    },
+  });
+  ```
+- 使用场景：操作 DOM 元素、绑定事件等。
+
+---
+
+### Vue 3 项目中如何使用 TypeScript？
+
+- 定义 `props` 和 `emits` 类型：
+  ```typescript
+  defineProps<{ msg: string }>();
+  defineEmits<{ (event: 'submit', payload: string): void }>();
+  ```
+
+- 给响应式数据添加类型：
+  ```typescript
+  import { ref } from 'vue';
+  const count = ref<number>(0);
+  ```
+
+---
+
+### Vue 3 中如何实现状态管理？
+
+- 使用 Vuex 或 Pinia (推荐 Pinia)：
+  ```javascript
+  // Pinia 示例
+  import { defineStore } from 'pinia';
+  export const useStore = defineStore('main', {
+    state: () => ({ count: 0 }),
+    actions: {
+      increment() {
+        this.count++;
+      },
+    },
+  });
+  ```
+
+---
+
+### Vue 3 项目如何优化性能？
+
+- 具体方法：
+  - 按需加载（如 `dynamic import`）。
+  - 减少 DOM 操作，使用 `Fragment`。
+  - 使用 `Suspense` 实现异步组件的加载占位。
+
+---
+
+### Vue 3 中如何设计一个可复用的表单组件？
+
+- 使用 `v-model` 绑定表单值。
+- 通过 `props` 和 `emit` 提供配置和事件传递。
+- 使用 `slots` 实现灵活布局。
+
+---
+
+### Vue 3 与其他前端框架（如 React）的优劣对比？
+
+- **优势**：
+  - 模板语法直观，易上手。
+  - Composition API 兼具灵活性和清晰性。
+  - 内置指令和工具（如 Teleport）。
+- **劣势**：
+  - 社区生态相较 React 略逊。
+
+---
+
+### Vue 2 项目迁移到 Vue 3 的难点是什么？
+
+- 响应式机制变化（需替换 `Vue.observable`）。
+- Options API 与 Composition API 的适配。
+- 全局 API 改动（如 `Vue.use` 改为 `app.use`）。
+
+---
+
+## uni-app
+
+### uni-app 中如何做权限控制，如果在 uniapp 的路由跳转 API 中做权限控制，怎么改写
+
+1. 定义权限校验逻辑
+创建一个工具函数文件 `permission.js`，专门处理权限校验：
+
+```javascript
+// permission.js
+export function checkAuth() {
+  const token = uni.getStorageSync('userToken'); // 从本地存储获取 token
+  return !!token; // 如果 token 存在，返回 true；否则返回 false
+}
+```
+
+---
+
+2. 封装路由跳转方法
+重写 uni-app 路由跳转 API，比如 `navigateTo`：
+
+```javascript
+// router.js
+import { checkAuth } from './permission.js';
+
+function navigateTo(options) {
+  // 判断目标页面是否需要权限
+  const { url } = options;
+  const authRequiredPages = ['/pages/profile/profile', '/pages/orders/orders']; // 定义需要权限的页面
+  const isAuthRequired = authRequiredPages.some((path) => url.includes(path));
+
+  if (isAuthRequired && !checkAuth()) {
+    // 未登录或无权限，跳转到登录页面
+    uni.showToast({
+      title: '请先登录',
+      icon: 'none',
+    });
+    setTimeout(() => {
+      uni.redirectTo({ url: '/pages/login/login' });
+    }, 1500);
+    return;
+  }
+
+  // 权限校验通过，正常跳转
+  uni.navigateTo(options);
+}
+
+function switchTab(options) {
+  // 如果目标页面需要权限，同样进行校验
+  const { url } = options;
+  const authRequiredTabs = ['/pages/profile/profile'];
+  const isAuthRequired = authRequiredTabs.some((path) => url.includes(path));
+
+  if (isAuthRequired && !checkAuth()) {
+    uni.showToast({
+      title: '请先登录',
+      icon: 'none',
+    });
+    setTimeout(() => {
+      uni.redirectTo({ url: '/pages/login/login' });
+    }, 1500);
+    return;
+  }
+
+  // 权限校验通过，正常跳转
+  uni.switchTab(options);
+}
+
+export { navigateTo, switchTab };
+```
+
+---
+
+3. 替换全局路由方法
+在项目中，替换所有原生路由跳转调用，将其指向自定义封装的方法。例如，在业务逻辑中：
+
+```javascript
+import { navigateTo, switchTab } from './router.js';
+
+// 页面跳转
+navigateTo({
+  url: '/pages/profile/profile',
+});
+
+// 切换 Tab
+switchTab({
+  url: '/pages/profile/profile',
+});
+```
+
+---
+
+4. 登录后的权限存储
+在用户登录成功后，将 token 或权限标识存储在本地：
+
+```javascript
+uni.setStorageSync('userToken', 'your-token-value');
+```
+
+退出登录时清除 token：
+```javascript
+uni.removeStorageSync('userToken');
+```
+
+---
+
 ## Vue-router
 
 ### Vue-router 的 hash 模式和 history 模式有什么区别？
